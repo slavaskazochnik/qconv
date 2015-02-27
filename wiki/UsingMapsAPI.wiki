@@ -6,7 +6,7 @@
 <head>
   <title>Test Maps API</title>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+  <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
   <textarea id="txtAddress" rows="3" cols="45"></textarea>
@@ -50,4 +50,3 @@
 = Details =
 
 Googls API is not high detailed as Yandex API for Hrodna.
-
