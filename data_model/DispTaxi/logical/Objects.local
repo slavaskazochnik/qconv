@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="EA55E070-237B-BA4D-7E8D-79523AC7BE42" name="AUTOS" seqName="seg_0"/>
+   <object objectType="Entity" objectID="07BA603F-94AD-FA01-9834-DFC5702DCF01" name="CARS" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B5AAD48E-699E-2B91-B4E6-35A3126BF2C9" name="DRIVERS" seqName="seg_0"/>
+   <object objectType="Relation" objectID="ED0C1968-F4DC-B65B-5627-554444C9335F" name="AUTOS CARS FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="3627C76E-490B-5F11-A135-E53FE2948D20" name="AUTOS DRIVERS FK" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

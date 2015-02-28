@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EA55E070-237B-BA4D-7E8D-79523AC7BE42" name="AUTOS">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>A645EE9D-BFEE-0960-72F8-396C6E12A359</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID AUTO" id="B2AA1A2B-F99C-724A-2A07-9FECDA392A91">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>PK</comment>
+<generatorID>190274CA-1E6C-C4B7-09DA-FEC09823E736</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="ID CAR" id="E0468370-094B-EAC0-591C-1A91CB9D8496">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>FK cars</comment>
+<generatorID>ED0C1968-F4DC-B65B-5627-554444C9335F</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<referedAttribute>37A36A98-D47B-C6B0-AFFF-955DC8432C37</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="ID DRIVER" id="5075E030-A982-0697-99E2-75AD7A99D5AB">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>FK drivers</comment>
+<generatorID>3627C76E-490B-5F11-A135-E53FE2948D20</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<referedAttribute>610CB019-42FB-64ED-1DFB-77DB15796307</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="SIGN ACTIVE" id="465B91D3-3FA1-D11F-1E7F-48D74CD8F4FE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>5B3FDE85-4FC4-4766-5FF6-B1A075850904</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="D CREATE" id="1743A6EB-AFFA-2035-E567-A74ED97867BB">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>4A1CD96C-D929-2A7C-E989-9841CD636805</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F3EA7FC0-DD62-EB96-65DB-2EE09EB19DDC" name="AUTOS PKv1">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:34:05 UTC</createdTime>
+<generatorID>898BE554-A049-F599-048F-863991B78CA0</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B2AA1A2B-F99C-724A-2A07-9FECDA392A91</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

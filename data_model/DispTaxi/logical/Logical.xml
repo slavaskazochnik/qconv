@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="5151CB68-EB52-A91A-439E-969A36EBB171" mainViewID="5C39C284-0F75-C947-A9D7-F81F5CFA4331">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 12:47:45 UTC</createdTime>
+<ownerDesignName>disptaxi</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

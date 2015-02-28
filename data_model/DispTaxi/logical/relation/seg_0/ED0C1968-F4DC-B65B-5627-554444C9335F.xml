@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="AUTOS CARS FK" directorySegmentName="seg_0" id="ED0C1968-F4DC-B65B-5627-554444C9335F">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>2C081076-D1AE-3366-01EE-B4D75B4EFD5D</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<sourcePk>72AF06BC-FB12-12E4-35E5-332298CDB46C</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>07BA603F-94AD-FA01-9834-DFC5702DCF01</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EA55E070-237B-BA4D-7E8D-79523AC7BE42</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

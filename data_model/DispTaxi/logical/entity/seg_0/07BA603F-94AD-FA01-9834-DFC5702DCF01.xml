@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="07BA603F-94AD-FA01-9834-DFC5702DCF01" name="CARS">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>82DD54A0-E122-E7F2-9F8C-387DE742BE12</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID CAR" id="37A36A98-D47B-C6B0-AFFF-955DC8432C37">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>PK</comment>
+<generatorID>2FA86B01-4B27-36BE-BCAA-D9D96C4792C7</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="CAR REG NUM" id="1C22AF73-0239-C6D5-5BF4-C597ED41DE33">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>Номер авто</comment>
+<generatorID>B826E2C6-1E20-EADD-DE7F-5B8919EABBBB</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+</Attribute>
+<Attribute name="SITS QUAN" id="D91AC6A6-CA14-AE69-CB1A-D64F64E615A8">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>Количество пассажирских мест</comment>
+<generatorID>593B378E-3D38-2C61-9B40-7F3FA672998E</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="SIGN ACTIVE" id="86D1B07B-50AE-2C7D-8034-B3E9CB266544">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>Признак используемости авто</comment>
+<generatorID>CF17DB1A-B9A2-ECCF-6CB2-AB9B97115927</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute name="D CREATE" id="89F23681-1103-675E-A4BD-99D98C2337D3">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<comment>Дата создание</comment>
+<generatorID>9DDCA7A3-253F-F091-D692-06BADDDF6A10</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="72AF06BC-FB12-12E4-35E5-332298CDB46C" name="CARS_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:27:58 UTC</createdTime>
+<generatorID>247FD70E-6767-5C81-96EC-284CDC9CA15C</generatorID>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<engineerTo>
+<item key="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>37A36A98-D47B-C6B0-AFFF-955DC8432C37</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
