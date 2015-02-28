@@ -1,4 +1,4 @@
-#Maven
+#summary Work with Maven
 = Create Java Project with Maven in Eclipse =
 
 Created classic Maven Java Project with naming by name convention.
