@@ -1,4 +1,4 @@
-#Using of API from Google and Yandex via browser
+#summary Using of API from Google and Yandex via browser
 
 = Get LatLng by Address and show it on the map =
 {{{
