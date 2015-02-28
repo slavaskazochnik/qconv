@@ -3,3 +3,7 @@
 
 Created classic Maven Java Project with naming by name convention.
 But not commited into SVN repository, still use "QConv" name.
+
+=== Created the new Maven Java Project ===
+
+https://code.google.com/p/parfen-training
