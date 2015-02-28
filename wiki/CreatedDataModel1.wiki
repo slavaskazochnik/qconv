@@ -2,13 +2,13 @@
 
 = Created Data Model =
 
-Created Data model for the new Application with Oracle SQL Developer Data Modeler.
+ # Created Data model for the new Application with Oracle SQL Developer Data Modeler.
 Source files located in *data_model* folder.
 
-Generated layout file:
+ # Generated layout file:
 [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
 
-and script file:
+ # Generated script file:
 [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
 
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
