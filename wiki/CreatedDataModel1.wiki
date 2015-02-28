@@ -11,4 +11,4 @@ Generated layout file:
 and script file:
 [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
 
-[https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.png Image]
+https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
