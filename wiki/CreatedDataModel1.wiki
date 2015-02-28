@@ -6,9 +6,7 @@ Created Data model for the new Application with Oracle SQL Developer Data Modele
 Source files located in *data_model* folder.
 
 Generated layout file:
-DispTaxi_Relational.pdf
-https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf
+[https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
 
 and script file:
-DispTaxi_Oracle_DDL.sql
-https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql
+[https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
