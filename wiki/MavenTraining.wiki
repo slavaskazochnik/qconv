@@ -2,7 +2,7 @@
 = Create Java Project with Maven in Eclipse =
 
 Created classic Maven Java Project with naming by name convention.
-But not commited into SVN repository, still use "QConv" name.
+~~But not commited into SVN repository, still use "QConv" name.~~
 
 === Created the new Maven Java Project ===
 
