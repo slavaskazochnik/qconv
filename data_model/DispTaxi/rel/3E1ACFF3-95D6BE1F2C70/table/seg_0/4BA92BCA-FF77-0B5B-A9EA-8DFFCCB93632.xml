@@ -2,6 +2,8 @@
 <Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4BA92BCA-FF77-0B5B-A9EA-8DFFCCB93632" name="ROUTES">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:05:48 UTC</createdTime>
+<comment>Маршрут следования</comment>
+<commentInRDBMS>Маршрут следования</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -10,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:01 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -20,6 +23,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:01 UTC</createdTime>
 <comment>Начальный пункт</comment>
+<commentInRDBMS>Начальный пункт</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -34,6 +38,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:01 UTC</createdTime>
 <comment>Конечный пункт</comment>
+<commentInRDBMS>Конечный пункт</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

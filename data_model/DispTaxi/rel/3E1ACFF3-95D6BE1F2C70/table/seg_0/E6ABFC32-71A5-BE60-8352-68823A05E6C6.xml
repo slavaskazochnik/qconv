@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:03:41 UTC</createdTime>
 <comment>Заказы</comment>
+<commentInRDBMS>Заказы</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -11,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:52:15 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -21,6 +23,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:52:15 UTC</createdTime>
 <comment>Заказчик</comment>
+<commentInRDBMS>Заказчик</commentInRDBMS>
 <notes>Заказчик: физ.лицо или фирма</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -36,6 +39,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Маршрут следования</comment>
+<commentInRDBMS>Маршрут следования</commentInRDBMS>
 <notes>Составляется в момент получения заказа.&lt;br/&gt;Маршрут может состоять из более чем двух пунктов назначения.</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -51,6 +55,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Исполнитель заказа</comment>
+<commentInRDBMS>Исполнитель заказа</commentInRDBMS>
 <notes>Проставляется после принятия заказа у Заказчика</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -66,6 +71,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Состояние заказа</comment>
+<commentInRDBMS>Состояние заказа: новый, принят, ожидание пассажира, выполнен</commentInRDBMS>
 <notes>При смене статуса можно генерировать сообщение для участников</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -81,6 +87,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Результат: заказ принят, заказ выполнен, заказ отменён</comment>
+<commentInRDBMS>Результат: заказ принят, заказ выполнен, заказ отменён</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -94,6 +101,8 @@
 <Column name="D_CREATE" id="20F73832-5F6F-D73E-04AA-39543F4ACF61">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:04:32 UTC</createdTime>
+<comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:30:39 UTC</createdTime>
 <comment>Справочник населённых пунктов</comment>
+<commentInRDBMS>Справочник населённых пунктов</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -11,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:32:32 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -21,6 +23,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:32:32 UTC</createdTime>
 <comment>Название населённого пункта</comment>
+<commentInRDBMS>Название населённого пункта</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:08:55 UTC</createdTime>
 <comment>Результат исполнения заказа</comment>
+<commentInRDBMS>Результат исполнения заказа</commentInRDBMS>
 <notes>Например, значения: ВЫПОЛНЕН, ОТМЕНЁН</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
@@ -12,6 +13,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:11:46 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -21,6 +23,7 @@
 <Column name="RESULT_NAME" id="75102882-F3CF-E9CB-CEF3-5F1C54FC613E">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:11:46 UTC</createdTime>
+<commentInRDBMS>Наименование</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

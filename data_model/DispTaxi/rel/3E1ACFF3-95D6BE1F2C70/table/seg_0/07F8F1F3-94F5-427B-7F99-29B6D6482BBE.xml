@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:22:22 UTC</createdTime>
 <comment>Справочник улиц</comment>
+<commentInRDBMS>Справочник улиц</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -11,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:25:24 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -21,6 +23,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:25:24 UTC</createdTime>
 <comment>Название улицы</comment>
+<commentInRDBMS>Название улицы</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -32,7 +35,8 @@
 <Column name="ID_CITY" id="1822C2FB-B1AC-A41F-4965-A965988B5D6A">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:25:24 UTC</createdTime>
-<comment>FK Город</comment>
+<comment>FK Населённый пункт</comment>
+<commentInRDBMS>FK Населённый пункт</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

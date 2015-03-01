@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:04 UTC</createdTime>
 <comment>Справочник пунктов назначений</comment>
+<commentInRDBMS>Справочник пунктов назначений</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -11,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -21,6 +23,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>Улица</comment>
+<commentInRDBMS>FK Улица</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,6 +38,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>Номер дома/корпуса</comment>
+<commentInRDBMS>Номер дома/корпуса</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -47,6 +51,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>Положение на карте: Широта [-90, 90]</comment>
+<commentInRDBMS>Положение на карте: Широта [-90, 90]</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -58,6 +63,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>Положение на карте: Долгота [-180, 180]</comment>
+<commentInRDBMS>Положение на карте: Долгота [-180, 180]</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 12:57:29 UTC</createdTime>
 <comment>Справочник водителей</comment>
+<commentInRDBMS>Справочник водителей</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
@@ -11,6 +12,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -25,6 +27,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Признак активности водителя в системе</comment>
+<commentInRDBMS>Признак активности водителя в системе</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -35,7 +38,8 @@
 <Column name="D_CREATE" id="2767E6A7-7AD0-3A87-3E25-82411672FD6F">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
-<comment>Дата создания</comment>
+<comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

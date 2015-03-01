@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:38:56 UTC</createdTime>
 <comment>Справочник персон</comment>
+<commentInRDBMS>Справочник персон</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <splittedTableID>3812E780-4896-78BF-C68A-DDE43CACEF58</splittedTableID>
 <allowColumnReorder>false</allowColumnReorder>
@@ -11,6 +12,8 @@
 <Column name="ID_PERSON" id="EBA8D426-FB5D-F845-9148-D012485D9092">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:38:56 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -22,8 +25,8 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Фамилия</comment>
+<commentInRDBMS>Фамилия</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -34,6 +37,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Имя</comment>
+<commentInRDBMS>Имя</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -46,6 +50,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Отчество</comment>
+<commentInRDBMS>Отчество</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -58,9 +63,9 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:15:55 UTC</createdTime>
 <comment>Контактный телефон</comment>
+<commentInRDBMS>Контактный телефон</commentInRDBMS>
 <notes>Контактные данные можно вынести в отдельную таблицу (тел, адрес, email и т.д.)</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -71,6 +76,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

@@ -3,6 +3,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:04:10 UTC</createdTime>
 <comment>Состояния заказа</comment>
+<commentInRDBMS>Состояния заказа</commentInRDBMS>
 <notes>Например:&lt;br/&gt;1) Новый&lt;br/&gt;2) Выбрано авто&lt;br/&gt;3) Авто ждёт заказчика&lt;br/&gt;4) Авто отправилось с заказчиком&lt;br/&gt;5) Ато доставило заказчика&lt;br/&gt;6) Заказ отменён</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
@@ -12,6 +13,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:06:24 UTC</createdTime>
 <comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -22,6 +24,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:06:24 UTC</createdTime>
 <comment>Описание состояния заказа</comment>
+<commentInRDBMS>Описание состояния заказа</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -34,6 +37,7 @@
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:06:24 UTC</createdTime>
 <comment>Подробное описание</comment>
+<commentInRDBMS>Подробное описание</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
