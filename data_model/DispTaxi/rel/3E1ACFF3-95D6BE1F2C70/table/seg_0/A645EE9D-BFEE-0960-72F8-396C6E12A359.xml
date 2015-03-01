@@ -66,6 +66,28 @@
 <logicalDatatype>LOGDT018</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="POSITION_LAT" id="14AC6C61-4371-301E-21B1-FF5FDFB43DEA">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-01 21:51:29 UTC</createdTime>
+<comment>Текущее положение авто (широта)</comment>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSITION_LNG" id="41651651-9E73-B284-16CF-D3DA640C7062">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-01 21:51:29 UTC</createdTime>
+<comment>Текущее положение авто (долгота)</comment>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="SIGN_ACTIVE" id="5B3FDE85-4FC4-4766-5FF6-B1A075850904">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:12:30 UTC</createdTime>
