@@ -1,22 +1,22 @@
 #summary Describe Web Interface
 
-= Login Form =
+= <font color="#3366FF">Login Form</font> =
 
  # Enter UserName and Password
  # Register a new user.
 
-= Roles =
+= <font color="#3366FF">Roles</font> =
  # Admin
  # Dispatcher
  # Driver
  # Customer
 
-= Roles functions =
-== <font color="blue">Admin functions</font> ==
+= <font color="#3366FF">Roles functions</font> =
+== <font color="3399FF">Admin functions</font> ==
  # Register new autos
  # Register new drivers
 
-== <font color="blue">Dispatcher functions</font> ==
+== <font color="3399FF">Dispatcher functions</font> ==
  * Register new autos (pairs of the car and the driver)
  * Register a new customer
  * Register Orders
@@ -25,7 +25,7 @@
   # Create the Order
  * View Orders
 
-== <font color="blue">Driver functions</font> ==
+== <font color="3399FF">Driver functions</font> ==
  * Change Auto properties important for ordering (waiting and working radius in km)
  * Start of Work 
  * Set current position
@@ -34,8 +34,8 @@
   # Change the State of Order
  * End of Work 
 
-== <font color="blue">Customer functions</font> ==
+== <font color="3399FF">Customer functions</font> ==
  * View Order info
 
-= <font color="blue">Events</font> =
-Red text
+= <font color="#3366FF">Events</font> =
+ * The App generate new events every time when the Orders State changed
