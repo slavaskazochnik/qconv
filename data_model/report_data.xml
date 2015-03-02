@@ -2,7 +2,7 @@
 <osdm_at:root xmlns:osdm_at="osdm_at">
    <osdm_at:ReportCaption>All Tables Details</osdm_at:ReportCaption>
    <osdm_at:DesignName>DispTaxi</osdm_at:DesignName>
-   <osdm_at:VersionDate>01.03.2015 07:22:36</osdm_at:VersionDate>
+   <osdm_at:VersionDate>02.03.2015 04:40:39</osdm_at:VersionDate>
    <osdm_at:ModelName>Relational_1</osdm_at:ModelName>
    <osdm_at:TablesCollection>
       <osdm_at:TableDetails>
@@ -17,11 +17,6 @@
                   <osdm_at:DescriptionRow>Список автомобилей готовых к выполнению заказов</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>9</osdm_at:NumberOfColumns>
@@ -159,11 +154,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -173,11 +163,6 @@
                      <osdm_at:ColumnDescriptionRow>FK cars</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -187,11 +172,6 @@
                      <osdm_at:ColumnDescriptionRow>FK drivers</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>4</osdm_at:ColumnCommentsSequence>
@@ -201,11 +181,6 @@
                      <osdm_at:ColumnDescriptionRow>Радиус ожидания, км</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>5</osdm_at:ColumnCommentsSequence>
@@ -215,11 +190,6 @@
                      <osdm_at:ColumnDescriptionRow>Радиус выполнения заказа, км</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>6</osdm_at:ColumnCommentsSequence>
@@ -229,11 +199,6 @@
                      <osdm_at:ColumnDescriptionRow>Текущее положение авто (широта)</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>7</osdm_at:ColumnCommentsSequence>
@@ -243,11 +208,6 @@
                      <osdm_at:ColumnDescriptionRow>Текущее положение авто (долгота)</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>8</osdm_at:ColumnCommentsSequence>
@@ -257,11 +217,6 @@
                      <osdm_at:ColumnDescriptionRow>Признак участия в исполнении заказа</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>9</osdm_at:ColumnCommentsSequence>
@@ -271,11 +226,6 @@
                      <osdm_at:ColumnDescriptionRow>Дата создания записи</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -357,11 +307,6 @@
                   <osdm_at:DescriptionRow>Справочник транспортных средств</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>5</osdm_at:NumberOfColumns>
@@ -447,11 +392,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -461,11 +401,6 @@
                      <osdm_at:ColumnDescriptionRow>Номер авто</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -475,11 +410,6 @@
                      <osdm_at:ColumnDescriptionRow>Количество пассажирских мест</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>4</osdm_at:ColumnCommentsSequence>
@@ -489,11 +419,6 @@
                      <osdm_at:ColumnDescriptionRow>Признак используемости авто</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>5</osdm_at:ColumnCommentsSequence>
@@ -503,11 +428,6 @@
                      <osdm_at:ColumnDescriptionRow>Дата создания записи</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -553,11 +473,6 @@
                   <osdm_at:DescriptionRow>Справочник населённых пунктов</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>2</osdm_at:NumberOfColumns>
@@ -604,11 +519,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -618,11 +528,6 @@
                      <osdm_at:ColumnDescriptionRow>Название населённого пункта</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -659,11 +564,6 @@
                   <osdm_at:DescriptionRow>Справочник водителей</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>3</osdm_at:NumberOfColumns>
@@ -723,11 +623,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -737,11 +632,6 @@
                      <osdm_at:ColumnDescriptionRow>Признак активности водителя в системе</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -751,11 +641,6 @@
                      <osdm_at:ColumnDescriptionRow>Дата создания записи</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -802,11 +687,6 @@
                   <osdm_at:DescriptionRow>Заказы</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>7</osdm_at:NumberOfColumns>
@@ -918,11 +798,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -989,11 +864,6 @@
                      <osdm_at:ColumnDescriptionRow>Результат: заказ принят, заказ выполнен, заказ отменён</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>7</osdm_at:ColumnCommentsSequence>
@@ -1003,11 +873,6 @@
                      <osdm_at:ColumnDescriptionRow>Дата создания записи</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -1127,11 +992,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -1141,11 +1001,6 @@
                      <osdm_at:ColumnDescriptionRow>Наименование</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -1252,11 +1107,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -1266,11 +1116,6 @@
                      <osdm_at:ColumnDescriptionRow>Описание состояния заказа</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -1280,11 +1125,6 @@
                      <osdm_at:ColumnDescriptionRow>Подробное описание</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -1328,7 +1168,7 @@
             </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
-            <osdm_at:NumberOfColumns>6</osdm_at:NumberOfColumns>
+            <osdm_at:NumberOfColumns>5</osdm_at:NumberOfColumns>
             <osdm_at:NumberOfRowsMin>0</osdm_at:NumberOfRowsMin>
             <osdm_at:NumberOfRowsMax>9999999</osdm_at:NumberOfRowsMax>
             <osdm_at:ExpectedNumberOfRows>0</osdm_at:ExpectedNumberOfRows>
@@ -1351,7 +1191,7 @@
             </osdm_at:ColumnDetails>
             <osdm_at:ColumnDetails>
                <osdm_at:Sequence>2</osdm_at:Sequence>
-               <osdm_at:ColumnName>PERSON_NAME</osdm_at:ColumnName>
+               <osdm_at:ColumnName>FIRST_NAME</osdm_at:ColumnName>
                <osdm_at:PK/>
                <osdm_at:FK/>
                <osdm_at:M>Y</osdm_at:M>
@@ -1364,19 +1204,6 @@
             </osdm_at:ColumnDetails>
             <osdm_at:ColumnDetails>
                <osdm_at:Sequence>3</osdm_at:Sequence>
-               <osdm_at:ColumnName>FIRST_NAME</osdm_at:ColumnName>
-               <osdm_at:PK/>
-               <osdm_at:FK/>
-               <osdm_at:M/>
-               <osdm_at:DataType>VARCHAR (30) </osdm_at:DataType>
-               <osdm_at:DataTypeKind>LT</osdm_at:DataTypeKind>
-               <osdm_at:DomainName/>
-               <osdm_at:Formula/>
-               <osdm_at:Security/>
-               <osdm_at:PreferredAbbreviation/>
-            </osdm_at:ColumnDetails>
-            <osdm_at:ColumnDetails>
-               <osdm_at:Sequence>4</osdm_at:Sequence>
                <osdm_at:ColumnName>LAST_NAME</osdm_at:ColumnName>
                <osdm_at:PK/>
                <osdm_at:FK/>
@@ -1389,7 +1216,7 @@
                <osdm_at:PreferredAbbreviation/>
             </osdm_at:ColumnDetails>
             <osdm_at:ColumnDetails>
-               <osdm_at:Sequence>5</osdm_at:Sequence>
+               <osdm_at:Sequence>4</osdm_at:Sequence>
                <osdm_at:ColumnName>TEL_NUM</osdm_at:ColumnName>
                <osdm_at:PK/>
                <osdm_at:FK/>
@@ -1402,7 +1229,7 @@
                <osdm_at:PreferredAbbreviation/>
             </osdm_at:ColumnDetails>
             <osdm_at:ColumnDetails>
-               <osdm_at:Sequence>6</osdm_at:Sequence>
+               <osdm_at:Sequence>5</osdm_at:Sequence>
                <osdm_at:ColumnName>D_CREATE</osdm_at:ColumnName>
                <osdm_at:PK/>
                <osdm_at:FK/>
@@ -1432,20 +1259,6 @@
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
-               <osdm_at:ColumnCommentsName>PERSON_NAME</osdm_at:ColumnCommentsName>
-               <osdm_at:ColumnDescription>
-                  <osdm_at:ColumnDescriptionDetails>
-                     <osdm_at:ColumnDescriptionRow>Фамилия</osdm_at:ColumnDescriptionRow>
-                  </osdm_at:ColumnDescriptionDetails>
-               </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
-            </osdm_at:ColumnCommentsDetails>
-            <osdm_at:ColumnCommentsDetails>
-               <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
                <osdm_at:ColumnCommentsName>FIRST_NAME</osdm_at:ColumnCommentsName>
                <osdm_at:ColumnDescription>
                   <osdm_at:ColumnDescriptionDetails>
@@ -1459,11 +1272,11 @@
                </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
-               <osdm_at:ColumnCommentsSequence>4</osdm_at:ColumnCommentsSequence>
+               <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
                <osdm_at:ColumnCommentsName>LAST_NAME</osdm_at:ColumnCommentsName>
                <osdm_at:ColumnDescription>
                   <osdm_at:ColumnDescriptionDetails>
-                     <osdm_at:ColumnDescriptionRow>Отчество</osdm_at:ColumnDescriptionRow>
+                     <osdm_at:ColumnDescriptionRow>Фамилия</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
                <osdm_at:ColumnNotes>
@@ -1473,7 +1286,7 @@
                </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
-               <osdm_at:ColumnCommentsSequence>5</osdm_at:ColumnCommentsSequence>
+               <osdm_at:ColumnCommentsSequence>4</osdm_at:ColumnCommentsSequence>
                <osdm_at:ColumnCommentsName>TEL_NUM</osdm_at:ColumnCommentsName>
                <osdm_at:ColumnDescription>
                   <osdm_at:ColumnDescriptionDetails>
@@ -1487,7 +1300,7 @@
                </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
-               <osdm_at:ColumnCommentsSequence>6</osdm_at:ColumnCommentsSequence>
+               <osdm_at:ColumnCommentsSequence>5</osdm_at:ColumnCommentsSequence>
                <osdm_at:ColumnCommentsName>D_CREATE</osdm_at:ColumnCommentsName>
                <osdm_at:ColumnDescription>
                   <osdm_at:ColumnDescriptionDetails>
@@ -1543,11 +1356,6 @@
                   <osdm_at:DescriptionRow>Справочник пунктов назначений</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>5</osdm_at:NumberOfColumns>
@@ -1633,11 +1441,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -1647,11 +1450,6 @@
                      <osdm_at:ColumnDescriptionRow>Улица</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -1661,11 +1459,6 @@
                      <osdm_at:ColumnDescriptionRow>Номер дома/корпуса</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>4</osdm_at:ColumnCommentsSequence>
@@ -1675,11 +1468,6 @@
                      <osdm_at:ColumnDescriptionRow>Положение на карте: Широта [-90, 90]</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>5</osdm_at:ColumnCommentsSequence>
@@ -1689,11 +1477,6 @@
                      <osdm_at:ColumnDescriptionRow>Положение на карте: Долгота [-180, 180]</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -1748,11 +1531,6 @@
                   <osdm_at:DescriptionRow>Маршрут следования</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>3</osdm_at:NumberOfColumns>
@@ -1812,11 +1590,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -1826,11 +1599,6 @@
                      <osdm_at:ColumnDescriptionRow>Начальный пункт</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -1840,11 +1608,6 @@
                      <osdm_at:ColumnDescriptionRow>Конечный пункт</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
@@ -1899,11 +1662,6 @@
                   <osdm_at:DescriptionRow>Справочник улиц</osdm_at:DescriptionRow>
                </osdm_at:DescriptionDetails>
             </osdm_at:Description>
-            <osdm_at:Notes>
-               <osdm_at:NotesDetails>
-                  <osdm_at:NoteRow/>
-               </osdm_at:NotesDetails>
-            </osdm_at:Notes>
          </osdm_at:DescriptionNotes>
          <osdm_at:QuantitativeInfo>
             <osdm_at:NumberOfColumns>3</osdm_at:NumberOfColumns>
@@ -1963,11 +1721,6 @@
                      <osdm_at:ColumnDescriptionRow>PK</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>2</osdm_at:ColumnCommentsSequence>
@@ -1977,11 +1730,6 @@
                      <osdm_at:ColumnDescriptionRow>Название улицы</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
             <osdm_at:ColumnCommentsDetails>
                <osdm_at:ColumnCommentsSequence>3</osdm_at:ColumnCommentsSequence>
@@ -1991,11 +1739,6 @@
                      <osdm_at:ColumnDescriptionRow>FK Населённый пункт</osdm_at:ColumnDescriptionRow>
                   </osdm_at:ColumnDescriptionDetails>
                </osdm_at:ColumnDescription>
-               <osdm_at:ColumnNotes>
-                  <osdm_at:ColumnNotesDetails>
-                     <osdm_at:ColumnNoteRow/>
-                  </osdm_at:ColumnNotesDetails>
-               </osdm_at:ColumnNotes>
             </osdm_at:ColumnCommentsDetails>
          </osdm_at:ColumnsCommentsCollection>
          <osdm_at:IndexesCollection>
