@@ -1,0 +1,36 @@
+#summary Describe Web Interface
+
+= Login Form =
+
+ # Enter UserName and Password
+ # Register a new user.
+
+= Roles =
+ # Admin
+ # Dispatcher
+ # Driver
+ # Customer
+
+= Roles functions =
+== Admin functions ==
+ # Register new autos
+ # Register new drivers
+
+== Dispatcher functions ==
+ * Register new autos (pairs of the car and the driver)
+ * Register a new customer
+ * Register Orders
+  # Receive customers calls
+  # Find the free auto
+  # Create the Order
+
+== Driver functions ==
+ * Change Auto properties important for ordering (waiting and working radius in km)
+ * Start of Work 
+ * Set current position
+ * Work with the Order
+  # Take the Order
+  # Change the State of Order
+ * End of Work 
+
+ 
