@@ -2,15 +2,14 @@
 
 = Created Data Model =
 
- # Created Data model for the new Application with Oracle SQL Developer Data Modeler.
+Created Data model for the new Application with Oracle SQL Developer Data Modeler.
 Source files located in *data_model* folder.
 
- # Generated layout file:
-[https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
+1) Generated layout file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
 
- # Generated script file:
-[https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
+2) Generated script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
 
+3) Generated PDF Relational Model
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
 
 == What To Do ==
@@ -18,3 +17,7 @@ https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
 === Table Orders ===
  # Information about Route length in KM
  # Information about the amout of payment
+
+=== Table for login information ===
+ # UserName and Password
+ # Relation with the Person table
