@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Test Maps API</title>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <!--<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>-->
+  <script src="http://api-maps.yandex.ru/1.1/index.xml?key=ANpUFEkBAAAAf7jmJwMAHGZHrcKNDsbEqEVjEUtCmufxQMwAAAAAAAAAAAAvVrubVT4btztbduoIgTLAeFILaQ==" type="text/javascript"></script>
+</head>
+<body>
+  <textarea id="txtAddressFrom" rows="1" cols="45">Гродно, Клецкова, 40</textarea>
+  <textarea id="txtAddressTo1" rows="1" cols="45">Гродно, Индурское шоссе, 8</textarea>
+  <textarea id="txtAddressToLast" rows="1" cols="45">Гродно, Космонавтов, 68</textarea>
+  <br />
+  <input type="button" onclick="GetLocation()" value="Get Location" />
+  <input type="button" onclick="CreateRoute()" value="Route" />
+  <script type="text/javascript">
+    function GetLocation() {
+      var addressFrom = document.getElementById("txtAddressFrom").value;
+      var addressTo1 = document.getElementById("txtAddressTo1").value;
+      var addressTo = document.getElementById("txtAddressToLast").value;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ 'address': addressTo1 }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        //alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+        var mapProp = {
+          center:new google.maps.LatLng(latitude,longitude),
+          zoom:17,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var mapG=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      } else {
+        alert("Request failed.")
+      }
+      });
+    };
+  </script>
+	
+<div id="googleMap" style="width:500px;height:380px;"></div>
+<div id="info"></div>
+	
+</body>
+</html>
