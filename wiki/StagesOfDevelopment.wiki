@@ -1,0 +1,35 @@
+#summary Stages of development
+
+= The Common plan =
+
+== Types of users (Roles) ==
+
+ # *Admin* which can add
+  * the new user with granted role (Admin, Operator, Driver, Customer)
+ # *Operator* which can add/modify 
+  * any information into directories: Autos (Cars, Drivers), Customers, Orders
+ # *Driver* which can add/modify
+  * information about execution of the Order (set orders _state_)
+ # *Customer* which can look at
+  * information about him orders
+
+== Layouts ==
+
+ # Create the *аorm for dispatchers* (for the _Operator_ role).
+  * Navigation menu
+   * Orders
+    * Create order
+    * Show active orders
+    * View all Orders
+   * Autos
+   * Customers
+  * Main container
+ # Create *forms for directories* (for the _Admin_ and _Operator_ roles).
+  * _Separate_ form
+  * _Inline_ form in the main form for the operator role
+  # Autos
+    with calling the Cars and the Drivers form
+  # Cars
+  # Drivers
+  # Customers
+ # Create the *form for drivers*
