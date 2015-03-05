@@ -15,7 +15,7 @@
 
 == Layouts ==
 
- # Create the *form for dispatchers* (for the _Operator_ role).
+ # Create the *form for the Operator* (for the _Operator_ role).
   * Navigation menu
    * Orders
     * Create order
@@ -31,7 +31,7 @@
   # *Cars*
   # *Drivers*
   # *Customers*
- # Create the *form for Driver*
+ # Create the *form for the Driver*
   * Navigation menu
    * *My Info*
     * My *Personal* info
@@ -39,4 +39,4 @@
     * View my *Orders*
    * Show new orders
   * Main container
- # Create the *form for Customer*
+ # Create the *form for the Customer*
