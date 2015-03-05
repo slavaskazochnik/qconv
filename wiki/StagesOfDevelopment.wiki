@@ -15,7 +15,7 @@
 
 == Layouts ==
 
- # Create the *аorm for dispatchers* (for the _Operator_ role).
+ # Create the *form for dispatchers* (for the _Operator_ role).
   * Navigation menu
    * Orders
     * Create order
