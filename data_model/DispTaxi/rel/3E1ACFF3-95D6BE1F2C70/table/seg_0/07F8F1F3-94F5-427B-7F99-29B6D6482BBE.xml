@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="07F8F1F3-94F5-427B-7F99-29B6D6482BBE" name="STREETS">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:22:22 UTC</createdTime>
+<comment>Справочник улиц</comment>
+<commentInRDBMS>Справочник улиц</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_STREET" id="E333445F-E2CC-5288-027C-B5252897560E">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:25:24 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STREET_NAME" id="4C6025C3-E8F9-8707-5F36-C5E7A4F1BE80">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:25:24 UTC</createdTime>
+<comment>Название улицы</comment>
+<commentInRDBMS>Название улицы</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_CITY" id="1822C2FB-B1AC-A41F-4965-A965988B5D6A">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:25:24 UTC</createdTime>
+<comment>FK Населённый пункт</comment>
+<commentInRDBMS>FK Населённый пункт</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>899049BB-7AA4-4590-B4C3-AF2F3AA3B356</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1080B34D-56DA-DB78-663A-59D12BB37E3A" referredColumn="899049BB-7AA4-4590-B4C3-AF2F3AA3B356"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EB718DFE-949F-FF7B-F7C2-1FA9C3403FDD" name="STREETS_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:25:24 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E333445F-E2CC-5288-027C-B5252897560E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="22A98B28-51DF-49EA-3E32-21C8081EE5F2" name="STREETS_CITIES_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:33:00 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1822C2FB-B1AC-A41F-4965-A965988B5D6A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

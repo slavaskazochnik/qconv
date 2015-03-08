@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D3A8CB4-A2C5-45E9-9D67-C2E4C89DA25D" name="POINTS">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:09:04 UTC</createdTime>
+<comment>Справочник пунктов назначений</comment>
+<commentInRDBMS>Справочник пунктов назначений</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_POINT" id="E33B53B9-4397-B367-2B81-86B9F40F9DBF">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_STREET" id="2AC21353-0D58-EBF1-2115-6A054AB17590">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<comment>Улица</comment>
+<commentInRDBMS>FK Улица</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>E333445F-E2CC-5288-027C-B5252897560E</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C588AA26-BE17-59F4-9794-D40CCDD7E315" referredColumn="E333445F-E2CC-5288-027C-B5252897560E"/>
+</associations>
+</Column>
+<Column name="HOUSE_NUM" id="84D28AD1-29D4-8AA9-56EA-6A6B666BF217">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<comment>Номер дома/корпуса</comment>
+<commentInRDBMS>Номер дома/корпуса</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POINT_LAT" id="ADF6DC00-5036-7C2D-4CCD-E52693A0130C">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<comment>Положение на карте: Широта [-90, 90]</comment>
+<commentInRDBMS>Положение на карте: Широта [-90, 90]</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POINT_LNG" id="99A8681C-AEC8-F3BA-DDF3-1EB47987F322">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<comment>Положение на карте: Долгота [-180, 180]</comment>
+<commentInRDBMS>Положение на карте: Долгота [-180, 180]</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A3951F19-DC88-095E-FB4E-F8574D182FDA" name="POINTS_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:18:03 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E33B53B9-4397-B367-2B81-86B9F40F9DBF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BE52A6D0-0902-719B-EE77-DC1F8FA0B684" name="POINTS_STREETS_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:25:55 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2AC21353-0D58-EBF1-2115-6A054AB17590"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

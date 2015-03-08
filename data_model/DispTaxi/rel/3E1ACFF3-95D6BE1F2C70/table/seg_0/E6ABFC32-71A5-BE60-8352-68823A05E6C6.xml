@@ -1,0 +1,176 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6ABFC32-71A5-BE60-8352-68823A05E6C6" name="ORDERS">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:03:41 UTC</createdTime>
+<comment>Заказы</comment>
+<commentInRDBMS>Заказы</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_ORDER" id="45E16766-75B9-6EAD-1D9E-0066D2559CE6">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:52:15 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_CUSTOMER" id="06684401-25DD-DDB7-D48C-D64B056A0B84">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:52:15 UTC</createdTime>
+<comment>Заказчик</comment>
+<commentInRDBMS>Заказчик</commentInRDBMS>
+<notes>Заказчик: физ.лицо или фирма</notes>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="68878166-14BF-C3CD-D758-784A43F034D5" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
+</associations>
+</Column>
+<Column name="ID_ROUTE" id="75DD6AEE-A389-941D-0AA9-3A80E95160D9">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:59:05 UTC</createdTime>
+<comment>Маршрут следования</comment>
+<commentInRDBMS>Маршрут следования</commentInRDBMS>
+<notes>Составляется в момент получения заказа.&lt;br/&gt;Маршрут может состоять из более чем двух пунктов назначения.</notes>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>27CC6D25-ACA5-5FC5-EF04-07DEF5FBCC68</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7C3C6DF8-774C-486D-3AE5-2F913C344B1D" referredColumn="27CC6D25-ACA5-5FC5-EF04-07DEF5FBCC68"/>
+</associations>
+</Column>
+<Column name="ID_AUTO" id="A2968523-D120-C68A-888B-CF0068EF5750">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:59:05 UTC</createdTime>
+<comment>Исполнитель заказа</comment>
+<commentInRDBMS>Исполнитель заказа</commentInRDBMS>
+<notes>Проставляется после принятия заказа у Заказчика</notes>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>190274CA-1E6C-C4B7-09DA-FEC09823E736</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CEECB58C-08E1-B22F-6E7A-CC968BB38B18" referredColumn="190274CA-1E6C-C4B7-09DA-FEC09823E736"/>
+</associations>
+</Column>
+<Column name="ID_STATE" id="25C7A780-0543-DFBB-0DC8-A07102551DC3">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:59:05 UTC</createdTime>
+<comment>Состояние заказа</comment>
+<commentInRDBMS>Состояние заказа: новый, принят, ожидание пассажира, выполнен</commentInRDBMS>
+<notes>При смене статуса можно генерировать сообщение для участников</notes>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>39FF128E-012C-53E6-6B81-0D25E73EBB31</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="13A4FF17-C405-01C1-E3AB-E762CF24FE25" referredColumn="39FF128E-012C-53E6-6B81-0D25E73EBB31"/>
+</associations>
+</Column>
+<Column name="ID_RESULT" id="462C84F3-6FDA-6EA1-0A7B-CD01780EE969">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:59:05 UTC</createdTime>
+<comment>Результат: заказ принят, заказ выполнен, заказ отменён</comment>
+<commentInRDBMS>Результат: заказ принят, заказ выполнен, заказ отменён</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>30FEC22B-BBC0-80C4-BE72-84CD1E8C0072</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="78F1EF14-3E36-00BE-4E5E-FFA265FDA1E5" referredColumn="30FEC22B-BBC0-80C4-BE72-84CD1E8C0072"/>
+</associations>
+</Column>
+<Column name="D_CREATE" id="20F73832-5F6F-D73E-04AA-39543F4ACF61">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:04:32 UTC</createdTime>
+<comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5547D675-AA44-AE76-F1D9-FC81A1057ECC" name="ORDERS_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 18:59:05 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D14D0F20-C83D-48C8-868E-01157AFA5E90" name="ORDERS_AUTOS_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:05:26 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A2968523-D120-C68A-888B-CF0068EF5750"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED2340BA-9A0E-DA59-0E3D-F2D0F60971F8" name="ORDERS_ROUTES_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:19:29 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="75DD6AEE-A389-941D-0AA9-3A80E95160D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDERS_PERSONS_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:45:41 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="06684401-25DD-DDB7-D48C-D64B056A0B84"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="16E09758-2C90-E60E-D791-837C05CD77CF" name="ORDERS_ORDER_STATES_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:06:58 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="25C7A780-0543-DFBB-0DC8-A07102551DC3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B1954423-46ED-AFC8-A70C-2CEDC0981432" name="ORDERS_ORDER_RESULTS_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:12:25 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="462C84F3-6FDA-6EA1-0A7B-CD01780EE969"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

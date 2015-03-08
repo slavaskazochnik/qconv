@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3BCD0E8F-8E69-7A94-D843-82F5128B0190" name="ORDER_STATES">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:04:10 UTC</createdTime>
+<comment>Состояния заказа</comment>
+<commentInRDBMS>Состояния заказа</commentInRDBMS>
+<notes>Например:&lt;br/&gt;1) Новый&lt;br/&gt;2) Выбрано авто&lt;br/&gt;3) Авто ждёт заказчика&lt;br/&gt;4) Авто отправилось с заказчиком&lt;br/&gt;5) Ато доставило заказчика&lt;br/&gt;6) Заказ отменён</notes>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_STATE" id="39FF128E-012C-53E6-6B81-0D25E73EBB31">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:06:24 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE_NAME" id="D9F7E9D0-742B-5649-ED22-1C49DC59179C">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:06:24 UTC</createdTime>
+<comment>Описание состояния заказа</comment>
+<commentInRDBMS>Описание состояния заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE_DESCR" id="84AF1630-6416-D794-07B4-FB86565BD836">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:06:24 UTC</createdTime>
+<comment>Подробное описание</comment>
+<commentInRDBMS>Подробное описание</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F45FE954-B577-619F-1695-84978D58E19C" name="ORDER_STATES_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:06:24 UTC</createdTime>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39FF128E-012C-53E6-6B81-0D25E73EBB31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
