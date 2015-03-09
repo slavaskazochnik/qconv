@@ -21,3 +21,8 @@ https://qconv.googlecode.com/svn/trunk/data_model/DispTaxi_Relational.png
 === Table for login information ===
  # UserName and Password
  # Relation with the Person table
+
+=== Table or view for the New/OnWay orders ===
+ * This table have only 
+  # New orders from which Driver can choose some.
+  # OnWay orders for control
