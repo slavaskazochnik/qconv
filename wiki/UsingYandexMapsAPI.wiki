@@ -2,7 +2,7 @@
 
 = Using Yandex Maps API =
 
-https://qconv.googlecode.com/svn/trunc/etc/ymapsapi.html
+https://qconv.googlecode.com/svn/trunk/etc/ymapsapi.html
 
 {{{
 <html xmlns="http://www.w3.org/1999/xhtml">
