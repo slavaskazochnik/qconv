@@ -2,11 +2,12 @@
 
 = Using Yandex Maps API =
 
-https://qconv.googlecode.com/svn/src/ymapappi.html
+https://qconv.googlecode.com/svn/trunc/etc/ymapappi.html
 
 {{{
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Test Maps API</title>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
@@ -98,10 +99,10 @@ https://qconv.googlecode.com/svn/src/ymapappi.html
       }, this);
     }
   </script>
-	
+        
 <div id="yandexMap" style="width:500px;height:380px;"></div>
 <div id="info"></div>
-	
+        
 </body>
 </html>
 }}}
