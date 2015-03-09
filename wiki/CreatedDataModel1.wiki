@@ -5,12 +5,12 @@
 Created Data model for the new Application with Oracle SQL Developer Data Modeler.
 Source files located in *data_model* folder.
 
-1) Generated layout file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
+1) Generated layout file: [https://code.google.com/p/qconv/source/browse/trunc/data_model/DispTaxi_Relational.pdf DispTaxi_Relational.pdf]
 
-2) Generated script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
+2) Generated script file: [https://code.google.com/p/qconv/source/browse/trunc/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL.sql]
 
 3) Generated PDF Relational Model
-https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
+https://qconv.googlecode.com/svn/trunc/data_model/DispTaxi_Relational.png
 
 == What To Do ==
 
