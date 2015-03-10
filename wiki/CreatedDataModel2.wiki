@@ -26,9 +26,9 @@
 
 = Results =
 
-1) Generated layout file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational.pdf DispTaxi_Relational-2.pdf]
+1) Generated layout file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational-2.pdf DispTaxi_Relational-2.pdf]
 
-2) Generated script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL.sql DispTaxi_Oracle_DDL-2.sql]
+2) Generated script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL-2.sql DispTaxi_Oracle_DDL-2.sql]
 
 3) Generated PDF Relational Model
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational-2.png
