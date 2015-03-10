@@ -1,4 +1,4 @@
-#summary Datamodel version #2
+#summary Datamodel version #2 (added Tables and Columns)
 
 = Whats new =
 
