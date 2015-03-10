@@ -15,16 +15,16 @@ CREATE TABLE APP_ROLES
   LOGGING ;
 COMMENT ON TABLE APP_ROLES
 IS
-  'Роли приложения' ;
+  'Р РѕР»Рё РїСЂРёР»РѕР¶РµРЅРёСЏ' ;
   COMMENT ON COLUMN APP_ROLES.ID_ROLE
 IS
   'PK' ;
   COMMENT ON COLUMN APP_ROLES.ROLE_NAME
 IS
-  'Имя роли' ;
+  'РРјСЏ СЂРѕР»Рё' ;
   COMMENT ON COLUMN APP_ROLES.ROLE_DESCR
 IS
-  'Описание обязанностей, прав роли' ;
+  'РћРїРёСЃР°РЅРёРµ РѕР±СЏР·Р°РЅРЅРѕСЃС‚РµР№, РїСЂР°РІ СЂРѕР»Рё' ;
   CREATE INDEX APP_ROLES_ROLE_NAME_UN ON APP_ROLES
     ( ROLE_NAME ASC
     ) ;
@@ -45,7 +45,7 @@ CREATE TABLE AUTOS
   LOGGING ;
 COMMENT ON TABLE AUTOS
 IS
-  'Список автомобилей готовых к выполнению заказов' ;
+  'РЎРїРёСЃРѕРє Р°РІС‚РѕРјРѕР±РёР»РµР№ РіРѕС‚РѕРІС‹С… Рє РІС‹РїРѕР»РЅРµРЅРёСЋ Р·Р°РєР°Р·РѕРІ' ;
   COMMENT ON COLUMN AUTOS.ID_AUTO
 IS
   'PK' ;
@@ -57,22 +57,22 @@ IS
   'FK drivers' ;
   COMMENT ON COLUMN AUTOS.R_WAITING
 IS
-  'Радиус ожидания, км' ;
+  'Р Р°РґРёСѓСЃ РѕР¶РёРґР°РЅРёСЏ, РєРј' ;
   COMMENT ON COLUMN AUTOS.R_ROUTE
 IS
-  'Радиус выполнения заказа, км' ;
+  'Р Р°РґРёСѓСЃ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РєР°Р·Р°, РєРј' ;
   COMMENT ON COLUMN AUTOS.POSITION_LAT
 IS
-  'Текущее положение авто (широта)' ;
+  'РўРµРєСѓС‰РµРµ РїРѕР»РѕР¶РµРЅРёРµ Р°РІС‚Рѕ (С€РёСЂРѕС‚Р°)' ;
   COMMENT ON COLUMN AUTOS.POSITION_LNG
 IS
-  'Текущее положение авто (долгота)' ;
+  'РўРµРєСѓС‰РµРµ РїРѕР»РѕР¶РµРЅРёРµ Р°РІС‚Рѕ (РґРѕР»РіРѕС‚Р°)' ;
   COMMENT ON COLUMN AUTOS.SIGN_ACTIVE
 IS
-  'Признак участия в исполнении заказа' ;
+  'РџСЂРёР·РЅР°Рє СѓС‡Р°СЃС‚РёСЏ РІ РёСЃРїРѕР»РЅРµРЅРёРё Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN AUTOS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   CREATE INDEX AUTOS_PK ON AUTOS
     ( ID_AUTO ASC
     ) ;
@@ -93,25 +93,25 @@ CREATE TABLE CARS
   LOGGING ;
 COMMENT ON TABLE CARS
 IS
-  'Справочник транспортных средств' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІ' ;
   COMMENT ON COLUMN CARS.ID_CAR
 IS
   'PK' ;
   COMMENT ON COLUMN CARS.CAR_REG_NUM
 IS
-  'Регистрационный номер' ;
+  'Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ' ;
   COMMENT ON COLUMN CARS.SITS_QUAN
 IS
-  'Количество пассажирских мест' ;
+  'РљРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂСЃРєРёС… РјРµСЃС‚' ;
   COMMENT ON COLUMN CARS.ID_CAR_TYPE
 IS
-  'Тип авто' ;
+  'РўРёРї Р°РІС‚Рѕ' ;
   COMMENT ON COLUMN CARS.SIGN_ACTIVE
 IS
-  'Признак используемости авто' ;
+  'РџСЂРёР·РЅР°Рє РёСЃРїРѕР»СЊР·СѓРµРјРѕСЃС‚Рё Р°РІС‚Рѕ' ;
   COMMENT ON COLUMN CARS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   CREATE INDEX CARS_UK ON CARS
     ( CAR_REG_NUM ASC
     ) ;
@@ -125,13 +125,13 @@ CREATE TABLE CAR_TYPES
   LOGGING ;
 COMMENT ON TABLE CAR_TYPES
 IS
-  'Типы авто' ;
+  'РўРёРїС‹ Р°РІС‚Рѕ' ;
   COMMENT ON COLUMN CAR_TYPES.ID_CAR_TYPE
 IS
   'PK' ;
   COMMENT ON COLUMN CAR_TYPES.CAR_TYPE_NAME
 IS
-  'Название типа' ;
+  'РќР°Р·РІР°РЅРёРµ С‚РёРїР°' ;
   ALTER TABLE CAR_TYPES ADD CONSTRAINT CAR_TYPES_PK PRIMARY KEY ( ID_CAR_TYPE ) ;
 
 CREATE TABLE CITIES
@@ -142,13 +142,13 @@ CREATE TABLE CITIES
   LOGGING ;
 COMMENT ON TABLE CITIES
 IS
-  'Справочник населённых пунктов' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє РЅР°СЃРµР»С‘РЅРЅС‹С… РїСѓРЅРєС‚РѕРІ' ;
   COMMENT ON COLUMN CITIES.ID_CITY
 IS
   'PK' ;
   COMMENT ON COLUMN CITIES.CITY_NAME
 IS
-  'Название населённого пункта' ;
+  'РќР°Р·РІР°РЅРёРµ РЅР°СЃРµР»С‘РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р°' ;
   ALTER TABLE CITIES ADD CONSTRAINT CITIES_PK PRIMARY KEY ( ID_CITY ) ;
 
 CREATE TABLE CUSTOMERS
@@ -161,19 +161,19 @@ CREATE TABLE CUSTOMERS
   LOGGING ;
 COMMENT ON TABLE CUSTOMERS
 IS
-  'Справочник заказчиков' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє Р·Р°РєР°Р·С‡РёРєРѕРІ' ;
   COMMENT ON COLUMN CUSTOMERS.ID_CUSTOMER
 IS
   'PK' ;
   COMMENT ON COLUMN CUSTOMERS.AVG_CUSTOMER_RATING
 IS
-  'Средняя оценка заказчику' ;
+  'РЎСЂРµРґРЅСЏСЏ РѕС†РµРЅРєР° Р·Р°РєР°Р·С‡РёРєСѓ' ;
   COMMENT ON COLUMN CUSTOMERS.SIGN_ACTIVE
 IS
-  'Признак активности водителя в системе' ;
+  'РџСЂРёР·РЅР°Рє Р°РєС‚РёРІРЅРѕСЃС‚Рё РІРѕРґРёС‚РµР»СЏ РІ СЃРёСЃС‚РµРјРµ' ;
   COMMENT ON COLUMN CUSTOMERS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   ALTER TABLE CUSTOMERS ADD CONSTRAINT CUSTOMERS_PK PRIMARY KEY ( ID_CUSTOMER ) ;
 
 CREATE TABLE DRIVERS
@@ -186,19 +186,19 @@ CREATE TABLE DRIVERS
   LOGGING ;
 COMMENT ON TABLE DRIVERS
 IS
-  'Справочник водителей' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє РІРѕРґРёС‚РµР»РµР№' ;
   COMMENT ON COLUMN DRIVERS.ID_DRIVER
 IS
   'PK' ;
   COMMENT ON COLUMN DRIVERS.AVG_DRIVER_RATING
 IS
-  'Средняя оценка водителю' ;
+  'РЎСЂРµРґРЅСЏСЏ РѕС†РµРЅРєР° РІРѕРґРёС‚РµР»СЋ' ;
   COMMENT ON COLUMN DRIVERS.SIGN_ACTIVE
 IS
-  'Признак активности водителя в системе' ;
+  'РџСЂРёР·РЅР°Рє Р°РєС‚РёРІРЅРѕСЃС‚Рё РІРѕРґРёС‚РµР»СЏ РІ СЃРёСЃС‚РµРјРµ' ;
   COMMENT ON COLUMN DRIVERS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   ALTER TABLE DRIVERS ADD CONSTRAINT DRIVERS_PK PRIMARY KEY ( ID_DRIVER ) ;
 
 CREATE TABLE ORDERS
@@ -218,40 +218,40 @@ CREATE TABLE ORDERS
   LOGGING ;
 COMMENT ON TABLE ORDERS
 IS
-  'Заказы' ;
+  'Р—Р°РєР°Р·С‹' ;
   COMMENT ON COLUMN ORDERS.ID_ORDER
 IS
   'PK' ;
   COMMENT ON COLUMN ORDERS.ID_CUSTOMER
 IS
-  'Заказчик' ;
+  'Р—Р°РєР°Р·С‡РёРє' ;
   COMMENT ON COLUMN ORDERS.ID_ROUTE
 IS
-  'Маршрут следования' ;
+  'РњР°СЂС€СЂСѓС‚ СЃР»РµРґРѕРІР°РЅРёСЏ' ;
   COMMENT ON COLUMN ORDERS.ID_AUTO
 IS
-  'Исполнитель заказа' ;
+  'РСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDERS.CURRENT_STATE
 IS
-  'Состояние заказа: новый, принят, ожидание пассажира, выполнен' ;
+  'РЎРѕСЃС‚РѕСЏРЅРёРµ Р·Р°РєР°Р·Р°: РЅРѕРІС‹Р№, РїСЂРёРЅСЏС‚, РѕР¶РёРґР°РЅРёРµ РїР°СЃСЃР°Р¶РёСЂР°, РІС‹РїРѕР»РЅРµРЅ' ;
   COMMENT ON COLUMN ORDERS.ID_RESULT
 IS
-  'Результат: заказ принят, заказ выполнен, заказ отменён' ;
+  'Р РµР·СѓР»СЊС‚Р°С‚: Р·Р°РєР°Р· РїСЂРёРЅСЏС‚, Р·Р°РєР°Р· РІС‹РїРѕР»РЅРµРЅ, Р·Р°РєР°Р· РѕС‚РјРµРЅС‘РЅ' ;
   COMMENT ON COLUMN ORDERS.ROUTE_LENGTH
 IS
-  'Длина маршрута' ;
+  'Р”Р»РёРЅР° РјР°СЂС€СЂСѓС‚Р°' ;
   COMMENT ON COLUMN ORDERS.ORDER_PRICE
 IS
-  'Стоимость заказа' ;
+  'РЎС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDERS.CUSTOMER_RATING
 IS
-  'Оценка заказчику' ;
+  'РћС†РµРЅРєР° Р·Р°РєР°Р·С‡РёРєСѓ' ;
   COMMENT ON COLUMN ORDERS.DRIVER_RATING
 IS
-  'Оценка водителю' ;
+  'РћС†РµРЅРєР° РІРѕРґРёС‚РµР»СЋ' ;
   COMMENT ON COLUMN ORDERS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   ALTER TABLE ORDERS ADD CONSTRAINT ORDERS_PK PRIMARY KEY ( ID_ORDER ) ;
 
 CREATE TABLE ORDERS_TIMETABLE
@@ -264,19 +264,19 @@ CREATE TABLE ORDERS_TIMETABLE
   LOGGING ;
 COMMENT ON TABLE ORDERS_TIMETABLE
 IS
-  'График выполнения заказа' ;
+  'Р“СЂР°С„РёРє РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDERS_TIMETABLE.ID_TIMETABLE
 IS
   'PK' ;
   COMMENT ON COLUMN ORDERS_TIMETABLE.ID_ORDER
 IS
-  'ID заказа' ;
+  'ID Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDERS_TIMETABLE.ID_STATE
 IS
-  'Состояние заказа' ;
+  'РЎРѕСЃС‚РѕСЏРЅРёРµ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDERS_TIMETABLE.D_CREATE
 IS
-  'Дата проставления состояния' ;
+  'Р”Р°С‚Р° РїСЂРѕСЃС‚Р°РІР»РµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ' ;
   ALTER TABLE ORDERS_TIMETABLE ADD CONSTRAINT ORADERS_TIMETABLE_PK PRIMARY KEY ( ID_TIMETABLE ) ;
 
 CREATE TABLE ORDER_RESULTS
@@ -287,13 +287,13 @@ CREATE TABLE ORDER_RESULTS
   LOGGING ;
 COMMENT ON TABLE ORDER_RESULTS
 IS
-  'Результат исполнения заказа' ;
+  'Р РµР·СѓР»СЊС‚Р°С‚ РёСЃРїРѕР»РЅРµРЅРёСЏ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDER_RESULTS.ID_RESULT
 IS
   'PK' ;
   COMMENT ON COLUMN ORDER_RESULTS.RESULT_NAME
 IS
-  'Наименование' ;
+  'РќР°РёРјРµРЅРѕРІР°РЅРёРµ' ;
   ALTER TABLE ORDER_RESULTS ADD CONSTRAINT ORDER_RESULTS_PK PRIMARY KEY ( ID_RESULT ) ;
 
 CREATE TABLE ORDER_STATES
@@ -305,16 +305,16 @@ CREATE TABLE ORDER_STATES
   LOGGING ;
 COMMENT ON TABLE ORDER_STATES
 IS
-  'Состояния заказа' ;
+  'РЎРѕСЃС‚РѕСЏРЅРёСЏ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDER_STATES.ID_STATE
 IS
   'PK' ;
   COMMENT ON COLUMN ORDER_STATES.STATE_NAME
 IS
-  'Описание состояния заказа' ;
+  'РћРїРёСЃР°РЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ Р·Р°РєР°Р·Р°' ;
   COMMENT ON COLUMN ORDER_STATES.STATE_DESCR
 IS
-  'Подробное описание' ;
+  'РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ' ;
   ALTER TABLE ORDER_STATES ADD CONSTRAINT ORDER_STATES_PK PRIMARY KEY ( ID_STATE ) ;
 
 CREATE TABLE PERSONS
@@ -328,22 +328,22 @@ CREATE TABLE PERSONS
   LOGGING ;
 COMMENT ON TABLE PERSONS
 IS
-  'Справочник персон' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє РїРµСЂСЃРѕРЅ' ;
   COMMENT ON COLUMN PERSONS.ID_PERSON
 IS
   'PK' ;
   COMMENT ON COLUMN PERSONS.FIRST_NAME
 IS
-  'Имя' ;
+  'РРјСЏ' ;
   COMMENT ON COLUMN PERSONS.LAST_NAME
 IS
-  'Фамилия' ;
+  'Р¤Р°РјРёР»РёСЏ' ;
   COMMENT ON COLUMN PERSONS.TEL_NUM
 IS
-  'Контактный телефон' ;
+  'РљРѕРЅС‚Р°РєС‚РЅС‹Р№ С‚РµР»РµС„РѕРЅ' ;
   COMMENT ON COLUMN PERSONS.D_CREATE
 IS
-  'Дата создания записи' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё' ;
   ALTER TABLE PERSONS ADD CONSTRAINT PERSONS_PK PRIMARY KEY ( ID_PERSON ) ;
 
 CREATE TABLE POINTS
@@ -357,22 +357,22 @@ CREATE TABLE POINTS
   LOGGING ;
 COMMENT ON TABLE POINTS
 IS
-  'Справочник пунктов назначений' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє РїСѓРЅРєС‚РѕРІ РЅР°Р·РЅР°С‡РµРЅРёР№' ;
   COMMENT ON COLUMN POINTS.ID_POINT
 IS
   'PK' ;
   COMMENT ON COLUMN POINTS.ID_STREET
 IS
-  'FK Улица' ;
+  'FK РЈР»РёС†Р°' ;
   COMMENT ON COLUMN POINTS.HOUSE_NUM
 IS
-  'Номер дома/корпуса' ;
+  'РќРѕРјРµСЂ РґРѕРјР°/РєРѕСЂРїСѓСЃР°' ;
   COMMENT ON COLUMN POINTS.POINT_LAT
 IS
-  'Положение на карте: Широта [-90, 90]' ;
+  'РџРѕР»РѕР¶РµРЅРёРµ РЅР° РєР°СЂС‚Рµ: РЁРёСЂРѕС‚Р° [-90, 90]' ;
   COMMENT ON COLUMN POINTS.POINT_LNG
 IS
-  'Положение на карте: Долгота [-180, 180]' ;
+  'РџРѕР»РѕР¶РµРЅРёРµ РЅР° РєР°СЂС‚Рµ: Р”РѕР»РіРѕС‚Р° [-180, 180]' ;
   ALTER TABLE POINTS ADD CONSTRAINT POINTS_PK PRIMARY KEY ( ID_POINT ) ;
 
 CREATE TABLE PRICES
@@ -388,28 +388,28 @@ CREATE TABLE PRICES
   LOGGING ;
 COMMENT ON TABLE PRICES
 IS
-  'Цены на услуги' ;
+  'Р¦РµРЅС‹ РЅР° СѓСЃР»СѓРіРё' ;
   COMMENT ON COLUMN PRICES.ID_PRICE
 IS
   'PK' ;
   COMMENT ON COLUMN PRICES.ID_CAR_TYPE
 IS
-  'Тип авто' ;
+  'РўРёРї Р°РІС‚Рѕ' ;
   COMMENT ON COLUMN PRICES.COST_BEFORE
 IS
-  'Цена посадки' ;
+  'Р¦РµРЅР° РїРѕСЃР°РґРєРё' ;
   COMMENT ON COLUMN PRICES.COST_KM
 IS
-  'Цена за 1 км' ;
+  'Р¦РµРЅР° Р·Р° 1 РєРј' ;
   COMMENT ON COLUMN PRICES.D_BEGIN
 IS
-  'Действует с' ;
+  'Р”РµР№СЃС‚РІСѓРµС‚ СЃ' ;
   COMMENT ON COLUMN PRICES.D_END
 IS
-  'Действует по' ;
+  'Р”РµР№СЃС‚РІСѓРµС‚ РїРѕ' ;
   COMMENT ON COLUMN PRICES.D_CREATE
 IS
-  'Дата создания' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ' ;
   ALTER TABLE PRICES ADD CONSTRAINT PRICES_PK PRIMARY KEY ( ID_PRICE ) ;
 
 CREATE TABLE ROUTES
@@ -424,25 +424,25 @@ CREATE TABLE ROUTES
   LOGGING ;
 COMMENT ON TABLE ROUTES
 IS
-  'Маршрут следования' ;
+  'РњР°СЂС€СЂСѓС‚ СЃР»РµРґРѕРІР°РЅРёСЏ' ;
   COMMENT ON COLUMN ROUTES.ID_ROUTE
 IS
   'PK' ;
   COMMENT ON COLUMN ROUTES.ID_SRC_POINT
 IS
-  'Начальный пункт' ;
+  'РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓРЅРєС‚' ;
   COMMENT ON COLUMN ROUTES.ID_DST_POINT
 IS
-  'Конечный пункт' ;
+  'РљРѕРЅРµС‡РЅС‹Р№ РїСѓРЅРєС‚' ;
   COMMENT ON COLUMN ROUTES.EST_LENGTH
 IS
-  'Планируемая Длина пути' ;
+  'РџР»Р°РЅРёСЂСѓРµРјР°СЏ Р”Р»РёРЅР° РїСѓС‚Рё' ;
   COMMENT ON COLUMN ROUTES.FACT_LENGTH
 IS
-  'Фактическая Длина пути' ;
+  'Р¤Р°РєС‚РёС‡РµСЃРєР°СЏ Р”Р»РёРЅР° РїСѓС‚Рё' ;
   COMMENT ON COLUMN ROUTES.EST_TIME
 IS
-  'Планируемое время (минут)' ;
+  'РџР»Р°РЅРёСЂСѓРµРјРѕРµ РІСЂРµРјСЏ (РјРёРЅСѓС‚)' ;
   ALTER TABLE ROUTES ADD CONSTRAINT ROUTES_PK PRIMARY KEY ( ID_ROUTE ) ;
 
 CREATE TABLE STREETS
@@ -454,16 +454,16 @@ CREATE TABLE STREETS
   LOGGING ;
 COMMENT ON TABLE STREETS
 IS
-  'Справочник улиц' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє СѓР»РёС†' ;
   COMMENT ON COLUMN STREETS.ID_STREET
 IS
   'PK' ;
   COMMENT ON COLUMN STREETS.STREET_NAME
 IS
-  'Название улицы' ;
+  'РќР°Р·РІР°РЅРёРµ СѓР»РёС†С‹' ;
   COMMENT ON COLUMN STREETS.ID_CITY
 IS
-  'FK Населённый пункт' ;
+  'FK РќР°СЃРµР»С‘РЅРЅС‹Р№ РїСѓРЅРєС‚' ;
   ALTER TABLE STREETS ADD CONSTRAINT STREETS_PK PRIMARY KEY ( ID_STREET ) ;
 
 CREATE TABLE USER_ACCOUNTS
@@ -480,31 +480,31 @@ CREATE TABLE USER_ACCOUNTS
   LOGGING ;
 COMMENT ON TABLE USER_ACCOUNTS
 IS
-  'Справочник аккаунтов' ;
+  'РЎРїСЂР°РІРѕС‡РЅРёРє Р°РєРєР°СѓРЅС‚РѕРІ' ;
   COMMENT ON COLUMN USER_ACCOUNTS.ID_ACCOUNT
 IS
   'PK' ;
   COMMENT ON COLUMN USER_ACCOUNTS.USER_NAME
 IS
-  'Логин пользователя' ;
+  'Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ' ;
   COMMENT ON COLUMN USER_ACCOUNTS.USER_PASSWORD
 IS
-  'Пароль' ;
+  'РџР°СЂРѕР»СЊ' ;
   COMMENT ON COLUMN USER_ACCOUNTS.USER_EMAIL
 IS
-  'Контактный email' ;
+  'РљРѕРЅС‚Р°РєС‚РЅС‹Р№ email' ;
   COMMENT ON COLUMN USER_ACCOUNTS.USER_ROLE
 IS
-  'Роль пользователя' ;
+  'Р РѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ' ;
   COMMENT ON COLUMN USER_ACCOUNTS.USER_PERSONE
 IS
-  'ID персоны' ;
+  'ID РїРµСЂСЃРѕРЅС‹' ;
   COMMENT ON COLUMN USER_ACCOUNTS.SIGN_ACTIVE
 IS
-  'Признак активности' ;
+  'РџСЂРёР·РЅР°Рє Р°РєС‚РёРІРЅРѕСЃС‚Рё' ;
   COMMENT ON COLUMN USER_ACCOUNTS.D_CREATE
 IS
-  'Дата создания' ;
+  'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ' ;
   ALTER TABLE USER_ACCOUNTS ADD CONSTRAINT USER_ACCOUNTS_PK PRIMARY KEY ( ID_ACCOUNT ) ;
 
 ALTER TABLE AUTOS ADD CONSTRAINT AUTOS_CARS_FK FOREIGN KEY ( ID_CAR ) REFERENCES CARS ( ID_CAR ) ;
