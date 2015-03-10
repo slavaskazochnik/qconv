@@ -27,10 +27,13 @@
  # Create *forms for directories* (for the _Admin_ and _Operator_ roles).
   * _Separate_ form
   * _Inline_ form in the main form for the operator role
+  # *Users accounts*
   # *Autos* with calling the _Cars_ and the _Drivers_ forms
   # *Cars*
+  # *Type of Cars*
   # *Drivers*
   # *Customers*
+  # *Prices*
  # Create the *form for the Driver*
   * Navigation menu
    * *My Info*
