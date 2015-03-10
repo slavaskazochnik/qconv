@@ -29,10 +29,10 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
+<delegate>16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="68878166-14BF-C3CD-D758-784A43F034D5" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
+<colAssociation fkAssociation="68878166-14BF-C3CD-D758-784A43F034D5" referredColumn="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </associations>
 </Column>
 <Column name="ID_ROUTE" id="75DD6AEE-A389-941D-0AA9-3A80E95160D9">
@@ -58,6 +58,7 @@
 <commentInRDBMS>Исполнитель заказа</commentInRDBMS>
 <notes>Проставляется после принятия заказа у Заказчика</notes>
 <ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -67,7 +68,7 @@
 <colAssociation fkAssociation="CEECB58C-08E1-B22F-6E7A-CC968BB38B18" referredColumn="190274CA-1E6C-C4B7-09DA-FEC09823E736"/>
 </associations>
 </Column>
-<Column name="ID_STATE" id="25C7A780-0543-DFBB-0DC8-A07102551DC3">
+<Column name="CURRENT_STATE" id="25C7A780-0543-DFBB-0DC8-A07102551DC3">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Состояние заказа</comment>
@@ -97,6 +98,50 @@
 <associations>
 <colAssociation fkAssociation="78F1EF14-3E36-00BE-4E5E-FFA265FDA1E5" referredColumn="30FEC22B-BBC0-80C4-BE72-84CD1E8C0072"/>
 </associations>
+</Column>
+<Column name="ROUTE_LENGTH" id="65E6FB68-11F4-83DC-E67F-C96B720FC396">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:02:05 UTC</createdTime>
+<commentInRDBMS>Длина маршрута</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDER_PRICE" id="45284D9F-4B5E-B96D-587C-E295D0EA53FE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:02:05 UTC</createdTime>
+<commentInRDBMS>Стоимость заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CUSTOMER_RATING" id="70CBDA15-5944-B26E-2753-D65EC80D2D31">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 20:52:56 UTC</createdTime>
+<commentInRDBMS>Оценка заказчику</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DRIVER_RATING" id="AFA2B7A4-F818-6AA8-0213-EA5478B4164C">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 20:52:56 UTC</createdTime>
+<commentInRDBMS>Оценка водителю</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="D_CREATE" id="20F73832-5F6F-D73E-04AA-39543F4ACF61">
 <createdBy>Slava</createdBy>
@@ -142,7 +187,7 @@
 <colUsage columnID="75DD6AEE-A389-941D-0AA9-3A80E95160D9"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDERS_PERSONS_FK">
+<ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDERS_CUSTOMERS_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:45:41 UTC</createdTime>
 <ownerDesignName>DispTaxi</ownerDesignName>

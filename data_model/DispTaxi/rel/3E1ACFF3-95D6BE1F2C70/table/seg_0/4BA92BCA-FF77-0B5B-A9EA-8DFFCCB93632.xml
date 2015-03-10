@@ -49,6 +49,39 @@
 <colAssociation fkAssociation="DA6BACDC-434B-AE4E-F6F9-9E027CFAD67F" referredColumn="E33B53B9-4397-B367-2B81-86B9F40F9DBF"/>
 </associations>
 </Column>
+<Column name="EST_LENGTH" id="DEA57460-96E1-29D4-E94C-DE33C0B75587">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 20:59:53 UTC</createdTime>
+<commentInRDBMS>Планируемая Длина пути</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FACT_LENGTH" id="C5AEF755-4A61-1B5D-8AAD-919B839BC452">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:35:53 UTC</createdTime>
+<commentInRDBMS>Фактическая Длина пути</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EST_TIME" id="B12F6893-F8BF-97FC-9BEE-0D9D62F9D91F">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:13:14 UTC</createdTime>
+<commentInRDBMS>Планируемое время (минут)</commentInRDBMS>
+<ownerDesignName>DispTaxi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="1C553D59-A296-8EAB-B3E7-9D4F5685E20E" name="ROUTES_PK">

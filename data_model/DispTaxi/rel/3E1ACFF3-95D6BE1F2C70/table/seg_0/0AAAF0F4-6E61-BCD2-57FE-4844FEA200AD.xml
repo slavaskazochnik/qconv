@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3812E780-4896-78BF-C68A-DDE43CACEF58" name="DRIVERS">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0AAAF0F4-6E61-BCD2-57FE-4844FEA200AD" name="CUSTOMERS">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 12:57:29 UTC</createdTime>
-<comment>Справочник водителей</comment>
-<commentInRDBMS>Справочник водителей</commentInRDBMS>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
+<comment>Справочник заказчиков</comment>
+<commentInRDBMS>Справочник заказчиков</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="ID_DRIVER" id="E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB">
+<Column name="ID_CUSTOMER" id="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <comment>PK</comment>
 <commentInRDBMS>PK</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
@@ -19,14 +19,15 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_DRIVERSv1_ID_DRIVER</notNullConstraintName>
 <associations>
-<colAssociation fkAssociation="E859B2BD-C64A-9E07-1A7B-82B82EA15771" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
+<colAssociation fkAssociation="B8202A00-95E6-E1DF-4695-7EA96568D5C4" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
 </associations>
 </Column>
-<Column name="AVG_DRIVER_RATING" id="7430BEA7-EAD5-07DD-4557-A6A89461188F">
+<Column name="AVG_CUSTOMER_RATING" id="7185A34D-1FD1-46BE-54C8-DCF8AD85C5DB">
 <createdBy>Slava</createdBy>
-<createdTime>2015-03-10 20:54:15 UTC</createdTime>
-<commentInRDBMS>Средняя оценка водителю</commentInRDBMS>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
+<commentInRDBMS>Средняя оценка заказчику</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -34,9 +35,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="SIGN_ACTIVE" id="FAB1940D-8FC5-A12A-7D16-BC3BF7B8E429">
+<Column name="SIGN_ACTIVE" id="B3CF0BB9-FB1F-2687-356C-BC91905C695D">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <comment>Признак активности водителя в системе</comment>
 <commentInRDBMS>Признак активности водителя в системе</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
@@ -46,9 +47,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="2767E6A7-7AD0-3A87-3E25-82411672FD6F">
+<Column name="D_CREATE" id="4C97C31A-D797-51D4-82D0-0BECE9F2303B">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <comment>Дата создания записи</comment>
 <commentInRDBMS>Дата создания записи</commentInRDBMS>
 <ownerDesignName>DispTaxi</ownerDesignName>
@@ -60,25 +61,25 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="64A85EC5-B638-F15D-8B3F-E3DB3492CB59" name="DRIVERS_PK">
+<ind_PK_UK id="452BFB4E-1AD6-7A4D-859D-40EDC931C4CF" name="CUSTOMERS_PK">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB"/>
+<colUsage columnID="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="E36A5F9A-04F0-9895-0843-ED79E2E007C0" name="DRIVERS_PERSONS_FK">
+<ind_PK_UK id="2ACAA12A-F9FD-FB88-3CAA-0A44DD28A895" name="CUSTOMERS_PERSONS_FK">
 <createdBy>Slava</createdBy>
-<createdTime>2015-02-28 19:47:36 UTC</createdTime>
+<createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <ownerDesignName>DispTaxi</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB"/>
+<colUsage columnID="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
