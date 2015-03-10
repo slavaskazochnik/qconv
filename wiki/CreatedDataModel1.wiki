@@ -22,7 +22,17 @@ https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational.png
  # UserName and Password
  # Relation with the Person table
 
-=== Table or view for the New/OnWay orders ===
+=== Table or view for the 'New'/'On Way' orders ===
  * This table have only 
   # 'New' orders from which Driver can choose some.
   # 'On Way' orders for control
+
+=== Table Orders ===
+ * Add Rating for Customer and Driver
+  # customer_rating
+  # driver_rating
+
+=== Table Drivers, Customers ===
+ * Add average
+  # avg_customer_rating
+  # avg_driver_rating
