@@ -26,10 +26,10 @@
 
 = Results =
 
-#) Generated DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL-2.sql DispTaxi_Oracle_DDL-2.sql]
+ #) Generated DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL-2.sql DispTaxi_Oracle_DDL-2.sql]
 
-#) Generated PDF file for Relational Model: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational-2.pdf DispTaxi_Relational-2.pdf]
+ #) Generated PDF file for Relational Model: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational-2.pdf DispTaxi_Relational-2.pdf]
 
-#) Generated PNG image for Relational Model
+ #) Generated PNG image for Relational Model
 [https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational-2.png DispTaxi_Relational-2.png]
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational-2.png
