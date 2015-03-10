@@ -36,7 +36,7 @@
    * *My Info*
     * My *Personal* info
     * My *Car* info
-   * Oredrs
+   * *Orders*
     * Create orders
     * View my *Orders*
    * Show new orders
@@ -45,6 +45,6 @@
   * Navigation menu
    * *My Info*
     * My *Personal* info
-   * Orders
+   * *Orders*
     * Create order
     * View my *Orders*
