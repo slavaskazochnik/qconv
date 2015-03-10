@@ -41,6 +41,7 @@
     * My *Car* info
    * *Orders*
     * Create orders
+    * Active order (with changing Order's State in Orders_Timetable)
     * View my *Orders*
    * Show new orders
   * Main container
@@ -52,3 +53,7 @@
     * Create order
     * View my *Orders*
   * Main container
+
+== Functional ==
+ * Calculate Route length and price (using tables Routes, Prices)
+ * Search Autos (using Route, Autos(r_waiting, r_route))
