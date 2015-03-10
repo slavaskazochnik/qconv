@@ -6,8 +6,8 @@
  # Customer
   * changed FK in Orders (Customers instead of Persons)
  # Order timetable (for execution time control)
- # Pricelist
- # Car types (for different price in the pricelist)
+ # Prices
+ # Car types (for different price)
  # User accounts (for logging form)
  # Application roles (for dividing layouts by Role) with foreign key to the Person table (one person can be as a driver and as a customer)
 
