@@ -36,7 +36,15 @@
    * *My Info*
     * My *Personal* info
     * My *Car* info
+   * Oredrs
+    * Create orders
     * View my *Orders*
    * Show new orders
   * Main container
  # Create the *form for the Customer*
+  * Navigation menu
+   * *My Info*
+    * My *Personal* info
+   * Orders
+    * Create order
+    * View my *Orders*
