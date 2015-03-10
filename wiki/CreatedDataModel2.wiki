@@ -1,0 +1,25 @@
+#summary Datamodel version #2
+
+= Whats new =
+
+== New Tables ==
+ # Customer
+  * changed FK in Orders (Customers instead of Persons)
+ # Order timetable (for execution time control)
+ # Pricelist
+ # Car types (for different price in the pricelist)
+ # User accounts (for logging form)
+ # Application roles (for dividing layouts by Role) with foreign key to the Person table (one person can be as a driver and as a customer)
+
+== New Columns ==
+ # Table *Orders*
+  # route_length (for summary)
+  # order_price (for summary)
+  # customer_rating (vote by driver)
+  # driver_rating (vote by customer)
+ # Table *Routes*
+  # est_length (estimated length for calculating preliminary price of order)
+  # fact_length (used for calculating the total order price)
+  # est_time (estimated time)
+ # Table *Cars*
+  # id_car_type (for price)
