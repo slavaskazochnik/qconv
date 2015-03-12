@@ -1,8 +1,8 @@
 #summary Datamodel version #2 (added Tables and Columns)
 
-= Whats new =
+= <font color="#3366FF">Whats new</font> =
 
-== New Tables ==
+== <font color="3399FF">New Tables</font> ==
  # Customer
   * changed FK in Orders (Customers instead of Persons)
  # Order timetable (for execution time control)
@@ -11,7 +11,7 @@
  # User accounts (for logging form)
  # Application roles (for dividing layouts by Role) with foreign key to the Person table (one person can be as a driver and as a customer)
 
-== New Columns ==
+== <font color="3399FF">New Columns</font> ==
  # Table *Orders*
   # route_length (for summary)
   # order_price (for summary)
@@ -24,7 +24,7 @@
  # Table *Cars*
   # id_car_type (for price)
 
-= Results =
+= <font color="#3366FF">Results</font> =
 
  1) Generated DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Oracle_DDL-2.sql DispTaxi_Oracle_DDL-2.sql]
 
@@ -33,3 +33,7 @@
  3) Generated PNG image for Relational Model
 [https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational-2.png DispTaxi_Relational-2.png]
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational-2.png
+
+= <font color="#3366FF">ToDo</font> =
+ # Add Company table
+ # Add company column into Auto table
