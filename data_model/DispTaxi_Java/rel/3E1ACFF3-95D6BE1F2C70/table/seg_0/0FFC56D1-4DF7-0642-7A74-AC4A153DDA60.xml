@@ -17,7 +17,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="CAR_TYPE_ID" id="AEE8AD8F-9111-E1B7-4334-6B092756DCBA">
+<Column name="CARS_TYPE_ID" id="AEE8AD8F-9111-E1B7-4334-6B092756DCBA">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 22:33:16 UTC</createdTime>
 <commentInRDBMS>Тип авто</commentInRDBMS>
@@ -99,7 +99,7 @@
 <colUsage columnID="40D2B47A-1DEC-F261-C2B5-4B3311F91985"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="FF952E86-9F3E-AD3A-AD59-08C2A04B976A" name="PRICE_CAR_TYPE_FK">
+<ind_PK_UK id="FF952E86-9F3E-AD3A-AD59-08C2A04B976A" name="PRICE_CARS_TYPE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 22:33:39 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

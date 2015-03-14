@@ -30,7 +30,7 @@
    <object objectType="FKIndexAssociation" objectID="13A4FF17-C405-01C1-E3AB-E762CF24FE25" name="ORDERS_ORDERS_STATE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="7C3C6DF8-774C-486D-3AE5-2F913C344B1D" name="ORDERS_ROUTE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="C588AA26-BE17-59F4-9794-D40CCDD7E315" name="POINTS_STREETS_FK" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="85CF9A6E-F777-FB74-4B12-74B0F3089116" name="PRICE_CAR_TYPE_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="85CF9A6E-F777-FB74-4B12-74B0F3089116" name="PRICE_CARS_TYPE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="DA6BACDC-434B-AE4E-F6F9-9E027CFAD67F" name="ROUTE_POINT_DST_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="F9D9AC31-1EE2-D970-EF94-DF4E0A89036F" name="ROUTE_POINT_SRC_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="1080B34D-56DA-DB78-663A-59D12BB37E3A" name="STREET_CITY_FK" seqName="seg_0"/>
