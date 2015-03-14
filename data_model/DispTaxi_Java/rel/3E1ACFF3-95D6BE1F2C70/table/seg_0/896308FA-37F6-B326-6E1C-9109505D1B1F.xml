@@ -34,6 +34,7 @@
 <Column name="DESCR" id="D58FE86D-5513-A199-F066-D4CF30A5CF78">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-14 07:45:25 UTC</createdTime>
+<commentInRDBMS>Подробное описание</commentInRDBMS>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>

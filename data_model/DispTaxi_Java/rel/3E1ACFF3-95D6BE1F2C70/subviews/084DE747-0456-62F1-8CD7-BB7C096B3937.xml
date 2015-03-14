@@ -64,7 +64,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="8D3A8CB4-A2C5-45E9-9D67-C2E4C89DA25D" otype="Table" vid="236C9385-92EF-B378-0DEB-AC20F35883D4">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="830" y="30" width="201" height="181"/>
+<bounds x="830" y="30" width="211" height="181"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="A645EE9D-BFEE-0960-72F8-396C6E12A359" otype="Table" vid="982CEA8E-5D97-4CFF-A20C-C149FD34D7E9">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -377,7 +377,7 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="50" y="50"/>
+<point x="10" y="10"/>
 <point x="156" y="69"/>
 <point x="126" y="69"/>
 <point x="20" y="20"/>
@@ -417,7 +417,7 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="50" y="50"/>
+<point x="10" y="10"/>
 <point x="128" y="97"/>
 <point x="98" y="97"/>
 <point x="20" y="20"/>
@@ -427,7 +427,7 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="80" y="110"/>
+<point x="10" y="10"/>
 <point x="172" y="113"/>
 <point x="112" y="113"/>
 <point x="20" y="20"/>
@@ -437,7 +437,7 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="687" y="190"/>
+<point x="10" y="10"/>
 <point x="473" y="210"/>
 <point x="473" y="40"/>
 <point x="20" y="20"/>
@@ -477,10 +477,10 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="20" y="20"/>
+<point x="10" y="10"/>
 <point x="112" y="103"/>
 <point x="162" y="103"/>
-<point x="70" y="90"/>
+<point x="20" y="20"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="C588AA26-BE17-59F4-9794-D40CCDD7E315" otype="FKIndexAssociation" vid_source="9CBC90F8-5BBE-E393-129D-67A8D49A7BFA" vid_target="FDF9FEE1-6786-CE9E-30C8-8EBF43174A1F">
@@ -497,7 +497,7 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <lineWidth>1</lineWidth>
 <points>
-<point x="20" y="190"/>
+<point x="10" y="10"/>
 <point x="132" y="229"/>
 <point x="84" y="229"/>
 <point x="20" y="20"/>
