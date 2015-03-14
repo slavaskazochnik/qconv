@@ -11,6 +11,10 @@ public class Person {
 	private String telNum;
 	private Date dCreate;
 	
+	private List drivers;
+	private List customers;
+	private List usersAccounts;
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,5 +45,25 @@ public class Person {
 	public void setdCreate(Date dCreate) {
 		this.dCreate = dCreate;
 	}
+
+	public List getDrivers() {
+		return drivers;
+	}
+	public void setDrivers(List drivers) {
+		this.drivers = drivers;
+	}
+	public List getCustomers() {
+		return customers;
+	}
+	public void setCustomers(List customers) {
+		this.customers = customers;
+	}
+	public List getUsersAccounts() {
+		return usersAccounts;
+	}
+	public void setUsersAccounts(List usersAccounts) {
+		this.usersAccounts = usersAccounts;
+	}
 	
+
 }
