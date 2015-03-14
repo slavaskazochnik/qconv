@@ -65,7 +65,7 @@
 <colAssociation fkAssociation="50D57AFE-986A-D4AB-E662-B2E678821E8B" referredColumn="6FCABD9F-B9BE-9A17-C92B-F03370FA3A80"/>
 </associations>
 </Column>
-<Column name="PERSONE_ID" id="832C5B70-F442-E829-B688-ACB08D48C911">
+<Column name="PERSON_ID" id="832C5B70-F442-E829-B688-ACB08D48C911">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:54:32 UTC</createdTime>
 <commentInRDBMS>ID персоны</commentInRDBMS>
