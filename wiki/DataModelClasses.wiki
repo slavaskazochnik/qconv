@@ -24,9 +24,9 @@ public class Driver {
 {{{
 public class Person {
 	...
-	private List drivers;
-	private List customers;
-	private List usersAccounts;
+	private List<Driver> drivers;
+	private List<Customer> customers;
+	private List<UsersAccount> usersAccounts;
         ...
 }
 }}}
