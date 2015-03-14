@@ -11,9 +11,9 @@ public class Person {
 	private String telNum;
 	private Date dCreate;
 	
-	private List drivers;
-	private List customers;
-	private List usersAccounts;
+	private List<Driver> drivers;
+	private List<Customer> customers;
+	private List<UsersAccount> usersAccounts;
 	
 	public Long getId() {
 		return id;
