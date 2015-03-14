@@ -51,7 +51,7 @@
 <colAssociation fkAssociation="7C3C6DF8-774C-486D-3AE5-2F913C344B1D" referredColumn="27CC6D25-ACA5-5FC5-EF04-07DEF5FBCC68"/>
 </associations>
 </Column>
-<Column name="AUTO_ID" id="A2968523-D120-C68A-888B-CF0068EF5750">
+<Column name="AUTOS_ID" id="A2968523-D120-C68A-888B-CF0068EF5750">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
 <comment>Исполнитель заказа</comment>
@@ -167,7 +167,7 @@
 <colUsage columnID="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D14D0F20-C83D-48C8-868E-01157AFA5E90" name="ORDERS_AUTO_FK">
+<ind_PK_UK id="D14D0F20-C83D-48C8-868E-01157AFA5E90" name="ORDERS_AUTOS_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:05:26 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

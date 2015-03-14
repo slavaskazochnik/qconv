@@ -45,10 +45,11 @@
 <colUsage columnID="899049BB-7AA4-4590-B4C3-AF2F3AA3B356"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="58DD4D17-7E12-9183-F318-1EF9E7A27114" name="CITY_UK">
+<ind_PK_UK id="3207BF38-0228-0833-44AF-0FA4F7D10B4B" name="CITY_UK">
 <createdBy>Slava</createdBy>
-<createdTime>2015-03-14 07:51:53 UTC</createdTime>
+<createdTime>2015-03-14 11:33:32 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Unique Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="6EACFEB9-DF21-F0DA-EF2D-B7CB6D4722C1"/>

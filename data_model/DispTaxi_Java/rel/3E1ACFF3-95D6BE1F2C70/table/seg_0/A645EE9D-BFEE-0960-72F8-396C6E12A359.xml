@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A645EE9D-BFEE-0960-72F8-396C6E12A359" name="AUTO">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A645EE9D-BFEE-0960-72F8-396C6E12A359" name="AUTOS">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:07:54 UTC</createdTime>
 <commentInRDBMS>Список автомобилей готовых к выполнению заказов</commentInRDBMS>
@@ -122,7 +122,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="898BE554-A049-F599-048F-863991B78CA0" name="AUTO_PK">
+<ind_PK_UK id="898BE554-A049-F599-048F-863991B78CA0" name="AUTOS_PK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:33:30 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -133,7 +133,7 @@
 <colUsage columnID="190274CA-1E6C-C4B7-09DA-FEC09823E736"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="91F938E7-1F36-BE00-E17F-5A69C0D8ED9F" name="AUTO_UK">
+<ind_PK_UK id="91F938E7-1F36-BE00-E17F-5A69C0D8ED9F" name="AUTOS_UK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-14 08:00:32 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -144,7 +144,7 @@
 <colUsage columnID="E7C9432C-F098-6C8B-2756-CB361B3A150C"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="00F6D4F3-A841-77D6-85E7-250BDF37ED3F" name="AUTO_CAR_FK">
+<ind_PK_UK id="00F6D4F3-A841-77D6-85E7-250BDF37ED3F" name="AUTOS_CAR_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:13:50 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -154,7 +154,7 @@
 <colUsage columnID="A3AA6268-7FC7-7F85-E7F4-E03C37A8AA51"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="DDF9F574-CA1B-4FC2-814D-E2EE8F02169E" name="AUTO_DRIVER_FK">
+<ind_PK_UK id="DDF9F574-CA1B-4FC2-814D-E2EE8F02169E" name="AUTOS_DRIVER_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:13:50 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
