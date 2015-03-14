@@ -1,0 +1,168 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A645EE9D-BFEE-0960-72F8-396C6E12A359" name="AUTO">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:07:54 UTC</createdTime>
+<commentInRDBMS>Список автомобилей готовых к выполнению заказов</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="190274CA-1E6C-C4B7-09DA-FEC09823E736">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:12:30 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CAR_ID" id="A3AA6268-7FC7-7F85-E7F4-E03C37A8AA51">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:12:30 UTC</createdTime>
+<comment>FK cars</comment>
+<commentInRDBMS>FK cars</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>2FA86B01-4B27-36BE-BCAA-D9D96C4792C7</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2C081076-D1AE-3366-01EE-B4D75B4EFD5D" referredColumn="2FA86B01-4B27-36BE-BCAA-D9D96C4792C7"/>
+</associations>
+</Column>
+<Column name="DRIVER_ID" id="E7C9432C-F098-6C8B-2756-CB361B3A150C">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:12:30 UTC</createdTime>
+<comment>FK drivers</comment>
+<commentInRDBMS>FK drivers</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1871581A-5804-9498-C27C-135B115A083D" referredColumn="E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB"/>
+</associations>
+</Column>
+<Column name="R_WAITING" id="B2E9A382-BD77-9ECB-2DC6-3E5477442D9A">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:53:52 UTC</createdTime>
+<comment>Радиус ожидания, км</comment>
+<commentInRDBMS>Радиус ожидания, км</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="R_ROUTE" id="1C64F466-18DE-9E9C-E470-FC9E1E822C94">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:53:52 UTC</createdTime>
+<comment>Радиус выполнения заказа, км</comment>
+<commentInRDBMS>Радиус выполнения заказа, км</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSITION_LAT" id="14AC6C61-4371-301E-21B1-FF5FDFB43DEA">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-01 21:51:29 UTC</createdTime>
+<comment>Текущее положение авто (широта)</comment>
+<commentInRDBMS>Текущее положение авто (широта)</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSITION_LNG" id="41651651-9E73-B284-16CF-D3DA640C7062">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-01 21:51:29 UTC</createdTime>
+<comment>Текущее положение авто (долгота)</comment>
+<commentInRDBMS>Текущее положение авто (долгота)</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SIGN_ACTIVE" id="5B3FDE85-4FC4-4766-5FF6-B1A075850904">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:12:30 UTC</createdTime>
+<comment>Признак участия в исполнении заказа</comment>
+<commentInRDBMS>Признак участия в исполнении заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="D_CREATE" id="4A1CD96C-D929-2A7C-E989-9841CD636805">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:12:30 UTC</createdTime>
+<comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="898BE554-A049-F599-048F-863991B78CA0" name="AUTO_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:33:30 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="190274CA-1E6C-C4B7-09DA-FEC09823E736"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="91F938E7-1F36-BE00-E17F-5A69C0D8ED9F" name="AUTO_UK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-14 08:00:32 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3AA6268-7FC7-7F85-E7F4-E03C37A8AA51"/>
+<colUsage columnID="E7C9432C-F098-6C8B-2756-CB361B3A150C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="00F6D4F3-A841-77D6-85E7-250BDF37ED3F" name="AUTO_CAR_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:13:50 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3AA6268-7FC7-7F85-E7F4-E03C37A8AA51"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DDF9F574-CA1B-4FC2-814D-E2EE8F02169E" name="AUTO_DRIVER_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:13:50 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7C9432C-F098-6C8B-2756-CB361B3A150C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

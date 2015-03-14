@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BFBA4B1D-A05E-826E-172C-B66BA0D6CC8D" name="ORADERS_TIMETABLE_ORDER_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:32:21 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<containerWithKeyObject>495122A9-B33F-435E-2578-E9B036A0F173</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>F9C54F3E-C300-F2C8-052B-79A17B8FC91B</localFKIndex>
+<keyObject>5547D675-AA44-AE76-F1D9-FC81A1057ECC</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

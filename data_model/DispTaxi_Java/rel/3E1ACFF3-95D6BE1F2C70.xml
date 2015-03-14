@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="DispTaxi_Relational_Java" id="3E1ACFF3-54F0-2A51-B01A-95D6BE1F2C70" mainViewID="084DE747-0456-62F1-8CD7-BB7C096B3937">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 12:47:45 UTC</createdTime>
+<ownerDesignName>disptaxi</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>9807C1FA-0550-772D-1F14-16B19CA63681</selectedRDBMSSite>
+</relationalModel>

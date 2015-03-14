@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0FFC56D1-4DF7-0642-7A74-AC4A153DDA60" name="PRICE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:26:49 UTC</createdTime>
+<commentInRDBMS>Цены на услуги</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="40D2B47A-1DEC-F261-C2B5-4B3311F91985">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CAR_TYPE_ID" id="AEE8AD8F-9111-E1B7-4334-6B092756DCBA">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:33:16 UTC</createdTime>
+<commentInRDBMS>Тип авто</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>F7B281E7-3B3E-8188-3F08-94A6ADEB07F3</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="85CF9A6E-F777-FB74-4B12-74B0F3089116" referredColumn="F7B281E7-3B3E-8188-3F08-94A6ADEB07F3"/>
+</associations>
+</Column>
+<Column name="COST_BEFORE" id="133BCAE9-5D19-7E7C-D83B-30A283EB1747">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>Цена посадки</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COST_KM" id="FCA30342-EB7A-7CB9-3206-235F9DD2555B">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>Цена за 1 км</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="D_BEGIN" id="EA114575-D6F3-E234-A800-649C0A4C8A15">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>Действует с</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="D_END" id="FBE5D3A9-CBFB-9D82-42F1-9696A63F8413">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>Действует по</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="D_CREATE" id="B555323D-7F07-70AF-B875-63C9238ABD52">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<commentInRDBMS>Дата создания</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="710F1873-1FF9-5B8E-A04D-E64434F51674" name="PRICE_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:32:37 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="40D2B47A-1DEC-F261-C2B5-4B3311F91985"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FF952E86-9F3E-AD3A-AD59-08C2A04B976A" name="PRICE_CAR_TYPE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 22:33:39 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AEE8AD8F-9111-E1B7-4334-6B092756DCBA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

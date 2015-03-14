@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FE66EA0C-3810-49C8-D2B0-38162A0A955F" name="PERSON">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:38:56 UTC</createdTime>
+<comment>Справочник персон</comment>
+<commentInRDBMS>Справочник персон</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<splittedTableID>3812E780-4896-78BF-C68A-DDE43CACEF58</splittedTableID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="EBA8D426-FB5D-F845-9148-D012485D9092">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:38:56 UTC</createdTime>
+<comment>PK</comment>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIRST_NAME" id="6710F511-2139-548F-7CD0-7571F6387DFC">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<comment>Имя</comment>
+<commentInRDBMS>Имя</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LAST_NAME" id="39D78EEA-2443-9CB5-F3D2-60557D6BAD86">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<comment>Фамилия</comment>
+<commentInRDBMS>Фамилия</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TEL_NUM" id="EB4C3E26-DA2A-C7CA-4227-0F059B6D99FC">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 20:15:55 UTC</createdTime>
+<comment>Контактный телефон</comment>
+<commentInRDBMS>Контактный телефон</commentInRDBMS>
+<notes>Контактные данные можно вынести в отдельную таблицу (тел, адрес, email и т.д.)</notes>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="D_CREATE" id="49490FB3-F4CE-0BF3-4BE4-6C3EA4F4725D">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 13:03:26 UTC</createdTime>
+<comment>Дата создания записи</comment>
+<commentInRDBMS>Дата создания записи</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="50C94DBE-377C-FC0B-BBDA-267A505C56EB" name="PERSON_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:38:56 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EBA8D426-FB5D-F845-9148-D012485D9092"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F9A57DE4-F1A4-4CA5-54B4-8613D9F8D44F" name="PERSON_UK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-14 07:59:17 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EB4C3E26-DA2A-C7CA-4227-0F059B6D99FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

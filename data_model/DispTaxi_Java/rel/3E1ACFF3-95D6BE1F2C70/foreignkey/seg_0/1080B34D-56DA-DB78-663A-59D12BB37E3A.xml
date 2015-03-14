@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1080B34D-56DA-DB78-663A-59D12BB37E3A" name="STREET_CITY_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-02-28 19:33:00 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<containerWithKeyObject>07F8F1F3-94F5-427B-7F99-29B6D6482BBE</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>22A98B28-51DF-49EA-3E32-21C8081EE5F2</localFKIndex>
+<keyObject>820408BD-37DC-7F76-370C-37044CE85C88</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

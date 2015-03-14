@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="495122A9-B33F-435E-2578-E9B036A0F173" name="ORDERS_TIMETABLE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:27:17 UTC</createdTime>
+<commentInRDBMS>График выполнения заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="FD232C96-C42D-A467-D9F9-D0806D2485DE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:30:44 UTC</createdTime>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDER_ID" id="E4B997DB-D1DF-D1FE-62BB-ED150DFB13CF">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:30:44 UTC</createdTime>
+<commentInRDBMS>ID заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>45E16766-75B9-6EAD-1D9E-0066D2559CE6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BFBA4B1D-A05E-826E-172C-B66BA0D6CC8D" referredColumn="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
+</associations>
+</Column>
+<Column name="ORDERS_STATE_ID" id="0E9CF298-4359-60B4-C95D-B88690BD4DFF">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:30:44 UTC</createdTime>
+<commentInRDBMS>Состояние заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>39FF128E-012C-53E6-6B81-0D25E73EBB31</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B61804F5-BB81-9389-1699-C991CB6D9BAF" referredColumn="39FF128E-012C-53E6-6B81-0D25E73EBB31"/>
+</associations>
+</Column>
+<Column name="D_CREATE" id="48CE428E-DCF5-40F5-3AF3-23AF51C37EC7">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:30:44 UTC</createdTime>
+<commentInRDBMS>Дата проставления состояния</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="673191B3-2929-119C-3773-FAAC686177B8" name="ORADERS_TIMETABLE_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:31:27 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FD232C96-C42D-A467-D9F9-D0806D2485DE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F9C54F3E-C300-F2C8-052B-79A17B8FC91B" name="ORADERS_TIMETABLE_ORDER_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:32:21 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4B997DB-D1DF-D1FE-62BB-ED150DFB13CF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FE98F170-CDC9-264F-B1FE-89F27B8FDF6F" name="ORADERS_TIMETABLE_STATE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-10 21:32:21 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0E9CF298-4359-60B4-C95D-B88690BD4DFF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
