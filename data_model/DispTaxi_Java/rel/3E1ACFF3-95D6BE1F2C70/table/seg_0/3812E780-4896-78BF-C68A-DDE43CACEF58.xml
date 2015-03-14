@@ -17,6 +17,16 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PERSON_ID" id="58AA3642-48A5-9EBD-D580-068FEF6CCD59">
+<createdBy>Slava</createdBy>
+<createdTime>2015-03-14 13:42:05 UTC</createdTime>
+<commentInRDBMS>Персона</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -78,7 +88,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="E022AE0E-AD8E-466E-36C2-4C7CBAE0D4CB"/>
+<colUsage columnID="58AA3642-48A5-9EBD-D580-068FEF6CCD59"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
