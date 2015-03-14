@@ -1,0 +1,27 @@
+#summary Datamodel version #2 (added Tables and Columns)
+
+= <font color="#3366FF">Whats new</font> =
+
+== <font color="3399FF">Changed tables and columns names</font> ==
+ # Tables: not Order*s* but Order and so on
+ # Columns
+  * PK: not TABLE_ID but ID
+  * FK: not ID_FIELD but TABLE_WITH_PK_ID
+
+== <font color="3399FF">New Columns</font> ==
+ # Table *Auto*
+  # child seats quantity
+
+= <font color="#3366FF">Results</font> =
+
+ 1) Generated DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Java_Oracle_DDL.sql DispTaxi_Java_Oracle_DDL.sql]
+
+ 2) Generated PDF file for Relational Model: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational_Java.pdf DispTaxi_Relational_Java.pdf]
+
+ 3) Generated PNG image for Relational Model
+[https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational_Java.png DispTaxi_Relational_Java.png]
+https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational_Java.png
+
+= <font color="#3366FF">ToDo</font> =
+ # Add Company table
+ # Add company column into Auto table
