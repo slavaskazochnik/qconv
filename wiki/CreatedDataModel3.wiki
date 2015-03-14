@@ -14,11 +14,13 @@
 
 = <font color="#3366FF">Results</font> =
 
- 1) Generated DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Java_Oracle_DDL.sql DispTaxi_Java_Oracle_DDL.sql]
+ 1) Generated Oracle DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Java_Oracle_DDL.sql DispTaxi_Java_Oracle_DDL.sql]
 
- 2) Generated PDF file for Relational Model: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational_Java.pdf DispTaxi_Relational_Java.pdf]
+ 2) Generated Postgre DDL script file: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Java_Postgre_DDL.sql DispTaxi_Java_Postgre_DDL.sql]
 
- 3) Generated PNG image for Relational Model
+ 3) Generated PDF file for Relational Model: [https://code.google.com/p/qconv/source/browse/data_model/DispTaxi_Relational_Java.pdf DispTaxi_Relational_Java.pdf]
+
+ 4) Generated PNG image for Relational Model
 [https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational_Java.png DispTaxi_Relational_Java.png]
 https://qconv.googlecode.com/svn/data_model/DispTaxi_Relational_Java.png
 
