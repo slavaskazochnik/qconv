@@ -3,7 +3,7 @@
 = <font color="#3366FF">Whats new</font> =
 
 == <font color="3399FF">Changed tables and columns names</font> ==
- # Tables: not Order*s* but Order and so on
+ # Tables: not OrderS but Order and so on
  # Columns
   * PK: not TABLE_ID but ID
   * FK: not ID_FIELD but TABLE_WITH_PK_ID
