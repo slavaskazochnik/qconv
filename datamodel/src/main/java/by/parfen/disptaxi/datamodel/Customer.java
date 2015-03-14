@@ -9,6 +9,7 @@ public class Customer {
 	private Long avgRating;
 	private Long signActive;
 	private Date dCreate;
+	
 	public Long getId() {
 		return id;
 	}
