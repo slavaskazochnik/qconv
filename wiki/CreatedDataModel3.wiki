@@ -13,6 +13,7 @@
   * CHILD_SEATS_QUAN - child seats quantity
  # Table *Orders_result*
   * DESCR - description
+ # Added columns PERSON_ID into the table DRIVER and CUSTOMER instead of one to one relation.
 
 = <font color="#3366FF">Results</font> =
 
