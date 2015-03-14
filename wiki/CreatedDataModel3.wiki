@@ -1,4 +1,4 @@
-#summary Datamodel version #2 (added Tables and Columns)
+#summary Datamodel version #3 (names modifications with Tables and Columns)
 
 = <font color="#3366FF">Whats new</font> =
 
