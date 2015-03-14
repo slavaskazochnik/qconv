@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6ABFC32-71A5-BE60-8352-68823A05E6C6" name="ORDER">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6ABFC32-71A5-BE60-8352-68823A05E6C6" name="ORDERS">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:03:41 UTC</createdTime>
 <comment>Заказы</comment>
@@ -167,7 +167,7 @@
 <colUsage columnID="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D14D0F20-C83D-48C8-868E-01157AFA5E90" name="ORDER_AUTO_FK">
+<ind_PK_UK id="D14D0F20-C83D-48C8-868E-01157AFA5E90" name="ORDERS_AUTO_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:05:26 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -177,7 +177,7 @@
 <colUsage columnID="A2968523-D120-C68A-888B-CF0068EF5750"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="ED2340BA-9A0E-DA59-0E3D-F2D0F60971F8" name="ORDER_ROUTE_FK">
+<ind_PK_UK id="ED2340BA-9A0E-DA59-0E3D-F2D0F60971F8" name="ORDERS_ROUTE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:19:29 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -187,7 +187,7 @@
 <colUsage columnID="75DD6AEE-A389-941D-0AA9-3A80E95160D9"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDER_CUSTOMER_FK">
+<ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDERS_CUSTOMER_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:45:41 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -197,7 +197,7 @@
 <colUsage columnID="06684401-25DD-DDB7-D48C-D64B056A0B84"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="16E09758-2C90-E60E-D791-837C05CD77CF" name="ORDER_ORDERS_STATE_FK">
+<ind_PK_UK id="16E09758-2C90-E60E-D791-837C05CD77CF" name="ORDERS_ORDERS_STATE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:06:58 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -207,7 +207,7 @@
 <colUsage columnID="25C7A780-0543-DFBB-0DC8-A07102551DC3"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="B1954423-46ED-AFC8-A70C-2CEDC0981432" name="ORDER_ORDERS_RESULT_FK">
+<ind_PK_UK id="B1954423-46ED-AFC8-A70C-2CEDC0981432" name="ORDERS_ORDERS_RESULT_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 20:12:25 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

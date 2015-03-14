@@ -17,7 +17,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ORDER_ID" id="E4B997DB-D1DF-D1FE-62BB-ED150DFB13CF">
+<Column name="ORDERS_ID" id="E4B997DB-D1DF-D1FE-62BB-ED150DFB13CF">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:30:44 UTC</createdTime>
 <commentInRDBMS>ID заказа</commentInRDBMS>
