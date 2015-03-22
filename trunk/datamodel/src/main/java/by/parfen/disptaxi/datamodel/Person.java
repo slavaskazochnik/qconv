@@ -1,7 +1,7 @@
 package by.parfen.disptaxi.datamodel;
 
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
 public class Person {
 
