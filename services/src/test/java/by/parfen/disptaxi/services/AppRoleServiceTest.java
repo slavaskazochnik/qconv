@@ -21,7 +21,7 @@ public class AppRoleServiceTest {
 	@Inject
 	private AppRoleService appRoleService;
 	
-	private AppRole appRole;
+	//private AppRole appRole;
 	
 	@Test
 	public void test1(){
@@ -30,10 +30,13 @@ public class AppRoleServiceTest {
 	}
 	
 	@Test
-	public void test2(){
+	public void test2() {
+		LOGGER.info("Test started");
 		Assert.assertNotNull(appRoleService);
-		appRoleService.save(appRole);
-		//Assert.assertNotNull(appRole);
+		// appRoleService.save(appRole);
+		AppRole appRole = appRoleService.get(1L);
+		LOGGER.info(appRole.toString());
+		Assert.assertNotNull(appRole);
 	}
 	
 }
