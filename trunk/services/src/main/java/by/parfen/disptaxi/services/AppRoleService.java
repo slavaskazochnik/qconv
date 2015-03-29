@@ -4,5 +4,6 @@ import by.parfen.disptaxi.datamodel.AppRole;
 
 public interface AppRoleService {
 
+	AppRole get(Long id);
 	void save (AppRole appRole);
 }

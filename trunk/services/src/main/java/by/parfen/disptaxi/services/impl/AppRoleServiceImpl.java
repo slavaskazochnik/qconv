@@ -15,6 +15,12 @@ public class AppRoleServiceImpl implements AppRoleService {
 	private AppRoleDao dao;
 
 	@Override
+	public AppRole get(Long id) {
+		AppRole entity = dao.getById(id);
+		return entity;
+	}
+	
+	@Override
 	public void save(AppRole appRole) {
 		// TODO Auto-generated method stub
 		dao.save(appRole);
