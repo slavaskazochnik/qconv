@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B8202A00-95E6-E1DF-4695-7EA96568D5C4" name="CUSTOMER_PERSON_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B8202A00-95E6-E1DF-4695-7EA96568D5C4" name="CUSTOMER_USER_PROFILE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

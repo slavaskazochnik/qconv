@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E859B2BD-C64A-9E07-1A7B-82B82EA15771" name="DRIVER_PERSON_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E859B2BD-C64A-9E07-1A7B-82B82EA15771" name="DRIVER_USER_PROFILE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:47:36 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

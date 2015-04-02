@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3B41C5DA-273F-03D2-4298-16F1177F3538" name="USERS_ACCOUNT">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3B41C5DA-273F-03D2-4298-16F1177F3538" name="USER_ACCOUNT">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:39:05 UTC</createdTime>
 <commentInRDBMS>Справочник аккаунтов</commentInRDBMS>
@@ -114,7 +114,7 @@
 <colUsage columnID="9606C51B-2641-AF64-4FC4-D2B26C138274"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="DDB54F8E-BB13-4E30-7828-0DE5A86E2F58" name="USERS_ACCOUNT_UK">
+<ind_PK_UK id="DDB54F8E-BB13-4E30-7828-0DE5A86E2F58" name="USER_ACCOUNT_UK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-14 07:55:13 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -124,7 +124,7 @@
 <colUsage columnID="38375D90-0F4F-95E1-59D2-622AF4A0319F"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="9B595969-C797-0DFD-C3C4-C544A7023F84" name="USERS_ACCOUNT_APP_ROLE_FK">
+<ind_PK_UK id="9B595969-C797-0DFD-C3C4-C544A7023F84" name="USER_ACCOUNT_APP_ROLE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:52:34 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -134,7 +134,7 @@
 <colUsage columnID="EE2571EE-DC4D-DE18-C3FE-329C29C5AA6E"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="47734E3C-0249-45D0-8F18-542D417F116B" name="USERS_ACCOUNT_PERSON_FK">
+<ind_PK_UK id="47734E3C-0249-45D0-8F18-542D417F116B" name="USER_ACCOUNT_USER_PROFILE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:55:14 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>

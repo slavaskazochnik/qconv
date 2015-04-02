@@ -17,19 +17,9 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<autoIncrementCycle>false</autoIncrementCycle>
-<notNullConstraintName>NNC_DRIVERSv1_ID_DRIVER</notNullConstraintName>
-</Column>
-<Column name="PERSON_ID" id="79212AAD-9BE0-69E4-0C08-1BFD1FA3996B">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-14 13:43:06 UTC</createdTime>
-<commentInRDBMS>Персона</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_DRIVERSv1_ID_DRIVER</notNullConstraintName>
 <associations>
 <colAssociation fkAssociation="B8202A00-95E6-E1DF-4695-7EA96568D5C4" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
 </associations>
@@ -82,14 +72,14 @@
 <colUsage columnID="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="2ACAA12A-F9FD-FB88-3CAA-0A44DD28A895" name="CUSTOMER_PERSON_FK">
+<ind_PK_UK id="2ACAA12A-F9FD-FB88-3CAA-0A44DD28A895" name="CUSTOMER_USER_PROFILE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:13:37 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="79212AAD-9BE0-69E4-0C08-1BFD1FA3996B"/>
+<colUsage columnID="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
