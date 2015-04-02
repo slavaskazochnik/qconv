@@ -4,11 +4,20 @@
 
  # ORM, JPA
   * added annotations
-   * @Entity for tables
-   * @Id and @GeneratedValue(strategy = GenerationType.IDENTITY) for primary keys
-   * @Column
-   * @MapsId, @OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }), @JoinColumn(updatable = false, name = "id") for OneToOne relation
-   * @ManyToOne(fetch = FetchType.LAZY, targetEntity = Master.class) for ManyToOne relation
+{{{
+   @Entity
+   
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY) for primary keys
+
+   @Column
+
+   @MapsId
+   @OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+   @JoinColumn(updatable = false, name = "id")
+   
+   @ManyToOne(fetch = FetchType.LAZY, targetEntity = Master.class)
+}}}
 
 = Abstract DAO =
    * created interface AbstractDao with class AbstractDaoImpl
