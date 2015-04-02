@@ -1,4 +1,4 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
@@ -10,9 +10,10 @@
 	    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<context:property-placeholder
-		ignore-unresolvable="true" location="classpath:application.properties,classpath:testing-application.properties" />
-
+		ignore-unresolvable="true" 
+		location="classpath:application.properties,classpath:testing-application.properties" />
 	<context:component-scan base-package="by.parfen.disptaxi" />
+
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="entityManagerFactory" />
@@ -20,8 +21,9 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:dataSource-ref="dataSource" />
 
-
-	<bean id="dataSource" class="by.parfen.disptaxi.util.SchemaNameAwareBasicDataSource"
+	<tx:annotation-driven />
+	<bean id="dataSource" 
+	  class="by.parfen.disptaxi.util.SchemaNameAwareBasicDataSource"
 		destroy-method="close" p:driverClassName="org.postgresql.Driver"
 		p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}"
 		p:schema="${db.schema}" />

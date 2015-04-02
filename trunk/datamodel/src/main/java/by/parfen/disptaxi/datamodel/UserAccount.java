@@ -2,15 +2,33 @@ package by.parfen.disptaxi.datamodel;
 
 import java.util.Date;
 
-public class UsersAccount {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
+public class UserAccount {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column
 	private String name;
+	@Column
 	private String passw;
+	@Column
 	private String email;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = AppRole.class)
 	private AppRole appRole;
-	private Person person;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
+	private UserProfile userProfile;
+	@Column
 	private Long signActive;
+	@Column
 	private Date dCreate;
 
 	public Long getId() {
@@ -53,12 +71,12 @@ public class UsersAccount {
 		this.appRole = appRole;
 	}
 
-	public Person getPerson() {
-		return person;
+	public UserProfile getPerson() {
+		return userProfile;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPerson(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
 
 	public Long getSignActive() {

@@ -4,6 +4,4 @@ import by.parfen.disptaxi.datamodel.AppRole;
 
 public interface AppRoleDao extends AbstractDao<Long, AppRole> {
 
-	void save(AppRole appRole);
-
 }
