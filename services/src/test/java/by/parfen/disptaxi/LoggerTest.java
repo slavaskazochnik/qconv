@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.services;
+package by.parfen.disptaxi;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
