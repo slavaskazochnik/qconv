@@ -63,4 +63,10 @@ public class UserProfile {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum=" + telNum
+				+ ", dCreate=" + dCreate + "]";
+	}
+
 }

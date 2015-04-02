@@ -73,4 +73,10 @@ public class Point {
 		this.positionLng = positionLng;
 	}
 
+	@Override
+	public String toString() {
+		return "Point [id=" + id + ", street=" + street + ", houseNum=" + houseNum + ", houseLoc=" + houseLoc
+				+ ", positionLat=" + positionLat + ", positionLng=" + positionLng + "]";
+	}
+
 }

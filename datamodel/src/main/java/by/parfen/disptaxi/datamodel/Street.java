@@ -43,4 +43,9 @@ public class Street {
 		this.city = city;
 	}
 
+	@Override
+	public String toString() {
+		return "Street [id=" + id + ", name=" + name + ", city=" + city + "]";
+	}
+
 }

@@ -44,21 +44,25 @@ public class DriverServiceImpl implements DriverService {
 		Validate.isTrue(driver.getId() == null,
 				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
 		driver.setPerson(userProfile);
+		LOGGER.debug("Insert: {}", driver);
 		dao.insert(driver);
 	}
 
 	@Override
 	public void update(Driver driver) {
+		LOGGER.debug("Update: {}", driver);
 		dao.update(driver);
 	}
 
 	@Override
 	public void delete(Driver driver) {
+		LOGGER.debug("Remove: {}", driver);
 		dao.delete(driver.getId());
 	}
 
 	@Override
 	public void deleteAll() {
+		LOGGER.debug("Remove all drivers");
 		dao.deleteAll();
 	}
 
