@@ -31,4 +31,9 @@ public class CarsType {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "CarsType [id=" + id + ", name=" + name + "]";
+	}
+
 }

@@ -41,4 +41,9 @@ public class OrdersResult {
 		this.descr = descr;
 	}
 
+	@Override
+	public String toString() {
+		return "OrdersResult [id=" + id + ", name=" + name + ", descr=" + descr + "]";
+	}
+
 }

@@ -85,4 +85,10 @@ public class Car {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan=" + childSeatsQuan
+		/* + ", carsType=" + carsType */+ ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+	}
+
 }

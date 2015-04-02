@@ -85,4 +85,10 @@ public class Price {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "Price [id=" + id + ", carsType=" + carsType + ", costBefore=" + costBefore + ", costKm=" + costKm
+				+ ", dBegin=" + dBegin + ", dEnd=" + dEnd + ", dCreate=" + dCreate + "]";
+	}
+
 }

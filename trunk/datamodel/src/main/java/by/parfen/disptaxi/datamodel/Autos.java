@@ -105,4 +105,11 @@ public class Autos {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "Autos [id=" + id + ", car=" + car + ", driver=" + driver + ", rWaiting=" + rWaiting + ", rRoute=" + rRoute
+				+ ", positionLat=" + positionLat + ", positionLng=" + positionLng + ", signActive=" + signActive + ", dCreate="
+				+ dCreate + "]";
+	}
+
 }

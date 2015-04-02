@@ -65,4 +65,10 @@ public class Customer {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", userProfile=" + userProfile + ", avgRating=" + avgRating + ", signActive="
+				+ signActive + ", dCreate=" + dCreate + "]";
+	}
+
 }

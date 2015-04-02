@@ -48,6 +48,10 @@ public class AbstractServiceTest {
 		return Math.random() < 0.5;
 	}
 
+	public static Long randomLong(final Long lower, final Long upper) {
+		return RANDOM_DATA.nextLong(lower, upper);
+	}
+
 	public static long randomLong() {
 		return RANDOM_DATA.nextLong(0, 9999999);
 	}
@@ -65,9 +69,9 @@ public class AbstractServiceTest {
 	public static <T> T randomFromCollection(final Collection<T> all) {
 		final int size = all.size();
 		final int item = new Random().nextInt(size); // In real life, the Random
-														// object should be
-														// rather more shared
-														// than this
+		// object should be
+		// rather more shared
+		// than this
 		int i = 0;
 		for (final T obj : all) {
 			if (i == item) {

@@ -95,4 +95,10 @@ public class UserAccount {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "UserAccount [id=" + id + ", name=" + name + ", passw=" + passw + ", email=" + email + ", appRole="
+				+ appRole + ", userProfile=" + userProfile + ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+	}
+
 }

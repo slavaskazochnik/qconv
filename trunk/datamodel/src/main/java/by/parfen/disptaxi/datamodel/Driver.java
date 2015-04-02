@@ -72,4 +72,10 @@ public class Driver {
 		this.dCreate = dCreate;
 	}
 
+	@Override
+	public String toString() {
+		return "Driver [id=" + id + ", avgRating=" + avgRating + ", signActive=" + signActive + ", dCreate=" + dCreate
+				+ ", userProfile=" + userProfile + "]";
+	}
+
 }
