@@ -1,0 +1,17 @@
+#summary Renamed table, removed culumns
+
+= Tables =
+
+ # USERs_ACCOUNT => USER_ACCOUNT
+ # More accurate name USER_PROFILE instead PERSON like USER_ACCOUNT
+
+= Columns for One To One relation =
+
+Removed
+ # Driver.person_id
+ # Customer.person_id
+
+= TODO =
+ # Add creator column as USER_PROFILE.ID value
+ # Add DELETED column
+ # add D_DELETE column
