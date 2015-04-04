@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.datamodel.AppRole;
+import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -39,9 +40,35 @@ public class AppRoleServiceTest extends AbstractServiceTest {
 	public void test2() {
 		LOGGER.info("Test started");
 		Assert.assertNotNull(appRoleService);
-		AppRole appRole = appRoleService.get(1L);
-		LOGGER.info(appRole.toString());
+
+		AppRole appRole = new AppRole();
 		Assert.assertNotNull(appRole);
+		// appRole.setAppRoleId(AppRoleId.ADMIN_ROLE);
+
+		AppRoleId appRoleId;
+		appRoleId = AppRoleId.ADMIN_ROLE;
+		appRole.setName(appRoleId.toString());
+		appRoleService.create(appRole);
+		LOGGER.info(appRole.toString());
+
+		appRole = new AppRole();
+		appRoleId = AppRoleId.OPERATOR_ROLE;
+		appRole.setName(appRoleId.toString());
+		appRoleService.create(appRole);
+		LOGGER.info(appRole.toString());
+
+		AppRole appRoleFromDb = appRoleService.get(appRole.getId());
+		Assert.assertEquals(appRoleFromDb.getId(), appRole.getId());
+		LOGGER.info("Role created with ID = " + appRoleFromDb.getId());
+
+		appRoleService.delete(appRoleFromDb);
+	}
+
+	@Test
+	public void testEnums() {
+		AppRoleId appRoleId = AppRoleId.ADMIN_ROLE;
+		LOGGER.debug("appRoleId.toString(): " + appRoleId.toString());
+		LOGGER.debug("appRoleId.valueOf(): " + appRoleId.getValue());
 	}
 
 }

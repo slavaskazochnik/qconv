@@ -46,7 +46,13 @@
 				<artifactId>webapp</artifactId>
 				<version>1.0.0</version>
 			</dependency>
+
 		
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
 			<!-- Spring framework -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -85,40 +91,25 @@
 				<scope>test</scope>
 			</dependency>
 
+
 			<!-- Hibernate -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>${hibernate.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>${hibernate.version}</version>
-			</dependency>
-			<!--<dependency>
+		<!-- 	<dependency>
 				<groupId>org.hibernate.javax.persistence</groupId>
-				<artifactId>hibernate-jpa-2.0-api</artifactId>
+				<artifactId>hibernate-jpa-2.1-api</artifactId>
 				<version>1.0.0.Final</version>
-			</dependency>-->
+			</dependency>
+ -->
 
 
 			<dependency>
 				<groupId>javax.inject</groupId>
 				<artifactId>javax.inject</artifactId>
 				<version>1</version>
-			</dependency>
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-web-api</artifactId>
-				<version>6.0</version>
-				<scope>provided</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
 			</dependency>
 
 			<!-- Hibernate/JPA -->
@@ -133,6 +124,7 @@
 				<artifactId>hibernate-jpa-2.0-api</artifactId>
 				<version>1.0.0.Final</version>
 			</dependency>
+
 
 			<!-- Logging libraries -->
 			<dependency>
@@ -163,6 +155,17 @@
 				<version>2.1</version>
 			</dependency>
 
+
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-web-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+
+
 			<!-- Apache commons -->
 			<dependency>
 				<groupId>commons-io</groupId>
@@ -188,11 +191,6 @@
 				<groupId>commons-configuration</groupId>
 				<artifactId>commons-configuration</artifactId>
 				<version>1.7</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>1.4</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -232,15 +230,15 @@
 				<artifactId>c3p0</artifactId>
 				<version>0.9.1.2</version>
 			</dependency>
+			
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<scope>test</scope>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
 			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
-
 	<repositories>
 		<repository>
 			<id>JBoss</id>
@@ -294,7 +292,7 @@
 			</testResource>
 		</testResources>
 		<plugins>
-			
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -311,7 +309,7 @@
 						<showDeprecation>true</showDeprecation>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>

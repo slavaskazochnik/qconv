@@ -1,12 +1,12 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="50D57AFE-986A-D4AB-E662-B2E678821E8B" name="USER_ACCOUNT_APP_ROLE_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AF4365D0-C849-DB6F-5502-E27A47DE6C1F" name="USER_ACCOUNT_USER_ROLE_FK">
 <createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:52:34 UTC</createdTime>
+<createdTime>2015-04-04 15:15:03 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <containerWithKeyObject>3B41C5DA-273F-03D2-4298-16F1177F3538</containerWithKeyObject>
 <deleteRule>NO ACTION</deleteRule>
-<localFKIndex>9B595969-C797-0DFD-C3C4-C544A7023F84</localFKIndex>
-<keyObject>1B9D6F12-5899-82CF-0CB0-C5859A4481F6</keyObject>
+<localFKIndex>41869ABE-B0C5-21F5-A681-AB735E6808A6</localFKIndex>
+<keyObject>85AE1EFE-8B66-A37C-A1F2-DC539DDC503F</keyObject>
 <mandatory>true</mandatory>
 <transferable>true</transferable>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

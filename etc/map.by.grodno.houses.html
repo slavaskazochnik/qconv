@@ -1,0 +1,84 @@
+1) по всему список улиц "map.by.grodno.streets.html"
+2) достаЄм содержимое
+3) находим все DIV
+4) ищем в DIV-ах ClassName = "street_nomera cf"
+5) в найденном DIV ClassName ищем все A
+6) сохран€ем InnerHTML
+7) .
+
+пример искомого блока на http://map.by/streets/√родно/я/просп.%20янки%20 упалы
+
+<div class="street_nomera cf">
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/2" >2</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/2/1" >2/1</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/3" >3</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/4" >4</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/6" >6</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/7" >7</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/11" >11</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/12" >12</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/16ј" >16ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/18" >18</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/20" >20</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/21" >21</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/22" >22</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/24" >24</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/25" >25</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/26" >26</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/27" >27</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/28" >28</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/30" >30</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/32" >32</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/33" >33</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/34" >34</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/35" >35</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/36" >36</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/37" >37</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/38" >38</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/39" >39</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/41" >41</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/43" >43</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/45" >45</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/46" >46</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/47" >47</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/49" >49</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/50" >50</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/51" >51</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/52" >52</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/53" >53</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/54" >54</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/55" >55</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/57" >57</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/61" >61</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/63" >63</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/63-119а" >63-119а</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/63-317" >63-317</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/64" >64</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/64ј" >64ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/65" >65</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/69" >69</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/71" >71</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72/1" >72/1</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72/2" >72/2</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72/3" >72/3</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72/4" >72/4</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72ј" >72ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/72Ѕ" >72Ѕ</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/73" >73</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/74" >74</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/74ј" >74ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/74а" >74а</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/76" >76</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/78" >78</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/78ј" >78ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/78а" >78а</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/80" >80</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/80/3" >80/3</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/82" >82</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/82ј" >82ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/84" >84</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/84/1" >84/1</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/88ј" >88ј</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/89" >89</a>
+<a href="http://map.by/streets/√родно/я/просп. янки  упалы/90" >90</a>
+</div>

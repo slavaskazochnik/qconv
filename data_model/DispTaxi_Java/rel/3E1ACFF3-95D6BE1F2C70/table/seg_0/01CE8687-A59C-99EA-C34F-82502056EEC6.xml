@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="01CE8687-A59C-99EA-C34F-82502056EEC6" name="USER_ROLE">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 14:59:52 UTC</createdTime>
+<commentInRDBMS>Роли пользователя</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:07:20 UTC</createdTime>
+<commentInRDBMS>PK</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_PROFILE_ID" id="41C63D12-CDCF-F2F9-62B8-BC6CBE59F9D5">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:05:26 UTC</createdTime>
+<commentInRDBMS>Пользователь</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D2C7A202-C6A3-8615-E8EC-4828249DCE1C" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
+</associations>
+</Column>
+<Column name="APP_ROLE_ID" id="5207AAFA-54C9-3866-062F-03FDCE924766">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:06:02 UTC</createdTime>
+<commentInRDBMS>Роль</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>6FCABD9F-B9BE-9A17-C92B-F03370FA3A80</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E82F57EE-92DE-BCA0-63E9-B7F83AC78948" referredColumn="6FCABD9F-B9BE-9A17-C92B-F03370FA3A80"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="85AE1EFE-8B66-A37C-A1F2-DC539DDC503F" name="USER_ROLE_PK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:07:20 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0C400945-9533-9D9A-9A63-B622AB9F2FF8" name="USER_ROLE__UN">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:20:42 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41C63D12-CDCF-F2F9-62B8-BC6CBE59F9D5"/>
+<colUsage columnID="5207AAFA-54C9-3866-062F-03FDCE924766"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FCC7CC29-022B-D119-DBC0-A1F075181B6C" name="USER_ROLE_USER_PROFILE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:05:26 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41C63D12-CDCF-F2F9-62B8-BC6CBE59F9D5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5B445C1-A7C1-A711-8E11-870F28F85857" name="USER_ROLE_APP_ROLE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 15:06:23 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5207AAFA-54C9-3866-062F-03FDCE924766"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

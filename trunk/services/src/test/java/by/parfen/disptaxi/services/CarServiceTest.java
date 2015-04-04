@@ -56,6 +56,7 @@ public class CarServiceTest extends AbstractServiceTest {
 		// TODO check other fields
 
 		carFromDb.setRegNum(getRandomRegNum());
+		// LOGGER.debug("Car.CarsType.name: " + carsType.getName());
 		carService.update(carFromDb);
 		Car carFromDbUpdated = carService.get(car.getId());
 		Assert.assertEquals(carFromDbUpdated.getRegNum(), carFromDb.getRegNum());

@@ -15,7 +15,11 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AF4365D0-C849-DB6F-5502-E27A47DE6C1F" referredColumn="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
+</associations>
 </Column>
 <Column name="NAME" id="38375D90-0F4F-95E1-59D2-622AF4A0319F">
 <createdBy>Slava</createdBy>
@@ -28,15 +32,15 @@
 <dataTypeSize>30</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PASSW" id="F575A92B-DBBB-CE0A-3E7F-CE39EB5DC95B">
+<Column name="PASSWORD" id="F575A92B-DBBB-CE0A-3E7F-CE39EB5DC95B">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:44:45 UTC</createdTime>
-<commentInRDBMS>Пароль</commentInRDBMS>
+<commentInRDBMS>Пароль (HASH)</commentInRDBMS>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
+<dataTypeSize>128</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="EMAIL" id="BF6B5E6B-1F86-CA91-5538-37BC88D269EF">
@@ -44,66 +48,15 @@
 <createdTime>2015-03-10 21:44:45 UTC</createdTime>
 <commentInRDBMS>Контактный email</commentInRDBMS>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="APP_ROLE_ID" id="EE2571EE-DC4D-DE18-C3FE-329C29C5AA6E">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:52:12 UTC</createdTime>
-<commentInRDBMS>Роль пользователя</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>6FCABD9F-B9BE-9A17-C92B-F03370FA3A80</delegate>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="50D57AFE-986A-D4AB-E662-B2E678821E8B" referredColumn="6FCABD9F-B9BE-9A17-C92B-F03370FA3A80"/>
-</associations>
-</Column>
-<Column name="PERSON_ID" id="832C5B70-F442-E829-B688-ACB08D48C911">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:54:32 UTC</createdTime>
-<commentInRDBMS>ID персоны</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>EBA8D426-FB5D-F845-9148-D012485D9092</delegate>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="DD524EDD-C282-4DA6-D153-4C160C81701F" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
-</associations>
-</Column>
-<Column name="SIGN_ACTIVE" id="CA106913-F1D5-6968-FDAD-CCCF994C76CF">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:44:45 UTC</createdTime>
-<commentInRDBMS>Признак активности</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="D_CREATE" id="E74F9595-773E-C215-7F5A-70208DEA321D">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:45:27 UTC</createdTime>
-<commentInRDBMS>Дата создания</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="23D8DB26-BCD7-0CCB-2606-D842DA6C3A2D" name="USERS_ACCOUNT_PK">
+<ind_PK_UK id="23D8DB26-BCD7-0CCB-2606-D842DA6C3A2D" name="USER_ACCOUNT_PK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:41:11 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -122,26 +75,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="38375D90-0F4F-95E1-59D2-622AF4A0319F"/>
+<colUsage columnID="BF6B5E6B-1F86-CA91-5538-37BC88D269EF"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="9B595969-C797-0DFD-C3C4-C544A7023F84" name="USER_ACCOUNT_APP_ROLE_FK">
+<ind_PK_UK id="41869ABE-B0C5-21F5-A681-AB735E6808A6" name="USER_ACCOUNT_USER_ROLE_FK">
 <createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:52:34 UTC</createdTime>
+<createdTime>2015-04-04 15:15:03 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="EE2571EE-DC4D-DE18-C3FE-329C29C5AA6E"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="47734E3C-0249-45D0-8F18-542D417F116B" name="USER_ACCOUNT_USER_PROFILE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:55:14 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="832C5B70-F442-E829-B688-ACB08D48C911"/>
+<colUsage columnID="9606C51B-2641-AF64-4FC4-D2B26C138274"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -22,6 +22,8 @@ public class Orders {
 	private Route route;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Autos.class)
 	private Autos autos;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Price.class)
+	private Price price;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = OrdersState.class)
 	private OrdersState ordersState;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = OrdersResult.class)

@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -52,6 +54,16 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public void deleteAll() {
 		LOGGER.debug("Remove all user profiles");
 		dao.deleteAll();
+	}
+
+	@Override
+	public List<UserProfile> getAllUserProfiles() {
+		return dao.getAllUserProfiles();
+	}
+
+	@Override
+	public List<UserProfile> getAllUserProfilesByName(String name) {
+		return dao.getAllUserProfilesByName(name);
 	}
 
 }

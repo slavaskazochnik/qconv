@@ -2,13 +2,15 @@ package by.parfen.disptaxi.datamodel;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
@@ -16,7 +18,10 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
+	// @ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
+	@MapsId
+	@OneToOne(/* fetch = FetchType.LAZY, */cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(updatable = false, name = "id")
 	private UserProfile userProfile;
 	@Column
 	private Long avgRating;

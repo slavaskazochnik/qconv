@@ -68,6 +68,20 @@
 <colAssociation fkAssociation="CEECB58C-08E1-B22F-6E7A-CC968BB38B18" referredColumn="190274CA-1E6C-C4B7-09DA-FEC09823E736"/>
 </associations>
 </Column>
+<Column name="PRICE_ID" id="13AFDFE0-1BF4-5D01-7550-93DB65FA2367">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 14:43:43 UTC</createdTime>
+<commentInRDBMS>Цены</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>40D2B47A-1DEC-F261-C2B5-4B3311F91985</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6D945FA7-16D3-9461-E593-D3929D67D537" referredColumn="40D2B47A-1DEC-F261-C2B5-4B3311F91985"/>
+</associations>
+</Column>
 <Column name="ORDERS_STATE_ID" id="25C7A780-0543-DFBB-0DC8-A07102551DC3">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
@@ -215,6 +229,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="462C84F3-6FDA-6EA1-0A7B-CD01780EE969"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1944BFBF-9603-2577-B9A7-40482143D3A1" name="ORDERS_PRICE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-04 14:44:10 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="13AFDFE0-1BF4-5D01-7550-93DB65FA2367"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
