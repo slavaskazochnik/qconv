@@ -23,6 +23,8 @@ public class Price {
 	@Column
 	private Long costKm;
 	@Column
+	private Long costPerMinute;
+	@Column
 	private Date dBegin;
 	@Column
 	private Date dEnd;

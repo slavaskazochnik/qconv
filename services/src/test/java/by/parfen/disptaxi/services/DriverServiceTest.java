@@ -64,18 +64,4 @@ public class DriverServiceTest extends AbstractServiceTest {
 	// driverService.createNewUser(duplicateProfile, duplicateAccount);
 	// }
 
-	private Driver createDriver() {
-		final Driver driver = new Driver();
-		driver.setSignActive(0L);
-		return driver;
-	}
-
-	private UserProfile createUserProfile() {
-		final UserProfile userProfile = new UserProfile();
-		userProfile.setFirstName(randomString("firstName-"));
-		userProfile.setLastName(randomString("lastName-"));
-		userProfile.setTelNum(randomString("+tel-num-"));
-		userProfile.setdCreate(randomDate());
-		return userProfile;
-	}
 }

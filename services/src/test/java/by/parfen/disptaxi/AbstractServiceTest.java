@@ -15,9 +15,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.UserProfile;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
-public class AbstractServiceTest {
+public abstract class AbstractServiceTest {
 
 	private final static Random random = new Random();
 	protected static final RandomData RANDOM_DATA = new RandomDataImpl();
@@ -95,4 +98,18 @@ public class AbstractServiceTest {
 		return start + (int) Math.round(Math.random() * (end - start));
 	}
 
+	protected UserProfile createUserProfile() {
+		final UserProfile userProfile = new UserProfile();
+		userProfile.setFirstName(randomString("firstName-"));
+		userProfile.setLastName(randomString("lastName-"));
+		userProfile.setTelNum(randomString("+tel-num-"));
+		userProfile.setdCreate(randomDate());
+		return userProfile;
+	}
+
+	protected Driver createDriver() {
+		final Driver driver = new Driver();
+		driver.setSignActive(0L);
+		return driver;
+	}
 }

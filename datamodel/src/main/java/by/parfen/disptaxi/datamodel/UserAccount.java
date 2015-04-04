@@ -19,15 +19,11 @@ public class UserAccount {
 	@Column
 	private String name;
 	@Column
-	private String passw;
+	private String password;
 	@Column
 	private String email;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = AppRole.class)
-	private AppRole appRole;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
-	private UserProfile userProfile;
-	@Column
-	private Long signActive;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserRole.class)
+	private UserRole userRole;
 	@Column
 	private Date dCreate;
 
@@ -48,11 +44,11 @@ public class UserAccount {
 	}
 
 	public String getPassw() {
-		return passw;
+		return password;
 	}
 
-	public void setPassw(String passw) {
-		this.passw = passw;
+	public void setPassw(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -63,28 +59,12 @@ public class UserAccount {
 		this.email = email;
 	}
 
-	public AppRole getAppRole() {
-		return appRole;
+	public UserRole getUserRole() {
+		return userRole;
 	}
 
-	public void setAppRole(AppRole appRole) {
-		this.appRole = appRole;
-	}
-
-	public UserProfile getPerson() {
-		return userProfile;
-	}
-
-	public void setPerson(UserProfile userProfile) {
-		this.userProfile = userProfile;
-	}
-
-	public Long getSignActive() {
-		return signActive;
-	}
-
-	public void setSignActive(Long signActive) {
-		this.signActive = signActive;
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
 	}
 
 	public Date getdCreate() {
@@ -97,8 +77,8 @@ public class UserAccount {
 
 	@Override
 	public String toString() {
-		return "UserAccount [id=" + id + ", name=" + name + ", passw=" + passw + ", email=" + email + ", appRole="
-				+ appRole + ", userProfile=" + userProfile + ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+		return "UserAccount [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", dCreate="
+				+ dCreate + "]";
 	}
 
 }

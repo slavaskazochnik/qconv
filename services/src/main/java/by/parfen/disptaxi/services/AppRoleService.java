@@ -9,11 +9,14 @@ public interface AppRoleService {
 	AppRole get(Long id);
 
 	@Transactional
-	void saveOrUpdate(AppRole product);
+	void create(AppRole appRole);
 
 	@Transactional
-	void delete(AppRole product);
+	void delete(AppRole appRole);
 
 	@Transactional
 	void deleteAll();
+
+	@Transactional
+	void fillByEnumRoles();
 }

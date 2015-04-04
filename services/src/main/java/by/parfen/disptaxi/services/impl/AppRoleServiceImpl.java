@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.AppRoleDao;
 import by.parfen.disptaxi.datamodel.AppRole;
+import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 import by.parfen.disptaxi.services.AppRoleService;
 
 @Service
@@ -31,15 +32,43 @@ public class AppRoleServiceImpl implements AppRoleService {
 		return entity;
 	}
 
-	@Override
-	public void saveOrUpdate(AppRole appRole) {
-		if (appRole.getId() == null) {
-			LOGGER.debug("Save new: {}", appRole);
-			dao.insert(appRole);
-		} else {
-			LOGGER.debug("Update: {}", appRole);
-			dao.update(appRole);
+	public boolean validateId(Long id) {
+		boolean validId = true;
+		try {
+			AppRoleId enumId;
+			enumId = AppRoleId.values()[id.intValue()];
+		} catch (IllegalArgumentException e) {
+			validId = false;
 		}
+		return validId;
+	}
+
+	public Long getIdByAppRoleId(AppRoleId appRoleId) {
+		return appRoleId.getLongValue();
+	}
+
+	private AppRoleId getAppRoleId(Long id) {
+		AppRoleId enumId;
+		if (this.validateId(id)) {
+			enumId = AppRoleId.values()[id.intValue()];
+		}
+		enumId = AppRoleId.values()[id.intValue()];
+		return enumId;
+	}
+
+	@Override
+	public void create(AppRole appRole) {
+		// Validate.isTrue(appRole.getId() == null, "You must set value for ID");
+		// if (appRole.getId() == null) {
+		// boolean validId = this.validateId(appRole.getId());
+		// LOGGER.debug("AppRoleId: " +
+		// this.getAppRoleId(appRole.getId()).toString());
+		LOGGER.debug("Save new: {}", appRole);
+		dao.insert(appRole);
+		// } else {
+		// LOGGER.debug("Update: {}", appRole);
+		// dao.update(appRole);
+		// }
 	}
 
 	@Override
@@ -53,6 +82,11 @@ public class AppRoleServiceImpl implements AppRoleService {
 	public void deleteAll() {
 		LOGGER.debug("Remove all app roles");
 		dao.deleteAll();
+	}
+
+	@Override
+	public void fillByEnumRoles() {
+		LOGGER.debug("Fill by ENUM Roles");
 	}
 
 }
