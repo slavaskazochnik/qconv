@@ -51,7 +51,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="0C400945-9533-9D9A-9A63-B622AB9F2FF8" name="USER_ROLE__UN">
+<ind_PK_UK id="0C400945-9533-9D9A-9A63-B622AB9F2FF8" name="USER_ROLE_UNIQ">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-04 15:20:42 UTC</createdTime>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
@@ -60,6 +60,7 @@
 <indexColumnUsage>
 <colUsage columnID="41C63D12-CDCF-F2F9-62B8-BC6CBE59F9D5"/>
 <colUsage columnID="5207AAFA-54C9-3866-062F-03FDCE924766"/>
+<colUsage columnID="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="FCC7CC29-022B-D119-DBC0-A1F075181B6C" name="USER_ROLE_USER_PROFILE_FK">
