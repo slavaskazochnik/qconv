@@ -4,11 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import by.parfen.disptaxi.util.Password;
 
 @Entity
 public class UserAccount {
@@ -22,8 +22,6 @@ public class UserAccount {
 	private String password;
 	@Column
 	private String email;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserRole.class)
-	private UserRole userRole;
 	@Column
 	private Date dCreate;
 
@@ -48,7 +46,8 @@ public class UserAccount {
 	}
 
 	public void setPassw(String password) {
-		this.password = password;
+		Password pasw = new Password();
+		this.password = pasw.getHash(password);
 	}
 
 	public String getEmail() {
@@ -57,14 +56,6 @@ public class UserAccount {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public UserRole getUserRole() {
-		return userRole;
-	}
-
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
 	}
 
 	public Date getdCreate() {

@@ -4,27 +4,27 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.UserProfile;
 
-public interface DriverService {
+public interface CustomerService {
 
-	Driver get(Long id);
-
-	@Transactional
-	void create(Driver driver, UserProfile userProfile);
+	Customer get(Long id);
 
 	@Transactional
-	void update(Driver driver);
+	void create(Customer customer, UserProfile userProfile);
 
 	@Transactional
-	void delete(Driver driver);
+	void update(Customer customer);
+
+	@Transactional
+	void delete(Customer customer);
 
 	@Transactional
 	void deleteAll();
 
 	Long getCount();
 
-	List<Driver> getAll();
+	List<Customer> getAll();
 
 }

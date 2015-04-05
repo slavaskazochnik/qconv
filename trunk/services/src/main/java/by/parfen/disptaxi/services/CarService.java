@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Car;
@@ -20,4 +22,8 @@ public interface CarService {
 
 	@Transactional
 	void deleteAll();
+
+	Long getCount();
+
+	List<Car> getAll();
 }

@@ -17,9 +17,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="AF4365D0-C849-DB6F-5502-E27A47DE6C1F" referredColumn="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
-</associations>
 </Column>
 <Column name="NAME" id="38375D90-0F4F-95E1-59D2-622AF4A0319F">
 <createdBy>Slava</createdBy>
@@ -54,6 +51,17 @@
 <dataTypeSize>255</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="D_CREATE" id="54AC6780-D3C3-B517-1DCD-3A1090CAA9B3">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-05 21:30:19 UTC</createdTime>
+<commentInRDBMS>Дата создания</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="23D8DB26-BCD7-0CCB-2606-D842DA6C3A2D" name="USER_ACCOUNT_PK">
@@ -76,16 +84,6 @@
 <indexColumnUsage>
 <colUsage columnID="38375D90-0F4F-95E1-59D2-622AF4A0319F"/>
 <colUsage columnID="BF6B5E6B-1F86-CA91-5538-37BC88D269EF"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="41869ABE-B0C5-21F5-A681-AB735E6808A6" name="USER_ACCOUNT_USER_ROLE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-04-04 15:15:03 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="9606C51B-2641-AF64-4FC4-D2B26C138274"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -7,16 +7,6 @@
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="ID" id="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A">
-<createdBy>Slava</createdBy>
-<createdTime>2015-04-04 15:07:20 UTC</createdTime>
-<commentInRDBMS>PK</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="USER_PROFILE_ID" id="41C63D12-CDCF-F2F9-62B8-BC6CBE59F9D5">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-04 15:05:26 UTC</createdTime>
@@ -45,19 +35,22 @@
 <colAssociation fkAssociation="E82F57EE-92DE-BCA0-63E9-B7F83AC78948" referredColumn="6FCABD9F-B9BE-9A17-C92B-F03370FA3A80"/>
 </associations>
 </Column>
-</columns>
-<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="85AE1EFE-8B66-A37C-A1F2-DC539DDC503F" name="USER_ROLE_PK">
+<Column name="USER_ACCOUNT_ID" id="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-04 15:07:20 UTC</createdTime>
+<commentInRDBMS>Аккаунт</commentInRDBMS>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
-<pk>true</pk>
-<indexState>Primary Constraint</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
-</indexColumnUsage>
-</ind_PK_UK>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>9606C51B-2641-AF64-4FC4-D2B26C138274</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="455C10C3-D83C-667E-1EEE-9F9C629E85F0" referredColumn="9606C51B-2641-AF64-4FC4-D2B26C138274"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="0C400945-9533-9D9A-9A63-B622AB9F2FF8" name="USER_ROLE__UN">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-04 15:20:42 UTC</createdTime>
@@ -87,6 +80,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="5207AAFA-54C9-3866-062F-03FDCE924766"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2A8B3AD4-D824-E55E-A61E-E4C7A24F8FD8" name="USER_ROLE_USER_ACCOUNT_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-05 20:21:47 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

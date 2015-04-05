@@ -15,8 +15,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import by.parfen.disptaxi.datamodel.AppRole;
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -107,9 +111,41 @@ public abstract class AbstractServiceTest {
 		return userProfile;
 	}
 
+	protected UserAccount createUserAccount() {
+		final UserAccount userAccount = new UserAccount();
+		userAccount.setName(randomString("login-"));
+		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
+		userAccount.setPassw(randomString("password"));
+		return userAccount;
+	}
+
+	protected AppRole createAppRoleOperator() {
+		final AppRole appRole = new AppRole();
+		appRole.setName(AppRoleId.OPERATOR_ROLE.toString());
+		return appRole;
+	}
+
+	protected AppRole createAppRoleDriver() {
+		final AppRole appRole = new AppRole();
+		appRole.setName(AppRoleId.DRIVER_ROLE.toString());
+		return appRole;
+	}
+
+	protected AppRole createAppRoleCustomer() {
+		final AppRole appRole = new AppRole();
+		appRole.setName(AppRoleId.CUSTOMER_ROLE.toString());
+		return appRole;
+	}
+
 	protected Driver createDriver() {
 		final Driver driver = new Driver();
 		driver.setSignActive(0L);
 		return driver;
+	}
+
+	protected Customer createCustomer() {
+		final Customer customer = new Customer();
+		customer.setSignActive(0L);
+		return customer;
 	}
 }

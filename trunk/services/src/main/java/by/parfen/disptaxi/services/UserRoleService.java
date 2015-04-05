@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.AppRole;
@@ -20,4 +22,8 @@ public interface UserRoleService {
 
 	@Transactional
 	void deleteAll();
+
+	Long getCount();
+
+	List<UserRole> getAll();
 }

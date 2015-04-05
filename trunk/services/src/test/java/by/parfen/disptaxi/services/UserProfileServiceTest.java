@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.UserProfile_;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -39,18 +40,25 @@ public class UserProfileServiceTest extends AbstractServiceTest {
 
 	@Test
 	public void basicCRUDTest() {
+		LOGGER.warn("Test basicCRUDTest.");
+		LOGGER.debug("Create user profile.");
 		UserProfile userProfile = createUserProfile();
 		userProfileService.saveOrUpdate(userProfile);
 
+		LOGGER.debug("Try to get user profile with id = {}", userProfile.getId());
 		UserProfile userProfileFromDb = userProfileService.get(userProfile.getId());
 		Assert.assertNotNull(userProfileFromDb);
+		LOGGER.debug("Record founded.");
 		Assert.assertEquals(userProfileFromDb.getFirstName(), userProfile.getFirstName());
+		LOGGER.debug("Record has the same FistName: {}.", userProfile.getFirstName());
 
 		userProfileFromDb.setFirstName("newName");
 		userProfileService.saveOrUpdate(userProfileFromDb);
+		LOGGER.debug("First name updated");
 		UserProfile userProfileFromDbUpdated = userProfileService.get(userProfile.getId());
 		Assert.assertEquals(userProfileFromDbUpdated.getFirstName(), userProfileFromDb.getFirstName());
 		Assert.assertNotEquals(userProfileFromDbUpdated.getFirstName(), userProfile.getFirstName());
+		LOGGER.debug("Ok.");
 
 		userProfileService.delete(userProfileFromDbUpdated);
 		Assert.assertNull(userProfileService.get(userProfile.getId()));
@@ -58,46 +66,62 @@ public class UserProfileServiceTest extends AbstractServiceTest {
 
 	@Test
 	public void searchTest() {
-		LOGGER.debug("Search test");
+		LOGGER.warn("Test searchTest");
 		UserProfile userProfile = createUserProfile();
 		userProfileService.saveOrUpdate(userProfile);
+		LOGGER.debug("Created 1 record.");
 
-		List<UserProfile> allUserProfiles = userProfileService.getAllUserProfiles();
+		LOGGER.debug("Get all user profiles.");
+		List<UserProfile> allUserProfiles = userProfileService.getAll();
 		Assert.assertEquals(allUserProfiles.size(), 1);
+		LOGGER.debug("Ok. Founded 1 record.");
+
+		LOGGER.debug("Count user profiles.");
+		Long count = userProfileService.getCount();
+		Assert.assertEquals(count.intValue(), 1);
+		LOGGER.debug("Count result:{}.", count);
 	}
 
 	@Test
 	public void searchTestWithPagingAndSort() {
-		// int pageSize = 10;
-		// int randomTestObjectsCount = randomTestObjectsCount() + pageSize + 1;
-		// for (int i = 0; i < randomTestObjectsCount; i++) {
-		// Product product = createProduct();
-		// productService.saveOrUpdate(product);
-		// }
-		//
-		// // select first 10 products ordered by name
-		// List<Product> first10Products =
-		// productService.getAllProducts(Product_.name, true, 0, pageSize);
-		// Assert.assertTrue(first10Products.size() == 10);
-		//
+		LOGGER.warn("Test searchTestWithPagingAndSort");
+		int pageSize = 10;
+		int randomTestObjectsCount = randomTestObjectsCount() + pageSize + 1;
+		LOGGER.debug("Create {} records of UserProfile", randomTestObjectsCount);
+		for (int i = 0; i < randomTestObjectsCount; i++) {
+			UserProfile userProfile = createUserProfile();
+			userProfileService.saveOrUpdate(userProfile);
+		}
+
+		LOGGER.debug("Select {} UserProfile records", pageSize);
+		List<UserProfile> first10Products = userProfileService.getAll(UserProfile_.firstName, true, 0, pageSize);
+		Assert.assertTrue(first10Products.size() == pageSize);
+		LOGGER.debug("Ok. Selected {} records", pageSize);
+
 	}
 
 	@Test
 	public void searchByNameTest() {
-		// Product product = createProduct();
-		// String name = randomString("name-");
-		// product.setName(name);
-		// productService.saveOrUpdate(product);
-		//
-		// Product anotherProduct = createProduct();
-		// productService.saveOrUpdate(anotherProduct);
-		//
-		// List<Product> allProduct = productService.getAllProducts();
-		// Assert.assertEquals(allProduct.size(), 2);
-		//
-		// List<Product> allProductByName =
-		// productService.getAllProductsByName(name);
-		// Assert.assertEquals(allProductByName.size(), 1);
-		// Assert.assertEquals(allProductByName.get(0).getId(), product.getId());
+		LOGGER.warn("Test searchByNameTest");
+		UserProfile userProfile = createUserProfile();
+		String firstName = randomString("firstName-");
+		userProfile.setFirstName(firstName);
+		userProfileService.saveOrUpdate(userProfile);
+		LOGGER.debug("1-st userProfile created.");
+
+		UserProfile anotherUserProfile = createUserProfile();
+		userProfileService.saveOrUpdate(anotherUserProfile);
+		LOGGER.debug("2-nd userProfile created.");
+
+		List<UserProfile> allUserProfiles = userProfileService.getAll();
+		Assert.assertEquals(allUserProfiles.size(), 2);
+		LOGGER.debug("Ok. Founded 2 userProfiles.");
+
+		LOGGER.debug("Search by name '{}'", firstName);
+		List<UserProfile> allUserProfilesByName = userProfileService.getAllByFirstName(firstName);
+		Assert.assertEquals(allUserProfilesByName.size(), 1);
+		LOGGER.debug("Founded 1 record.");
+		Assert.assertEquals(allUserProfilesByName.get(0).getId(), userProfile.getId());
+		LOGGER.debug("This record have same id = {}.", userProfile.getId());
 	}
 }
