@@ -10,11 +10,8 @@ public interface UserProfileDao extends AbstractDao<Long, UserProfile> {
 
 	Long getCount();
 
-	List<UserProfile> getAllUserProfiles();
+	List<UserProfile> getAll(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord, int pageSize);
 
-	List<UserProfile> getAllUserProfiles(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord,
-			int pageSize);
-
-	List<UserProfile> getAllUserProfilesByName(String name);
+	List<UserProfile> getAllByFirstName(String firstName);
 
 }

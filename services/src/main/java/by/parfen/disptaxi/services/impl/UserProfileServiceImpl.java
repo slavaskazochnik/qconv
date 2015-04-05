@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.persistence.metamodel.SingularAttribute;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,19 +52,31 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	@Override
+	public Long getCount() {
+		LOGGER.debug("Count user profiles");
+		return dao.getCount();
+	}
+
+	@Override
 	public void deleteAll() {
 		LOGGER.debug("Remove all user profiles");
 		dao.deleteAll();
 	}
 
 	@Override
-	public List<UserProfile> getAllUserProfiles() {
-		return dao.getAllUserProfiles();
+	public List<UserProfile> getAll() {
+		return dao.getAll();
 	}
 
 	@Override
-	public List<UserProfile> getAllUserProfilesByName(String name) {
-		return dao.getAllUserProfilesByName(name);
+	public List<UserProfile> getAllByFirstName(String firstName) {
+		return dao.getAllByFirstName(firstName);
+	}
+
+	@Override
+	public List<UserProfile> getAll(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
+		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 
 }

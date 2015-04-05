@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -58,5 +60,15 @@ public class CarsTypeServiceImpl implements CarsTypeService {
 		dao.deleteAll();
 		;
 	}
+
+	@Override
+	public Long getCount() {
+		return dao.getCount();
+	};
+
+	@Override
+	public List<CarsType> getAll() {
+		return dao.getAll();
+	};
 
 }

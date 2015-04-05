@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -82,6 +84,16 @@ public class AppRoleServiceImpl implements AppRoleService {
 	public void deleteAll() {
 		LOGGER.debug("Remove all app roles");
 		dao.deleteAll();
+	}
+
+	@Override
+	public Long getCount() {
+		return dao.getCount();
+	};
+
+	@Override
+	public List<AppRole> getAll() {
+		return dao.getAll();
 	}
 
 	@Override

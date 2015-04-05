@@ -10,17 +10,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import by.parfen.disptaxi.dataaccess.DriverDao;
-import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.dataaccess.CustomerDao;
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.UserProfile;
-import by.parfen.disptaxi.services.DriverService;
+import by.parfen.disptaxi.services.CustomerService;
 
 @Service
-public class DriverServiceImpl implements DriverService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(DriverServiceImpl.class);
+public class CustomerServiceImpl implements CustomerService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
 	@Inject
-	private DriverDao dao;
+	private CustomerDao dao;
 
 	@PostConstruct
 	private void init() {
@@ -30,36 +30,36 @@ public class DriverServiceImpl implements DriverService {
 	}
 
 	@Override
-	public Driver get(Long id) {
-		Driver entity = dao.getById(id);
+	public Customer get(Long id) {
+		Customer entity = dao.getById(id);
 		return entity;
 	}
 
 	@Override
-	public void create(Driver driver, UserProfile userProfile) {
+	public void create(Customer customer, UserProfile userProfile) {
 		/*
 		 * Validate.isTrue(account.getId() == null,
 		 * "This method should be called for 'not saved yet' account only. Use UPDATE instead"
 		 * ); accountDao.insert(account);
 		 */
 
-		Validate.isTrue(driver.getId() == null,
+		Validate.isTrue(customer.getId() == null,
 				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
-		driver.setPerson(userProfile);
-		LOGGER.debug("Insert: {}", driver);
-		dao.insert(driver);
+		customer.setPerson(userProfile);
+		LOGGER.debug("Insert: {}", customer);
+		dao.insert(customer);
 	}
 
 	@Override
-	public void update(Driver driver) {
-		LOGGER.debug("Update: {}", driver);
-		dao.update(driver);
+	public void update(Customer customer) {
+		LOGGER.debug("Update: {}", customer);
+		dao.update(customer);
 	}
 
 	@Override
-	public void delete(Driver driver) {
-		LOGGER.debug("Remove: {}", driver);
-		dao.delete(driver.getId());
+	public void delete(Customer customer) {
+		LOGGER.debug("Remove: {}", customer);
+		dao.delete(customer.getId());
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class DriverServiceImpl implements DriverService {
 	};
 
 	@Override
-	public List<Driver> getAll() {
+	public List<Customer> getAll() {
 		return dao.getAll();
 	}
 }

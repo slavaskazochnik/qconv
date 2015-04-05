@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class AppRole {
@@ -16,6 +17,9 @@ public class AppRole {
 	private String name;
 	@Column
 	private String descr;
+
+	@Transient
+	private int somInt;
 
 	public Long getId() {
 		return id;

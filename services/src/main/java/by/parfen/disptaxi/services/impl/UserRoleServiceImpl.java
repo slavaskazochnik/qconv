@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -60,4 +62,13 @@ public class UserRoleServiceImpl implements UserRoleService {
 		dao.deleteAll();
 	}
 
+	@Override
+	public Long getCount() {
+		return dao.getCount();
+	};
+
+	@Override
+	public List<UserRole> getAll() {
+		return dao.getAll();
+	}
 }

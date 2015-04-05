@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -54,4 +56,13 @@ public class CityServiceImpl implements CityService {
 		dao.deleteAll();
 	}
 
+	@Override
+	public Long getCount() {
+		return dao.getCount();
+	};
+
+	@Override
+	public List<City> getAll() {
+		return dao.getAll();
+	}
 }

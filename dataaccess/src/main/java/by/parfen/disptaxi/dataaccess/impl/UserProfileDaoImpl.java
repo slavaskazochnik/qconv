@@ -27,7 +27,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
-		Root<Long> root = criteria.from(Long.class);
+		Root<UserProfile> root = criteria.from(UserProfile.class);
 
 		criteria.select(cBuilder.count(root));
 
@@ -36,7 +36,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 	}
 
 	@Override
-	public List<UserProfile> getAllUserProfiles() {
+	public List<UserProfile> getAll() {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<UserProfile> criteria = cBuilder.createQuery(UserProfile.class);
@@ -50,8 +50,8 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 	}
 
 	@Override
-	public List<UserProfile> getAllUserProfiles(SingularAttribute<UserProfile, ?> attr, boolean ascending,
-			int startRecord, int pageSize) {
+	public List<UserProfile> getAll(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<UserProfile> criteria = cBuilder.createQuery(UserProfile.class);
@@ -69,7 +69,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 	}
 
 	@Override
-	public List<UserProfile> getAllUserProfilesByName(String name) {
+	public List<UserProfile> getAllByFirstName(String firstName) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<UserProfile> root = cBuilder.createQuery(UserProfile.class);
@@ -77,7 +77,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 
 		root.select(criteria);
 
-		root.where(cBuilder.equal(criteria.get(UserProfile_.firstName), name));
+		root.where(cBuilder.equal(criteria.get(UserProfile_.firstName), firstName));
 
 		TypedQuery<UserProfile> query = getEm().createQuery(root);
 		List<UserProfile> results = query.getResultList();
