@@ -3,8 +3,11 @@ package by.parfen.disptaxi.services;
 import javax.inject.Inject;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,10 +19,31 @@ import by.parfen.disptaxi.datamodel.UserProfile;
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class CustomerServiceTest extends AbstractServiceTest {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(DriverServiceTest.class);
+
 	@Inject
 	private CustomerService customerService;
 	@Inject
+	private DriverService driverService;
+	@Inject
 	private UserProfileService userProfileService;
+	@Inject
+	private UserAccountService userAccountService;
+	@Inject
+	private UserRoleService userRoleService;
+	@Inject
+	private AppRoleService appRoleService;
+
+	@Before
+	public void cleanUpData() {
+		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", userProfileService.getClass().getName());
+		customerService.deleteAll();
+		driverService.deleteAll();
+		userAccountService.deleteAll();
+		userRoleService.deleteAll();
+		userProfileService.deleteAll();
+		appRoleService.deleteAll();
+	}
 
 	@Test
 	public void createUserAndCustomer() {
@@ -37,6 +61,32 @@ public class CustomerServiceTest extends AbstractServiceTest {
 
 		userProfileService.delete(profile);
 		Assert.assertNull(userProfileService.get(profile.getId()));
+	}
+
+	@Test
+	public void createUserAndAfterDriver() {
+
+		final UserProfile profile = createUserProfile();
+		userProfileService.saveOrUpdate(profile);
+		UserProfile userProfileFromDB = userProfileService.get(profile.getId());
+		// Assert.assertNull(userProfileFromDB);
+		LOGGER.debug("Created user profile {}", userProfileFromDB);
+
+		final Customer customer = createCustomer();
+		customer.setUserProfile(userProfileFromDB);
+		userProfileFromDB.setCustomer(customer);
+		userProfileService.saveOrUpdate(userProfileFromDB);
+
+		final Customer createdCustomer = customerService.get(userProfileFromDB.getId());
+		Assert.assertNotNull(createdCustomer);
+		LOGGER.debug("Created customer {}", userProfileFromDB);
+		// TODO check equals
+
+		customerService.delete(createdCustomer);
+		// Assert.assertNull(driverService.get(createdDriver.getId()));
+
+		userProfileService.delete(userProfileFromDB);
+		// Assert.assertNull(userProfileService.get(userProfileFromDB.getId()));
 	}
 
 	// @Test

@@ -17,13 +17,13 @@
    <object objectType="Table" objectID="07F8F1F3-94F5-427B-7F99-29B6D6482BBE" name="STREET" seqName="seg_0"/>
    <object objectType="Table" objectID="3B41C5DA-273F-03D2-4298-16F1177F3538" name="USER_ACCOUNT" seqName="seg_0"/>
    <object objectType="Table" objectID="FE66EA0C-3810-49C8-D2B0-38162A0A955F" name="USER_PROFILE" seqName="seg_0"/>
-   <object objectType="Table" objectID="01CE8687-A59C-99EA-C34F-82502056EEC6" name="USER_ROLE" seqName="seg_0"/>
+   <object objectType="Table" objectID="D6E00259-8BBD-5962-B8CA-389DBF888A88" name="USER_ROLE" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="2C081076-D1AE-3366-01EE-B4D75B4EFD5D" name="AUTOS_CAR_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="1871581A-5804-9498-C27C-135B115A083D" name="AUTOS_DRIVER_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="0D8FD426-804D-8AC5-1F29-4CC1DF0E4463" name="CAR_CARS_TYPE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="B8202A00-95E6-E1DF-4695-7EA96568D5C4" name="CUSTOMER_USER_PROFILE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="E859B2BD-C64A-9E07-1A7B-82B82EA15771" name="DRIVER_USER_PROFILE_FK" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="455C10C3-D83C-667E-1EEE-9F9C629E85F0" name="USER_ROLE_USER_ACCOUNT_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="0F00EF93-604B-7B03-1898-A7350DB952F6" name="USER_ACCOUNT_USER_ROLE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="BFBA4B1D-A05E-826E-172C-B66BA0D6CC8D" name="ORADERS_TIMETABLE_ORDER_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="B61804F5-BB81-9389-1699-C991CB6D9BAF" name="ORADERS_TIMETABLE_STATE_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="CEECB58C-08E1-B22F-6E7A-CC968BB38B18" name="ORDERS_AUTOS_FK" seqName="seg_0"/>
@@ -37,6 +37,6 @@
    <object objectType="FKIndexAssociation" objectID="DA6BACDC-434B-AE4E-F6F9-9E027CFAD67F" name="ROUTE_POINT_DST_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="F9D9AC31-1EE2-D970-EF94-DF4E0A89036F" name="ROUTE_POINT_SRC_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="1080B34D-56DA-DB78-663A-59D12BB37E3A" name="STREET_CITY_FK" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="E82F57EE-92DE-BCA0-63E9-B7F83AC78948" name="USER_ROLE_APP_ROLE_FK" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="D2C7A202-C6A3-8615-E8EC-4828249DCE1C" name="USER_ROLE_USER_PROFILE_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="B9F824C0-4F87-A5FE-B384-57DA3474AB2C" name="USER_ROLE_APP_ROLE_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="3D4AF9C4-11A0-EE63-1246-E18276393810" name="USER_ROLE_USER_PROFILE_FK" seqName="seg_0"/>
 </oracle.dbtools.crest.model.design.relational.RelationalDesign>

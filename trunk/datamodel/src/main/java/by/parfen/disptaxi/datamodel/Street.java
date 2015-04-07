@@ -16,6 +16,7 @@ public class Street {
 	private Long id;
 	@Column
 	private String name;
+
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class)
 	private City city;
 

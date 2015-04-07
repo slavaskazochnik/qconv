@@ -16,10 +16,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.datamodel.AppRole;
+import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -137,9 +139,15 @@ public abstract class AbstractServiceTest {
 		return appRole;
 	}
 
+	protected UserRole createUserRole() {
+		final UserRole userRole = new UserRole();
+		return userRole;
+	}
+
 	protected Driver createDriver() {
 		final Driver driver = new Driver();
 		driver.setSignActive(0L);
+		driver.setdCreate(new Date());
 		return driver;
 	}
 
@@ -148,4 +156,11 @@ public abstract class AbstractServiceTest {
 		customer.setSignActive(0L);
 		return customer;
 	}
+
+	protected City createCity() {
+		City city = new City();
+		city.setName(randomString("City-"));
+		return city;
+	}
+
 }

@@ -17,6 +17,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0F00EF93-604B-7B03-1898-A7350DB952F6" referredColumn="349E7915-F172-0222-E4B6-D04FEBE88066"/>
+</associations>
 </Column>
 <Column name="NAME" id="38375D90-0F4F-95E1-59D2-622AF4A0319F">
 <createdBy>Slava</createdBy>
@@ -84,6 +87,16 @@
 <indexColumnUsage>
 <colUsage columnID="38375D90-0F4F-95E1-59D2-622AF4A0319F"/>
 <colUsage columnID="BF6B5E6B-1F86-CA91-5538-37BC88D269EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FECB3A63-5E93-250C-46A6-AC993855B6C9" name="USER_ACCOUNT_USER_ROLE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-07 00:11:05 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9606C51B-2641-AF64-4FC4-D2B26C138274"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -1,23 +1,28 @@
 package by.parfen.disptaxi.datamodel;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-//@Entity
+@Entity
 public class UserRole {
 
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	// @ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
-	// @MapsId
-	// @OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
-	// CascadeType.MERGE })
-	// @JoinColumn(updatable = false, name = "id")
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "userRole")
+	private UserAccount userAccount;
+
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
 	private UserProfile userProfile;
-	// @ManyToOne(fetch = FetchType.LAZY, targetEntity = AppRole.class)
-	// @MapsId
-	// @OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
-	// CascadeType.MERGE })
-	// @JoinColumn(updatable = false, name = "id")
+
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = AppRole.class)
 	private AppRole appRole;
 
 	public Long getId() {
@@ -26,6 +31,14 @@ public class UserRole {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public UserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(UserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 	public UserProfile getUserProfile() {

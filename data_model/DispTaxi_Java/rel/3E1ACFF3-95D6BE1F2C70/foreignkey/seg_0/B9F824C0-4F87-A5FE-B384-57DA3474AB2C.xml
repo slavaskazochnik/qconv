@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B9F824C0-4F87-A5FE-B384-57DA3474AB2C" name="USER_ROLE_APP_ROLE_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-07 00:09:54 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<containerWithKeyObject>D6E00259-8BBD-5962-B8CA-389DBF888A88</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>B3D9E04C-AD32-D8C9-196C-26A8FCA476EF</localFKIndex>
+<keyObject>1B9D6F12-5899-82CF-0CB0-C5859A4481F6</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
