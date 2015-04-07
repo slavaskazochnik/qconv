@@ -4,15 +4,19 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.persistence.metamodel.SingularAttribute;
 
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.StreetDao;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.services.StreetService;
 
+@Service
 public class StreetServiceImpl implements StreetService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StreetServiceImpl.class);
 
@@ -34,13 +38,17 @@ public class StreetServiceImpl implements StreetService {
 
 	@Override
 	public void create(Street street, City city) {
-		if (city.getId() == null) {
-			LOGGER.debug("Save new: {}", street);
+		Validate.notNull(street, "Street object is null!");
+		if (street.getId() == null) {
+			LOGGER.debug("Set city for street: {}", city);
 			street.setCity(city);
+			LOGGER.debug("Save new: {}", street);
 			dao.insert(street);
-		} else {
-			LOGGER.debug("Update: {}", street);
-			dao.update(street);
+			// } else {
+			// LOGGER.debug("Set city for street: {}", city);
+			// street.setCity(city);
+			// LOGGER.debug("Update: {}", street);
+			// dao.update(street);
 		}
 	}
 
@@ -53,7 +61,7 @@ public class StreetServiceImpl implements StreetService {
 	@Override
 	public void delete(Street street) {
 		LOGGER.debug("Update: {}", street);
-		dao.update(street);
+		dao.delete(street.getId());
 	}
 
 	@Override
@@ -69,6 +77,16 @@ public class StreetServiceImpl implements StreetService {
 	@Override
 	public List<Street> getAll() {
 		return dao.getAll();
+	}
+
+	@Override
+	public List<Street> getAllByName(String name) {
+		return dao.getAllByName(name);
+	}
+
+	@Override
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
+		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 
 }

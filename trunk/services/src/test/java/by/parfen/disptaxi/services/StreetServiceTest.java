@@ -28,8 +28,7 @@ public class StreetServiceTest extends AbstractServiceTest {
 
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", streetService.getClass()
-				.getName());
+		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", streetService.getClass().getName());
 		streetService.deleteAll();
 		cityService.deleteAll();
 	}
@@ -39,23 +38,21 @@ public class StreetServiceTest extends AbstractServiceTest {
 
 		final City city = createCity();
 		cityService.saveOrUpdate(city);
-		City cityFromDB = cityService.get(city.getId());
+		final City cityFromDB = cityService.get(city.getId());
 		// Assert.assertNull(userProfileFromDB);
 		LOGGER.debug("Created city {}", cityFromDB);
 
 		final Street street = createStreet();
-		streetService.create(street, city);
+		streetService.create(street, cityFromDB);
 
 		final Street createdStreet = streetService.get(street.getId());
 		Assert.assertNotNull(createdStreet);
-		LOGGER.debug("Created street {}", createdStreet);
+		LOGGER.debug("Created street, id = {}", createdStreet.getId());
 		// TODO check equals
 
 		streetService.delete(createdStreet);
-		// Assert.assertNull(driverService.get(createdDriver.getId()));
 
 		cityService.delete(cityFromDB);
-		// Assert.assertNull(userProfileService.get(userProfileFromDB.getId()));
 	}
 	// @Test
 	// public void uniqueConstraintsTest() {
