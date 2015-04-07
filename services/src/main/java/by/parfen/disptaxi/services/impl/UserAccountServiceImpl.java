@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.UserAccountDao;
 import by.parfen.disptaxi.datamodel.UserAccount;
-import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.services.UserAccountService;
 
 @Service
@@ -36,10 +36,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 	}
 
 	@Override
-	public void create(UserAccount userAccount, UserProfile userProfile) {
+	public void create(UserAccount userAccount, UserRole userRole) {
 		Validate.isTrue(userAccount.getId() == null,
 				"This method should be called for 'not saved yet' userAccount only. Use UPDATE instead");
-		// userAccount.setUserProfile(userProfile);
+		LOGGER.debug("Set user role: {}", userRole);
+		userAccount.setUserRole(userRole);
 		LOGGER.debug("Insert: {}", userAccount);
 		dao.insert(userAccount);
 	}

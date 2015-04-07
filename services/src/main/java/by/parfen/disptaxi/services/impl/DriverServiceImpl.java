@@ -37,15 +37,9 @@ public class DriverServiceImpl implements DriverService {
 
 	@Override
 	public void create(Driver driver, UserProfile userProfile) {
-		/*
-		 * Validate.isTrue(account.getId() == null,
-		 * "This method should be called for 'not saved yet' account only. Use UPDATE instead"
-		 * ); accountDao.insert(account);
-		 */
-
 		Validate.isTrue(driver.getId() == null,
 				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
-		driver.setPerson(userProfile);
+		driver.setUserProfile(userProfile);
 		LOGGER.debug("Insert: {}", driver);
 		dao.insert(driver);
 	}

@@ -2,11 +2,16 @@ package by.parfen.disptaxi.datamodel;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import by.parfen.disptaxi.util.Password;
 
@@ -24,6 +29,19 @@ public class UserAccount {
 	private String email;
 	@Column
 	private Date dCreate;
+
+	@MapsId
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(updatable = false, name = "id")
+	private UserRole userRole;
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
 
 	public Long getId() {
 		return id;

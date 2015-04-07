@@ -55,10 +55,4 @@ public class CityServiceTest extends AbstractServiceTest {
 		Assert.assertNull(cityService.get(city.getId()));
 	}
 
-	private City createCity() {
-		City city = new City();
-		city.setName(randomString("City-"));
-		return city;
-	}
-
 }

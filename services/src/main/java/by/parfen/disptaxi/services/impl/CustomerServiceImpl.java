@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		Validate.isTrue(customer.getId() == null,
 				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
-		customer.setPerson(userProfile);
+		customer.setUserProfile(userProfile);
 		LOGGER.debug("Insert: {}", customer);
 		dao.insert(customer);
 	}

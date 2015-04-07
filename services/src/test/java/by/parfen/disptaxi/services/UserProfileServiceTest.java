@@ -25,11 +25,20 @@ public class UserProfileServiceTest extends AbstractServiceTest {
 
 	@Inject
 	private UserProfileService userProfileService;
+	@Inject
+	private UserAccountService userAccountService;
+	@Inject
+	private UserRoleService userRoleService;
+	@Inject
+	private AppRoleService appRoleService;
 
 	@Before
 	public void cleanUpData() {
 		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", userProfileService.getClass().getName());
+		userAccountService.deleteAll();
+		userRoleService.deleteAll();
 		userProfileService.deleteAll();
+		appRoleService.deleteAll();
 	}
 
 	@Test
