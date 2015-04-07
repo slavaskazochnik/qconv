@@ -19,47 +19,48 @@ import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class AppRoleServiceTest extends AbstractServiceTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AppRoleServiceTest.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(AppRoleServiceTest.class);
 
 	@Inject
 	private AppRoleService appRoleService;
 
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of AppRoleService is injected. Class is: {}", appRoleService.getClass().getName());
+		LOGGER.info("Instance of AppRoleService is injected. Class is: {}",
+				appRoleService.getClass().getName());
 		appRoleService.deleteAll();
 	}
 
 	@Test
-	public void test1() {
-		LOGGER.warn("Test log message in test1().");
-		Assert.assertNotNull(appRoleService);
-	}
-
-	@Test
-	public void test2() {
-		LOGGER.info("Test started");
+	public void createRoles() {
+		LOGGER.warn("Test createRoles()");
 		Assert.assertNotNull(appRoleService);
 
 		AppRole appRole = new AppRole();
 		Assert.assertNotNull(appRole);
-		// appRole.setAppRoleId(AppRoleId.ADMIN_ROLE);
 
 		AppRoleId appRoleId;
 		appRoleId = AppRoleId.ADMIN_ROLE;
+		// appRole.setId(appRoleId.getLongValue());
 		appRole.setName(appRoleId.toString());
 		appRoleService.create(appRole);
-		LOGGER.info(appRole.toString());
+		LOGGER.debug("Created AppRole: {}", appRole);
 
 		appRole = new AppRole();
 		appRoleId = AppRoleId.OPERATOR_ROLE;
 		appRole.setName(appRoleId.toString());
 		appRoleService.create(appRole);
-		LOGGER.info(appRole.toString());
+		LOGGER.debug("Created AppRole: {}", appRole);
 
 		AppRole appRoleFromDb = appRoleService.get(appRole.getId());
 		Assert.assertEquals(appRoleFromDb.getId(), appRole.getId());
-		LOGGER.info("Role created with ID = " + appRoleFromDb.getId());
+		LOGGER.debug("Role created with ID = " + appRoleFromDb.getId());
+
+		// Long id = appRoleId.getLongValue();
+		// appRole.setId(id);
+		// appRoleService.update(appRole);
+		// LOGGER.debug("Updated AppRole: {}", appRole);
 
 		appRoleService.delete(appRoleFromDb);
 	}

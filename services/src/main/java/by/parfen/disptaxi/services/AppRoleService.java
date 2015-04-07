@@ -12,6 +12,9 @@ public interface AppRoleService {
 
 	@Transactional
 	void create(AppRole appRole);
+	
+	@Transactional
+	void update(AppRole appRole);
 
 	@Transactional
 	void delete(AppRole appRole);
