@@ -19,6 +19,7 @@ import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
@@ -116,7 +117,8 @@ public abstract class AbstractServiceTest {
 	protected UserAccount createUserAccount() {
 		final UserAccount userAccount = new UserAccount();
 		userAccount.setName(randomString("login-"));
-		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
+		userAccount
+				.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
 		return userAccount;
 	}
@@ -161,6 +163,12 @@ public abstract class AbstractServiceTest {
 		City city = new City();
 		city.setName(randomString("City-"));
 		return city;
+	}
+
+	protected Street createStreet() {
+		Street street = new Street();
+		street.setName(randomString("Street-"));
+		return street;
 	}
 
 }
