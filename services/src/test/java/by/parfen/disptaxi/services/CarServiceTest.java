@@ -25,8 +25,6 @@ public class CarServiceTest extends AbstractServiceTest {
 	private CarService carService;
 	@Inject
 	private CarsTypeService carsTypeService;
-	@Inject
-	private CarsTypeServiceTest carsTypeServiceTest;
 
 	@Before
 	public void cleanUpData() {
@@ -43,7 +41,7 @@ public class CarServiceTest extends AbstractServiceTest {
 	@Test
 	public void basicCRUDTest() {
 		Car car = createCar();
-		CarsType carsType = carsTypeServiceTest.createCarsType();
+		CarsType carsType = createCarsType();
 		carsTypeService.create(carsType);
 		LOGGER.debug(carsType.toString());
 		carService.create(car, carsType);
@@ -56,6 +54,7 @@ public class CarServiceTest extends AbstractServiceTest {
 		// TODO check other fields
 
 		carFromDb.setRegNum(getRandomRegNum());
+		carFromDb.setCarModel("Skoda Oktavia");
 		// LOGGER.debug("Car.CarsType.name: " + carsType.getName());
 		carService.update(carFromDb);
 		Car carFromDbUpdated = carService.get(car.getId());
@@ -64,17 +63,6 @@ public class CarServiceTest extends AbstractServiceTest {
 
 		carService.delete(carFromDbUpdated);
 		Assert.assertNull(carService.get(car.getId()));
-	}
-
-	private String getRandomRegNum() {
-		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-" + randomInteger(1, 7);
-	}
-
-	private Car createCar() {
-		Car car = new Car();
-		car.setRegNum(getRandomRegNum());
-		car.setSeatsQuan(randomLong(1L, 12L));
-		return car;
 	}
 
 }

@@ -25,6 +25,9 @@ public class Car {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = CarsType.class)
 	private CarsType carsType;
 	@Column
+	private String carModel;
+
+	@Column
 	private Long signActive;
 	@Column
 	private Date dCreate;
@@ -85,10 +88,18 @@ public class Car {
 		this.dCreate = dCreate;
 	}
 
+	public String getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(String carModel) {
+		this.carModel = carModel;
+	}
+
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan=" + childSeatsQuan
-				+ ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+				+ ", carModel=" + carModel + ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
 	}
 
 }

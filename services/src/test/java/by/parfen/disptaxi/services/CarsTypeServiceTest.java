@@ -57,10 +57,4 @@ public class CarsTypeServiceTest extends AbstractServiceTest {
 		Assert.assertNull(carsTypeService.get(carsType.getId()));
 	}
 
-	public CarsType createCarsType() {
-		CarsType carsType = new CarsType();
-		carsType.setName(randomString("TYPE-"));
-		return carsType;
-	}
-
 }

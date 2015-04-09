@@ -1,6 +1,7 @@
 package by.parfen.disptaxi.services;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,8 +32,7 @@ public class PointServiceTest extends AbstractServiceTest {
 
 	@Before
 	public void cleanUpData() {
-		LOGGER
-				.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
+		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
 		pointService.deleteAll();
 		streetService.deleteAll();
 		cityService.deleteAll();
@@ -61,61 +61,63 @@ public class PointServiceTest extends AbstractServiceTest {
 		Assert.assertNotNull(createdPoint);
 		LOGGER.debug("Created point, id = {}", createdPoint.getId());
 
+		pointService.delete(createdPoint);
 		streetService.delete(createdStreet);
 		cityService.delete(cityFromDB);
 	}
 
-	// @Test
-	// public void uniqueConstraintsTest() {
-	// final City firstCity = createCity();
-	// firstCity.setName("First City");
-	// cityService.saveOrUpdate(firstCity);
-	//
-	// final String streetName = "Duplicate Street Name";
-	// final Street firstStreet = createStreet();
-	// firstStreet.setCity(firstCity);
-	// streetService.create(firstStreet, firstCity);
-	// // final UserProfile profile = createUserProfile();
-	// Assert.assertNotNull("The street not saved!", firstStreet.getId());
-	//
-	// firstStreet.setName(streetName);
-	// streetService.update(firstStreet);
-	// Assert.assertEquals("Can't update street name!", firstStreet.getName(),
-	// streetName);
-	//
-	// final Street secondStreet = createStreet();
-	// secondStreet.setName(streetName);
-	// try {
-	// streetService.create(secondStreet, firstCity);
-	// Assert.fail("Not unique city street name can't be created!");
-	// } catch (final PersistenceException e) {
-	// LOGGER.debug("Duplicate street not created. Ok.");
-	// }
-	// secondStreet.setName("First Street");
-	// streetService.create(secondStreet, firstCity);
-	//
-	// secondStreet.setName(streetName);
-	// try {
-	// streetService.update(secondStreet);
-	// Assert.fail("Not unique city street name can't be saved!");
-	// } catch (final PersistenceException e) {
-	// LOGGER.debug("Duplicate street not saved. Ok.");
-	// }
-	//
-	// final City secondCity = createCity();
-	// secondCity.setName("Second City");
-	// cityService.saveOrUpdate(secondCity);
-	//
-	// secondStreet.setCity(secondCity);
-	// streetService.update(secondStreet);
-	//
-	// secondStreet.setCity(firstCity);
-	// try {
-	// streetService.update(secondStreet);
-	// Assert.fail("Not unique city street name can't be saved!");
-	// } catch (final PersistenceException e) {
-	// LOGGER.debug("Duplicate street not saved. Ok.");
-	// }
-	// }
+	@Test
+	public void uniqueConstraintsTest() {
+		final City firstCity = createCity();
+		cityService.saveOrUpdate(firstCity);
+
+		final Street firstStreet = createStreet();
+		firstStreet.setCity(firstCity);
+		streetService.create(firstStreet, firstCity);
+
+		final String pointName = "123/4";
+		final Point firstPoint = createPoint();
+		firstPoint.setStreet(firstStreet);
+		pointService.create(firstPoint, firstStreet);
+		Assert.assertNotNull("The point not saved!", firstPoint.getId());
+
+		firstPoint.setName(pointName);
+		pointService.update(firstPoint);
+		Assert.assertEquals("Can't update street name!", firstPoint.getName(), pointName);
+
+		final Point secondPoint = createPoint();
+		secondPoint.setName(pointName);
+		try {
+			pointService.create(secondPoint, firstStreet);
+			Assert.fail("Not unique street point name can't be created!");
+		} catch (final PersistenceException e) {
+			LOGGER.debug("Duplicate point not created. Ok.");
+		}
+		secondPoint.setName("321a");
+		pointService.create(secondPoint, firstStreet);
+
+		secondPoint.setName(pointName);
+		try {
+			pointService.update(secondPoint);
+			Assert.fail("Not unique street point name can't be saved!");
+		} catch (final PersistenceException e) {
+			LOGGER.debug("Duplicate point not saved. Ok.");
+		}
+
+		final Street secondStreet = createStreet();
+		secondStreet.setName("Second Street");
+		streetService.create(secondStreet, firstCity);
+
+		secondPoint.setStreet(secondStreet);
+		pointService.update(secondPoint);
+
+		secondPoint.setStreet(firstStreet);
+		try {
+			pointService.update(secondPoint);
+			Assert.fail("Not unique street point name can't be saved!");
+		} catch (final PersistenceException e) {
+			LOGGER.debug("Duplicate point not saved. Ok.");
+		}
+	}
 
 }

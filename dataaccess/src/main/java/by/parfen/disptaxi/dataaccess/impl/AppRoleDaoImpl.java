@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.AppRoleDao;
 import by.parfen.disptaxi.datamodel.AppRole;
-import by.parfen.disptaxi.datamodel.UserProfile;
 
 @Repository
 public class AppRoleDaoImpl extends AbstractDaoImpl<Long, AppRole> implements AppRoleDao {
@@ -25,7 +24,7 @@ public class AppRoleDaoImpl extends AbstractDaoImpl<Long, AppRole> implements Ap
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
-		Root<UserProfile> root = criteria.from(UserProfile.class);
+		Root<AppRole> root = criteria.from(AppRole.class);
 
 		criteria.select(cBuilder.count(root));
 
