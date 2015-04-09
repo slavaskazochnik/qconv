@@ -68,6 +68,18 @@
 <colAssociation fkAssociation="0D8FD426-804D-8AC5-1F29-4CC1DF0E4463" referredColumn="F7B281E7-3B3E-8188-3F08-94A6ADEB07F3"/>
 </associations>
 </Column>
+<Column name="CAR_MODEL" id="11F56DA5-1A5E-0720-9E05-65C246E8ABD7">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-09 19:06:58 UTC</createdTime>
+<commentInRDBMS>Модель автомобиля</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="SIGN_ACTIVE" id="CF17DB1A-B9A2-ECCF-6CB2-AB9B97115927">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 12:57:11 UTC</createdTime>

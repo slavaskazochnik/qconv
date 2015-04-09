@@ -34,7 +34,7 @@
 <colAssociation fkAssociation="C588AA26-BE17-59F4-9794-D40CCDD7E315" referredColumn="E333445F-E2CC-5288-027C-B5252897560E"/>
 </associations>
 </Column>
-<Column name="HOUSE_NUM" id="84D28AD1-29D4-8AA9-56EA-6A6B666BF217">
+<Column name="NAME" id="84D28AD1-29D4-8AA9-56EA-6A6B666BF217">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
 <comment>Номер дома/корпуса</comment>

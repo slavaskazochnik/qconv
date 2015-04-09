@@ -11,15 +11,15 @@ import javax.persistence.metamodel.SingularAttribute;
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
 
-import by.parfen.disptaxi.dataaccess.CarDao;
-import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.Car_;
+import by.parfen.disptaxi.dataaccess.PointDao;
+import by.parfen.disptaxi.datamodel.Point;
+import by.parfen.disptaxi.datamodel.Point_;
 
 @Repository
-public class CarDaoImpl extends AbstractDaoImpl<Long, Car> implements CarDao {
+public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointDao {
 
-	protected CarDaoImpl() {
-		super(Car.class);
+	protected PointDaoImpl() {
+		super(Point.class);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class CarDaoImpl extends AbstractDaoImpl<Long, Car> implements CarDao {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
-		Root<Car> root = criteria.from(Car.class);
+		Root<Point> root = criteria.from(Point.class);
 
 		criteria.select(cBuilder.count(root));
 
@@ -36,50 +36,51 @@ public class CarDaoImpl extends AbstractDaoImpl<Long, Car> implements CarDao {
 	}
 
 	@Override
-	public List<Car> getAll() {
+	public List<Point> getAll() {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Car> criteria = cBuilder.createQuery(Car.class);
-		Root<Car> root = criteria.from(Car.class);
+		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
+		Root<Point> root = criteria.from(Point.class);
 
 		criteria.select(root);
 
-		TypedQuery<Car> query = getEm().createQuery(criteria);
-		List<Car> results = query.getResultList();
+		TypedQuery<Point> query = getEm().createQuery(criteria);
+		List<Point> results = query.getResultList();
 		return results;
 	}
 
 	@Override
-	public List<Car> getAll(SingularAttribute<Car, ?> attr, boolean ascending, int startRecord, int pageSize) {
+	public List<Point> getAll(SingularAttribute<Point, ?> attr, boolean ascending, int startRecord, int pageSize) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Car> criteria = cBuilder.createQuery(Car.class);
-		Root<Car> root = criteria.from(Car.class);
+		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
+		Root<Point> root = criteria.from(Point.class);
 
 		criteria.select(root);
 		criteria.orderBy(new OrderImpl(root.get(attr), ascending));
 
-		TypedQuery<Car> query = getEm().createQuery(criteria);
+		TypedQuery<Point> query = getEm().createQuery(criteria);
 		query.setFirstResult(startRecord);
 		query.setMaxResults(pageSize);
 
-		List<Car> results = query.getResultList();
+		List<Point> results = query.getResultList();
 		return results;
 	}
 
 	@Override
-	public List<Car> getAllByRegNum(String regNum) {
+	public List<Point> getAllByName(String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Car> root = cBuilder.createQuery(Car.class);
-		Root<Car> criteria = root.from(Car.class);
+		CriteriaQuery<Point> root = cBuilder.createQuery(Point.class);
+		Root<Point> criteria = root.from(Point.class);
 
 		root.select(criteria);
 
-		root.where(cBuilder.equal(criteria.get(Car_.regNum), regNum));
+		root.where(cBuilder.equal(criteria.get(Point_.name), name));
 
-		TypedQuery<Car> query = getEm().createQuery(root);
-		List<Car> results = query.getResultList();
+		TypedQuery<Point> query = getEm().createQuery(root);
+		List<Point> results = query.getResultList();
 		return results;
 	}
+
 }

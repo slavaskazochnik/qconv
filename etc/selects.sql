@@ -9,3 +9,5 @@ select * from test.customer c;
 
 select * from test.city c;
 select * from test.street s;
+
+select * from test.point s;

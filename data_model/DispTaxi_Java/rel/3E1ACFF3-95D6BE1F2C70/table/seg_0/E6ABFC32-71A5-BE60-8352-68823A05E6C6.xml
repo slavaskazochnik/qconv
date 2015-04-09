@@ -205,20 +205,6 @@
 <colUsage columnID="06684401-25DD-DDB7-D48C-D64B056A0B84"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="16E09758-2C90-E60E-D791-837C05CD77CF" name="ORDERS_ORDERS_STATE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-02-28 20:06:58 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
-<ind_PK_UK id="B1954423-46ED-AFC8-A70C-2CEDC0981432" name="ORDERS_ORDERS_RESULT_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-02-28 20:12:25 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
 <ind_PK_UK id="1944BFBF-9603-2577-B9A7-40482143D3A1" name="ORDERS_PRICE_FK">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-04 14:44:10 UTC</createdTime>

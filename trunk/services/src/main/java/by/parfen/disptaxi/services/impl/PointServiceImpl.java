@@ -38,7 +38,7 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public void create(Point point, Street street) {
 		Validate.notNull(point, "Point object is null!");
-		Validate.notNull(point.getHouseNum(), "Points house number is null!");
+		Validate.notNull(point.getName(), "Points name is null!");
 		Validate.isTrue(point.getId() == null, "Use update for existing point!");
 		if (street != null) {
 			LOGGER.debug("Set street for the point: {}", point);
@@ -50,38 +50,34 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	public void update(Point point) {
-		// TODO Auto-generated method stub
-
+		LOGGER.debug("Update: {}", point);
+		dao.update(point);
 	}
 
 	@Override
 	public void delete(Point point) {
-		// TODO Auto-generated method stub
-
+		LOGGER.debug("Update: {}", point);
+		dao.delete(point.getId());
 	}
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
-
+		dao.deleteAll();
 	}
 
 	@Override
 	public Long getCount() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getCount();
 	}
 
 	@Override
 	public List<Point> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getAll();
 	}
 
 	@Override
 	public List<Point> getAllByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getAllByName(name);
 	}
 
 }

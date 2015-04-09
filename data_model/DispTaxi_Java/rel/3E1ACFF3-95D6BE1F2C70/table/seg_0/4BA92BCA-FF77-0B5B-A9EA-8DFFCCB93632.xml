@@ -34,6 +34,18 @@
 <colAssociation fkAssociation="F9D9AC31-1EE2-D970-EF94-DF4E0A89036F" referredColumn="E33B53B9-4397-B367-2B81-86B9F40F9DBF"/>
 </associations>
 </Column>
+<Column name="SRC_DESCR" id="FB53FEED-3BF4-643C-94FA-3BEC3C210DDA">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-09 18:25:15 UTC</createdTime>
+<commentInRDBMS>Примечания для пункта отправления</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="DST_POINT_ID" id="142CEFC5-C792-BFA9-AFF2-35201D452F0E">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:01 UTC</createdTime>

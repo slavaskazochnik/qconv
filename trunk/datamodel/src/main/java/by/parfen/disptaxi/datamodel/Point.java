@@ -17,11 +17,11 @@ public class Point {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Street.class)
 	private Street street;
 	@Column
-	private String houseNum;
+	private String name;
 	@Column
-	private Long positionLat;
+	private Long pointLat;
 	@Column
-	private Long positionLng;
+	private Long pointLng;
 
 	public Long getId() {
 		return id;
@@ -39,34 +39,34 @@ public class Point {
 		this.street = street;
 	}
 
-	public String getHouseNum() {
-		return houseNum;
+	public String getName() {
+		return name;
 	}
 
-	public void setHouseNum(String houseNum) {
-		this.houseNum = houseNum;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getPositionLat() {
-		return positionLat;
+		return pointLat;
 	}
 
-	public void setPositionLat(Long positionLat) {
-		this.positionLat = positionLat;
+	public void setPositionLat(Long pointLat) {
+		this.pointLat = pointLat;
 	}
 
 	public Long getPositionLng() {
-		return positionLng;
+		return pointLng;
 	}
 
-	public void setPositionLng(Long positionLng) {
-		this.positionLng = positionLng;
+	public void setPositionLng(Long pointLng) {
+		this.pointLng = pointLng;
 	}
 
 	@Override
 	public String toString() {
-		return "Point [id=" + id + ", street=" + street + ", houseNum=" + houseNum + ", positionLat="
-				+ positionLat + ", positionLng=" + positionLng + "]";
+		return "Point [id=" + id + ", street=" + street + ", name=" + name + ", pointLat=" + pointLat + ", pointLng="
+				+ pointLng + "]";
 	}
 
 }

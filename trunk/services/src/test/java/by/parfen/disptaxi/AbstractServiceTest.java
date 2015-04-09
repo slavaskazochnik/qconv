@@ -16,6 +16,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.datamodel.AppRole;
+import by.parfen.disptaxi.datamodel.Autos;
+import by.parfen.disptaxi.datamodel.Car;
+import by.parfen.disptaxi.datamodel.CarsType;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
@@ -118,8 +121,7 @@ public abstract class AbstractServiceTest {
 	protected UserAccount createUserAccount() {
 		final UserAccount userAccount = new UserAccount();
 		userAccount.setName(randomString("login-"));
-		userAccount
-				.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
+		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
 		return userAccount;
 	}
@@ -182,8 +184,32 @@ public abstract class AbstractServiceTest {
 		} else if (rand == 2) {
 			pointName = pointName + "/" + randomInteger(1, 999);
 		}
-		point.setHouseNum(pointName);
+		point.setName(pointName);
 		return point;
 	}
 
+	protected String getRandomRegNum() {
+		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-" + randomInteger(1, 7);
+	}
+
+	protected Car createCar() {
+		Car car = new Car();
+		car.setRegNum(getRandomRegNum());
+		car.setSeatsQuan(randomLong(1L, 12L));
+		return car;
+	}
+
+	protected CarsType createCarsType() {
+		CarsType carsType = new CarsType();
+		carsType.setName(randomString("TYPE-"));
+		return carsType;
+	}
+
+	protected Autos createAutos() {
+		Autos autos = new Autos();
+		autos.setdCreate(new Date());
+		autos.setrRoute(randomLong(10L, 20L));
+		autos.setrWaiting(randomLong(3L, 10L));
+		return autos;
+	}
 }

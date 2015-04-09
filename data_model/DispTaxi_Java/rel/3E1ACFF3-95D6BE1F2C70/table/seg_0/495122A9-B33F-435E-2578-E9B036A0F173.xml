@@ -76,12 +76,5 @@
 <colUsage columnID="E4B997DB-D1DF-D1FE-62BB-ED150DFB13CF"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="FE98F170-CDC9-264F-B1FE-89F27B8FDF6F" name="ORADERS_TIMETABLE_STATE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-10 21:32:21 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
 </indexes>
 </Table>
