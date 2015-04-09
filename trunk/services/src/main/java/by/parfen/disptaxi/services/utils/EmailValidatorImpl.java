@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.services.impl;
+package by.parfen.disptaxi.services.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

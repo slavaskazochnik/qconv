@@ -47,17 +47,6 @@
 <dataTypeSize>10</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="HOUSE_LOC" id="5D1DF226-49AC-D6F8-E907-D4D90F6ABEA1">
-<createdBy>Slava</createdBy>
-<createdTime>2015-03-14 07:48:56 UTC</createdTime>
-<commentInRDBMS>Номер подъезда</commentInRDBMS>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="POINT_LAT" id="ADF6DC00-5036-7C2D-4CCD-E52693A0130C">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:18:03 UTC</createdTime>
@@ -104,7 +93,6 @@
 <indexColumnUsage>
 <colUsage columnID="2AC21353-0D58-EBF1-2115-6A054AB17590"/>
 <colUsage columnID="84D28AD1-29D4-8AA9-56EA-6A6B666BF217"/>
-<colUsage columnID="5D1DF226-49AC-D6F8-E907-D4D90F6ABEA1"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="BE52A6D0-0902-719B-EE77-DC1F8FA0B684" name="POINTS_STREETS_FK">

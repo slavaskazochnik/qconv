@@ -94,9 +94,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>39FF128E-012C-53E6-6B81-0D25E73EBB31</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="13A4FF17-C405-01C1-E3AB-E762CF24FE25" referredColumn="39FF128E-012C-53E6-6B81-0D25E73EBB31"/>
-</associations>
 </Column>
 <Column name="RESULT_ID" id="462C84F3-6FDA-6EA1-0A7B-CD01780EE969">
 <createdBy>Slava</createdBy>
@@ -109,9 +106,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>30FEC22B-BBC0-80C4-BE72-84CD1E8C0072</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="78F1EF14-3E36-00BE-4E5E-FFA265FDA1E5" referredColumn="30FEC22B-BBC0-80C4-BE72-84CD1E8C0072"/>
-</associations>
 </Column>
 <Column name="ROUTE_LENGTH" id="65E6FB68-11F4-83DC-E67F-C96B720FC396">
 <createdBy>Slava</createdBy>
@@ -217,9 +211,6 @@
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="25C7A780-0543-DFBB-0DC8-A07102551DC3"/>
-</indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="B1954423-46ED-AFC8-A70C-2CEDC0981432" name="ORDERS_ORDERS_RESULT_FK">
 <createdBy>Slava</createdBy>
@@ -227,9 +218,6 @@
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="462C84F3-6FDA-6EA1-0A7B-CD01780EE969"/>
-</indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="1944BFBF-9603-2577-B9A7-40482143D3A1" name="ORDERS_PRICE_FK">
 <createdBy>Slava</createdBy>

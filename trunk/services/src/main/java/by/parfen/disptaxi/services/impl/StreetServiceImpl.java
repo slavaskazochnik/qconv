@@ -39,17 +39,14 @@ public class StreetServiceImpl implements StreetService {
 	@Override
 	public void create(Street street, City city) {
 		Validate.notNull(street, "Street object is null!");
-		if (street.getId() == null) {
+		Validate.notNull(street.getName(), "Street name is null!");
+		Validate.isTrue(street.getId() == null, "Use update for existing point!");
+		if (city != null) {
 			LOGGER.debug("Set city for street: {}", city);
 			street.setCity(city);
-			LOGGER.debug("Save new: {}", street);
-			dao.insert(street);
-			// } else {
-			// LOGGER.debug("Set city for street: {}", city);
-			// street.setCity(city);
-			// LOGGER.debug("Update: {}", street);
-			// dao.update(street);
 		}
+		LOGGER.debug("Save new: {}", street);
+		dao.insert(street);
 	}
 
 	@Override
@@ -85,7 +82,8 @@ public class StreetServiceImpl implements StreetService {
 	}
 
 	@Override
-	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
 		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 
