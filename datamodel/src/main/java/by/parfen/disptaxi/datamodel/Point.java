@@ -19,8 +19,6 @@ public class Point {
 	@Column
 	private String houseNum;
 	@Column
-	private Long houseLoc;
-	@Column
 	private Long positionLat;
 	@Column
 	private Long positionLng;
@@ -49,14 +47,6 @@ public class Point {
 		this.houseNum = houseNum;
 	}
 
-	public Long getHouseLoc() {
-		return houseLoc;
-	}
-
-	public void setHouseLoc(Long houseLoc) {
-		this.houseLoc = houseLoc;
-	}
-
 	public Long getPositionLat() {
 		return positionLat;
 	}
@@ -75,8 +65,8 @@ public class Point {
 
 	@Override
 	public String toString() {
-		return "Point [id=" + id + ", street=" + street + ", houseNum=" + houseNum + ", houseLoc=" + houseLoc
-				+ ", positionLat=" + positionLat + ", positionLng=" + positionLng + "]";
+		return "Point [id=" + id + ", street=" + street + ", houseNum=" + houseNum + ", positionLat="
+				+ positionLat + ", positionLng=" + positionLng + "]";
 	}
 
 }

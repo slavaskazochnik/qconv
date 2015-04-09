@@ -19,6 +19,7 @@ import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
@@ -169,6 +170,20 @@ public abstract class AbstractServiceTest {
 		Street street = new Street();
 		street.setName(randomString("Street-"));
 		return street;
+	}
+
+	protected Point createPoint() {
+		Point point = new Point();
+		String pointName;
+		pointName = "" + randomInteger(1, 80);
+		int rand = randomInteger(1, 3);
+		if (rand == 1) {
+			pointName = pointName + randomString().substring(1, 1);
+		} else if (rand == 2) {
+			pointName = pointName + "/" + randomInteger(1, 999);
+		}
+		point.setHouseNum(pointName);
+		return point;
 	}
 
 }
