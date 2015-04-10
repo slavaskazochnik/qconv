@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
+import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 
@@ -19,17 +20,18 @@ import by.parfen.disptaxi.datamodel.enums.AppRoleId;
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class AppRoleServiceTest extends AbstractServiceTest {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(AppRoleServiceTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppRoleServiceTest.class);
 
 	@Inject
 	private AppRoleService appRoleService;
 
+	@Inject
+	private DbUtilsServiceTest dbUtils;
+
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of AppRoleService is injected. Class is: {}",
-				appRoleService.getClass().getName());
-		appRoleService.deleteAll();
+		LOGGER.info("Instance of AppRoleService is injected. Class is: {}", appRoleService.getClass().getName());
+		dbUtils.cleanUpData();
 	}
 
 	@Test

@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
+import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
@@ -25,19 +26,18 @@ public class UserRoleServiceTest extends AbstractServiceTest {
 	@Inject
 	private UserRoleService userRoleService;
 	@Inject
-	private UserAccountService userAccountService;
-	@Inject
 	private UserProfileService userProfileService;
 	@Inject
 	private AppRoleService appRoleService;
 
+	@Inject
+	private DbUtilsServiceTest dbUtils;
+
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of UserRoleService is injected. Class is: {}", userRoleService.getClass().getName());
-		userAccountService.deleteAll();
-		userRoleService.deleteAll();
-		userProfileService.deleteAll();
-		appRoleService.deleteAll();
+		LOGGER
+				.info("Instance of UserRoleService is injected. Class is: {}", userRoleService.getClass().getName());
+		dbUtils.cleanUpData();
 	}
 
 	// @Test

@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
+import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Street;
@@ -30,12 +31,14 @@ public class PointServiceTest extends AbstractServiceTest {
 	@Inject
 	private CityService cityService;
 
+	@Inject
+	private DbUtilsServiceTest dbUtils;
+
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
-		pointService.deleteAll();
-		streetService.deleteAll();
-		cityService.deleteAll();
+		LOGGER
+				.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
+		dbUtils.cleanUpData();
 	}
 
 	@Test

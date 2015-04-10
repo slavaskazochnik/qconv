@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
+import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.Autos;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.CarsType;
@@ -35,14 +36,13 @@ public class AutosServiceTest extends AbstractServiceTest {
 	@Inject
 	private DriverService driverService;
 
+	@Inject
+	private DbUtilsServiceTest dbUtils;
+
 	@Before
 	public void cleanUpData() {
 		LOGGER.info("Instance of AutosService is injected. Class is: {}", autosService.getClass().getName());
-		autosService.deleteAll();
-		carService.deleteAll();
-		carsTypeService.deleteAll();
-		driverService.deleteAll();
-		userProfileService.deleteAll();
+		dbUtils.cleanUpData();
 	}
 
 	@Test

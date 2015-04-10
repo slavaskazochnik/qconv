@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
+import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.City;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,10 +24,13 @@ public class CityServiceTest extends AbstractServiceTest {
 	@Inject
 	private CityService cityService;
 
+	@Inject
+	private DbUtilsServiceTest dbUtils;
+
 	@Before
 	public void cleanUpData() {
 		LOGGER.info("Instance of CityService is injected. Class is: {}", cityService.getClass().getName());
-		cityService.deleteAll();
+		dbUtils.cleanUpData();
 	}
 
 	@Test
