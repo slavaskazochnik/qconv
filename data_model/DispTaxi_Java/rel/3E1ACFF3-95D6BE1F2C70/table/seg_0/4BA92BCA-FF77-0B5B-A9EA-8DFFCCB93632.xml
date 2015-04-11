@@ -19,6 +19,31 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="ORDERS_ID" id="DA002581-C38E-8B9B-1A55-6FE561975F57">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-11 20:46:31 UTC</createdTime>
+<commentInRDBMS>FK на Заказ</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>45E16766-75B9-6EAD-1D9E-0066D2559CE6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="65BC0CF4-FBBD-C847-AED2-AAD26A914668" referredColumn="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
+</associations>
+</Column>
+<Column name="ROUTE_ORDER" id="0FA46655-85A7-8866-2AF5-87915D097044">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-11 20:52:39 UTC</createdTime>
+<commentInRDBMS>Порядок следования пунктов</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="SRC_POINT_ID" id="BEB35CB3-EB28-F8FA-C58F-92370207C378">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:09:01 UTC</createdTime>
@@ -125,6 +150,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="142CEFC5-C792-BFA9-AFF2-35201D452F0E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="81935F56-FE92-987E-F268-FCB822A3267E" name="ROUTE_ORDERS_FK">
+<createdBy>Slava</createdBy>
+<createdTime>2015-04-11 20:46:53 UTC</createdTime>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA002581-C38E-8B9B-1A55-6FE561975F57"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

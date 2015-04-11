@@ -35,22 +35,6 @@
 <colAssociation fkAssociation="68878166-14BF-C3CD-D758-784A43F034D5" referredColumn="16B2DDB7-A9E8-E5B9-EF59-DDE0FED287B0"/>
 </associations>
 </Column>
-<Column name="ROUTE_ID" id="75DD6AEE-A389-941D-0AA9-3A80E95160D9">
-<createdBy>Slava</createdBy>
-<createdTime>2015-02-28 18:59:05 UTC</createdTime>
-<comment>Маршрут следования</comment>
-<commentInRDBMS>Маршрут следования</commentInRDBMS>
-<notes>Составляется в момент получения заказа.&lt;br/&gt;Маршрут может состоять из более чем двух пунктов назначения.</notes>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>27CC6D25-ACA5-5FC5-EF04-07DEF5FBCC68</delegate>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="7C3C6DF8-774C-486D-3AE5-2F913C344B1D" referredColumn="27CC6D25-ACA5-5FC5-EF04-07DEF5FBCC68"/>
-</associations>
-</Column>
 <Column name="AUTOS_ID" id="A2968523-D120-C68A-888B-CF0068EF5750">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 18:59:05 UTC</createdTime>
@@ -92,7 +76,6 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>39FF128E-012C-53E6-6B81-0D25E73EBB31</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ORDER_RESULT" id="462C84F3-6FDA-6EA1-0A7B-CD01780EE969">
@@ -104,7 +87,6 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>30FEC22B-BBC0-80C4-BE72-84CD1E8C0072</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ROUTE_LENGTH" id="65E6FB68-11F4-83DC-E67F-C96B720FC396">
@@ -183,16 +165,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="A2968523-D120-C68A-888B-CF0068EF5750"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="ED2340BA-9A0E-DA59-0E3D-F2D0F60971F8" name="ORDERS_ROUTE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-02-28 19:19:29 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="75DD6AEE-A389-941D-0AA9-3A80E95160D9"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="11896FC6-C5D8-6ADE-FDFC-25A492CB8E45" name="ORDERS_CUSTOMER_FK">
