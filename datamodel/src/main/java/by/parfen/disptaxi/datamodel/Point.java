@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Point {
+public class Point extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,9 @@ public class Point {
 	@Column
 	private String name;
 	@Column
-	private Long pointLat;
+	private String pointLat;
 	@Column
-	private Long pointLng;
+	private String pointLng;
 
 	public Long getId() {
 		return id;
@@ -47,19 +47,19 @@ public class Point {
 		this.name = name;
 	}
 
-	public Long getPositionLat() {
+	public String getPositionLat() {
 		return pointLat;
 	}
 
-	public void setPositionLat(Long pointLat) {
+	public void setPositionLat(String pointLat) {
 		this.pointLat = pointLat;
 	}
 
-	public Long getPositionLng() {
+	public String getPositionLng() {
 		return pointLng;
 	}
 
-	public void setPositionLng(Long pointLng) {
+	public void setPositionLng(String pointLng) {
 		this.pointLng = pointLng;
 	}
 

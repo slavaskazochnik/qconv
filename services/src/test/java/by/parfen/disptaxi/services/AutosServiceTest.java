@@ -15,9 +15,9 @@ import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.Autos;
 import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.CarsType;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -29,8 +29,6 @@ public class AutosServiceTest extends AbstractServiceTest {
 	private AutosService autosService;
 	@Inject
 	private CarService carService;
-	@Inject
-	private CarsTypeService carsTypeService;
 	@Inject
 	private UserProfileService userProfileService;
 	@Inject
@@ -48,10 +46,8 @@ public class AutosServiceTest extends AbstractServiceTest {
 	@Test
 	public void basicCRUDTest() {
 		final Car car = createCar();
-		final CarsType carsType = createCarsType();
-		carsTypeService.create(carsType);
-		LOGGER.debug(carsType.toString());
-		carService.create(car, carsType);
+		car.setCarType(CarType.CARTYPE_SEDAN);
+		carService.create(car);
 
 		final UserProfile userProfile = createUserProfile();
 		userProfileService.saveOrUpdate(userProfile);

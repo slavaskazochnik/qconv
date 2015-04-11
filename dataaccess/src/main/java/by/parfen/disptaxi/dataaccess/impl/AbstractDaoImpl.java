@@ -72,6 +72,7 @@ public abstract class AbstractDaoImpl<ID, Entity> implements AbstractDao<ID, Ent
 
 	@PersistenceContext
 	private void setEntityManager(EntityManager em) {
+		LOGGER.info("Set EM {} to class {}", em.hashCode(), getClass().getName());
 		this.em = em;
 	}
 

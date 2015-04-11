@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class UserProfile {
+public class UserProfile extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

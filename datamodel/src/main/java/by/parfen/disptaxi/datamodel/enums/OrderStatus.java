@@ -1,0 +1,10 @@
+package by.parfen.disptaxi.datamodel.enums;
+
+public enum OrderStatus {
+	// ORDER CAN'T BE CHANGED
+	// ADD ITEMS TO THE END OF LIST ONLY
+	// DON'T REMOVE
+
+	ORDERSTATE_NEW, ORDERSTATE_ACCEPTED, ORDERSTATE_ARRIVED, ORDERSTATE_ON_WAY, ORDERSTATE_DONE;
+
+}

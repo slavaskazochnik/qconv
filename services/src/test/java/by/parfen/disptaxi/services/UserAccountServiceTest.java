@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.DbUtilsServiceTest;
-import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -30,33 +30,19 @@ public class UserAccountServiceTest extends AbstractServiceTest {
 	private UserRoleService userRoleService;
 	@Inject
 	private UserProfileService userProfileService;
-	@Inject
-	private AppRoleService appRoleService;
 
 	@Inject
 	private DbUtilsServiceTest dbUtils;
 
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of UserAccountService is injected. Class is: {}", userAccountService.getClass()
-				.getName());
+		LOGGER.info("Instance of UserAccountService is injected. Class is: {}", userAccountService.getClass().getName());
 		dbUtils.cleanUpData();
 	}
 
 	@Test
 	public void createAccountTest() {
 		LOGGER.warn("Test createUserProfileAndAccount.");
-
-		LOGGER.debug("Create application roles.");
-		AppRole appRole1 = createAppRoleOperator();
-		appRoleService.create(appRole1);
-		Assert.assertNotNull(appRole1.getId());
-		LOGGER.debug("appRole1.id = {}", appRole1.getId());
-
-		AppRole appRole2 = createAppRoleCustomer();
-		appRoleService.create(appRole2);
-		Assert.assertNotNull(appRole2.getId());
-		LOGGER.debug("appRole2.id = {}", appRole2.getId());
 
 		LOGGER.debug("Create user profile.");
 		UserProfile userProfile = createUserProfile();
@@ -66,14 +52,12 @@ public class UserAccountServiceTest extends AbstractServiceTest {
 
 		LOGGER.debug("Create user roles for created profile and roles.");
 		UserRole userRole1 = createUserRole();
-		userRoleService.create(userRole1, userProfile, appRole1);
-		Assert.assertNotNull(appRole1.getId());
-		LOGGER.debug("appRole1.id = {}", appRole1.getId());
+		userRole1.setAppRole(AppRole.OPERATOR_ROLE);
+		userRoleService.create(userRole1, userProfile);
 
 		UserRole userRole2 = createUserRole();
-		userRoleService.create(userRole2, userProfile, appRole1);
-		Assert.assertNotNull(appRole2.getId());
-		LOGGER.debug("appRole2.id = {}", appRole2.getId());
+		userRole2.setAppRole(AppRole.CUSTOMER_ROLE);
+		userRoleService.create(userRole2, userProfile);
 
 		UserRole userRoleFromDb = userRoleService.get(userRole1.getId());
 		LOGGER.debug("Founded user role1 with id = {}", userRoleFromDb.getId());

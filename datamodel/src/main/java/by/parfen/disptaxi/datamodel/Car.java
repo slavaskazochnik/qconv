@@ -4,11 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @Entity
 public class Car {
@@ -22,8 +24,9 @@ public class Car {
 	private Long seatsQuan;
 	@Column
 	private Long childSeatsQuan;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = CarsType.class)
-	private CarsType carsType;
+	@Column
+	@Enumerated(EnumType.ORDINAL)
+	private CarType carType;
 	@Column
 	private String carModel;
 
@@ -64,12 +67,12 @@ public class Car {
 		this.childSeatsQuan = childSeatsQuan;
 	}
 
-	public CarsType getCarsType() {
-		return carsType;
+	public CarType getCarType() {
+		return carType;
 	}
 
-	public void setCarsType(CarsType carsType) {
-		this.carsType = carsType;
+	public void setCarType(CarType carType) {
+		this.carType = carType;
 	}
 
 	public Long getSignActive() {

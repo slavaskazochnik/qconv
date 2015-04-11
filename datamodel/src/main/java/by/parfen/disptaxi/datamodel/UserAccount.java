@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import by.parfen.disptaxi.util.Password;
 
 @Entity
-public class UserAccount {
+public class UserAccount extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

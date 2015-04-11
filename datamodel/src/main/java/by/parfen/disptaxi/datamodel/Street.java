@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Street {
+public class Street extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.UserRoleDao;
-import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.services.UserRoleService;
@@ -37,13 +36,11 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	@Override
-	public void create(UserRole userRole, UserProfile userProfile, AppRole appRole) {
+	public void create(UserRole userRole, UserProfile userProfile) {
 		Validate.isTrue(userRole.getId() == null,
 				"This method should be called for 'not saved yet' appRole only. Use UPDATE instead");
 		LOGGER.debug("set userProfile: {}", userProfile);
 		userRole.setUserProfile(userProfile);
-		LOGGER.debug("set appRole: {}", appRole);
-		userRole.setAppRole(appRole);
 		LOGGER.debug("Insert: {}", userRole);
 		dao.insert(userRole);
 	}
