@@ -12,6 +12,7 @@ import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.StreetDao;
+import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.datamodel.Street_;
 
@@ -71,14 +72,29 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	public List<Street> getAllByName(String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Street> root = cBuilder.createQuery(Street.class);
-		Root<Street> criteria = root.from(Street.class);
+		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
+		Root<Street> root = criteria.from(Street.class);
 
-		root.select(criteria);
+		criteria.select(root);
 
-		root.where(cBuilder.equal(criteria.get(Street_.name), name));
+		criteria.where(cBuilder.equal(root.get(Street_.name), name));
 
-		TypedQuery<Street> query = getEm().createQuery(root);
+		TypedQuery<Street> query = getEm().createQuery(criteria);
+		List<Street> results = query.getResultList();
+		return results;
+	}
+
+	@Override
+	public List<Street> getAllByCity(City city) {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
+		Root<Street> root = criteria.from(Street.class);
+
+		criteria.select(root);
+		criteria.where(cBuilder.equal(root.get(Street_.city), city));
+
+		TypedQuery<Street> query = getEm().createQuery(criteria);
 		List<Street> results = query.getResultList();
 		return results;
 	}

@@ -80,4 +80,9 @@ public class PointServiceImpl implements PointService {
 		return dao.getAllByName(name);
 	}
 
+	@Override
+	public List<Point> getAllByStreet(Street street) {
+		return dao.getAllByStreet(street);
+	}
+
 }

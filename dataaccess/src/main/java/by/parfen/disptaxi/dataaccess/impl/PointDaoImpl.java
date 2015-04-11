@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import by.parfen.disptaxi.dataaccess.PointDao;
 import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Point_;
+import by.parfen.disptaxi.datamodel.Street;
 
 @Repository
 public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointDao {
@@ -71,14 +72,29 @@ public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointD
 	public List<Point> getAllByName(String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Point> root = cBuilder.createQuery(Point.class);
-		Root<Point> criteria = root.from(Point.class);
+		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
+		Root<Point> root = criteria.from(Point.class);
 
-		root.select(criteria);
+		criteria.select(root);
 
-		root.where(cBuilder.equal(criteria.get(Point_.name), name));
+		criteria.where(cBuilder.equal(root.get(Point_.name), name));
 
-		TypedQuery<Point> query = getEm().createQuery(root);
+		TypedQuery<Point> query = getEm().createQuery(criteria);
+		List<Point> results = query.getResultList();
+		return results;
+	}
+
+	@Override
+	public List<Point> getAllByStreet(Street street) {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
+		Root<Point> root = criteria.from(Point.class);
+		criteria.where(cBuilder.equal(root.get(Point_.street), street));
+
+		criteria.select(root);
+
+		TypedQuery<Point> query = getEm().createQuery(criteria);
 		List<Point> results = query.getResultList();
 		return results;
 	}

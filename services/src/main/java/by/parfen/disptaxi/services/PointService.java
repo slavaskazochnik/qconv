@@ -29,4 +29,6 @@ public interface PointService {
 
 	List<Point> getAllByName(String name);
 
+	List<Point> getAllByStreet(Street street);
+
 }
