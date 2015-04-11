@@ -1,7 +1,10 @@
 package by.parfen.disptaxi.datamodel;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import by.parfen.disptaxi.datamodel.enums.AppRole;
+
 @Entity
-public class UserRole {
+public class UserRole extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +27,8 @@ public class UserRole {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserProfile.class)
 	private UserProfile userProfile;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = AppRole.class)
+	@Column
+	@Enumerated(EnumType.ORDINAL)
 	private AppRole appRole;
 
 	public Long getId() {

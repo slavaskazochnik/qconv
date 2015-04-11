@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.CarsType;
 
 public interface CarService {
 
 	Car get(Long id);
 
 	@Transactional
-	void create(Car car, CarsType carsType);
+	void create(Car car);
 
 	@Transactional
 	void update(Car car);

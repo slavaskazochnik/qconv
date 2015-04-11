@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.CarDao;
 import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.CarsType;
 import by.parfen.disptaxi.services.CarService;
 
 @Service
@@ -36,10 +35,9 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public void create(Car car, CarsType carsType) {
+	public void create(Car car) {
 		Validate.isTrue(car.getId() == null,
 				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
-		car.setCarsType(carsType);
 		LOGGER.debug("Insert: {}", car);
 		dao.insert(car);
 	}

@@ -4,11 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 @Entity
 public class Orders {
@@ -24,10 +29,12 @@ public class Orders {
 	private Autos autos;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Price.class)
 	private Price price;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = OrdersState.class)
-	private OrdersState ordersState;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = OrdersResult.class)
-	private OrdersResult ordersResult;
+	@Column
+	@Enumerated(EnumType.ORDINAL)
+	private OrderStatus orderStatus;
+	@Column
+	@Enumerated(EnumType.ORDINAL)
+	private OrderResult orderResult;
 	@Column
 	private Long routeLength;
 	@Column
@@ -71,20 +78,20 @@ public class Orders {
 		this.autos = autos;
 	}
 
-	public OrdersState getOrdersState() {
-		return ordersState;
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
 	}
 
-	public void setOrdersState(OrdersState ordersState) {
-		this.ordersState = ordersState;
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
-	public OrdersResult getOrdersResult() {
-		return ordersResult;
+	public OrderResult getOrderResult() {
+		return orderResult;
 	}
 
-	public void setOrdersResult(OrdersResult ordersResult) {
-		this.ordersResult = ordersResult;
+	public void setOrderResult(OrderResult orderResult) {
+		this.orderResult = orderResult;
 	}
 
 	public Long getRouteLength() {

@@ -4,26 +4,29 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @Entity
-public class Price {
+public class Price extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = CarsType.class)
-	private CarsType carsType;
+	@Column
+	@Enumerated(EnumType.ORDINAL)
+	private CarType carType;
 	@Column
 	private Long costBefore;
 	@Column
 	private Long costKm;
 	@Column
-	private Long costPerMinute;
+	private Long costForWaiting;
 	@Column
 	private Date dBegin;
 	@Column
@@ -37,14 +40,6 @@ public class Price {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public CarsType getCarsType() {
-		return carsType;
-	}
-
-	public void setCarsType(CarsType carsType) {
-		this.carsType = carsType;
 	}
 
 	public Long getCostBefore() {
@@ -61,6 +56,22 @@ public class Price {
 
 	public void setCostKm(Long costKm) {
 		this.costKm = costKm;
+	}
+
+	public CarType getCarType() {
+		return carType;
+	}
+
+	public void setCarType(CarType carType) {
+		this.carType = carType;
+	}
+
+	public Long getCostForWaiting() {
+		return costForWaiting;
+	}
+
+	public void setCostForWaiting(Long costForWaiting) {
+		this.costForWaiting = costForWaiting;
 	}
 
 	public Date getdBegin() {
@@ -89,7 +100,7 @@ public class Price {
 
 	@Override
 	public String toString() {
-		return "Price [id=" + id + ", carsType=" + carsType + ", costBefore=" + costBefore + ", costKm=" + costKm
+		return "Price [id=" + id + ", carType=" + carType + ", costBefore=" + costBefore + ", costKm=" + costKm
 				+ ", dBegin=" + dBegin + ", dEnd=" + dEnd + ", dCreate=" + dCreate + "]";
 	}
 

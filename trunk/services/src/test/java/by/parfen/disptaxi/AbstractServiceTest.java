@@ -15,19 +15,18 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.Autos;
 import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.CarsType;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Point;
+import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
-import by.parfen.disptaxi.datamodel.enums.AppRoleId;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -126,24 +125,6 @@ public abstract class AbstractServiceTest {
 		return userAccount;
 	}
 
-	protected AppRole createAppRoleOperator() {
-		final AppRole appRole = new AppRole();
-		appRole.setName(AppRoleId.OPERATOR_ROLE.toString());
-		return appRole;
-	}
-
-	protected AppRole createAppRoleDriver() {
-		final AppRole appRole = new AppRole();
-		appRole.setName(AppRoleId.DRIVER_ROLE.toString());
-		return appRole;
-	}
-
-	protected AppRole createAppRoleCustomer() {
-		final AppRole appRole = new AppRole();
-		appRole.setName(AppRoleId.CUSTOMER_ROLE.toString());
-		return appRole;
-	}
-
 	protected UserRole createUserRole() {
 		final UserRole userRole = new UserRole();
 		return userRole;
@@ -199,17 +180,21 @@ public abstract class AbstractServiceTest {
 		return car;
 	}
 
-	protected CarsType createCarsType() {
-		CarsType carsType = new CarsType();
-		carsType.setName(randomString("TYPE-"));
-		return carsType;
-	}
-
 	protected Autos createAutos() {
 		Autos autos = new Autos();
 		autos.setdCreate(new Date());
 		autos.setrRoute(randomLong(10L, 20L));
 		autos.setrWaiting(randomLong(3L, 10L));
 		return autos;
+	}
+
+	protected Price createPrice() {
+		Price price = new Price();
+		price.setCostBefore(randomLong(5000L, 10000L));
+		price.setCostKm(randomLong(5000L, 10000L));
+		price.setdBegin(new Date());
+		price.setCarType(CarType.CARTYPE_SEDAN);
+		price.setCostForWaiting(randomLong(1000L, 10000L));
+		return price;
 	}
 }

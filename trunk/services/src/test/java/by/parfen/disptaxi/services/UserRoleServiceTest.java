@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.DbUtilsServiceTest;
-import by.parfen.disptaxi.datamodel.AppRole;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -27,16 +27,13 @@ public class UserRoleServiceTest extends AbstractServiceTest {
 	private UserRoleService userRoleService;
 	@Inject
 	private UserProfileService userProfileService;
-	@Inject
-	private AppRoleService appRoleService;
 
 	@Inject
 	private DbUtilsServiceTest dbUtils;
 
 	@Before
 	public void cleanUpData() {
-		LOGGER
-				.info("Instance of UserRoleService is injected. Class is: {}", userRoleService.getClass().getName());
+		LOGGER.info("Instance of UserRoleService is injected. Class is: {}", userRoleService.getClass().getName());
 		dbUtils.cleanUpData();
 	}
 
@@ -75,19 +72,10 @@ public class UserRoleServiceTest extends AbstractServiceTest {
 		Assert.assertNotNull(userProfile.getId());
 		LOGGER.debug("Profile id = {}", userProfile.getId());
 
-		LOGGER.debug("Create application role.");
-		AppRole appRole1 = createAppRoleOperator();
-		appRoleService.create(appRole1);
-		Assert.assertNotNull(appRole1.getId());
-		LOGGER.debug("appRole1.id = {}", appRole1.getId());
-
 		LOGGER.debug("Create user role for created profile and role.");
 		UserRole userRole1 = createUserRole();
-		userRoleService.create(userRole1, userProfile, appRole1);
-		Assert.assertNotNull(appRole1.getId());
-		LOGGER.debug("appRole1.id = {}", appRole1.getId());
-
-		LOGGER.debug("userProfile.setAppRoles(roles)");
+		userRole1.setAppRole(AppRole.CUSTOMER_ROLE);
+		userRoleService.create(userRole1, userProfile);
 
 	}
 

@@ -25,9 +25,9 @@ public class Autos {
 	@Column
 	private Long rRoute;
 	@Column
-	private Long positionLat;
+	private String positionLat;
 	@Column
-	private Long positionLng;
+	private String positionLng;
 	@Column
 	private Long signActive;
 	@Column
@@ -73,19 +73,19 @@ public class Autos {
 		this.rRoute = rRoute;
 	}
 
-	public Long getPositionLat() {
+	public String getPositionLat() {
 		return positionLat;
 	}
 
-	public void setPositionLat(Long positionLat) {
+	public void setPositionLat(String positionLat) {
 		this.positionLat = positionLat;
 	}
 
-	public Long getPositionLng() {
+	public String getPositionLng() {
 		return positionLng;
 	}
 
-	public void setPositionLng(Long positionLng) {
+	public void setPositionLng(String positionLng) {
 		this.positionLng = positionLng;
 	}
 

@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.DbUtilsServiceTest;
 import by.parfen.disptaxi.datamodel.Car;
-import by.parfen.disptaxi.datamodel.CarsType;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -24,8 +24,6 @@ public class CarServiceTest extends AbstractServiceTest {
 
 	@Inject
 	private CarService carService;
-	@Inject
-	private CarsTypeService carsTypeService;
 
 	@Inject
 	private DbUtilsServiceTest dbUtils;
@@ -45,12 +43,9 @@ public class CarServiceTest extends AbstractServiceTest {
 	@Test
 	public void basicCRUDTest() {
 		Car car = createCar();
-		CarsType carsType = createCarsType();
-		carsTypeService.create(carsType);
-		LOGGER.debug(carsType.toString());
-		carService.create(car, carsType);
-		CarsType carsTypeFromCar = car.getCarsType();
-		LOGGER.debug(carsTypeFromCar.toString());
+		car.setCarType(CarType.CARTYPE_SEDAN);
+		carService.create(car);
+		Assert.assertNotNull(car.getId());
 
 		Car carFromDb = carService.get(car.getId());
 		Assert.assertNotNull(carFromDb);
