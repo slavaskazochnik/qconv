@@ -26,8 +26,6 @@ public class Order {
 	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Customer.class)
 	private Customer customer;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Route.class)
-	private Route route;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Auto.class)
 	@JoinColumn(name = "autos_id")
 	private Auto auto;
@@ -64,14 +62,6 @@ public class Order {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
-
-	public Route getRoute() {
-		return route;
-	}
-
-	public void setRoute(Route route) {
-		this.route = route;
 	}
 
 	public Auto getAuto() {

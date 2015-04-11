@@ -51,14 +51,14 @@ public class CityDaoImpl extends AbstractDaoImpl<Long, City> implements CityDao 
 	public List<City> getAllByName(String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<City> root = cBuilder.createQuery(City.class);
-		Root<City> criteria = root.from(City.class);
+		CriteriaQuery<City> criteria = cBuilder.createQuery(City.class);
+		Root<City> root = criteria.from(City.class);
 
-		root.select(criteria);
+		criteria.select(root);
 
-		root.where(cBuilder.equal(criteria.get(City_.name), name));
+		criteria.where(cBuilder.equal(root.get(City_.name), name));
 
-		TypedQuery<City> query = getEm().createQuery(root);
+		TypedQuery<City> query = getEm().createQuery(criteria);
 		List<City> results = query.getResultList();
 		return results;
 	}

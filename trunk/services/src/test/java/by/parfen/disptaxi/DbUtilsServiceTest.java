@@ -13,6 +13,7 @@ import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.services.PointService;
 import by.parfen.disptaxi.services.PriceService;
+import by.parfen.disptaxi.services.RouteService;
 import by.parfen.disptaxi.services.StreetService;
 import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.services.UserProfileService;
@@ -48,10 +49,16 @@ public class DbUtilsServiceTest {
 	@Inject
 	private OrderService orderService;
 
+	@Inject
+	private RouteService routeService;
+
 	@Before
 	public void cleanUpData() {
 
+		// routeService.deleteAll();
+
 		orderService.deleteAll();
+		routeService.deleteAll();
 		priceService.deleteAll();
 
 		autoService.deleteAll();

@@ -57,7 +57,11 @@ public abstract class AbstractServiceTest {
 	}
 
 	public static int randomInteger(final int lower, final int upper) {
-		return RANDOM_DATA.nextInt(lower, upper);
+		if (lower == upper) {
+			return lower;
+		} else {
+			return RANDOM_DATA.nextInt(lower, upper);
+		}
 	}
 
 	public static boolean randomBoolean() {
@@ -116,7 +120,7 @@ public abstract class AbstractServiceTest {
 		userProfile.setFirstName(randomString("firstName-"));
 		userProfile.setLastName(randomString("lastName-"));
 		userProfile.setTelNum(randomString("+tel-num-"));
-		userProfile.setdCreate(randomDate());
+		userProfile.setdCreate(new Date());
 		return userProfile;
 	}
 
@@ -125,6 +129,7 @@ public abstract class AbstractServiceTest {
 		userAccount.setName(randomString("login-"));
 		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
+		userAccount.setdCreate(new Date());
 		return userAccount;
 	}
 
@@ -159,11 +164,15 @@ public abstract class AbstractServiceTest {
 		return street;
 	}
 
-	protected Point createPoint() {
+	protected Point createPoint(String prefixName) {
 		Point point = new Point();
 		String pointName;
-		pointName = "" + randomInteger(1, 80);
-		int rand = randomInteger(1, 3);
+		if (prefixName == null) {
+			pointName = "" + randomInteger(1, 80);
+		} else {
+			pointName = prefixName;
+		}
+		int rand = randomInteger(1, 10);
 		if (rand == 1) {
 			pointName = pointName + randomString().substring(1, 1);
 		} else if (rand == 2) {
@@ -209,6 +218,6 @@ public abstract class AbstractServiceTest {
 		order.setOrderStatus(OrderStatus.ORDERSTATE_NEW);
 		order.setdCreate(new Date());
 		return order;
-
 	}
+
 }

@@ -36,8 +36,7 @@ public class PointServiceTest extends AbstractServiceTest {
 
 	@Before
 	public void cleanUpData() {
-		LOGGER
-				.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
+		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", pointService.getClass().getName());
 		dbUtils.cleanUpData();
 	}
 
@@ -58,7 +57,7 @@ public class PointServiceTest extends AbstractServiceTest {
 		LOGGER.debug("Created street, id = {}", createdStreet.getId());
 		// TODO check equals
 
-		Point point = createPoint();
+		Point point = createPoint(null);
 		pointService.create(point, createdStreet);
 		final Point createdPoint = pointService.get(point.getId());
 		Assert.assertNotNull(createdPoint);
@@ -79,7 +78,7 @@ public class PointServiceTest extends AbstractServiceTest {
 		streetService.create(firstStreet, firstCity);
 
 		final String pointName = "123/4";
-		final Point firstPoint = createPoint();
+		final Point firstPoint = createPoint(null);
 		firstPoint.setStreet(firstStreet);
 		pointService.create(firstPoint, firstStreet);
 		Assert.assertNotNull("The point not saved!", firstPoint.getId());
@@ -88,7 +87,7 @@ public class PointServiceTest extends AbstractServiceTest {
 		pointService.update(firstPoint);
 		Assert.assertEquals("Can't update street name!", firstPoint.getName(), pointName);
 
-		final Point secondPoint = createPoint();
+		final Point secondPoint = createPoint(null);
 		secondPoint.setName(pointName);
 		try {
 			pointService.create(secondPoint, firstStreet);

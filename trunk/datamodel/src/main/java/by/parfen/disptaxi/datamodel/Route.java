@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,7 +16,10 @@ public class Route {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Order.class)
+	@JoinColumn(name = "orders_id")
 	private Order order;
+	@Column
+	private Long routeOrder;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
 	private Point srcPoint;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
@@ -23,7 +27,7 @@ public class Route {
 	@Column
 	private Long estLength;
 	@Column
-	private Long factLenght;
+	private Long factLength;
 	@Column
 	private Long estTime;
 
@@ -41,6 +45,14 @@ public class Route {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public Long getRouteOrder() {
+		return routeOrder;
+	}
+
+	public void setRouteOrder(Long routeOrder) {
+		this.routeOrder = routeOrder;
 	}
 
 	public Point getSrcPoint() {
@@ -67,12 +79,12 @@ public class Route {
 		this.estLength = estLength;
 	}
 
-	public Long getFactLenght() {
-		return factLenght;
+	public Long getFactLength() {
+		return factLength;
 	}
 
-	public void setFactLenght(Long factLenght) {
-		this.factLenght = factLenght;
+	public void setFactLength(Long factLength) {
+		this.factLength = factLength;
 	}
 
 	public Long getEstTime() {

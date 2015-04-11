@@ -71,14 +71,14 @@ public class CarDaoImpl extends AbstractDaoImpl<Long, Car> implements CarDao {
 	public List<Car> getAllByRegNum(String regNum) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Car> root = cBuilder.createQuery(Car.class);
-		Root<Car> criteria = root.from(Car.class);
+		CriteriaQuery<Car> criteria = cBuilder.createQuery(Car.class);
+		Root<Car> root = criteria.from(Car.class);
 
-		root.select(criteria);
+		criteria.select(root);
 
-		root.where(cBuilder.equal(criteria.get(Car_.regNum), regNum));
+		criteria.where(cBuilder.equal(root.get(Car_.regNum), regNum));
 
-		TypedQuery<Car> query = getEm().createQuery(root);
+		TypedQuery<Car> query = getEm().createQuery(criteria);
 		List<Car> results = query.getResultList();
 		return results;
 	}

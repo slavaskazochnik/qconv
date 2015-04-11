@@ -72,14 +72,14 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<Long, UserProfile> imple
 	public List<UserProfile> getAllByFirstName(String firstName) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<UserProfile> root = cBuilder.createQuery(UserProfile.class);
-		Root<UserProfile> criteria = root.from(UserProfile.class);
+		CriteriaQuery<UserProfile> criteria = cBuilder.createQuery(UserProfile.class);
+		Root<UserProfile> root = criteria.from(UserProfile.class);
 
-		root.select(criteria);
+		criteria.select(root);
 
-		root.where(cBuilder.equal(criteria.get(UserProfile_.firstName), firstName));
+		criteria.where(cBuilder.equal(root.get(UserProfile_.firstName), firstName));
 
-		TypedQuery<UserProfile> query = getEm().createQuery(root);
+		TypedQuery<UserProfile> query = getEm().createQuery(criteria);
 		List<UserProfile> results = query.getResultList();
 		return results;
 	}
