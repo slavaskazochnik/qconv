@@ -31,7 +31,7 @@
 <colAssociation fkAssociation="BFBA4B1D-A05E-826E-172C-B66BA0D6CC8D" referredColumn="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
 </associations>
 </Column>
-<Column name="ORDERS_STATE_ID" id="0E9CF298-4359-60B4-C95D-B88690BD4DFF">
+<Column name="ORDER_STATUS" id="0E9CF298-4359-60B4-C95D-B88690BD4DFF">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:30:44 UTC</createdTime>
 <commentInRDBMS>Состояние заказа</commentInRDBMS>

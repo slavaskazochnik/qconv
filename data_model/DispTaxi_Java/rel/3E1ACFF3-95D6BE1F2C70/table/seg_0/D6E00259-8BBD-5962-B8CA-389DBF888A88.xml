@@ -31,7 +31,7 @@
 <colAssociation fkAssociation="3D4AF9C4-11A0-EE63-1246-E18276393810" referredColumn="EBA8D426-FB5D-F845-9148-D012485D9092"/>
 </associations>
 </Column>
-<Column name="APP_ROLE_ID" id="5CCD051A-7E1C-E706-A576-79FBFF560142">
+<Column name="APP_ROLE" id="5CCD051A-7E1C-E706-A576-79FBFF560142">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-07 00:08:44 UTC</createdTime>
 <commentInRDBMS>Роль</commentInRDBMS>
@@ -41,9 +41,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <delegate>6FCABD9F-B9BE-9A17-C92B-F03370FA3A80</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="B9F824C0-4F87-A5FE-B384-57DA3474AB2C" referredColumn="6FCABD9F-B9BE-9A17-C92B-F03370FA3A80"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -77,16 +74,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1F8917B2-3F0A-E721-4A44-E50E75D76AA9"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="B3D9E04C-AD32-D8C9-196C-26A8FCA476EF" name="USER_ROLE_APP_ROLE_FK">
-<createdBy>Slava</createdBy>
-<createdTime>2015-04-07 00:09:54 UTC</createdTime>
-<ownerDesignName>DispTaxi_Java</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="5CCD051A-7E1C-E706-A576-79FBFF560142"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
