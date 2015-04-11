@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.CarDao;
 import by.parfen.disptaxi.datamodel.Car;
+import by.parfen.disptaxi.datamodel.Car_;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.CarService;
 
 @Service
@@ -70,4 +72,11 @@ public class CarServiceImpl implements CarService {
 	public List<Car> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public List<Car> getAllByCarType(CarType carType) {
+		// return dao.getAllByCarType(carType);
+		return dao.getAllByFieldRestriction(Car_.carType, carType);
+	}
+
 }

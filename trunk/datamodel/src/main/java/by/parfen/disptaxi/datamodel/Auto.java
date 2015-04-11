@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Autos {
+@Table(name = "autos")
+public class Auto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

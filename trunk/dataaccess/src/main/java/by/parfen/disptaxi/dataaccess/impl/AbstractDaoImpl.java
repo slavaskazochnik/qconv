@@ -5,7 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -68,6 +71,17 @@ public abstract class AbstractDaoImpl<ID, Entity> implements AbstractDao<ID, Ent
 		query.from(getEntityClass());
 		final List<Entity> lst = em.createQuery(query).getResultList();
 		return lst;
+	}
+
+	@Override
+	public List<Entity> getAllByFieldRestriction(final SingularAttribute<? super Entity, ?> attribute, final Object value) {
+		Validate.notNull(value, "Search attributes can't be empty. Attribute: " + attribute.getName());
+		final CriteriaBuilder builder = em.getCriteriaBuilder();
+		final CriteriaQuery<Entity> criteria = builder.createQuery(getEntityClass());
+		final Root<Entity> root = criteria.from(getEntityClass());
+		criteria.select(root).distinct(true);
+		criteria.where(builder.equal(root.get(attribute), value));
+		return em.createQuery(criteria).getResultList();
 	}
 
 	@PersistenceContext

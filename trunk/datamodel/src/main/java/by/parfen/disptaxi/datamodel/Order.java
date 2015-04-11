@@ -10,13 +10,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 @Entity
-public class Orders {
+@Table(name = "orders")
+public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +28,9 @@ public class Orders {
 	private Customer customer;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Route.class)
 	private Route route;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Autos.class)
-	private Autos autos;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Auto.class)
+	@JoinColumn(name = "autos_id")
+	private Auto auto;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Price.class)
 	private Price price;
 	@Column
@@ -70,12 +74,12 @@ public class Orders {
 		this.route = route;
 	}
 
-	public Autos getAutos() {
-		return autos;
+	public Auto getAuto() {
+		return auto;
 	}
 
-	public void setAutos(Autos autos) {
-		this.autos = autos;
+	public void setAuto(Auto auto) {
+		this.auto = auto;
 	}
 
 	public OrderStatus getOrderStatus() {
@@ -132,6 +136,14 @@ public class Orders {
 
 	public void setdCreate(Date dCreate) {
 		this.dCreate = dCreate;
+	}
+
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
 	}
 
 }

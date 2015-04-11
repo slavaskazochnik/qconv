@@ -42,8 +42,7 @@ public class CarServiceTest extends AbstractServiceTest {
 
 	@Test
 	public void basicCRUDTest() {
-		Car car = createCar();
-		car.setCarType(CarType.CARTYPE_SEDAN);
+		Car car = createCar(CarType.CARTYPE_SEDAN);
 		carService.create(car);
 		Assert.assertNotNull(car.getId());
 

@@ -14,6 +14,8 @@ public class Route {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Order.class)
+	private Order order;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
 	private Point srcPoint;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
@@ -31,6 +33,14 @@ public class Route {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	public Point getSrcPoint() {

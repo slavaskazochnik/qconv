@@ -82,4 +82,5 @@ public class CarDaoImpl extends AbstractDaoImpl<Long, Car> implements CarDao {
 		List<Car> results = query.getResultList();
 		return results;
 	}
+
 }

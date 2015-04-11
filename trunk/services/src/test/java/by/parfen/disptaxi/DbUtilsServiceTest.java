@@ -5,12 +5,14 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.springframework.stereotype.Service;
 
-import by.parfen.disptaxi.services.AutosService;
+import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CarService;
 import by.parfen.disptaxi.services.CityService;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.services.DriverService;
+import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.services.PointService;
+import by.parfen.disptaxi.services.PriceService;
 import by.parfen.disptaxi.services.StreetService;
 import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.services.UserProfileService;
@@ -30,7 +32,7 @@ public class DbUtilsServiceTest {
 	private UserRoleService userRoleService;
 
 	@Inject
-	private AutosService autosService;
+	private AutoService autoService;
 	@Inject
 	private CarService carService;
 
@@ -41,9 +43,18 @@ public class DbUtilsServiceTest {
 	@Inject
 	private CityService cityService;
 
+	@Inject
+	private PriceService priceService;
+	@Inject
+	private OrderService orderService;
+
 	@Before
 	public void cleanUpData() {
-		autosService.deleteAll();
+
+		orderService.deleteAll();
+		priceService.deleteAll();
+
+		autoService.deleteAll();
 		carService.deleteAll();
 
 		driverService.deleteAll();
@@ -55,5 +66,6 @@ public class DbUtilsServiceTest {
 		pointService.deleteAll();
 		streetService.deleteAll();
 		cityService.deleteAll();
+
 	}
 }

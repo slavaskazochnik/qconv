@@ -13,4 +13,5 @@ public interface CarDao extends AbstractDao<Long, Car> {
 	List<Car> getAll(SingularAttribute<Car, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 	List<Car> getAllByRegNum(String regNum);
+
 }

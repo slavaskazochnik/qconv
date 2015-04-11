@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.AbstractServiceTest;
 import by.parfen.disptaxi.DbUtilsServiceTest;
-import by.parfen.disptaxi.datamodel.Autos;
+import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.UserProfile;
@@ -21,12 +21,12 @@ import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
-public class AutosServiceTest extends AbstractServiceTest {
+public class AutoServiceTest extends AbstractServiceTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AutosServiceTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AutoServiceTest.class);
 
 	@Inject
-	private AutosService autosService;
+	private AutoService autoService;
 	@Inject
 	private CarService carService;
 	@Inject
@@ -39,14 +39,13 @@ public class AutosServiceTest extends AbstractServiceTest {
 
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of AutosService is injected. Class is: {}", autosService.getClass().getName());
+		LOGGER.info("Instance of AutosService is injected. Class is: {}", autoService.getClass().getName());
 		dbUtils.cleanUpData();
 	}
 
 	@Test
 	public void basicCRUDTest() {
-		final Car car = createCar();
-		car.setCarType(CarType.CARTYPE_SEDAN);
+		final Car car = createCar(CarType.CARTYPE_SEDAN);
 		carService.create(car);
 
 		final UserProfile userProfile = createUserProfile();
@@ -63,11 +62,11 @@ public class AutosServiceTest extends AbstractServiceTest {
 
 		final Driver createdDriver = driverService.get(createdProfile.getId());
 
-		final Autos autos = createAutos();
-		autos.setDriver(createdDriver);
-		autosService.create(autos, car);
+		final Auto auto = createAuto();
+		auto.setDriver(createdDriver);
+		autoService.create(auto, car);
 
-		Autos autosFromDb = autosService.get(autos.getId());
+		Auto autosFromDb = autoService.get(auto.getId());
 		Assert.assertNotNull(autosFromDb);
 		// TODO check other fields
 

@@ -26,7 +26,7 @@ public abstract class AbstractEntity {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		UserProfile other = (UserProfile) obj;
+		AbstractEntity other = (AbstractEntity) obj;
 		if (getId() == null) {
 			if (other.getId() != null) {
 				return false;
