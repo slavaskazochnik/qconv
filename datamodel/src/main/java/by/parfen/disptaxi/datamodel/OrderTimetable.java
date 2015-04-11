@@ -4,10 +4,10 @@ import java.util.Date;
 
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
-public class OrdersTimetable extends AbstractEntity {
+public class OrderTimetable extends AbstractEntity {
 
 	private Long id;
-	private Orders orders;
+	private Order order;
 	// @Column
 	// @Enumerated(EnumType.ORDINAL)
 	private OrderStatus orderStatus;
@@ -21,12 +21,12 @@ public class OrdersTimetable extends AbstractEntity {
 		this.id = id;
 	}
 
-	public Orders getOrders() {
-		return orders;
+	public Order getOrders() {
+		return order;
 	}
 
-	public void setOrders(Orders orders) {
-		this.orders = orders;
+	public void setOrders(Order order) {
+		this.order = order;
 	}
 
 	public OrderStatus getOrderStatus() {

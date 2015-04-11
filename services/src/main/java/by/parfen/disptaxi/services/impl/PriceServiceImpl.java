@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.PriceDao;
 import by.parfen.disptaxi.datamodel.Price;
+import by.parfen.disptaxi.datamodel.Price_;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.PriceService;
 
@@ -80,7 +81,7 @@ public class PriceServiceImpl implements PriceService {
 
 	@Override
 	public List<Price> getAllByCarType(CarType carType) {
-		return dao.getAllByCarType(carType);
+		return dao.getAllByFieldRestriction(Price_.carType, carType);
 	}
 
 }

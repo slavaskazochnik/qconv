@@ -4,29 +4,30 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 
-public interface CarService {
+public interface AutoService {
 
-	Car get(Long id);
-
-	@Transactional
-	void create(Car car);
+	Auto get(Long id);
 
 	@Transactional
-	void update(Car car);
+	void create(Auto auto, Car car);
 
 	@Transactional
-	void delete(Car car);
+	void update(Auto auto);
+
+	@Transactional
+	void delete(Auto auto);
 
 	@Transactional
 	void deleteAll();
 
 	Long getCount();
 
-	List<Car> getAll();
+	List<Auto> getAll();
 
-	List<Car> getAllByCarType(CarType carType);
+	List<Auto> getAllByCarType(CarType carType);
 
 }

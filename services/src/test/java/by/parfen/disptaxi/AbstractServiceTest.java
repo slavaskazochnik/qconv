@@ -15,11 +15,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import by.parfen.disptaxi.datamodel.Autos;
+import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Street;
@@ -27,6 +28,8 @@ import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -132,14 +135,15 @@ public abstract class AbstractServiceTest {
 
 	protected Driver createDriver() {
 		final Driver driver = new Driver();
-		driver.setSignActive(0L);
+		driver.setSignActive(1L);
 		driver.setdCreate(new Date());
 		return driver;
 	}
 
 	protected Customer createCustomer() {
 		final Customer customer = new Customer();
-		customer.setSignActive(0L);
+		customer.setSignActive(1L);
+		customer.setdCreate(new Date());
 		return customer;
 	}
 
@@ -173,28 +177,38 @@ public abstract class AbstractServiceTest {
 		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-" + randomInteger(1, 7);
 	}
 
-	protected Car createCar() {
+	protected Car createCar(CarType carType) {
 		Car car = new Car();
+		car.setCarType(carType);
 		car.setRegNum(getRandomRegNum());
 		car.setSeatsQuan(randomLong(1L, 12L));
 		return car;
 	}
 
-	protected Autos createAutos() {
-		Autos autos = new Autos();
-		autos.setdCreate(new Date());
-		autos.setrRoute(randomLong(10L, 20L));
-		autos.setrWaiting(randomLong(3L, 10L));
-		return autos;
+	protected Auto createAuto() {
+		Auto auto = new Auto();
+		auto.setdCreate(new Date());
+		auto.setrRoute(randomLong(10L, 20L));
+		auto.setrWaiting(randomLong(3L, 10L));
+		return auto;
 	}
 
-	protected Price createPrice() {
+	protected Price createPrice(CarType carType) {
 		Price price = new Price();
 		price.setCostBefore(randomLong(5000L, 10000L));
 		price.setCostKm(randomLong(5000L, 10000L));
 		price.setdBegin(new Date());
-		price.setCarType(CarType.CARTYPE_SEDAN);
+		price.setCarType(carType);
 		price.setCostForWaiting(randomLong(1000L, 10000L));
 		return price;
+	}
+
+	protected Order createOrder() {
+		Order order = new Order();
+		order.setOrderResult(OrderResult.ORDERRESULT_NONE);
+		order.setOrderStatus(OrderStatus.ORDERSTATE_NEW);
+		order.setdCreate(new Date());
+		return order;
+
 	}
 }

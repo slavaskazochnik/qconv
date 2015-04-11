@@ -13,8 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.PriceDao;
 import by.parfen.disptaxi.datamodel.Price;
-import by.parfen.disptaxi.datamodel.Price_;
-import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @Repository
 public class PriceDaoImpl extends AbstractDaoImpl<Long, Price> implements PriceDao {
@@ -68,19 +66,4 @@ public class PriceDaoImpl extends AbstractDaoImpl<Long, Price> implements PriceD
 		return results;
 	}
 
-	@Override
-	public List<Price> getAllByCarType(CarType carType) {
-		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-
-		CriteriaQuery<Price> root = cBuilder.createQuery(Price.class);
-		Root<Price> criteria = root.from(Price.class);
-
-		root.select(criteria);
-
-		root.where(cBuilder.equal(criteria.get(Price_.carType), carType));
-
-		TypedQuery<Price> query = getEm().createQuery(root);
-		List<Price> results = query.getResultList();
-		return results;
-	}
 }
