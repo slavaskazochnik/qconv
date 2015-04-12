@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.OrderDao;
+import by.parfen.disptaxi.datamodel.Customer;
+import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.services.OrderService;
 
@@ -70,15 +72,34 @@ public class OrderServiceImpl implements OrderService {
 		return dao.getAll();
 	}
 
-	// @Override
-	// public List<Orders> getAllByDriverId(Long Id) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-
 	@Override
 	public List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize) {
 		return dao.getAll(attr, ascending, startRecord, pageSize);
+	}
+
+	@Override
+	public List<Order> getAllByDriver(Driver driver) {
+		return dao.getAllByDriver(driver);
+	}
+
+	@Override
+	public List<Order> getAllByCustomer(Customer customer) {
+		return dao.getAllByCustomer(customer);
+	}
+
+	@Override
+	public Driver getOrderDriver(Order order) {
+		return dao.getOrderDriver(order);
+	}
+
+	@Override
+	public Long calcOrderPrice(Order order) {
+		Long result = 0L;
+		// simple calc by km
+		// TODO
+		// must add OrderTimetable info
+		result = order.getRouteLength() * order.getPrice().getCostKm();
+		return result;
 	}
 
 }

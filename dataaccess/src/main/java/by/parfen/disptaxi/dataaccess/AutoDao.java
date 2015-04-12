@@ -14,4 +14,8 @@ public interface AutoDao extends AbstractDao<Long, Auto> {
 	List<Auto> getAll(SingularAttribute<Auto, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 	List<Auto> getAllByCarType(CarType carType);
+
+	List<Auto> getAllActive();
+
+	List<Auto> getAllActiveByCarType(CarType carType);
 }

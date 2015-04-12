@@ -30,4 +30,8 @@ public interface AutoService {
 
 	List<Auto> getAllByCarType(CarType carType);
 
+	List<Auto> getAllActive();
+
+	List<Auto> getAllActiveByCarType(CarType carType);
+
 }

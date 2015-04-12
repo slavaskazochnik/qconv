@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import by.parfen.disptaxi.datamodel.Point;
+import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Route;
 
 public interface RouteService {
@@ -12,7 +12,8 @@ public interface RouteService {
 	Route get(Long id);
 
 	@Transactional
-	void create(Route route, Point srcPoint, Point dstPoint);
+	// void create(Route route, Point srcPoint, Point dstPoint);
+	void create(Route route);
 
 	@Transactional
 	void update(Route route);
@@ -26,5 +27,7 @@ public interface RouteService {
 	Long getCount();
 
 	List<Route> getAll();
+
+	List<Route> getAllByOrder(Order order);
 
 }
