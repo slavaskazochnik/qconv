@@ -1,11 +1,13 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
@@ -18,6 +20,7 @@ import by.parfen.disptaxi.datamodel.Auto_;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.Car_;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.enums.SignActive;
 
 @Repository
 public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao {
@@ -71,14 +74,23 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 		return results;
 	}
 
-	@Override
-	public List<Auto> getAllByCarType(CarType carType) {
+	private List<Auto> getAll(CarType carType, SignActive signActive) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
 		Root<Auto> root = criteria.from(Auto.class);
 		Join<Auto, Car> details = root.join(Auto_.car);
-		criteria.where(cBuilder.equal(details.get(Car_.carType), carType));
+
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (carType != null) {
+			predicates.add(cBuilder.equal(details.get(Car_.carType), carType));
+		}
+		if (signActive != null) {
+			predicates.add(cBuilder.equal(root.get(Auto_.signActive), signActive));
+		}
+		if (predicates.size() > 1) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
 
 		criteria.select(root);
 		criteria.orderBy(cBuilder.asc(details.get(Car_.carType)));
@@ -87,6 +99,35 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 
 		List<Auto> results = query.getResultList();
 		return results;
+	}
+
+	@Override
+	public List<Auto> getAllByCarType(CarType carType) {
+		return getAll(carType, null);
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
+		// Root<Auto> root = criteria.from(Auto.class);
+		// Join<Auto, Car> details = root.join(Auto_.car);
+		// criteria.where(cBuilder.equal(details.get(Car_.carType), carType));
+		//
+		// criteria.select(root);
+		// criteria.orderBy(cBuilder.asc(details.get(Car_.carType)));
+		//
+		// TypedQuery<Auto> query = getEm().createQuery(criteria);
+		//
+		// List<Auto> results = query.getResultList();
+		// return results;
+	}
+
+	@Override
+	public List<Auto> getAllActiveByCarType(CarType carType) {
+		return getAll(carType, SignActive.SIGNACTIVE_YES);
+	}
+
+	@Override
+	public List<Auto> getAllActive() {
+		return getAll(null, SignActive.SIGNACTIVE_YES);
 	}
 
 }

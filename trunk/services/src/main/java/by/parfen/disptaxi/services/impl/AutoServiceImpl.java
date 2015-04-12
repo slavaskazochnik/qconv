@@ -79,4 +79,14 @@ public class AutoServiceImpl implements AutoService {
 		return dao.getAllByCarType(carType);
 	}
 
+	@Override
+	public List<Auto> getAllActive() {
+		return dao.getAllActive();
+	}
+
+	@Override
+	public List<Auto> getAllActiveByCarType(CarType carType) {
+		return dao.getAllActiveByCarType(carType);
+	}
+
 }

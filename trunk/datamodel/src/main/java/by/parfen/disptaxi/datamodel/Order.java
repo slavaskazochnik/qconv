@@ -136,4 +136,11 @@ public class Order {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderStatus=" + orderStatus + ", orderResult=" + orderResult + ", routeLength="
+				+ routeLength + ", orderPrice=" + orderPrice + ", customerRating=" + customerRating + ", driverRating="
+				+ driverRating + ", dCreate=" + dCreate + "]";
+	}
+
 }

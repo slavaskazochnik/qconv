@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -218,6 +219,15 @@ public abstract class AbstractServiceTest {
 		order.setOrderStatus(OrderStatus.ORDERSTATE_NEW);
 		order.setdCreate(new Date());
 		return order;
+	}
+
+	protected <E> E getRandomListElement(List<E> list) {
+		E result = list.get(0);
+		if (list.size() > 0) {
+			int index = randomInteger(0, list.size() - 1);
+			result = list.get(index);
+		}
+		return result;
 	}
 
 }

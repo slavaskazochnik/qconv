@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.RouteDao;
-import by.parfen.disptaxi.datamodel.Point;
+import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.services.RouteService;
 
@@ -36,14 +36,21 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public void create(Route route, Point srcPoint, Point dstPoint) {
+	public void create(Route route) {
 		Validate.isTrue(route.getId() == null,
 				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
-		route.setSrcPoint(srcPoint);
-		route.setDstPoint(dstPoint);
 		LOGGER.debug("Insert: {}", route);
 		dao.insert(route);
 	}
+
+	// public void create(Route route, Point srcPoint, Point dstPoint) {
+	// Validate.isTrue(route.getId() == null,
+	// "This method should be called for 'not saved yet' record only. Use UPDATE instead");
+	// route.setSrcPoint(srcPoint);
+	// route.setDstPoint(dstPoint);
+	// LOGGER.debug("Insert: {}", route);
+	// dao.insert(route);
+	// }
 
 	@Override
 	public void update(Route route) {
@@ -72,4 +79,10 @@ public class RouteServiceImpl implements RouteService {
 	public List<Route> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public List<Route> getAllByOrder(Order order) {
+		return dao.getAllByOrder(order);
+	}
+
 }

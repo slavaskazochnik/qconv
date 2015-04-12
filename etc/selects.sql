@@ -1,13 +1,19 @@
-select * from test.app_role a;
-select * from test.user_account u;
-select * from test.user_role u;
-select * from test.user_profile u;
+select count(*) over (), * from test.user_role;
+select count(*) over (), * from test.user_account;
 
-select * from test.car c;
-select * from test.driver d;
-select * from test.customer c;
+select count(*) over (), * from test.user_profile;
+select count(*) over (), * from test.customer;
+select count(*) over (), * from test.driver d;
+select count(*) over (), * from test.car;
+select count(*) over (), * from test.autos a;
+select count(*) over (), * from test.price;
+select count(*) over (), * from test.orders o;
 
-select * from test.city c;
-select * from test.street s;
+select count(*) over (), * from test.city;
+select count(*) over (), * from test.street;
+select count(*) over (), * from test.point;
 
-select * from test.point s;
+select * from test.autos a join test.car c on (a.car_id = c.id) where a.sign_active = 1 and c.car_type = 0;
+
+select count(*) over (), * from test.route;
+select d.* from test.orders o join test.autos a on (a.id = o.autos_id) join test.driver d on (d.id = a.driver_id);
