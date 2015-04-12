@@ -5,7 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
@@ -31,6 +35,8 @@ import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.services.UserProfileService;
 import by.parfen.disptaxi.services.UserRoleService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring-context.xml" })
 @Service
 public class DbUtilsServiceTest extends AbstractServiceTest {
 	@Inject
@@ -199,4 +205,8 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 		priceService.create(createPrice(CarType.CARTYPE_VAN));
 	}
 
+	@Test
+	public void runTest() {
+		cleanUpData();
+	}
 }
