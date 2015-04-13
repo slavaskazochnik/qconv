@@ -109,6 +109,11 @@ public class OrderServiceTest extends AbstractServiceTest {
 		dbUtils.CreateBulkDataForRoute();
 		dbUtils.CreateBulkDataForOrders();
 
+		createOrderWithRoute();
+
+	}
+
+	private void createOrderWithRoute() {
 		final List<Customer> customers = customerService.getAll();
 		Assert.assertTrue("Can't find any customer!", customers.size() > 0);
 		final Customer customer = getRandomListElement(customers);
@@ -128,11 +133,13 @@ public class OrderServiceTest extends AbstractServiceTest {
 		final Price price = getRandomListElement(prices);
 
 		// TODO
-		// 1) Create Route
-		// 2) Lookup Auto
+		// ---- 1) Create Route
+		// DONE 2) Lookup Auto
 		// But now:
-		// 1) Choose Active Auto without radius limitations
-		// 2) Create Route
+		// 1) Choose any active Auto without radius limitations
+		// 2) Create Route with 1 path (srcPoint, dstPoint)
+
+		// Choose any active Auto without radius limitations
 		final List<Auto> autos = autoService.getAllActiveByCarType(carType);
 		Assert.assertTrue("Can't find any car!", autos.size() > 0);
 		final Auto auto = getRandomListElement(autos);
@@ -144,11 +151,18 @@ public class OrderServiceTest extends AbstractServiceTest {
 		orderService.create(order);
 
 		final Route route = createRoute();
+		route.setPointIndex(1L);
 		route.setOrder(order);
 		route.setEstLength(randomLong(1L, 20L));
 		// (time to get in and out of the car) + LengthKm * SpeedPerMinute
 		route.setEstTime(randomLong(5L, 10L) + route.getEstLength() * randomInteger(30, 60) / 60);
 		routeService.create(route);
+
+		// Lookup cars by Geo data
+		Point srcPoint = route.getSrcPoint();
+		List<Auto> carsByGeo = autoService.getAllActiveByCarTypeAndGeo(carType, srcPoint.getPositionLat(),
+				srcPoint.getPositionLng());
+		LOGGER.debug("Founed by geo cars count: {}", carsByGeo.size());
 
 		// calc price
 		final List<Route> routes = routeService.getAllByOrder(order);
@@ -182,6 +196,5 @@ public class OrderServiceTest extends AbstractServiceTest {
 			Order fetchedOrder = orderService.get(dOrder.getId());
 			LOGGER.debug("Order: {}", fetchedOrder);
 		}
-
 	}
 }

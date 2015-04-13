@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.AutoService;
+import by.parfen.disptaxi.services.utils.GeoService;
 
 @Service
 public class AutoServiceImpl implements AutoService {
@@ -87,6 +89,25 @@ public class AutoServiceImpl implements AutoService {
 	@Override
 	public List<Auto> getAllActiveByCarType(CarType carType) {
 		return dao.getAllActiveByCarType(carType);
+	}
+
+	@Override
+	public List<Auto> getAllActiveByCarTypeAndGeo(CarType carType, String lat, String lng) {
+		List<Auto> autos = getAllActiveByCarType(carType);
+		if (lat != null && lng != null) {
+			GeoService gs = new GeoService();
+			Iterator<Auto> iterator = autos.iterator();
+			while (iterator.hasNext()) {
+				Auto auto = iterator.next();
+				if (auto.getrWaiting() > 0) {
+					double distance = gs.getGeoDistance(auto.getPositionLat(), auto.getPositionLng(), lat, lng) / 1000;
+					if (distance > auto.getrWaiting()) {
+						iterator.remove();
+					}
+				}
+			}
+		}
+		return autos;
 	}
 
 }

@@ -10,6 +10,8 @@ http://map.by/map/getHomeNumberCoordinates/{:city}/{:street}/{:home_number}
 
 В случае успеха сервис вернет JSON код в виде: 
 {"status":"found","coord":{"x":"27.6322527619593","y":"53.9172801329902"}}
+X - longitude
+Y - latitude
 
 REQUEST
 http://map.by/map/getHomeNumberCoordinates/Минск/Филимонова/25
@@ -18,3 +20,6 @@ RESPONSE
 
 http://map.by/map/getHomeNumberCoordinates/Гродно/Клецкова/40
 {"status":"found","coordinates":{"x":"23.8434917538399","y":"53.6504820694604"}}
+
+http://map.by/map/getHomeNumberCoordinates/Гродно/Космонавтов/100
+{"status":"found","coordinates":{"x":"23.8826319275965","y":"53.6732788076222"}}

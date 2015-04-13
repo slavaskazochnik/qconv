@@ -33,7 +33,7 @@
 <colAssociation fkAssociation="65BC0CF4-FBBD-C847-AED2-AAD26A914668" referredColumn="45E16766-75B9-6EAD-1D9E-0066D2559CE6"/>
 </associations>
 </Column>
-<Column name="ROUTE_ORDER" id="0FA46655-85A7-8866-2AF5-87915D097044">
+<Column name="POINT_INDEX" id="0FA46655-85A7-8866-2AF5-87915D097044">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-11 20:52:39 UTC</createdTime>
 <commentInRDBMS>Порядок следования пунктов</commentInRDBMS>

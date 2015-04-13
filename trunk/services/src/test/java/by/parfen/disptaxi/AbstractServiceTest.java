@@ -128,7 +128,8 @@ public abstract class AbstractServiceTest {
 	protected UserAccount createUserAccount() {
 		final UserAccount userAccount = new UserAccount();
 		userAccount.setName(randomString("login-"));
-		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
+		userAccount
+				.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
 		userAccount.setdCreate(new Date());
 		return userAccount;
@@ -184,7 +185,8 @@ public abstract class AbstractServiceTest {
 	}
 
 	protected String getRandomRegNum() {
-		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-" + randomInteger(1, 7);
+		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-"
+				+ randomInteger(1, 7);
 	}
 
 	protected Car createCar(CarType carType) {
@@ -200,6 +202,8 @@ public abstract class AbstractServiceTest {
 		auto.setdCreate(new Date());
 		auto.setrRoute(randomLong(10L, 20L));
 		auto.setrWaiting(randomLong(3L, 10L));
+		auto.setPositionLat(getRandomLat());
+		auto.setPositionLng(getRandomLng());
 		return auto;
 	}
 
@@ -230,4 +234,26 @@ public abstract class AbstractServiceTest {
 		return result;
 	}
 
+	private double getRandomDouble(final double lower, final double upper) {
+		final double result = lower + (upper - lower) * random.nextDouble();
+		return result;
+	}
+
+	private String getRandomGeo(final double lower, final double upper) {
+		double result = getRandomDouble(lower, upper);
+		result = Math.round(result * Math.pow(10, 6)) / Math.pow(10, 6);
+		return Double.toString(result);
+	}
+
+	protected String getRandomLat() {
+		final double lower = 23.730624;
+		final double upper = 23.883176;
+		return getRandomGeo(lower, upper);
+	}
+
+	protected String getRandomLng() {
+		final double lower = 53.603905;
+		final double upper = 53.751686;
+		return getRandomGeo(lower, upper);
+	}
 }

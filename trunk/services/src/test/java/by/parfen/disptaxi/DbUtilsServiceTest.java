@@ -128,7 +128,10 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 		for (Street street : streets) {
 			int pointsQuan = randomInteger(1, maxPointsQuan);
 			for (i = 1; i <= pointsQuan; i++) {
-				pointService.create(createPoint("" + i), street);
+				Point point = createPoint("" + i);
+				point.setPositionLat(getRandomLat());
+				point.setPositionLng(getRandomLng());
+				pointService.create(point, street);
 			}
 			List<Point> points = pointService.getAllByStreet(street);
 			Assert.assertTrue("Number of created points is different form planned!", points.size() == pointsQuan);
@@ -147,7 +150,7 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 	public void CreateBulkDataForOrders() {
 		int i;
 		final int maxProfilesQuan = 20;
-		final int maxCarsQuan = 20;
+		final int maxCarsQuan = 50;
 
 		// Create UserProfile
 		int profilesQuan = randomInteger(3, maxProfilesQuan);
@@ -155,7 +158,8 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 			userProfileService.saveOrUpdate(createUserProfile());
 		}
 		final List<UserProfile> userProfiles = userProfileService.getAll();
-		Assert.assertTrue("Number of created users is different form planned!", userProfiles.size() == profilesQuan);
+		Assert.assertTrue("Number of created users is different form planned!",
+				userProfiles.size() == profilesQuan);
 
 		// Create Customers and Drivers
 		for (UserProfile userProfile : userProfiles) {
@@ -192,6 +196,8 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 			Driver driver = drivers.get(randomInteger(0, drivers.size() - 1));
 			Auto auto = createAuto();
 			auto.setDriver(driver);
+			auto.setPositionLat(getRandomLat());
+			auto.setPositionLng(getRandomLng());
 			int sign = randomInteger(0, 1);
 			SignActive signActive = SignActive.SIGNACTIVE_YES;
 			if (sign == 0) {
