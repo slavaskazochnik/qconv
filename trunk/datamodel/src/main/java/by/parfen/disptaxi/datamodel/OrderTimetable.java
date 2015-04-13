@@ -2,15 +2,34 @@ package by.parfen.disptaxi.datamodel;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
+@Entity
+@Table(name = "orders_timetable")
 public class OrderTimetable extends AbstractEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Order.class)
+	@JoinColumn(name = "orders_id")
 	private Order order;
-	// @Column
-	// @Enumerated(EnumType.ORDINAL)
+	@Column
+	@Enumerated(EnumType.ORDINAL)
 	private OrderStatus orderStatus;
+	@Column
 	private Date dCreate;
 
 	public Long getId() {
@@ -21,11 +40,11 @@ public class OrderTimetable extends AbstractEntity {
 		this.id = id;
 	}
 
-	public Order getOrders() {
+	public Order getOrder() {
 		return order;
 	}
 
-	public void setOrders(Order order) {
+	public void setOrder(Order order) {
 		this.order = order;
 	}
 
@@ -43,6 +62,11 @@ public class OrderTimetable extends AbstractEntity {
 
 	public void setdCreate(Date dCreate) {
 		this.dCreate = dCreate;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderTimetable [id=" + id + ", orderStatus=" + orderStatus + ", dCreate=" + dCreate + "]";
 	}
 
 }

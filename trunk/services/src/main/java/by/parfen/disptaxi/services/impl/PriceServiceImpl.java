@@ -28,7 +28,7 @@ public class PriceServiceImpl implements PriceService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of CarService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of PriceService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class PriceServiceImpl implements PriceService {
 	@Override
 	public void create(Price price) {
 		Validate.isTrue(price.getId() == null,
-				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
 		LOGGER.debug("Insert: {}", price);
 		dao.insert(price);
 	}
@@ -59,7 +59,7 @@ public class PriceServiceImpl implements PriceService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all cars");
+		LOGGER.debug("Remove all prices");
 		dao.deleteAll();
 
 	}

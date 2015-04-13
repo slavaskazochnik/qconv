@@ -53,8 +53,7 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	}
 
 	@Override
-	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord,
-			int pageSize) {
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
@@ -83,14 +82,16 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 			predicates.add(cBuilder.equal(root.get(Street_.city), city));
 		}
 		if (name != null) {
-			predicates.add(cBuilder.equal(root.get(Street_.name), name));
+			// predicates.add(cBuilder.equal(root.get(Street_.name), name));
+			predicates.add(cBuilder.like(root.get(Street_.name), name));
 		}
-		if (predicates.size() > 1) {
+		if (predicates.size() > 0) {
 			criteria.where(predicates.toArray(new Predicate[] {}));
 		}
 
 		criteria.select(root);
-		criteria.where(cBuilder.equal(root.get(Street_.city), city));
+		// criteria.where(cBuilder.equal(root.get(Street_.city), city));
+		criteria.orderBy(cBuilder.asc(root.get(Street_.name)));
 
 		TypedQuery<Street> query = getEm().createQuery(criteria);
 		List<Street> results = query.getResultList();
@@ -100,33 +101,12 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	@Override
 	public List<Street> getAllByName(String name) {
 		List<Street> results = getAllByCityAndName(null, name);
-		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-		//
-		// CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
-		// Root<Street> root = criteria.from(Street.class);
-		//
-		// criteria.select(root);
-		//
-		// criteria.where(cBuilder.equal(root.get(Street_.name), name));
-		//
-		// TypedQuery<Street> query = getEm().createQuery(criteria);
-		// List<Street> results = query.getResultList();
 		return results;
 	}
 
 	@Override
 	public List<Street> getAllByCity(City city) {
 		List<Street> results = getAllByCityAndName(city, null);
-		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-		//
-		// CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
-		// Root<Street> root = criteria.from(Street.class);
-		//
-		// criteria.select(root);
-		// criteria.where(cBuilder.equal(root.get(Street_.city), city));
-		//
-		// TypedQuery<Street> query = getEm().createQuery(criteria);
-		// List<Street> results = query.getResultList();
 		return results;
 	}
 

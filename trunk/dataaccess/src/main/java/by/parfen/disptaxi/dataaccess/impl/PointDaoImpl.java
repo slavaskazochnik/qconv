@@ -1,10 +1,12 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
@@ -37,17 +39,43 @@ public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointD
 	}
 
 	@Override
-	public List<Point> getAll() {
+	public List<Point> getAllByStreetAndName(Street street, String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
 		Root<Point> root = criteria.from(Point.class);
+
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (street != null) {
+			predicates.add(cBuilder.equal(root.get(Point_.street), street));
+		}
+		if (name != null) {
+			predicates.add(cBuilder.like(root.get(Point_.name), name));
+		}
+		if (predicates.size() > 0) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
 
 		criteria.select(root);
 
 		TypedQuery<Point> query = getEm().createQuery(criteria);
 		List<Point> results = query.getResultList();
 		return results;
+	}
+
+	@Override
+	public List<Point> getAll() {
+		return getAllByStreetAndName(null, null);
+	}
+
+	@Override
+	public List<Point> getAllByName(String name) {
+		return getAllByStreetAndName(null, name);
+	}
+
+	@Override
+	public List<Point> getAllByStreet(Street street) {
+		return getAllByStreetAndName(street, null);
 	}
 
 	@Override
@@ -64,37 +92,6 @@ public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointD
 		query.setFirstResult(startRecord);
 		query.setMaxResults(pageSize);
 
-		List<Point> results = query.getResultList();
-		return results;
-	}
-
-	@Override
-	public List<Point> getAllByName(String name) {
-		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-
-		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
-		Root<Point> root = criteria.from(Point.class);
-
-		criteria.select(root);
-
-		criteria.where(cBuilder.equal(root.get(Point_.name), name));
-
-		TypedQuery<Point> query = getEm().createQuery(criteria);
-		List<Point> results = query.getResultList();
-		return results;
-	}
-
-	@Override
-	public List<Point> getAllByStreet(Street street) {
-		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-
-		CriteriaQuery<Point> criteria = cBuilder.createQuery(Point.class);
-		Root<Point> root = criteria.from(Point.class);
-		criteria.where(cBuilder.equal(root.get(Point_.street), street));
-
-		criteria.select(root);
-
-		TypedQuery<Point> query = getEm().createQuery(criteria);
 		List<Point> results = query.getResultList();
 		return results;
 	}

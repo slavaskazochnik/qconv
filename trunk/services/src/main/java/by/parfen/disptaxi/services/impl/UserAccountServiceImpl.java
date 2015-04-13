@@ -26,7 +26,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of UserProfileService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of UserAccountService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all user userRoles");
+		LOGGER.debug("Remove all user user accounts");
 		dao.deleteAll();
 	}
 

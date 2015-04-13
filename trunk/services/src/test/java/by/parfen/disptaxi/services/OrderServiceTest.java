@@ -25,6 +25,8 @@ import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -32,6 +34,8 @@ public class OrderServiceTest extends AbstractServiceTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceTest.class);
 
+	// @Inject
+	// private OrderTimetableService orderTimetableService;
 	@Inject
 	private OrderService orderService;
 	@Inject
@@ -166,35 +170,54 @@ public class OrderServiceTest extends AbstractServiceTest {
 
 		// calc price
 		final List<Route> routes = routeService.getAllByOrder(order);
-		Assert.assertTrue("Can't find any car!", routes.size() > 0);
+		if (routes.size() > 0) {
+			order.setRouteLength(randomLong(3L, 20L));
+			order.setOrderPrice(orderService.calcOrderPrice(order));
+			orderService.update(order);
 
-		order.setRouteLength(randomLong(3L, 20L));
-		order.setOrderPrice(orderService.calcOrderPrice(order));
-		orderService.update(order);
+			// calc price by Estimated values
+			// order.setRouteLength(0L);
+			// order.setOrderPrice(orderService.calcOrderPrice(order));
+			// orderService.update(order);
 
-		// calc price by Estimated values
-		// order.setRouteLength(0L);
-		// order.setOrderPrice(orderService.calcOrderPrice(order));
-		// orderService.update(order);
+			final List<Order> customerOrders = orderService.getAllByCustomer(customer);
+			Assert.assertTrue("Can't find any order for customer!", customerOrders.size() > 0);
+			LOGGER.debug("Customer orders count: {}", customerOrders.size());
+			for (Order cOrder : customerOrders) {
+				Order fetchedOrder = orderService.get(cOrder.getId());
+				LOGGER.debug("Order: {}", fetchedOrder);
+			}
 
-		final List<Order> customerOrders = orderService.getAllByCustomer(customer);
-		Assert.assertTrue("Can't find any order for customer!", customerOrders.size() > 0);
-		LOGGER.debug("Customer orders count: {}", customerOrders.size());
-		for (Order cOrder : customerOrders) {
-			Order fetchedOrder = orderService.get(cOrder.getId());
-			LOGGER.debug("Order: {}", fetchedOrder);
-		}
+			final Driver driver = orderService.getOrderDriver(order);
+			Assert.assertTrue("Can't find any driver in order!", driver != null);
+			LOGGER.debug("Order driver, id: {}", driver.getId());
 
-		final Driver driver = orderService.getOrderDriver(order);
-		Assert.assertTrue("Can't find any driver in order!", driver != null);
-		LOGGER.debug("Order driver, id: {}", driver.getId());
+			final List<Order> driverOrders = orderService.getAllByDriver(driver);
+			Assert.assertTrue("Can't find any order for driver!", driverOrders.size() > 0);
+			LOGGER.debug("Driver orders count: {}", driverOrders.size());
+			for (Order dOrder : driverOrders) {
+				Order fetchedOrder = orderService.get(dOrder.getId());
+				LOGGER.debug("Order: {}", fetchedOrder);
+			}
 
-		final List<Order> driverOrders = orderService.getAllByDriver(driver);
-		Assert.assertTrue("Can't find any order for driver!", driverOrders.size() > 0);
-		LOGGER.debug("Driver orders count: {}", driverOrders.size());
-		for (Order dOrder : driverOrders) {
-			Order fetchedOrder = orderService.get(dOrder.getId());
-			LOGGER.debug("Order: {}", fetchedOrder);
+			OrderStatus orderStatus = OrderStatus.ORDERSTATE_NEW;
+			// manual insert
+			// final OrderTimetable orderTimetable = new OrderTimetable();
+			// orderTimetable.setOrder(order);
+			// orderTimetable.setOrderStatus(orderStatus);
+			// orderTimetableService.create(orderTimetable);
+
+			// auto insert
+			orderService.changeOrderStatus(order, orderStatus);
+			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ACCEPTED);
+			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ARRIVED);
+			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ON_WAY);
+			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_DONE);
+
+			order.setOrderResult(OrderResult.ORDERRESUT_OK);
+			orderService.update(order);
+		} else {
+			LOGGER.debug("Sorry, we can't find any car now!");
 		}
 	}
 }

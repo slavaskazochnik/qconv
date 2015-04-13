@@ -65,8 +65,7 @@ public class Point extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Point [id=" + id + ", street=" + street + ", name=" + name + ", pointLat=" + pointLat + ", pointLng="
-				+ pointLng + "]";
+		return "Point [id=" + id + ", name=" + name + ", pointLat=" + pointLat + ", pointLng=" + pointLng + "]";
 	}
 
 }

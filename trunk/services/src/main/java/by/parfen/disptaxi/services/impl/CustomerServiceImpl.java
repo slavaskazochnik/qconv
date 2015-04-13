@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of DriverService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of CustomerService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -37,14 +37,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void create(Customer customer, UserProfile userProfile) {
-		/*
-		 * Validate.isTrue(account.getId() == null,
-		 * "This method should be called for 'not saved yet' account only. Use UPDATE instead"
-		 * ); accountDao.insert(account);
-		 */
-
 		Validate.isTrue(customer.getId() == null,
-				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
 		customer.setUserProfile(userProfile);
 		LOGGER.debug("Insert: {}", customer);
 		dao.insert(customer);
@@ -64,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all drivers");
+		LOGGER.debug("Remove all customers");
 		dao.deleteAll();
 	}
 

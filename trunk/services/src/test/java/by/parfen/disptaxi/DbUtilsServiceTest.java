@@ -27,6 +27,7 @@ import by.parfen.disptaxi.services.CityService;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.services.OrderService;
+import by.parfen.disptaxi.services.OrderTimetableService;
 import by.parfen.disptaxi.services.PointService;
 import by.parfen.disptaxi.services.PriceService;
 import by.parfen.disptaxi.services.RouteService;
@@ -70,15 +71,18 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 	@Inject
 	private RouteService routeService;
 
+	@Inject
+	private OrderTimetableService orderTimetableService;
+
 	/*
 	 * Clear all tables before testing
 	 */
 	public void cleanUpData() {
 
+		orderTimetableService.deleteAll();
 		routeService.deleteAll();
 
 		orderService.deleteAll();
-		routeService.deleteAll();
 		priceService.deleteAll();
 
 		autoService.deleteAll();
@@ -158,8 +162,7 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 			userProfileService.saveOrUpdate(createUserProfile());
 		}
 		final List<UserProfile> userProfiles = userProfileService.getAll();
-		Assert.assertTrue("Number of created users is different form planned!",
-				userProfiles.size() == profilesQuan);
+		Assert.assertTrue("Number of created users is different form planned!", userProfiles.size() == profilesQuan);
 
 		// Create Customers and Drivers
 		for (UserProfile userProfile : userProfiles) {

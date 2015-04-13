@@ -9,16 +9,16 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
-import by.parfen.disptaxi.dataaccess.RouteDao;
+import by.parfen.disptaxi.dataaccess.OrderTimetableDao;
 import by.parfen.disptaxi.datamodel.Order;
-import by.parfen.disptaxi.datamodel.Route;
-import by.parfen.disptaxi.datamodel.Route_;
+import by.parfen.disptaxi.datamodel.OrderTimetable;
+import by.parfen.disptaxi.datamodel.OrderTimetable_;
 
 @Repository
-public class RouteDaoImpl extends AbstractDaoImpl<Long, Route> implements RouteDao {
+public class OrderTimetableDaoImpl extends AbstractDaoImpl<Long, OrderTimetable> implements OrderTimetableDao {
 
-	protected RouteDaoImpl() {
-		super(Route.class);
+	protected OrderTimetableDaoImpl() {
+		super(OrderTimetable.class);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class RouteDaoImpl extends AbstractDaoImpl<Long, Route> implements RouteD
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
-		Root<Route> root = criteria.from(Route.class);
+		Root<OrderTimetable> root = criteria.from(OrderTimetable.class);
 
 		criteria.select(cBuilder.count(root));
 
@@ -35,24 +35,24 @@ public class RouteDaoImpl extends AbstractDaoImpl<Long, Route> implements RouteD
 	}
 
 	@Override
-	public List<Route> getAllByOrder(Order order) {
+	public List<OrderTimetable> getAllByOrder(Order order) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
-		CriteriaQuery<Route> criteria = cBuilder.createQuery(Route.class);
-		Root<Route> root = criteria.from(Route.class);
+		CriteriaQuery<OrderTimetable> criteria = cBuilder.createQuery(OrderTimetable.class);
+		Root<OrderTimetable> root = criteria.from(OrderTimetable.class);
 
 		criteria.select(root);
 		if (order != null) {
-			criteria.where(cBuilder.equal(root.get(Route_.order), order));
+			criteria.where(cBuilder.equal(root.get(OrderTimetable_.order), order));
 		}
 
-		TypedQuery<Route> query = getEm().createQuery(criteria);
-		List<Route> results = query.getResultList();
+		TypedQuery<OrderTimetable> query = getEm().createQuery(criteria);
+		List<OrderTimetable> results = query.getResultList();
 		return results;
 	}
 
 	@Override
-	public List<Route> getAll() {
+	public List<OrderTimetable> getAll() {
 		return this.getAllByOrder(null);
 	}
 }

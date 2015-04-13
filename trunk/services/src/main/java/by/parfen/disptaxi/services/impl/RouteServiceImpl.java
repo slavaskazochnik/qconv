@@ -43,15 +43,6 @@ public class RouteServiceImpl implements RouteService {
 		dao.insert(route);
 	}
 
-	// public void create(Route route, Point srcPoint, Point dstPoint) {
-	// Validate.isTrue(route.getId() == null,
-	// "This method should be called for 'not saved yet' record only. Use UPDATE instead");
-	// route.setSrcPoint(srcPoint);
-	// route.setDstPoint(dstPoint);
-	// LOGGER.debug("Insert: {}", route);
-	// dao.insert(route);
-	// }
-
 	@Override
 	public void update(Route route) {
 		LOGGER.debug("Update: {}", route);
@@ -66,7 +57,7 @@ public class RouteServiceImpl implements RouteService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all drivers");
+		LOGGER.debug("Remove all routes");
 		dao.deleteAll();
 	}
 

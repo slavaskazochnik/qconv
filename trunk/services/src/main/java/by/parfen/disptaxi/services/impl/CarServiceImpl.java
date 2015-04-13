@@ -39,7 +39,7 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public void create(Car car) {
 		Validate.isTrue(car.getId() == null,
-				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
 		LOGGER.debug("Insert: {}", car);
 		dao.insert(car);
 	}

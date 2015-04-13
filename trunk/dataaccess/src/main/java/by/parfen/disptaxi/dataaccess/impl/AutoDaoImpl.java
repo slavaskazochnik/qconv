@@ -88,7 +88,7 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 		if (signActive != null) {
 			predicates.add(cBuilder.equal(root.get(Auto_.signActive), signActive));
 		}
-		if (predicates.size() > 1) {
+		if (predicates.size() > 0) {
 			criteria.where(predicates.toArray(new Predicate[] {}));
 		}
 
