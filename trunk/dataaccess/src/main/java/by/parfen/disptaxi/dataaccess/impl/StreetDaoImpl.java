@@ -1,10 +1,12 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
@@ -51,7 +53,8 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	}
 
 	@Override
-	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
@@ -69,15 +72,25 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	}
 
 	@Override
-	public List<Street> getAllByName(String name) {
+	public List<Street> getAllByCityAndName(City city, String name) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
 		Root<Street> root = criteria.from(Street.class);
 
-		criteria.select(root);
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (city != null) {
+			predicates.add(cBuilder.equal(root.get(Street_.city), city));
+		}
+		if (name != null) {
+			predicates.add(cBuilder.equal(root.get(Street_.name), name));
+		}
+		if (predicates.size() > 1) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
 
-		criteria.where(cBuilder.equal(root.get(Street_.name), name));
+		criteria.select(root);
+		criteria.where(cBuilder.equal(root.get(Street_.city), city));
 
 		TypedQuery<Street> query = getEm().createQuery(criteria);
 		List<Street> results = query.getResultList();
@@ -85,17 +98,35 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 	}
 
 	@Override
+	public List<Street> getAllByName(String name) {
+		List<Street> results = getAllByCityAndName(null, name);
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
+		// Root<Street> root = criteria.from(Street.class);
+		//
+		// criteria.select(root);
+		//
+		// criteria.where(cBuilder.equal(root.get(Street_.name), name));
+		//
+		// TypedQuery<Street> query = getEm().createQuery(criteria);
+		// List<Street> results = query.getResultList();
+		return results;
+	}
+
+	@Override
 	public List<Street> getAllByCity(City city) {
-		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-
-		CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
-		Root<Street> root = criteria.from(Street.class);
-
-		criteria.select(root);
-		criteria.where(cBuilder.equal(root.get(Street_.city), city));
-
-		TypedQuery<Street> query = getEm().createQuery(criteria);
-		List<Street> results = query.getResultList();
+		List<Street> results = getAllByCityAndName(city, null);
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<Street> criteria = cBuilder.createQuery(Street.class);
+		// Root<Street> root = criteria.from(Street.class);
+		//
+		// criteria.select(root);
+		// criteria.where(cBuilder.equal(root.get(Street_.city), city));
+		//
+		// TypedQuery<Street> query = getEm().createQuery(criteria);
+		// List<Street> results = query.getResultList();
 		return results;
 	}
 

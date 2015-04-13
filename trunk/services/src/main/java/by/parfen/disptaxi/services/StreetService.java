@@ -31,8 +31,10 @@ public interface StreetService {
 
 	List<Street> getAllByName(String name);
 
-	List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize);
-
 	List<Street> getAllByCity(City city);
+
+	List<Street> getAllByCityAndName(City city, String name);
+
+	List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 }

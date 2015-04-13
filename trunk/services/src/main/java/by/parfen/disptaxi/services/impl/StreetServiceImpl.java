@@ -82,13 +82,19 @@ public class StreetServiceImpl implements StreetService {
 	}
 
 	@Override
-	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
 		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 
 	@Override
 	public List<Street> getAllByCity(City city) {
 		return dao.getAllByCity(city);
+	}
+
+	@Override
+	public List<Street> getAllByCityAndName(City city, String name) {
+		return dao.getAllByCityAndName(city, name);
 	}
 
 }
