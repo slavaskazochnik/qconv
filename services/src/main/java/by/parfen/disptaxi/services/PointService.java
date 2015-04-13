@@ -25,6 +25,8 @@ public interface PointService {
 
 	Long getCount();
 
+	List<Point> getAllByStreetAndName(Street street, String name);
+
 	List<Point> getAll();
 
 	List<Point> getAllByName(String name);

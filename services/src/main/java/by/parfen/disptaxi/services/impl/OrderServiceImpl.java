@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +16,11 @@ import by.parfen.disptaxi.dataaccess.OrderDao;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Order;
+import by.parfen.disptaxi.datamodel.OrderTimetable;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 import by.parfen.disptaxi.services.OrderService;
+import by.parfen.disptaxi.services.OrderTimetableService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -24,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Inject
 	private OrderDao dao;
+
+	@Inject
+	private OrderTimetableService ottService;
 
 	@PostConstruct
 	private void init() {
@@ -45,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void create(Order order) {
 		Validate.isTrue(order.getId() == null,
-				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
 		LOGGER.debug("Insert: {}", order);
 		dao.insert(order);
 	}
@@ -63,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all Orders");
+		LOGGER.debug("Remove all orders");
 		dao.deleteAll();
 	}
 
@@ -100,6 +108,29 @@ public class OrderServiceImpl implements OrderService {
 		// must add OrderTimetable info
 		result = order.getRouteLength() * order.getPrice().getCostKm();
 		return result;
+	}
+
+	@Override
+	public void changeOrderStatus(Order order, OrderStatus orderStatus) {
+		// TODO check valid order of setting the new value
+		OrderTimetable ott = new OrderTimetable();
+		ott.setOrderStatus(orderStatus);
+		ott.setOrder(order);
+		ott.setdCreate(new Date());
+		ottService.create(ott);
+		LOGGER.debug("Change order status to {}", orderStatus);
+		order.setOrderStatus(orderStatus);
+		dao.update(order);
+	}
+
+	@Override
+	public void changeOrderResult(Order order, OrderResult orderResult) {
+		order.setOrderResult(orderResult);
+		if (orderResult.compareTo(OrderResult.ORDERRESULT_NONE) > 0) {
+			// TODO check valid order of setting the new value
+			// orderTimetableService.saveOrUpdate(order,OrderStatus.ORDERSTATE_DONE);
+		}
+		dao.update(order);
 	}
 
 }

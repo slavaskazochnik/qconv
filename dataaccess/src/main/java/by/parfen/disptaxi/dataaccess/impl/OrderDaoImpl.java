@@ -85,7 +85,6 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		Root<Order> root = criteria.from(Order.class);
 		Fetch autos = root.fetch(Order_.auto);
 		Fetch drivers = autos.fetch(Auto_.driver);
-		// root.fetch(Order_.auto);
 		criteria.where(cBuilder.equal(root, order));
 
 		criteria.select(root);

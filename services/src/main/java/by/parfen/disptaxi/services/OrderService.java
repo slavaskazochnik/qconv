@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Order;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 public interface OrderService {
 
@@ -39,4 +41,10 @@ public interface OrderService {
 	Driver getOrderDriver(Order order);
 
 	Long calcOrderPrice(Order order);
+
+	@Transactional
+	void changeOrderStatus(Order order, OrderStatus orderStatus);
+
+	@Transactional
+	void changeOrderResult(Order order, OrderResult orderResult);
 }

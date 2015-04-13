@@ -26,7 +26,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of UserProfileService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of UserRoleService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Override
 	public void create(UserRole userRole, UserProfile userProfile) {
 		Validate.isTrue(userRole.getId() == null,
-				"This method should be called for 'not saved yet' appRole only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' userRole only. Use UPDATE instead");
 		LOGGER.debug("set userProfile: {}", userProfile);
 		userRole.setUserProfile(userProfile);
 		LOGGER.debug("Insert: {}", userRole);
@@ -59,7 +59,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all user userRoles");
+		LOGGER.debug("Remove all user user roles");
 		dao.deleteAll();
 	}
 

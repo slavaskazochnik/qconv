@@ -11,9 +11,12 @@ public interface PointDao extends AbstractDao<Long, Point> {
 
 	Long getCount();
 
+	List<Point> getAllByStreetAndName(Street street, String name);
+
 	List<Point> getAllByName(String name);
+
+	List<Point> getAllByStreet(Street street);
 
 	List<Point> getAll(SingularAttribute<Point, ?> attr, boolean ascending, int startRecord, int pageSize);
 
-	List<Point> getAllByStreet(Street street);
 }

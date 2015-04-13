@@ -26,7 +26,7 @@ public class PointServiceImpl implements PointService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of CarService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of PointService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -62,6 +62,7 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	public void deleteAll() {
+		LOGGER.debug("Remove all points");
 		dao.deleteAll();
 	}
 
@@ -83,6 +84,11 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public List<Point> getAllByStreet(Street street) {
 		return dao.getAllByStreet(street);
+	}
+
+	@Override
+	public List<Point> getAllByStreetAndName(Street street, String name) {
+		return dao.getAllByStreetAndName(street, name);
 	}
 
 }

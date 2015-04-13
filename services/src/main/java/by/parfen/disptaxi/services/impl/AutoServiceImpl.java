@@ -29,7 +29,7 @@ public class AutoServiceImpl implements AutoService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of CarService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of AutoService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class AutoServiceImpl implements AutoService {
 	@Override
 	public void create(Auto auto, Car car) {
 		Validate.isTrue(auto.getId() == null,
-				"This method should be called for 'not saved yet' profile only. Use UPDATE instead");
+				"This method should be called for 'not saved yet' record only. Use UPDATE instead");
 		auto.setCar(car);
 		LOGGER.debug("Insert: {}", auto);
 		dao.insert(auto);
@@ -61,7 +61,7 @@ public class AutoServiceImpl implements AutoService {
 
 	@Override
 	public void deleteAll() {
-		LOGGER.debug("Remove all cars");
+		LOGGER.debug("Remove all autos");
 		dao.deleteAll();
 
 	}

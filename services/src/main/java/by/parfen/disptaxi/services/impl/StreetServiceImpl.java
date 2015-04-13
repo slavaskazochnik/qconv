@@ -27,7 +27,7 @@ public class StreetServiceImpl implements StreetService {
 	private void init() {
 		// this method will be called by Spring after bean instantiation. Can be
 		// used for any initialization process.
-		LOGGER.info("Instance of DriverService is created. Class is: {}", getClass().getName());
+		LOGGER.info("Instance of StreetService is created. Class is: {}", getClass().getName());
 	}
 
 	@Override
@@ -63,6 +63,7 @@ public class StreetServiceImpl implements StreetService {
 
 	@Override
 	public void deleteAll() {
+		LOGGER.debug("Remove all user streets");
 		dao.deleteAll();
 	}
 
@@ -82,8 +83,7 @@ public class StreetServiceImpl implements StreetService {
 	}
 
 	@Override
-	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord,
-			int pageSize) {
+	public List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize) {
 		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 

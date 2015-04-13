@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
@@ -83,9 +85,20 @@ public class PointServiceTest extends AbstractServiceTest {
 		pointService.create(firstPoint, firstStreet);
 		Assert.assertNotNull("The point not saved!", firstPoint.getId());
 
+		final List<Point> pointsOnStreet = pointService.getAllByStreet(firstStreet);
+		Assert.assertTrue("Can't find any point on the street!", pointsOnStreet.size() > 0);
+		LOGGER.debug("Founded points on the street count: {}", pointsOnStreet.size());
+
 		firstPoint.setName(pointName);
 		pointService.update(firstPoint);
 		Assert.assertEquals("Can't update street name!", firstPoint.getName(), pointName);
+
+		// check LIKE in WHERE
+		String pointNameMask = pointName.substring(0, 2) + "%";
+		final List<Point> pointsOnStreetByName = pointService.getAllByStreetAndName(firstStreet, pointNameMask);
+		Assert.assertTrue("Can't find any point on the street!", pointsOnStreetByName.size() > 0);
+		LOGGER.debug("Founded points on the street count: {} with name LIKE '{}'", pointsOnStreetByName.size(),
+				pointNameMask);
 
 		final Point secondPoint = createPoint(null);
 		secondPoint.setName(pointName);

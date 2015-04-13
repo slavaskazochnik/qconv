@@ -35,8 +35,7 @@ public class StreetServiceTest extends AbstractServiceTest {
 
 	@Before
 	public void cleanUpData() {
-		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", streetService.getClass()
-				.getName());
+		LOGGER.info("Instance of UserProfileService is injected. Class is: {}", streetService.getClass().getName());
 		dbUtils.cleanUpData();
 	}
 
@@ -75,12 +74,14 @@ public class StreetServiceTest extends AbstractServiceTest {
 		// final UserProfile profile = createUserProfile();
 		Assert.assertNotNull("The street not saved!", firstStreet.getId());
 
-		List<Street> streets = streetService.getAllByName(streetName);
-		LOGGER.debug("Founed streets count: {}", streets.size());
-
 		firstStreet.setName(streetName);
 		streetService.update(firstStreet);
 		Assert.assertEquals("Can't update street name!", firstStreet.getName(), streetName);
+
+		final String streetNameMask = streetName.substring(0, 5) + "%";
+		List<Street> streets = streetService.getAllByName(streetNameMask);
+		Assert.assertTrue("Can't find street with name criteria!", streets.size() > 0);
+		LOGGER.debug("Founded streets count: {} with name LIKE '{}'", streets.size(), streetNameMask);
 
 		final Street secondStreet = createStreet();
 		secondStreet.setName(streetName);
