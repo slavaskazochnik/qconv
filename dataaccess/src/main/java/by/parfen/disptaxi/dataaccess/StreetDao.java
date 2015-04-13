@@ -13,6 +13,8 @@ public interface StreetDao extends AbstractDao<Long, Street> {
 
 	List<Street> getAll(SingularAttribute<Street, ?> attr, boolean ascending, int startRecord, int pageSize);
 
+	List<Street> getAllByCityAndName(City city, String name);
+
 	List<Street> getAllByName(String name);
 
 	List<Street> getAllByCity(City city);

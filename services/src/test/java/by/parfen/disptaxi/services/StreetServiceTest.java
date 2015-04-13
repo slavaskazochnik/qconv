@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
@@ -72,6 +74,9 @@ public class StreetServiceTest extends AbstractServiceTest {
 		streetService.create(firstStreet, firstCity);
 		// final UserProfile profile = createUserProfile();
 		Assert.assertNotNull("The street not saved!", firstStreet.getId());
+
+		List<Street> streets = streetService.getAllByName(streetName);
+		LOGGER.debug("Founed streets count: {}", streets.size());
 
 		firstStreet.setName(streetName);
 		streetService.update(firstStreet);
