@@ -19,7 +19,7 @@ public class Route {
 	@JoinColumn(name = "orders_id")
 	private Order order;
 	@Column
-	private Long routeOrder;
+	private Long pointIndex;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
 	private Point srcPoint;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
@@ -47,12 +47,12 @@ public class Route {
 		this.order = order;
 	}
 
-	public Long getRouteOrder() {
-		return routeOrder;
+	public Long getPointIndex() {
+		return pointIndex;
 	}
 
-	public void setRouteOrder(Long routeOrder) {
-		this.routeOrder = routeOrder;
+	public void setPointIndex(Long pointIndex) {
+		this.pointIndex = pointIndex;
 	}
 
 	public Point getSrcPoint() {

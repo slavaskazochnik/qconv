@@ -104,20 +104,6 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 	@Override
 	public List<Auto> getAllByCarType(CarType carType) {
 		return getAll(carType, null);
-		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-		//
-		// CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
-		// Root<Auto> root = criteria.from(Auto.class);
-		// Join<Auto, Car> details = root.join(Auto_.car);
-		// criteria.where(cBuilder.equal(details.get(Car_.carType), carType));
-		//
-		// criteria.select(root);
-		// criteria.orderBy(cBuilder.asc(details.get(Car_.carType)));
-		//
-		// TypedQuery<Auto> query = getEm().createQuery(criteria);
-		//
-		// List<Auto> results = query.getResultList();
-		// return results;
 	}
 
 	@Override

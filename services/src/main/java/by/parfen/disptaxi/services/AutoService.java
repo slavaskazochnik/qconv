@@ -34,4 +34,6 @@ public interface AutoService {
 
 	List<Auto> getAllActiveByCarType(CarType carType);
 
+	List<Auto> getAllActiveByCarTypeAndGeo(CarType carType, String lat, String lng);
+
 }
