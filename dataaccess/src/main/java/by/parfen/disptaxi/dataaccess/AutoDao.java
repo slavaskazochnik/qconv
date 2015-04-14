@@ -18,4 +18,6 @@ public interface AutoDao extends AbstractDao<Long, Auto> {
 	List<Auto> getAllActive();
 
 	List<Auto> getAllActiveByCarType(CarType carType);
+
+	List<Auto> getAllWithDetails();
 }

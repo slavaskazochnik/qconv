@@ -110,4 +110,9 @@ public class AutoServiceImpl implements AutoService {
 		return autos;
 	}
 
+	@Override
+	public List<Auto> getAllWithDetails() {
+		return dao.getAllWithDetails();
+	}
+
 }

@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.services;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Assert;
@@ -69,6 +71,15 @@ public class AutoServiceTest extends AbstractServiceTest {
 		Auto autosFromDb = autoService.get(auto.getId());
 		Assert.assertNotNull(autosFromDb);
 		// TODO check other fields
+
+		List<Auto> autosWithDetails = autoService.getAllWithDetails();
+		Assert.assertTrue("Can't list any car with detail info!", autosWithDetails.size() > 0);
+		LOGGER.debug("Autos with detail info count: {}", autosWithDetails.size());
+		for (Auto autoWithDetails : autosWithDetails) {
+			LOGGER.debug("Auto   : {}", autoWithDetails);
+			LOGGER.debug("Car    : {}", autoWithDetails.getCar());
+			LOGGER.debug("Driver : {}", autoWithDetails.getDriver());
+		}
 
 	}
 

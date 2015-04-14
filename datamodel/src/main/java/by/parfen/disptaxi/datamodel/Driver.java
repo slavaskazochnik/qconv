@@ -74,8 +74,8 @@ public class Driver {
 
 	@Override
 	public String toString() {
-		return "Driver [id=" + id + ", avgRating=" + avgRating + ", signActive=" + signActive + ", dCreate=" + dCreate
-				+ ", userProfile=" + userProfile + "]";
+		return "Driver [id=" + id + ", avgRating=" + avgRating + ", signActive=" + signActive + ", dCreate="
+				+ dCreate + "]";
 	}
 
 }
