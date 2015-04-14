@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Fetch;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -19,6 +20,7 @@ import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Auto_;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.Car_;
+import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
 
@@ -114,6 +116,41 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 	@Override
 	public List<Auto> getAllActive() {
 		return getAll(null, SignActive.SIGNACTIVE_YES);
+	}
+
+	@Override
+	public List<Auto> getAllWithDetails() {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
+		Root<Auto> root = criteria.from(Auto.class);
+		final int detailsMethod = 2;
+		if (detailsMethod == 0) {
+			// Ok
+			criteria.select(root);
+			root.fetch(Auto_.car);
+			root.fetch(Auto_.driver);
+			criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
+		} else if (detailsMethod == 1) {
+			// Ok
+			Fetch<Auto, Car> cars = root.fetch(Auto_.car);
+			Fetch<Auto, Driver> drivers = root.fetch(Auto_.driver);
+
+			criteria.select(root);
+			criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
+		} else if (detailsMethod == 2) {
+			// details are empty
+			Join<Auto, Car> cars = root.join(Auto_.car);
+			Join<Auto, Driver> drivers = root.join(Auto_.driver);
+
+			criteria.select(root);
+			criteria.orderBy(cBuilder.asc(cars.get(Car_.id)));
+		}
+
+		TypedQuery<Auto> query = getEm().createQuery(criteria);
+
+		List<Auto> results = query.getResultList();
+		return results;
 	}
 
 }
