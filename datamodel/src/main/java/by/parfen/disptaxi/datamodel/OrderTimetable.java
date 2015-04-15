@@ -30,7 +30,7 @@ public class OrderTimetable extends AbstractEntity {
 	@Enumerated(EnumType.ORDINAL)
 	private OrderStatus orderStatus;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	public Long getId() {
 		return id;
@@ -56,17 +56,18 @@ public class OrderTimetable extends AbstractEntity {
 		this.orderStatus = orderStatus;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderTimetable [id=" + id + ", orderStatus=" + orderStatus + ", dCreate=" + dCreate + "]";
+		return "OrderTimetable [id=" + id + ", orderStatus=" + orderStatus + ", creationDate=" + creationDate
+				+ "]";
 	}
 
 }

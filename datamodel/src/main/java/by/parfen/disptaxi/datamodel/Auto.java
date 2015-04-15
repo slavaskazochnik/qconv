@@ -38,7 +38,7 @@ public class Auto {
 	@Enumerated(EnumType.ORDINAL)
 	private SignActive signActive;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	public Long getId() {
 		return id;
@@ -104,18 +104,19 @@ public class Auto {
 		this.signActive = signActive;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Autos [id=" + id + ", rWaiting=" + rWaiting + ", rRoute=" + rRoute + ", positionLat=" + positionLat
-				+ ", positionLng=" + positionLng + ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+		return "Autos [id=" + id + ", rWaiting=" + rWaiting + ", rRoute=" + rRoute + ", positionLat="
+				+ positionLat + ", positionLng=" + positionLng + ", signActive=" + signActive + ", creationDate="
+				+ creationDate + "]";
 	}
 
 }

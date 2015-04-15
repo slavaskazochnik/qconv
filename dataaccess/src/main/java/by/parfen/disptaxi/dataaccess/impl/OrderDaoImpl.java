@@ -64,7 +64,7 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		criteria.where(cBuilder.equal(details.get(Auto_.driver), driver));
 
 		criteria.select(root);
-		criteria.orderBy(cBuilder.asc(root.get(Order_.dCreate)));
+		criteria.orderBy(cBuilder.asc(root.get(Order_.creationDate)));
 
 		TypedQuery<Order> query = getEm().createQuery(criteria);
 		List<Order> results = query.getResultList();

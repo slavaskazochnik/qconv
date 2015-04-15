@@ -46,7 +46,11 @@ public class Order {
 	@Column
 	private Long driverRating;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
+	@Column
+	private Date beginDate;
+	@Column
+	private Date endDate;
 
 	public Long getId() {
 		return id;
@@ -120,12 +124,28 @@ public class Order {
 		this.driverRating = driverRating;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Date getBeginDate() {
+		return beginDate;
+	}
+
+	public void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public Price getPrice() {
@@ -138,9 +158,9 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderStatus=" + orderStatus + ", orderResult=" + orderResult + ", routeLength="
-				+ routeLength + ", orderPrice=" + orderPrice + ", customerRating=" + customerRating + ", driverRating="
-				+ driverRating + ", dCreate=" + dCreate + "]";
+		return "Order [id=" + id + ", orderStatus=" + orderStatus + ", orderResult=" + orderResult
+				+ ", routeLength=" + routeLength + ", orderPrice=" + orderPrice + ", customerRating="
+				+ customerRating + ", driverRating=" + driverRating + ", creationDate=" + creationDate + "]";
 	}
 
 }

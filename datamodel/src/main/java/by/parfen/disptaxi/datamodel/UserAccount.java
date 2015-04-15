@@ -28,7 +28,7 @@ public class UserAccount extends AbstractEntity {
 	@Column
 	private String email;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	@MapsId
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -76,18 +76,18 @@ public class UserAccount extends AbstractEntity {
 		this.email = email;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override
 	public String toString() {
-		return "UserAccount [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", dCreate="
-				+ dCreate + "]";
+		return "UserAccount [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email
+				+ ", creationDate=" + creationDate + "]";
 	}
 
 }

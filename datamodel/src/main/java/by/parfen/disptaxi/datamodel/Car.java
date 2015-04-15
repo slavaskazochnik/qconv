@@ -33,7 +33,7 @@ public class Car {
 	@Column
 	private Long signActive;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	public Long getId() {
 		return id;
@@ -83,14 +83,6 @@ public class Car {
 		this.signActive = signActive;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
-	}
-
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
-	}
-
 	public String getCarModel() {
 		return carModel;
 	}
@@ -99,10 +91,19 @@ public class Car {
 		this.carModel = carModel;
 	}
 
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan=" + childSeatsQuan
-				+ ", carModel=" + carModel + ", signActive=" + signActive + ", dCreate=" + dCreate + "]";
+		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan="
+				+ childSeatsQuan + ", carModel=" + carModel + ", signActive=" + signActive + ", creationDate="
+				+ creationDate + "]";
 	}
 
 }
