@@ -15,7 +15,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>B0BCEC6F-DC70-1DBF-EAC6-2DF86614383A</delegate>
+<delegate>349E7915-F172-0222-E4B6-D04FEBE88066</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="0F00EF93-604B-7B03-1898-A7350DB952F6" referredColumn="349E7915-F172-0222-E4B6-D04FEBE88066"/>
@@ -54,7 +54,7 @@
 <dataTypeSize>255</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="54AC6780-D3C3-B517-1DCD-3A1090CAA9B3">
+<Column name="CREATION_DATE" id="54AC6780-D3C3-B517-1DCD-3A1090CAA9B3">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-05 21:30:19 UTC</createdTime>
 <commentInRDBMS>Дата создания</commentInRDBMS>

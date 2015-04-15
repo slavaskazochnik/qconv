@@ -121,7 +121,7 @@ public abstract class AbstractServiceTest {
 		userProfile.setFirstName(randomString("firstName-"));
 		userProfile.setLastName(randomString("lastName-"));
 		userProfile.setTelNum(randomString("+tel-num-"));
-		userProfile.setdCreate(new Date());
+		userProfile.setCreationDate(new Date());
 		return userProfile;
 	}
 
@@ -131,7 +131,7 @@ public abstract class AbstractServiceTest {
 		userAccount
 				.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
-		userAccount.setdCreate(new Date());
+		userAccount.setCreationDate(new Date());
 		return userAccount;
 	}
 
@@ -143,14 +143,14 @@ public abstract class AbstractServiceTest {
 	protected Driver createDriver() {
 		final Driver driver = new Driver();
 		driver.setSignActive(1L);
-		driver.setdCreate(new Date());
+		driver.setCreationDate(new Date());
 		return driver;
 	}
 
 	protected Customer createCustomer() {
 		final Customer customer = new Customer();
 		customer.setSignActive(1L);
-		customer.setdCreate(new Date());
+		customer.setCreationDate(new Date());
 		return customer;
 	}
 
@@ -199,7 +199,7 @@ public abstract class AbstractServiceTest {
 
 	protected Auto createAuto() {
 		Auto auto = new Auto();
-		auto.setdCreate(new Date());
+		auto.setCreationDate(new Date());
 		auto.setrRoute(randomLong(10L, 20L));
 		auto.setrWaiting(randomLong(3L, 10L));
 		auto.setPositionLat(getRandomLat());
@@ -211,7 +211,7 @@ public abstract class AbstractServiceTest {
 		Price price = new Price();
 		price.setCostBefore(randomLong(5000L, 10000L));
 		price.setCostKm(randomLong(5000L, 10000L));
-		price.setdBegin(new Date());
+		price.setBeginDate(new Date());
 		price.setCarType(carType);
 		price.setCostForWaiting(randomLong(1000L, 10000L));
 		return price;
@@ -221,7 +221,7 @@ public abstract class AbstractServiceTest {
 		Order order = new Order();
 		order.setOrderResult(OrderResult.ORDERRESULT_NONE);
 		order.setOrderStatus(OrderStatus.ORDERSTATE_NEW);
-		order.setdCreate(new Date());
+		order.setCreationDate(new Date());
 		return order;
 	}
 

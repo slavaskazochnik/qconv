@@ -30,7 +30,7 @@ public class Customer {
 	@Column
 	private Long signActive;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	public Long getId() {
 		return id;
@@ -56,12 +56,12 @@ public class Customer {
 		this.signActive = signActive;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public UserProfile getUserProfile() {
@@ -74,8 +74,8 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", userProfile=" + userProfile + ", avgRating=" + avgRating + ", signActive="
-				+ signActive + ", dCreate=" + dCreate + "]";
+		return "Customer [id=" + id + ", userProfile=" + userProfile + ", avgRating=" + avgRating
+				+ ", signActive=" + signActive + ", creationDate=" + creationDate + "]";
 	}
 
 }

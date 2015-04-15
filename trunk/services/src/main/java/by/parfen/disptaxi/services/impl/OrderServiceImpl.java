@@ -116,7 +116,7 @@ public class OrderServiceImpl implements OrderService {
 		OrderTimetable ott = new OrderTimetable();
 		ott.setOrderStatus(orderStatus);
 		ott.setOrder(order);
-		ott.setdCreate(new Date());
+		ott.setCreationDate(new Date());
 		ottService.create(ott);
 		LOGGER.debug("Change order status to {}", orderStatus);
 		order.setOrderStatus(orderStatus);

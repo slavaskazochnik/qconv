@@ -60,7 +60,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_BEGIN" id="EA114575-D6F3-E234-A800-649C0A4C8A15">
+<Column name="BEGIN_DATE" id="EA114575-D6F3-E234-A800-649C0A4C8A15">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 22:32:37 UTC</createdTime>
 <commentInRDBMS>Действует с</commentInRDBMS>
@@ -71,7 +71,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_END" id="FBE5D3A9-CBFB-9D82-42F1-9696A63F8413">
+<Column name="END_DATE" id="FBE5D3A9-CBFB-9D82-42F1-9696A63F8413">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 22:32:37 UTC</createdTime>
 <commentInRDBMS>Действует по</commentInRDBMS>
@@ -82,7 +82,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="B555323D-7F07-70AF-B875-63C9238ABD52">
+<Column name="CREATION_DATE" id="B555323D-7F07-70AF-B875-63C9238ABD52">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 22:32:37 UTC</createdTime>
 <commentInRDBMS>Дата создания</commentInRDBMS>

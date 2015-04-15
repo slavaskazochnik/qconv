@@ -24,7 +24,7 @@ public class UserProfile extends AbstractEntity {
 	@Column
 	private String telNum;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "userProfile")
 	// @JoinColumn(name = "id")
@@ -81,18 +81,18 @@ public class UserProfile extends AbstractEntity {
 		this.telNum = telNum;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override
 	public String toString() {
-		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum=" + telNum
-				+ ", dCreate=" + dCreate + "]";
+		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum="
+				+ telNum + ", creationDate=" + creationDate + "]";
 	}
 
 }

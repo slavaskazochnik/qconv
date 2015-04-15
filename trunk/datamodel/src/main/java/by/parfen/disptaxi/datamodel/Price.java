@@ -28,11 +28,11 @@ public class Price extends AbstractEntity {
 	@Column
 	private Long costForWaiting;
 	@Column
-	private Date dBegin;
+	private Date beginDate;
 	@Column
-	private Date dEnd;
+	private Date endDate;
 	@Column
-	private Date dCreate;
+	private Date creationDate;
 
 	public Long getId() {
 		return id;
@@ -74,34 +74,34 @@ public class Price extends AbstractEntity {
 		this.costForWaiting = costForWaiting;
 	}
 
-	public Date getdBegin() {
-		return dBegin;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setdBegin(Date dBegin) {
-		this.dBegin = dBegin;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
-	public Date getdEnd() {
-		return dEnd;
+	public Date getBeginDate() {
+		return beginDate;
 	}
 
-	public void setdEnd(Date dEnd) {
-		this.dEnd = dEnd;
+	public void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
 	}
 
-	public Date getdCreate() {
-		return dCreate;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setdCreate(Date dCreate) {
-		this.dCreate = dCreate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Price [id=" + id + ", carType=" + carType + ", costBefore=" + costBefore + ", costKm=" + costKm
-				+ ", dBegin=" + dBegin + ", dEnd=" + dEnd + ", dCreate=" + dCreate + "]";
+				+ ", beginDate=" + beginDate + ", endDate=" + endDate + ", creationDate=" + creationDate + "]";
 	}
 
 }

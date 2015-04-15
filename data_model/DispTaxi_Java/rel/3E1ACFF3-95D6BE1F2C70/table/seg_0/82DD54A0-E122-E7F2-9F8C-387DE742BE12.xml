@@ -99,7 +99,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="9DDCA7A3-253F-F091-D692-06BADDDF6A10">
+<Column name="CREATION_DATE" id="9DDCA7A3-253F-F091-D692-06BADDDF6A10">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 12:57:11 UTC</createdTime>
 <comment>Дата создания записи</comment>

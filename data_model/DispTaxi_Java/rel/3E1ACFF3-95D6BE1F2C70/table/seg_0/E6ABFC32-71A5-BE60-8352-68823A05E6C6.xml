@@ -133,12 +133,34 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="20F73832-5F6F-D73E-04AA-39543F4ACF61">
+<Column name="CREATION_DATE" id="20F73832-5F6F-D73E-04AA-39543F4ACF61">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 19:04:32 UTC</createdTime>
 <comment>Дата создания записи</comment>
 <commentInRDBMS>Дата создания записи</commentInRDBMS>
 <ownerDesignName>DispTaxi_Java</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BEGIN_DATE" id="E23E2463-4B79-5551-F38C-FC5825287C1B">
+<createdBy>12404</createdBy>
+<createdTime>2015-04-15 11:27:28 UTC</createdTime>
+<commentInRDBMS>Дата начала выполнения заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="END_DATE" id="73F5D435-CB7C-001E-1449-CE3782DEC4F2">
+<createdBy>12404</createdBy>
+<createdTime>2015-04-15 11:27:28 UTC</createdTime>
+<commentInRDBMS>Дата закрытия заказа</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>

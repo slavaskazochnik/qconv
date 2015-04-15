@@ -39,10 +39,9 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
-<delegate>39FF128E-012C-53E6-6B81-0D25E73EBB31</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="48CE428E-DCF5-40F5-3AF3-23AF51C37EC7">
+<Column name="CREATION_DATE" id="48CE428E-DCF5-40F5-3AF3-23AF51C37EC7">
 <createdBy>Slava</createdBy>
 <createdTime>2015-03-10 21:30:44 UTC</createdTime>
 <commentInRDBMS>Дата проставления состояния</commentInRDBMS>

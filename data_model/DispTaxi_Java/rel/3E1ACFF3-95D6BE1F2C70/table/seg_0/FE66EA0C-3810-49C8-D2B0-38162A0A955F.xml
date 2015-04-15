@@ -59,7 +59,7 @@
 <dataTypeSize>30</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="D_CREATE" id="49490FB3-F4CE-0BF3-4BE4-6C3EA4F4725D">
+<Column name="CREATION_DATE" id="49490FB3-F4CE-0BF3-4BE4-6C3EA4F4725D">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:03:26 UTC</createdTime>
 <comment>Дата создания записи</comment>
