@@ -219,8 +219,8 @@ public abstract class AbstractServiceTest {
 
 	protected Order createOrder() {
 		Order order = new Order();
-		order.setOrderResult(OrderResult.ORDERRESULT_NONE);
-		order.setOrderStatus(OrderStatus.ORDERSTATE_NEW);
+		order.setOrderResult(OrderResult.NONE);
+		order.setOrderStatus(OrderStatus.NEW);
 		order.setCreationDate(new Date());
 		return order;
 	}

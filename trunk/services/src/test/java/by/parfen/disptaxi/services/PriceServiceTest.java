@@ -42,7 +42,7 @@ public class PriceServiceTest extends AbstractServiceTest {
 
 	@Test
 	public void basicCRUDTest() {
-		Price price = createPrice(CarType.CARTYPE_SEDAN);
+		Price price = createPrice(CarType.SEDAN);
 		Long costKm = 3500L;
 		price.setCostKm(costKm);
 		priceService.create(price);

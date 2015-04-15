@@ -5,11 +5,11 @@ package by.parfen.disptaxi.services.utils;
  * */
 public class GeoService {
 
+	private final int R = 6371; // Radius of the earth
+
 	private final Double INVALID_VALUE = -1.0;
 
 	private double distance(double lat1, double lng1, double lat2, double lng2) {
-
-		final int R = 6371; // Radius of the earth
 
 		Double latDistance = deg2rad(lat2 - lat1);
 		Double lngDistance = deg2rad(lng2 - lng1);

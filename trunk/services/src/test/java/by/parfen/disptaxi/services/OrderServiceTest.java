@@ -126,9 +126,9 @@ public class OrderServiceTest extends AbstractServiceTest {
 		CarType carType;
 		final int signCarType = randomInteger(0, 1);
 		if (signCarType == 0) {
-			carType = CarType.CARTYPE_SEDAN;
+			carType = CarType.SEDAN;
 		} else {
-			carType = CarType.CARTYPE_VAN;
+			carType = CarType.VAN;
 		}
 
 		// find price
@@ -200,7 +200,7 @@ public class OrderServiceTest extends AbstractServiceTest {
 				LOGGER.debug("Order: {}", fetchedOrder);
 			}
 
-			OrderStatus orderStatus = OrderStatus.ORDERSTATE_NEW;
+			OrderStatus orderStatus = OrderStatus.NEW;
 			// manual insert
 			// final OrderTimetable orderTimetable = new OrderTimetable();
 			// orderTimetable.setOrder(order);
@@ -209,12 +209,12 @@ public class OrderServiceTest extends AbstractServiceTest {
 
 			// auto insert
 			orderService.changeOrderStatus(order, orderStatus);
-			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ACCEPTED);
-			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ARRIVED);
-			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_ON_WAY);
-			orderService.changeOrderStatus(order, OrderStatus.ORDERSTATE_DONE);
+			orderService.changeOrderStatus(order, OrderStatus.ACCEPTED);
+			orderService.changeOrderStatus(order, OrderStatus.ARRIVED);
+			orderService.changeOrderStatus(order, OrderStatus.ON_WAY);
+			orderService.changeOrderStatus(order, OrderStatus.DONE);
 
-			order.setOrderResult(OrderResult.ORDERRESUT_OK);
+			order.setOrderResult(OrderResult.OK);
 			orderService.update(order);
 		} else {
 			LOGGER.debug("Sorry, we can't find any car now!");
