@@ -18,6 +18,10 @@ import by.parfen.disptaxi.dataaccess.AbstractDao;
 
 public abstract class AbstractDaoImpl<ID, Entity> implements AbstractDao<ID, Entity> {
 
+	private static final String DELETE_FROM = "delete from %s";
+
+	private static final String DELETE_FROM_WHERE_ID_IN_IDS = "delete from %s e where e.id in (:ids)";
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDaoImpl.class);
 
 	// @PersistenceContext(type = PersistenceContextType.EXTENDED)
@@ -54,13 +58,13 @@ public abstract class AbstractDaoImpl<ID, Entity> implements AbstractDao<ID, Ent
 
 	@Override
 	public void delete(List<ID> ids) {
-		em.createQuery(String.format("delete from %s e where e.id in (:ids)", entityClass.getSimpleName()))
+		em.createQuery(String.format(DELETE_FROM_WHERE_ID_IN_IDS, entityClass.getSimpleName()))
 				.setParameter("ids", ids).executeUpdate();
 	}
 
 	@Override
 	public void deleteAll() {
-		final Query q1 = em.createQuery("delete from " + getEntityClass().getSimpleName());
+		final Query q1 = em.createQuery(String.format(DELETE_FROM, getEntityClass().getSimpleName()));
 		q1.executeUpdate();
 		em.flush();
 	}
@@ -74,7 +78,8 @@ public abstract class AbstractDaoImpl<ID, Entity> implements AbstractDao<ID, Ent
 	}
 
 	@Override
-	public List<Entity> getAllByFieldRestriction(final SingularAttribute<? super Entity, ?> attribute, final Object value) {
+	public List<Entity> getAllByFieldRestriction(final SingularAttribute<? super Entity, ?> attribute,
+			final Object value) {
 		Validate.notNull(value, "Search attributes can't be empty. Attribute: " + attribute.getName());
 		final CriteriaBuilder builder = em.getCriteriaBuilder();
 		final CriteriaQuery<Entity> criteria = builder.createQuery(getEntityClass());

@@ -47,7 +47,7 @@ public class AutoServiceTest extends AbstractServiceTest {
 
 	@Test
 	public void basicCRUDTest() {
-		final Car car = createCar(CarType.CARTYPE_SEDAN);
+		final Car car = createCar(CarType.SEDAN);
 		carService.create(car);
 
 		final UserProfile userProfile = createUserProfile();

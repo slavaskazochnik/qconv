@@ -110,12 +110,12 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 
 	@Override
 	public List<Auto> getAllActiveByCarType(CarType carType) {
-		return getAll(carType, SignActive.SIGNACTIVE_YES);
+		return getAll(carType, SignActive.YES);
 	}
 
 	@Override
 	public List<Auto> getAllActive() {
-		return getAll(null, SignActive.SIGNACTIVE_YES);
+		return getAll(null, SignActive.YES);
 	}
 
 	@Override

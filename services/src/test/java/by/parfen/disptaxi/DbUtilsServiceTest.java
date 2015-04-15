@@ -185,9 +185,9 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 		for (i = 1; i <= carsQuan; i++) {
 			int signCustomer = randomInteger(0, 10);
 			if (signCustomer >= 5) {
-				carService.create(createCar(CarType.CARTYPE_SEDAN));
+				carService.create(createCar(CarType.SEDAN));
 			} else {
-				carService.create(createCar(CarType.CARTYPE_VAN));
+				carService.create(createCar(CarType.VAN));
 			}
 		}
 
@@ -202,16 +202,16 @@ public class DbUtilsServiceTest extends AbstractServiceTest {
 			auto.setPositionLat(getRandomLat());
 			auto.setPositionLng(getRandomLng());
 			int sign = randomInteger(0, 1);
-			SignActive signActive = SignActive.SIGNACTIVE_YES;
+			SignActive signActive = SignActive.YES;
 			if (sign == 0) {
-				signActive = SignActive.SIGNACTIVE_NO;
+				signActive = SignActive.NO;
 			}
 			auto.setSignActive(signActive);
 			autoService.create(auto, car);
 		}
 
-		priceService.create(createPrice(CarType.CARTYPE_SEDAN));
-		priceService.create(createPrice(CarType.CARTYPE_VAN));
+		priceService.create(createPrice(CarType.SEDAN));
+		priceService.create(createPrice(CarType.VAN));
 	}
 
 	@Test

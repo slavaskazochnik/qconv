@@ -126,9 +126,9 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void changeOrderResult(Order order, OrderResult orderResult) {
 		order.setOrderResult(orderResult);
-		if (orderResult.compareTo(OrderResult.ORDERRESULT_NONE) > 0) {
+		if (orderResult.compareTo(OrderResult.NONE) > 0) {
 			// TODO check valid order of setting the new value
-			// orderTimetableService.saveOrUpdate(order,OrderStatus.ORDERSTATE_DONE);
+			// orderTimetableService.saveOrUpdate(order,OrderStatus.DONE);
 		}
 		dao.update(order);
 	}
