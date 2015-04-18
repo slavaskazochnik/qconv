@@ -124,7 +124,7 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 
 		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
 		Root<Auto> root = criteria.from(Auto.class);
-		final int detailsMethod = 2;
+		final int detailsMethod = 1;
 		if (detailsMethod == 0) {
 			// Ok
 			criteria.select(root);

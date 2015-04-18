@@ -4,8 +4,7 @@ package by.parfen.disptaxi.services.utils;
  *  Get Distance in meters between two points.
  * */
 public class GeoService {
-
-	private final int R = 6371; // Radius of the earth
+	static final int R = 6371; // Radius of the earth
 
 	private final Double INVALID_VALUE = -1.0;
 
@@ -49,8 +48,7 @@ public class GeoService {
 	public double getGeoDistance(String lat1, String lng1, String lat2, String lng2) {
 		Double result;
 		try {
-			result = getGeoDistance(Double.valueOf(lat1), Double.valueOf(lng1), Double.valueOf(lat2),
-					Double.valueOf(lng2));
+			result = getGeoDistance(Double.valueOf(lat1), Double.valueOf(lng1), Double.valueOf(lat2), Double.valueOf(lng2));
 		} catch (NumberFormatException e) {
 			result = INVALID_VALUE;
 		}
