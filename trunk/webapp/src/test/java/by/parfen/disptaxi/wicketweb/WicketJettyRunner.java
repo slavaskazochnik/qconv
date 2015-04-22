@@ -27,7 +27,7 @@ public class WicketJettyRunner {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(8081);
+        connector.setPort(8082);
         server.addConnector(connector);
 
         /*
