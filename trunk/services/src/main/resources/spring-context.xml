@@ -11,7 +11,7 @@
 
 	<context:property-placeholder
 		ignore-unresolvable="true" 
-		location="classpath:application.properties,classpath:testing-application.properties" />
+		location="classpath:application.properties,classpath:db-schema-override.properties" />
 	<context:component-scan base-package="by.parfen.disptaxi" />
 
 

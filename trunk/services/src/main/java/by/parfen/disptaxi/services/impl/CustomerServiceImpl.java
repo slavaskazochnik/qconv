@@ -17,6 +17,7 @@ import by.parfen.disptaxi.services.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
 	@Inject
@@ -70,5 +71,10 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> getAll() {
 		return dao.getAll();
+	}
+
+	@Override
+	public List<Customer> getAllWithDetails() {
+		return dao.getAllWithDetails();
 	}
 }
