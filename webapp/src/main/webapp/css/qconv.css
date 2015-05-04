@@ -1,0 +1,104 @@
+html {
+  font-family: Verdana;
+}
+
+body {
+  min-width: 1150px;
+  background-color: #F7F7F7;
+  color: #222222;
+  font-size: 20px;
+}
+
+input:focus, textarea:focus, input:active, textarea:active {
+  outline: none;
+}
+
+.clear {
+  clear: both;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: none !important;
+  display: block !important;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: 0 auto !important;
+  padding: 0 25px;
+  float: none !important;
+}
+
+header {
+  background-color: #ec9700;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+#main-menu {
+  padding: 25px 0;
+}
+#main-menu #logo {
+  float: left;
+  display: block;
+}
+#main-menu #logo img {
+  width: 100px;
+}
+#main-menu ul {
+  float: left;
+  margin-left: 100px;
+}
+#main-menu ul li {
+  display: inline-block;
+  margin: 40px 20px 0 0;
+}
+#main-menu ul li a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+#main-menu ul li a:hover {
+  text-decoration: underline;
+}
+#main-menu ul li.current a {
+  color: #f7af06;
+}
+#main-menu ul li.current#home-logo a {
+  background-position: 0 0;
+}
+#main-menu ul li#home-logo {
+  display: block;
+  float: left;
+  margin: 28px 60px 0 0;
+}
+#main-menu ul li#home-logo a {
+  background-image: url("../images/icon_home.png");
+  height: 36px;
+  width: 35px;
+  display: block;
+  background-size: cover;
+  background-position: 0 36px;
+}
+
+footer.base {
+  height: 22px;
+  padding: 18px 0;
+  background-color: #ec9700;
+  font-size: 15px;
+}
+
+div.footer {
+  color: #222222;
+  display: block;
+  margin: 0 auto;
+  color: #FFFFFF;
+  text-decoration: none;
+  opacity: 0.7;
+  width: 200px;
+  margin-top: 5px;
+}

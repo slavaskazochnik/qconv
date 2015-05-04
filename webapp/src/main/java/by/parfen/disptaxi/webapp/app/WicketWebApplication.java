@@ -14,7 +14,7 @@ import org.apache.wicket.util.lang.Bytes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import by.parfen.disptaxi.webapp.page.HomePage;
+import by.parfen.disptaxi.webapp.home.HomePage;
 import by.parfen.disptaxi.webapp.page.LoginPage;
 
 @Component("wicketWebApplicationBean")

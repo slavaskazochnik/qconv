@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="p.home.title">DispTaxi</entry>
+	<entry key="p.menu.aboutus">О нас</entry>
+	<entry key="p.menu.orders">Заказы</entry>
+	<entry key="p.menu.customers">Заказчики</entry>
+	<entry key="p.menu.autos">Такси</entry>
+</properties>
