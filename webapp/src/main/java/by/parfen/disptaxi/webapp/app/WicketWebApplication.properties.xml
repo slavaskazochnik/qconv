@@ -3,7 +3,10 @@
 <properties>
 	<entry key="p.home.title">DispTaxi</entry>
 	<entry key="p.menu.aboutus">О нас</entry>
-	<entry key="p.menu.orders">Заказы</entry>
-	<entry key="p.menu.customers">Заказчики</entry>
-	<entry key="p.menu.autos">Такси</entry>
+	<entry key="p.menu.vieworders">Заказы</entry>
+	<entry key="p.menu.customers">Клиенты</entry>
+	<entry key="p.menu.drivers">Водители</entry>
+	<entry key="p.menu.autos">Автомобили</entry>
+
+	<entry key="p.customer.userIdTitle">Код пользователя</entry>
 </properties>
