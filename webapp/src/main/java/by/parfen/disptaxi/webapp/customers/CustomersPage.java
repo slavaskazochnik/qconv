@@ -14,9 +14,6 @@ import by.parfen.disptaxi.webapp.customers.panel.CustomerInlinePanel;
 
 public class CustomersPage extends BaseLayout {
 
-	private static final String DETAILS_PANEL = "detailsPanel";
-	private static final String ITEM_PANEL = "itemPanel";
-
 	@Inject
 	private CustomerService customerService;
 
@@ -24,11 +21,11 @@ public class CustomersPage extends BaseLayout {
 	protected void onInitialize() {
 		super.onInitialize();
 		final List<Customer> allCustomers = customerService.getAllWithDetails();
-		add(new ListView<Customer>(DETAILS_PANEL, allCustomers) {
+		add(new ListView<Customer>("detailsPanel", allCustomers) {
 			@Override
 			protected void populateItem(ListItem<Customer> item) {
 				final Customer customer = item.getModelObject();
-				item.add(new CustomerInlinePanel(ITEM_PANEL, customer));
+				item.add(new CustomerInlinePanel("itemPanel", customer));
 			}
 		});
 	}

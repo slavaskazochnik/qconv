@@ -1,5 +1,5 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-	<div class="inline-list-item" wicket:id="listItem">
+	<div wicket:id="listItem" class="inline-list-item">
 		<h2 wicket:id="itemHeader">
 			<wicket:container wicket:id="itemName" />
 		</h2>
@@ -7,6 +7,9 @@
 			<wicket:container wicket:id="itemDetails">
 				<span wicket:id="customerInfo"></span>
 			</wicket:container>
+		</div>
+		<div class="item-menu">
+			<a wicket:id="linkToEdit" class="button medium orange"><span wicket:id="itemEditLabel"></span></a>
 		</div>
 	</div>
 </wicket:panel>
