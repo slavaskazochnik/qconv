@@ -6,7 +6,7 @@ body {
   min-width: 1150px;
   background-color: #F7F7F7;
   color: #222222;
-  font-size: 20px;
+  font-size: 12pt;
 }
 
 input:focus, textarea:focus, input:active, textarea:active {
@@ -58,7 +58,7 @@ ol, ul {
   margin: 40px 20px 0 0;
 }
 #main-menu ul li a {
-  font-size: 20px;
+  font-size: 15pt;
   text-decoration: none;
   color: #FFFFFF;
 }
@@ -89,7 +89,7 @@ footer.base {
   height: 22px;
   padding: 18px 0;
   background-color: #ec9700;
-  font-size: 15px;
+  font-size: 12pt;
 }
 
 div.footer {
@@ -105,4 +105,12 @@ div.footer {
 
 div.inline-list-item {
   display: inline;
+}
+
+.inputForm-label {
+  display: block;
+  margin-top: 5px;
+}
+.inputForm-text {
+	font-size: 15pt;
 }

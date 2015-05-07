@@ -9,4 +9,10 @@
 	<entry key="p.menu.autos">Автомобили</entry>
 
 	<entry key="p.customer.userIdTitle">Код пользователя</entry>
+
+	<entry key="p.customerEdit.idTitle">Код клиента</entry>
+	<entry key="p.customerEdit.firstNameTitle">Имя</entry>
+	<entry key="p.customerEdit.lastNameTitle">Фамилия</entry>
+
+	<entry key="p.inputForm.saveButton">Сохранить</entry>
 </properties>
