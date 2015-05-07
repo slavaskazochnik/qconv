@@ -104,7 +104,9 @@ div.footer {
 }
 
 div.inline-list-item {
-  display: inline;
+/*   display: inline; */
+	border-top-style: dotted;
+	border-top-width: 1px;
 }
 
 .inputForm-label {
@@ -113,4 +115,34 @@ div.inline-list-item {
 }
 .inputForm-text {
 	font-size: 15pt;
+}
+
+div.inputForm-buttons {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+div.item-menu {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.feedbackPanelERROR {
+	background-color: red;
+	color: yellow;
+}
+
+.feedbackPanelERROR {
+	background-color: red;
+	color: yellow;
+}
+
+.feedbackPanelINFO {
+	background-color: green;
+	color: white;
+}
+
+.feedbackPanelWARNING {
+	background-color: yellow;
+	color: black;
 }

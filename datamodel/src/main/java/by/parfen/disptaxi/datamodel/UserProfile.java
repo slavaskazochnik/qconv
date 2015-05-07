@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class UserProfile extends AbstractEntity {
@@ -18,10 +20,14 @@ public class UserProfile extends AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
+	@NotNull
+	@Size(max = 30)
 	private String firstName;
 	@Column
+	@Size(max = 30)
 	private String lastName;
 	@Column
+	@Size(max = 30)
 	private String telNum;
 	@Column
 	private Date creationDate;
@@ -91,8 +97,8 @@ public class UserProfile extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum="
-				+ telNum + ", creationDate=" + creationDate + "]";
+		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum=" + telNum
+				+ ", creationDate=" + creationDate + "]";
 	}
 
 }

@@ -7,6 +7,10 @@
 	<entry key="p.menu.customers">Клиенты</entry>
 	<entry key="p.menu.drivers">Водители</entry>
 	<entry key="p.menu.autos">Автомобили</entry>
+	<entry key="p.menu.cities">Города</entry>
+
+	<entry key="p.city.idTitle">Код города</entry>
+	<entry key="p.city.nameTitle">Название города</entry>
 
 	<entry key="p.customer.userIdTitle">Код пользователя</entry>
 
@@ -15,4 +19,7 @@
 	<entry key="p.customerEdit.lastNameTitle">Фамилия</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
+	<entry key="p.inputForm.cancelButton">Отказаться</entry>
+
+	<entry key="p.inlineMenu.editButton">Изменить</entry>
 </properties>

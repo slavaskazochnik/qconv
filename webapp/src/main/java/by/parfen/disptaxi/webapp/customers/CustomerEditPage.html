@@ -4,7 +4,7 @@
 		<fieldset>
 			<div>
 				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.customerEdit.idTitle" /></label>
-				<input wicket:id="id" class="inputForm-text" type="text" disabled/>
+				<input wicket:id="id" class="inputForm-text" type="text" />
 
 				<label wicket:for="userProfile.firstName" class="inputForm-label"><wicket:message key="p.customerEdit.firstNameTitle" /></label>
 				<input wicket:id="userProfile.firstName" class="inputForm-text" type="text" />
@@ -12,7 +12,10 @@
 				<label wicket:for="userProfile.lastName" class="inputForm-label"><wicket:message key="p.customerEdit.lastNameTitle" /></label>
 				<input wicket:id="userProfile.lastName" class="inputForm-text" type="text" />
 				
-				<button type="submit" wicket:id="sumbitLink"><wicket:message key="p.inputForm.saveButton" /></button>
+				<div class="inputForm-buttons">
+				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+				<button type="submit" wicket:id="cancelLink" class="button blue medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+				</div>
 			</div>
 		</fieldset>
 	</form>
