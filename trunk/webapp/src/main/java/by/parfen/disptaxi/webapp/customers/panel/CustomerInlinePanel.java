@@ -19,6 +19,7 @@ public class CustomerInlinePanel extends Panel {
 
 	@Inject
 	private CustomerService customerService;
+
 	private Customer customer;
 	private UserProfile userProfile;
 
@@ -32,7 +33,7 @@ public class CustomerInlinePanel extends Panel {
 		setCustomer(customerService.get(customerId));
 	}
 
-	public CustomerInlinePanel(String id, Customer customer) {
+	public CustomerInlinePanel(String id, final Customer customer) {
 		super(id);
 		setCustomer(customer);
 	}
@@ -54,14 +55,12 @@ public class CustomerInlinePanel extends Panel {
 		itemDetails.add(new Label("customerInfo", customerInfo));
 		listItem.add(itemDetails);
 
-		// item.add(new Label("itemMenuPanel", "Put here Edit button"));
 		Link<Void> linkToEdit = new Link<Void>("linkToEdit") {
 			@Override
 			public void onClick() {
 				setResponsePage(new CustomerEditPage(customer));
 			}
 		};
-		linkToEdit.add(new Label("itemEditLabel", "Edit"));
 		listItem.add(linkToEdit);
 	}
 }
