@@ -96,6 +96,14 @@ public class UserProfile extends AbstractEntity {
 		this.creationDate = creationDate;
 	}
 
+	public String getUserInfo() {
+		String result;
+		result = firstName + " " + lastName;
+		result.trim();
+		result += (telNum == null) ? "" : " (" + telNum + ")";
+		return result;
+	}
+
 	@Override
 	public String toString() {
 		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", telNum=" + telNum
