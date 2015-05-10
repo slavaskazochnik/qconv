@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.Range;
+
+import by.parfen.disptaxi.datamodel.enums.SignActive;
 
 @Entity
 public class Driver {
@@ -21,9 +27,11 @@ public class Driver {
 	private Long id;
 
 	@Column
+	@Range(min = 0, max = 5)
 	private Long avgRating;
 	@Column
-	private Long signActive;
+	@Enumerated(EnumType.ORDINAL)
+	private SignActive signActive;
 	@Column
 	private Date creationDate;
 
@@ -56,11 +64,11 @@ public class Driver {
 		this.avgRating = avgRating;
 	}
 
-	public Long getSignActive() {
+	public SignActive getSignActive() {
 		return signActive;
 	}
 
-	public void setSignActive(Long signActive) {
+	public void setSignActive(SignActive signActive) {
 		this.signActive = signActive;
 	}
 

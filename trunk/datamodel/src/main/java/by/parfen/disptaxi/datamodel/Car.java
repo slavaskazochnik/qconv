@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import by.parfen.disptaxi.datamodel.enums.CarType;
 
@@ -19,13 +20,16 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
+	@NotNull
 	private String regNum;
 	@Column
+	@NotNull
 	private Long seatsQuan;
 	@Column
 	private Long childSeatsQuan;
 	@Column
 	@Enumerated(EnumType.ORDINAL)
+	@NotNull
 	private CarType carType;
 	@Column
 	private String carModel;
@@ -101,9 +105,8 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan="
-				+ childSeatsQuan + ", carModel=" + carModel + ", signActive=" + signActive + ", creationDate="
-				+ creationDate + "]";
+		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan=" + childSeatsQuan
+				+ ", carModel=" + carModel + ", signActive=" + signActive + ", creationDate=" + creationDate + "]";
 	}
 
 }

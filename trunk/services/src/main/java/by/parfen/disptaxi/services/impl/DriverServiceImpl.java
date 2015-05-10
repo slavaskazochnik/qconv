@@ -71,4 +71,9 @@ public class DriverServiceImpl implements DriverService {
 	public List<Driver> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public List<Driver> getAllWithDetails() {
+		return dao.getAllWithDetails();
+	}
 }

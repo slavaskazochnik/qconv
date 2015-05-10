@@ -33,32 +33,28 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 		return query.getSingleResult();
 	}
 
-	@Override
-	public List<Customer> getAll() {
+	private List<Customer> getAll(Boolean withDetails) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Customer> criteria = cBuilder.createQuery(Customer.class);
 		Root<Customer> root = criteria.from(Customer.class);
 
 		criteria.select(root);
-
+		if (withDetails) {
+			root.fetch(Customer_.userProfile);
+		}
 		TypedQuery<Customer> query = getEm().createQuery(criteria);
 		List<Customer> results = query.getResultList();
 		return results;
 	}
 
 	@Override
+	public List<Customer> getAll() {
+		return getAll(false);
+	}
+
+	@Override
 	public List<Customer> getAllWithDetails() {
-		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-
-		CriteriaQuery<Customer> criteria = cBuilder.createQuery(Customer.class);
-		Root<Customer> root = criteria.from(Customer.class);
-
-		criteria.select(root);
-		root.fetch(Customer_.userProfile);
-
-		TypedQuery<Customer> query = getEm().createQuery(criteria);
-		List<Customer> results = query.getResultList();
-		return results;
+		return getAll(true);
 	}
 }

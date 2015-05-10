@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.DriverDao;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Driver_;
 
 @Repository
 public class DriverDaoImpl extends AbstractDaoImpl<Long, Driver> implements DriverDao {
@@ -32,17 +33,30 @@ public class DriverDaoImpl extends AbstractDaoImpl<Long, Driver> implements Driv
 		return query.getSingleResult();
 	}
 
-	@Override
-	public List<Driver> getAll() {
+	private List<Driver> getAll(Boolean withDetails) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Driver> criteria = cBuilder.createQuery(Driver.class);
 		Root<Driver> root = criteria.from(Driver.class);
 
 		criteria.select(root);
+		if (withDetails) {
+			root.fetch(Driver_.userProfile);
+		}
 
 		TypedQuery<Driver> query = getEm().createQuery(criteria);
 		List<Driver> results = query.getResultList();
 		return results;
 	}
+
+	@Override
+	public List<Driver> getAll() {
+		return getAll(false);
+	}
+
+	@Override
+	public List<Driver> getAllWithDetails() {
+		return getAll(true);
+	}
+
 }

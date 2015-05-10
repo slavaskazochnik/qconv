@@ -1,25 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+  <entry key="javax.validation.constraints.Min.message">Значение '${label}' должно быть больше или равно ${value}</entry>
+	<entry key="javax.validation.constraints.Max.message">Значение '${label}' должно быть меньше или равно ${value}</entry>
+	<entry key="javax.validation.constraints.Digits.message">Значение '${label}' должно состоять из не более чем ${integer} знаком до запятой и не более ${fraction} знаков после запятой</entry>
+	<entry key="javax.validation.constraints.Future.message">Значение '${label}' должно соответствовать "будущей" дате</entry>
+	<entry key="javax.validation.constraints.Past.message">Значение '${label}' должно соответствовать "прошедшей" дате</entry>
+	<entry key="javax.validation.constraints.Size.message">Значение '${label}' должно содержать от ${min} до ${max} элементов</entry>
+	<entry key="javax.validation.constraints.Size.message.String">Значение '${label}' должно содержать от ${min} до ${max} символов</entry>
+	<entry key="javax.validation.constraints.Pattern.message">Значение '${label}' должно соответствовать паттерну ${regexp}</entry>
+	<entry key="javax.validation.constraints.AssertFalse.message">Значение '${label}' должно быть false</entry>
+	<entry key="javax.validation.constraints.AssertTrue.message">Значение '${label}' должно быть true</entry>
+	<entry key="javax.validation.constraints.Null.message ">Значение '${label}' должно быть пустым</entry>
+	<entry key="javax.validation.constraints.NotNull.message">Значение '${label}' не должно быть пустым</entry>
+	<entry key="javax.validation.constraints.DecimalMax.message">Значение '${label}' должно быть меньше или равно ${value}</entry>
+	<entry key="javax.validation.constraints.DecimalMin.message">Значение '${label}' должно быть больше или равно ${value}</entry>
+	<entry key="org.hibernate.validator.constraints.Email.message">Значение '${label}' не является корректным e-mail</entry>
+	<entry key="org.hibernate.validator.constraints.Range.message">Значение '${label}' должно быть от ${min} до ${max}</entry>
+
 	<entry key="p.home.title">DispTaxi</entry>
 	<entry key="p.menu.aboutus">О нас</entry>
 	<entry key="p.menu.vieworders">Заказы</entry>
 	<entry key="p.menu.customers">Клиенты</entry>
 	<entry key="p.menu.drivers">Водители</entry>
-	<entry key="p.menu.autos">Автомобили</entry>
+	<entry key="p.menu.cars">Авто</entry>
+	<entry key="p.menu.autos">Такси</entry>
 	<entry key="p.menu.cities">Города</entry>
 
+	<entry key="p.cities.listTitle">Список городов</entry>
 	<entry key="p.city.idTitle">Код города</entry>
 	<entry key="p.city.nameTitle">Название города</entry>
 
-	<entry key="p.customer.userIdTitle">Код пользователя</entry>
+	<entry key="p.customers.listTitle">Список клиентов</entry>
+	<entry key="p.drivers.listTitle">Список водителей</entry>
 
-	<entry key="p.customerEdit.idTitle">Код клиента</entry>
-	<entry key="p.customerEdit.firstNameTitle">Имя</entry>
-	<entry key="p.customerEdit.lastNameTitle">Фамилия</entry>
+	<entry key="p.customer.userIdTitle">Код клиента</entry>
+	<entry key="p.driver.userIdTitle">Код водителя</entry>
+
+	<entry key="p.customer.edit.pageTitle">Редактирование данных клиента</entry>
+	<entry key="p.driver.edit.pageTitle">Редактирование данных водителя</entry>
+
+	<entry key="p.user.firstNameTitle">Имя</entry>
+	<entry key="p.user.lastNameTitle">Фамилия</entry>
+	<entry key="p.user.telNumTitle">Тел.</entry>
+	<entry key="p.user.avgRatingTitle">Рейтинг</entry>
+
+	<entry key="p.autos.listTitle">Список такси</entry>
+	<entry key="p.auto.edit.pageTitle">Редактирование данных такси</entry>
+	<entry key="p.auto.idTitle">Код такси</entry>
+	<entry key="p.auto.carTitle">Автомобиль</entry>
+	<entry key="p.auto.driverTitle">Водитель</entry>
+	<entry key="p.auto.signActiveTitle">Доступно</entry>
+
+	<entry key="p.cars.listTitle">Список автомобилей</entry>
+	<entry key="p.car.edit.pageTitle">Редактирование данных автомобиля</entry>
+
+	<entry key="p.car.regNumTitle">Номер</entry>
+	<entry key="p.car.idTitle">Код автомобиля</entry>
+	<entry key="p.car.edit.idTitle">Код</entry>
+	<entry key="p.car.edit.regNumTitle">Регистрационный номер</entry>
+	<entry key="p.car.seatsQuanTitle">Мест</entry>
+	<entry key="p.car.edit.seatsQuanTitle">Общее количество мест</entry>
+	<entry key="p.car.childSeatsQuanTitle">Детских сидений</entry>
+	<entry key="p.car.edit.childSeatsQuanTitle">Количество детских сидений</entry>
+	<entry key="p.car.carModelTitle">Модель</entry>
+	<entry key="p.car.edit.carModelTitle">Производитель и модель</entry>
+	<entry key="p.car.carTypeTitle">Тип</entry>
+	<entry key="p.car.edit.carTypeTitle">Тип</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
+	<entry key="p.inputForm.removeButton">Удалить</entry>
+	<entry key="p.inputForm.addButton">Добавить</entry>
 
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
+	
+	<entry key="SignActive.NO">Нет</entry>
+	<entry key="SignActive.YES">Да</entry>
+	
+	<entry key="CarType.SEDAN">Седан</entry>
+	<entry key="CarType.VAN">Микроавтобус</entry>
+	
 </properties>

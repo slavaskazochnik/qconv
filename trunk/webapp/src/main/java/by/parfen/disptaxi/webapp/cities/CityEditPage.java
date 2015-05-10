@@ -24,6 +24,7 @@ public class CityEditPage extends BaseLayout {
 
 		final TextField<String> tfId = new TextField<String>("id");
 		tfId.setLabel(new ResourceModel("p.city.idTitle"));
+		tfId.setEnabled(false);
 		form.add(tfId);
 
 		final TextField<String> tfName = new TextField<String>("name");
@@ -40,6 +41,18 @@ public class CityEditPage extends BaseLayout {
 				setResponsePage(page);
 			}
 		});
+
+		final SubmitLink removeLink = new SubmitLink("removeLink") {
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				cityService.delete(city);
+				setResponsePage(new CitiesPage());
+			}
+		};
+		form.add(removeLink);
+		removeLink.setDefaultFormProcessing(false);
+		removeLink.setVisible(city.getId() != null);
 
 		form.add(new SubmitLink("cancelLink") {
 			@Override

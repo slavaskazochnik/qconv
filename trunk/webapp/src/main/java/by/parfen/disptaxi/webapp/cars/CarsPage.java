@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.webapp.cities;
+package by.parfen.disptaxi.webapp.cars;
 
 import java.util.List;
 
@@ -9,25 +9,25 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 
-import by.parfen.disptaxi.datamodel.City;
-import by.parfen.disptaxi.services.CityService;
+import by.parfen.disptaxi.datamodel.Car;
+import by.parfen.disptaxi.services.CarService;
 import by.parfen.disptaxi.webapp.BaseLayout;
-import by.parfen.disptaxi.webapp.cities.panel.CityInlinePanel;
+import by.parfen.disptaxi.webapp.cars.panel.CarInlinePanel;
 
-public class CitiesPage extends BaseLayout {
+public class CarsPage extends BaseLayout {
 
 	@Inject
-	private CityService cityService;
+	private CarService carService;
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		final List<City> allCities = cityService.getAll();
-		add(new ListView<City>("detailsPanel", allCities) {
+		final List<Car> allCars = carService.getAll();
+		add(new ListView<Car>("detailsPanel", allCars) {
 			@Override
-			protected void populateItem(ListItem<City> item) {
-				final City city = item.getModelObject();
-				item.add(new CityInlinePanel("itemPanel", city));
+			protected void populateItem(ListItem<Car> item) {
+				final Car car = item.getModelObject();
+				item.add(new CarInlinePanel("itemPanel", car));
 			}
 		});
 
@@ -35,8 +35,8 @@ public class CitiesPage extends BaseLayout {
 		Link<Void> linkToEdit = new Link<Void>("linkToAdd") {
 			@Override
 			public void onClick() {
-				final City city = new City();
-				setResponsePage(new CityEditPage(city));
+				final Car car = new Car();
+				setResponsePage(new CarEditPage(car));
 			}
 		};
 		listButtons.add(linkToEdit);

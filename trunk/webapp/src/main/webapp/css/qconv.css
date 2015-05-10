@@ -109,6 +109,17 @@ div.inline-list-item {
 	border-top-width: 1px;
 }
 
+div.inline-list-item {
+/*   display: inline; */
+	border-top-style: dotted;
+	border-top-width: 1px;
+}
+
+.inline-list-item h3{
+	margin-top: 0.5em;
+	margin-bottom: 0.1em;
+}
+
 .inputForm-label {
   display: block;
   margin-top: 5px;
@@ -146,3 +157,13 @@ div.item-menu {
 	background-color: yellow;
 	color: black;
 }
+
+div.table-row {
+	display: table-row;
+}
+
+div.table-cell {
+	display: table-cell;
+	padding-right: 1em;
+}
+
