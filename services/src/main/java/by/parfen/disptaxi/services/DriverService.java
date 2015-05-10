@@ -27,4 +27,6 @@ public interface DriverService {
 
 	List<Driver> getAll();
 
+	List<Driver> getAllWithDetails();
+
 }

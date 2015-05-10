@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 
@@ -28,6 +30,17 @@ public class CustomersPage extends BaseLayout {
 				item.add(new CustomerInlinePanel("itemPanel", customer));
 			}
 		});
+
+		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
+		Link<Void> linkToEdit = new Link<Void>("linkToAdd") {
+			@Override
+			public void onClick() {
+				final Customer customer = new Customer();
+				setResponsePage(new CustomerEditPage(customer));
+			}
+		};
+		listButtons.add(linkToEdit);
+		add(listButtons);
 	}
 
 }

@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.webapp.customers;
+package by.parfen.disptaxi.webapp.drivers;
 
 import javax.inject.Inject;
 
@@ -9,18 +9,18 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
 
-import by.parfen.disptaxi.datamodel.Customer;
-import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 
-public class CustomerEditPage extends BaseLayout {
+public class DriverEditPage extends BaseLayout {
 
 	@Inject
-	private CustomerService customerService;
+	private DriverService driverService;
 
-	public CustomerEditPage(final Customer customer) {
+	public DriverEditPage(final Driver driver) {
 		super();
-		Form<Customer> form = new Form<Customer>("inputForm", new CompoundPropertyModel<Customer>(customer));
+		Form<Driver> form = new Form<Driver>("inputForm", new CompoundPropertyModel<Driver>(driver));
 
 		final TextField<String> tfUserId = new TextField<String>("id");
 		tfUserId.setEnabled(false);
@@ -50,8 +50,8 @@ public class CustomerEditPage extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				customerService.update(customer);
-				CustomersPage page = new CustomersPage();
+				driverService.update(driver);
+				DriversPage page = new DriversPage();
 				// page.error("Custom error");
 				// page.info("Custom info");
 				// page.warn("Custom warn");
@@ -63,18 +63,18 @@ public class CustomerEditPage extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				customerService.delete(customer);
-				setResponsePage(new CustomersPage());
+				driverService.delete(driver);
+				setResponsePage(new DriversPage());
 			}
 		};
 		form.add(removeLink);
 		removeLink.setDefaultFormProcessing(false);
-		removeLink.setVisible(customer.getId() != null);
+		removeLink.setVisible(driver.getId() != null);
 
 		form.add(new SubmitLink("cancelLink") {
 			@Override
 			public void onSubmit() {
-				setResponsePage(new CustomersPage());
+				setResponsePage(new DriversPage());
 			}
 		}.setDefaultFormProcessing(false));
 

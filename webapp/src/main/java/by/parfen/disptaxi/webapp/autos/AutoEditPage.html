@@ -1,14 +1,17 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<h1>CityEditPage</h1>
+	<h1><wicket:message key="p.driver.edit.pageTitle" /></h1>
 	<form wicket:id="inputForm">
 		<fieldset>
 			<div>
-				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.city.idTitle" /></label>
-				<input wicket:id="id" class="inputForm-text" type="text"/>
+				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.auto.idTitle" /></label>
+				<input wicket:id="id" class="inputForm-text" type="text" />
 
-				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.city.nameTitle" /></label>
-				<input wicket:id="name" class="inputForm-text" type="text" />
-				
+				<label wicket:for="signActive" class="inputForm-label"><wicket:message key="p.auto.signActiveTitle" /></label>
+				<select wicket:id="signActive" class="inputForm-text"/>
+
+<!-- 				<label wicket:for="car.regNum" class="inputForm-label"><wicket:message key="p.auto.carTitle" /></label> -->
+<!-- 				<select wicket:id="car.regNum" class="inputForm-text"/> -->
+
 				<div class="inputForm-buttons">
 				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
 				<button type="submit" wicket:id="cancelLink" class="button blue medium"><wicket:message key="p.inputForm.cancelButton" /></button>

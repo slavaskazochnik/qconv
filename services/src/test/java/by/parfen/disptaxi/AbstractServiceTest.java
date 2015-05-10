@@ -31,6 +31,7 @@ import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
+import by.parfen.disptaxi.datamodel.enums.SignActive;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -128,8 +129,7 @@ public abstract class AbstractServiceTest {
 	protected UserAccount createUserAccount() {
 		final UserAccount userAccount = new UserAccount();
 		userAccount.setName(randomString("login-"));
-		userAccount
-				.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
+		userAccount.setEmail(randomString("email-") + '@' + randomString("domainname") + "." + randomString("sd"));
 		userAccount.setPassw(randomString("password"));
 		userAccount.setCreationDate(new Date());
 		return userAccount;
@@ -142,14 +142,14 @@ public abstract class AbstractServiceTest {
 
 	protected Driver createDriver() {
 		final Driver driver = new Driver();
-		driver.setSignActive(1L);
+		driver.setSignActive(SignActive.YES);
 		driver.setCreationDate(new Date());
 		return driver;
 	}
 
 	protected Customer createCustomer() {
 		final Customer customer = new Customer();
-		customer.setSignActive(1L);
+		customer.setSignActive(SignActive.YES);
 		customer.setCreationDate(new Date());
 		return customer;
 	}
@@ -185,8 +185,7 @@ public abstract class AbstractServiceTest {
 	}
 
 	protected String getRandomRegNum() {
-		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-"
-				+ randomInteger(1, 7);
+		return randomInteger(1111, 9999) + " " + randomString().substring(1, 3).toUpperCase() + "-" + randomInteger(1, 7);
 	}
 
 	protected Car createCar(CarType carType) {

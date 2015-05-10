@@ -27,6 +27,7 @@ public class UserProfile extends AbstractEntity {
 	@Size(max = 30)
 	private String lastName;
 	@Column
+	@NotNull
 	@Size(max = 30)
 	private String telNum;
 	@Column

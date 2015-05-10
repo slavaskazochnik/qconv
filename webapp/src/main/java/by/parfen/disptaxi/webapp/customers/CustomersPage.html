@@ -1,5 +1,8 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<h1>Customers Page.</h1>
+	<h1><wicket:message key="p.customers.listTitle" /></h1>
+	<div wicket:id="listButtons" class="items-list-buttons">
+		<button type="submit" wicket:id="linkToAdd" class="button green medium"><wicket:message key="p.inputForm.addButton" /></button>
+	</div>
 	<div class="items-list">
 		<wicket:container wicket:id="detailsPanel">
 			<wicket:container wicket:id="itemPanel" />

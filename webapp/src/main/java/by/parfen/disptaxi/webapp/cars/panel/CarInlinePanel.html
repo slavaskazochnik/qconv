@@ -1,0 +1,31 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div wicket:id="listItem" class="inline-list-item">
+		<h3 wicket:id="itemHeader">
+			<wicket:container wicket:id="itemName" />
+		</h3>
+		<div class="list-item-details">
+			<wicket:container wicket:id="itemDetails">
+				<div class="table-row">
+					<div>
+						<label><wicket:message key="p.car.seatsQuanTitle" />: </label>
+						<span	wicket:id="seatsQuan" />
+					</div>
+					<wicket:enclosure child="childSeatsQuan">
+						<div>
+							<label><wicket:message key="p.car.childSeatsQuanTitle" />: </label>
+							<span	wicket:id="childSeatsQuan" />
+						</div>
+					</wicket:enclosure>
+					<div>
+						<label><wicket:message key="p.car.carTypeTitle" />: </label>
+						<span	wicket:id="carType" />
+					</div>
+				</div>
+			</wicket:container>
+		</div>
+		<div class="item-menu">
+			<a wicket:id="linkToEdit" class="button medium orange"><wicket:message
+					key="p.inlineMenu.editButton" /></a>
+		</div>
+	</div>
+</wicket:panel>

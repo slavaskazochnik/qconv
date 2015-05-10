@@ -15,8 +15,6 @@ import by.parfen.disptaxi.webapp.customers.CustomerEditPage;
 
 public class CustomerInlinePanel extends Panel {
 
-	private static final String P_CUSTOMER_USER_ID_TITLE = "p.customer.userIdTitle";
-
 	@Inject
 	private CustomerService customerService;
 
@@ -51,8 +49,17 @@ public class CustomerInlinePanel extends Panel {
 		itemHeader.add(new Label("itemName", new Model<String>(userDisplayName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");
-		String customerInfo = getString(P_CUSTOMER_USER_ID_TITLE) + ": " + customer.getId();
+
+		String customerInfo = getString("p.customer.userIdTitle") + ": " + customer.getId();
+		customerInfo = "";
 		itemDetails.add(new Label("customerInfo", customerInfo));
+
+		String customerTelNum = getString("p.user.telNumTitle") + ": " + userProfile.getTelNum();
+		itemDetails.add(new Label("customerTelNum", customerTelNum));
+
+		String customerAvgRating = getString("p.user.avgRatingTitle") + ": " + customer.getAvgRating();
+		itemDetails.add(new Label("customerAvgRating", customerAvgRating));
+
 		listItem.add(itemDetails);
 
 		Link<Void> linkToEdit = new Link<Void>("linkToEdit") {

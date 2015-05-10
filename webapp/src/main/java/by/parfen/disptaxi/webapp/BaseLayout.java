@@ -11,6 +11,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.webapp.autos.AutosPage;
+import by.parfen.disptaxi.webapp.cars.CarsPage;
 import by.parfen.disptaxi.webapp.cities.CitiesPage;
 import by.parfen.disptaxi.webapp.customers.CustomersPage;
 import by.parfen.disptaxi.webapp.drivers.DriversPage;
@@ -20,6 +21,7 @@ public abstract class BaseLayout extends WebPage {
 
 	private static final String P_MENU_VIEWORDERS = "p.menu.vieworders";
 	private static final String P_MENU_AUTOS = "p.menu.autos";
+	private static final String P_MENU_CARS = "p.menu.cars";
 	private static final String P_MENU_DRIVERS = "p.menu.drivers";
 	private static final String P_MENU_CUSTOMERS = "p.menu.customers";
 	private static final String P_MENU_CITIES = "p.menu.cities";
@@ -85,6 +87,18 @@ public abstract class BaseLayout extends WebPage {
 		link = new Link(MENU_LINK) {
 			@Override
 			public void onClick() {
+				setResponsePage(CarsPage.class);
+			}
+		};
+		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CARS)));
+		menuItem.add(link);
+		menuLinkList.add(menuItem);
+
+		// #5 Menu element
+		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
+		link = new Link(MENU_LINK) {
+			@Override
+			public void onClick() {
 				setResponsePage(AutosPage.class);
 			}
 		};
@@ -92,7 +106,7 @@ public abstract class BaseLayout extends WebPage {
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
-		// #5 Menu element
+		// #6 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
 		link = new Link(MENU_LINK) {
 			@Override
