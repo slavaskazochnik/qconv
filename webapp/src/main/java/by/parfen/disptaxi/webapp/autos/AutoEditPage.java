@@ -1,22 +1,29 @@
 package by.parfen.disptaxi.webapp.autos;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.wicket.bean.validation.PropertyValidator;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
+import by.parfen.disptaxi.datamodel.Car;
+import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CarService;
+import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 
 public class AutoEditPage extends BaseLayout {
@@ -25,6 +32,27 @@ public class AutoEditPage extends BaseLayout {
 	private AutoService autoService;
 	@Inject
 	private CarService carService;
+	@Inject
+	private DriverService driverService;
+
+	private Car selectedCar;
+	private Driver selectedDriver;
+
+	public Driver getSelectedDriver() {
+		return selectedDriver;
+	}
+
+	public void setSelectedDriver(Driver selectedDriver) {
+		this.selectedDriver = selectedDriver;
+	}
+
+	public Car getDefaultCar() {
+		return selectedCar;
+	}
+
+	public void setDefaultCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
 
 	public AutoEditPage(final Auto auto) {
 		super();
@@ -40,18 +68,28 @@ public class AutoEditPage extends BaseLayout {
 		ddcSignActive.add(new PropertyValidator<SignActive>());
 		form.add(ddcSignActive);
 
-		// final DropDownChoice<Car> ddcCar = new DropDownChoice<Car>("car.regNum",
-		// carService.getAll(),
-		// AutoCarChoiseRenderer.INSTANCE);
-		// form.add(ddcCar);
-		// ddcCar.setLabel(new ResourceModel("p.auto.carTypeTitle"));
-		// ddcCar.add(new PropertyValidator<Car>());
-		// form.add(ddcCar);
+		List<Car> carsList = new ArrayList<Car>();
+		carsList.addAll(carService.getAll());
+		// final DropDownChoice<Car> ddcCar = new DropDownChoice<Car>("car",
+		// carsList);
+		selectedCar = auto.getCar();
+		final DropDownChoice<Car> ddcCar = new DropDownChoice<Car>("car", new PropertyModel<Car>(this, "selectedCar"),
+				carsList, new ChoiceRenderer<Car>("regNum", "id"));
+		form.add(ddcCar);
+
+		List<Driver> driversList = new ArrayList<Driver>();
+		driversList.addAll(driverService.getAllWithDetails());
+		selectedDriver = auto.getDriver();
+		final DropDownChoice<Driver> ddcDriver = new DropDownChoice<Driver>("driver", new PropertyModel<Driver>(this,
+				"selectedDriver"), driversList, new ChoiceRenderer<Driver>("userProfile.getUserInfo", "id"));
+		form.add(ddcDriver);
 
 		form.add(new SubmitLink("sumbitLink") {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				auto.setCar(selectedCar);
+				auto.setDriver(selectedDriver);
 				autoService.update(auto);
 				AutosPage page = new AutosPage();
 				setResponsePage(page);
