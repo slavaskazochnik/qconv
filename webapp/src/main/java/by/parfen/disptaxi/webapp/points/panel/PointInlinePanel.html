@@ -4,14 +4,9 @@
 			<wicket:container wicket:id="itemName" />
 		</h3>
 		<div class="list-item-details">
-			<div class="table-cell">
-				<wicket:container wicket:id="itemDetails">
-					<span wicket:id="cityInfo"></span>
-				</wicket:container>
-			</div>
-			<div class="table-cell">
-				<a wicket:id="linkToStreets" class="button blue orange"><wicket:message key="p.city.streetsTitle" /></a>
-			</div>
+			<wicket:container wicket:id="itemDetails">
+				<span wicket:id="pointInfo"></span>
+			</wicket:container>
 		</div>
 		<div class="item-menu">
 			<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>

@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Street extends AbstractEntity {
@@ -15,6 +17,8 @@ public class Street extends AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
+	@NotNull
+	@Size(max = 50)
 	private String name;
 
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class)

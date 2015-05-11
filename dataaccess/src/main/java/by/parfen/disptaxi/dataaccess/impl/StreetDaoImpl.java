@@ -46,6 +46,7 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 		Root<Street> root = criteria.from(Street.class);
 
 		criteria.select(root);
+		root.fetch(Street_.city);
 
 		TypedQuery<Street> query = getEm().createQuery(criteria);
 		List<Street> results = query.getResultList();
@@ -90,6 +91,7 @@ public class StreetDaoImpl extends AbstractDaoImpl<Long, Street> implements Stre
 		}
 
 		criteria.select(root);
+		root.fetch(Street_.city);
 		// criteria.where(cBuilder.equal(root.get(Street_.city), city));
 		criteria.orderBy(cBuilder.asc(root.get(Street_.name)));
 
