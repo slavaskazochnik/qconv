@@ -30,6 +30,26 @@
 	<entry key="p.cities.listTitle">Список городов</entry>
 	<entry key="p.city.idTitle">Код города</entry>
 	<entry key="p.city.nameTitle">Название города</entry>
+	<entry key="p.city.streetsTitle">Улицы</entry>
+	<entry key="p.city.edit.pageTitle">Редактирование данных города</entry>
+
+	<entry key="p.streets.listTitle">Список улиц</entry>
+	<entry key="p.streets.ofCityTitle">в городе</entry>
+	<entry key="p.streets.allCities">Вернуться к списку городов</entry>
+	<entry key="p.street.idTitle">Код улицы</entry>
+	<entry key="p.street.nameTitle">Название улицы</entry>
+	<entry key="p.street.edit.pageTitle">Редактирование данных улицы</entry>
+	<entry key="p.street.pointsTitle">Дома</entry>
+
+	<entry key="p.points.listTitle">Список домов</entry>
+	<entry key="p.points.ofCityTitle">в городе</entry>
+	<entry key="p.points.onStreetTitle">по</entry>
+	<entry key="p.points.allCityStreets">Вернуться к списку улиц</entry>
+	<entry key="p.point.idTitle">Код дома</entry>
+	<entry key="p.point.nameTitle">Номер дома</entry>
+	<entry key="p.point.edit.pageTitle">Редактирование данных дома</entry>
+	<entry key="p.point.pointLatTitle">Широта</entry>
+	<entry key="p.point.pointLngTitle">Долгота</entry>
 
 	<entry key="p.customers.listTitle">Список клиентов</entry>
 	<entry key="p.drivers.listTitle">Список водителей</entry>

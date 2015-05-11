@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Point extends AbstractEntity {
@@ -17,10 +21,14 @@ public class Point extends AbstractEntity {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Street.class)
 	private Street street;
 	@Column
+	@NotNull
+	@Size(max = 10)
 	private String name;
 	@Column
+	@Range(min = -90, max = 90)
 	private String pointLat;
 	@Column
+	@Range(min = -180, max = 180)
 	private String pointLng;
 
 	public Long getId() {

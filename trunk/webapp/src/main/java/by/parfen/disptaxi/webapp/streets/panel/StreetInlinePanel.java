@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.webapp.cities.panel;
+package by.parfen.disptaxi.webapp.streets.panel;
 
 import javax.inject.Inject;
 
@@ -9,22 +9,23 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.datamodel.City;
-import by.parfen.disptaxi.services.CityService;
-import by.parfen.disptaxi.webapp.cities.CityEditPage;
-import by.parfen.disptaxi.webapp.streets.StreetsPage;
+import by.parfen.disptaxi.datamodel.Street;
+import by.parfen.disptaxi.services.StreetService;
+import by.parfen.disptaxi.webapp.points.PointsPage;
+import by.parfen.disptaxi.webapp.streets.StreetEditPage;
 
-public class CityInlinePanel extends Panel {
-
-	private static final String P_CITY_ID_TITLE = "p.city.idTitle";
+public class StreetInlinePanel extends Panel {
 
 	@Inject
-	private CityService cityService;
+	private StreetService streetService;
 
+	private Street street;
 	private City city;
 
-	public CityInlinePanel(String id, final City city) {
+	public StreetInlinePanel(String id, final Street street) {
 		super(id);
-		this.city = city;
+		this.street = street;
+		this.city = street.getCity();
 	}
 
 	@Override
@@ -36,26 +37,26 @@ public class CityInlinePanel extends Panel {
 		final WebMarkupContainer itemHeader = new WebMarkupContainer("itemHeader");
 		listItem.add(itemHeader);
 
-		final String itemName = city.getName();
+		final String itemName = street.getName();
 		itemHeader.add(new Label("itemName", new Model<String>(itemName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");
-		String cityInfo = getString(P_CITY_ID_TITLE) + ": " + city.getId();
-		itemDetails.add(new Label("cityInfo", cityInfo));
+		String streetInfo = getString("p.street.idTitle") + ": " + street.getId();
+		itemDetails.add(new Label("streetInfo", streetInfo));
 		listItem.add(itemDetails);
 
-		Link<Void> linkToStreets = new Link<Void>("linkToStreets") {
+		Link<Void> linkToPoints = new Link<Void>("linkToPoints") {
 			@Override
 			public void onClick() {
-				setResponsePage(new StreetsPage(city));
+				setResponsePage(new PointsPage(street));
 			}
 		};
-		listItem.add(linkToStreets);
+		listItem.add(linkToPoints);
 
 		Link<Void> linkToEdit = new Link<Void>("linkToEdit") {
 			@Override
 			public void onClick() {
-				setResponsePage(new CityEditPage(city));
+				setResponsePage(new StreetEditPage(street, city));
 			}
 		};
 		listItem.add(linkToEdit);

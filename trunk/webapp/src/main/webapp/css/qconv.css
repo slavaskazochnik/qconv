@@ -138,6 +138,10 @@ div.item-menu {
 	margin-bottom: 0.5em;
 }
 
+div.nav-menu {
+	margin-bottom: 1em;
+}
+
 .feedbackPanelERROR {
 	background-color: red;
 	color: yellow;

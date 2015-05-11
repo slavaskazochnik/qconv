@@ -1,0 +1,33 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1><wicket:message key="p.point.edit.pageTitle" /></h1>
+	<form wicket:id="inputForm">
+		<fieldset>
+			<div>
+<!-- 				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.city.nameTitle" /></label> -->
+<!-- 				<input wicket:id="name" class="inputForm-text" type="text" /> -->
+				
+				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.point.idTitle" /></label>
+				<input wicket:id="id" class="inputForm-text" type="text"/>
+
+				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.point.nameTitle" /></label>
+				<input wicket:id="name" class="inputForm-text" type="text" />
+				
+				<label wicket:for="pointLat" class="inputForm-label"><wicket:message key="p.point.pointLatTitle" /></label>
+				<input wicket:id="pointLat" class="inputForm-text" type="text" />
+				
+				<label wicket:for="pointLng" class="inputForm-label"><wicket:message key="p.point.pointLngTitle" /></label>
+				<input wicket:id="pointLng" class="inputForm-text" type="text" />
+			</div>
+				
+			<div class="map-point">
+				Put here the map frame
+			</div>
+
+			<div class="inputForm-buttons">
+			<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+			<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+			<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+			</div>
+		</fieldset>
+	</form>
+</wicket:extend>

@@ -57,6 +57,7 @@ public class PointDaoImpl extends AbstractDaoImpl<Long, Point> implements PointD
 		}
 
 		criteria.select(root);
+		root.fetch(Point_.street);
 
 		TypedQuery<Point> query = getEm().createQuery(criteria);
 		List<Point> results = query.getResultList();
