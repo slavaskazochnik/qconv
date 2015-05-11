@@ -1,0 +1,21 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div wicket:id="listItem" class="inline-list-item">
+		<h3 wicket:id="itemHeader">
+			<wicket:container wicket:id="itemName" />
+		</h3>
+		<div class="list-item-details">
+			<wicket:container wicket:id="itemDetails">
+				<div class="table-row">
+					<div>
+						<label><wicket:message key="p.order.idTitle" />: </label>
+						<span wicket:id="id" />
+					</div>
+				</div>
+			</wicket:container>
+		</div>
+		<div class="item-menu">
+			<a wicket:id="linkToEdit" class="button medium orange"><wicket:message
+					key="p.inlineMenu.editButton" /></a>
+		</div>
+	</div>
+</wicket:panel>

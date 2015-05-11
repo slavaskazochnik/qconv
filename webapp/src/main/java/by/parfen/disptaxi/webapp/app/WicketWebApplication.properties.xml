@@ -88,6 +88,13 @@
 	<entry key="p.car.carTypeTitle">Тип</entry>
 	<entry key="p.car.edit.carTypeTitle">Тип</entry>
 
+	<entry key="p.orders.listTitle">Список заказов</entry>
+	<entry key="p.order.edit.pageTitle">Редактирование данных заказа</entry>
+	<entry key="p.order.idTitle">Код заказа</entry>
+	<entry key="p.order.edit.idTitle">Код</entry>
+	<entry key="p.order.driverTitle">Водитель</entry>
+	<entry key="p.order.customerTitle">Клиент</entry>
+
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
 	<entry key="p.inputForm.removeButton">Удалить</entry>

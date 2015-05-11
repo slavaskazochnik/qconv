@@ -1,0 +1,23 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1><wicket:message key="p.order.edit.pageTitle" /></h1>
+	<form wicket:id="inputForm">
+		<fieldset>
+			<div>
+				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.order.edit.idTitle" /></label>
+				<input wicket:id="id" class="inputForm-text" type="text" />
+
+				<label wicket:for="driver" class="inputForm-label"><wicket:message key="p.order.driverTitle" /></label>
+				<select wicket:id="driver" class="inputForm-text"/>
+
+<!-- 				<label wicket:for="customer" class="inputForm-label"><wicket:message key="p.order.customerTitle" /></label> -->
+<!-- 				<select wicket:id="customer" class="inputForm-text"/> -->
+
+				<div class="inputForm-buttons">
+				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+				<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+				<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</wicket:extend>
