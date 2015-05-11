@@ -15,8 +15,6 @@ import by.parfen.disptaxi.webapp.streets.StreetsPage;
 
 public class CityInlinePanel extends Panel {
 
-	private static final String P_CITY_ID_TITLE = "p.city.idTitle";
-
 	@Inject
 	private CityService cityService;
 
@@ -40,7 +38,7 @@ public class CityInlinePanel extends Panel {
 		itemHeader.add(new Label("itemName", new Model<String>(itemName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");
-		String cityInfo = getString(P_CITY_ID_TITLE) + ": " + city.getId();
+		String cityInfo = getString("p.city.idTitle") + ": " + city.getId();
 		itemDetails.add(new Label("cityInfo", cityInfo));
 		listItem.add(itemDetails);
 
