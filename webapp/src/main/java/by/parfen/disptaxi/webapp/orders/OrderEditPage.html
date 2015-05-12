@@ -6,11 +6,24 @@
 				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.order.edit.idTitle" /></label>
 				<input wicket:id="id" class="inputForm-text" type="text" />
 
-				<label wicket:for="driver" class="inputForm-label"><wicket:message key="p.order.driverTitle" /></label>
-				<select wicket:id="driver" class="inputForm-text"/>
+<!-- 				<label wicket:for="driver" class="inputForm-label"><wicket:message key="p.order.driverTitle" /></label> -->
+<!-- 				<select wicket:id="driver" class="inputForm-text"/> -->
 
-<!-- 				<label wicket:for="customer" class="inputForm-label"><wicket:message key="p.order.customerTitle" /></label> -->
-<!-- 				<select wicket:id="customer" class="inputForm-text"/> -->
+				<label wicket:for="customer" class="inputForm-label"><wicket:message key="p.order.customerTitle" /></label>
+				<select wicket:id="customer" class="inputForm-text"/>
+
+				<label wicket:for="auto" class="inputForm-label"><wicket:message key="p.order.autoTitle" /></label>
+				<select wicket:id="auto" class="inputForm-text"/>
+
+				<form wicket:id="autosForm">
+					<fieldset>
+						<div>
+							<label><wicket:message key="p.car.edit.carModelTitle" /></label>
+							<input wicket:id="car.carModel" class="inputForm-text" type="text" />
+							<label><wicket:message key="p.order.driverTitle" />: </label>
+						</div>
+					</fieldset>
+				</form>
 
 				<div class="inputForm-buttons">
 				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>

@@ -94,6 +94,7 @@
 	<entry key="p.order.edit.idTitle">Код</entry>
 	<entry key="p.order.driverTitle">Водитель</entry>
 	<entry key="p.order.customerTitle">Клиент</entry>
+	<entry key="p.order.autoTitle">Такси</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>

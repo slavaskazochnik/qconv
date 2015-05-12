@@ -42,6 +42,8 @@ public interface OrderService {
 
 	Long calcOrderPrice(Order order);
 
+	Order getWithDetails(Order order);
+
 	@Transactional
 	void changeOrderStatus(Order order, OrderStatus orderStatus);
 

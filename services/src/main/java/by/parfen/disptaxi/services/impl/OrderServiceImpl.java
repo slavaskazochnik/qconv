@@ -133,4 +133,9 @@ public class OrderServiceImpl implements OrderService {
 		dao.update(order);
 	}
 
+	@Override
+	public Order getWithDetails(Order order) {
+		return dao.getWithDetails(order);
+	}
+
 }

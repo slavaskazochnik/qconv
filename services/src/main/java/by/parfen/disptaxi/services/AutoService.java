@@ -38,4 +38,5 @@ public interface AutoService {
 
 	List<Auto> getAllWithDetails();
 
+	Auto getWithDetails(Auto auto);
 }
