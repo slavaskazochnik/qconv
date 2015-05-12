@@ -95,4 +95,23 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		return results.getAuto().getDriver();
 	}
 
+	@Override
+	public Order getWithDetails(Order order) {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<Order> criteria = cBuilder.createQuery(Order.class);
+		Root<Order> root = criteria.from(Order.class);
+		Fetch customer = root.fetch(Order_.customer);
+		Fetch auto = root.fetch(Order_.auto);
+		Fetch driver = auto.fetch(Auto_.driver);
+		criteria.where(cBuilder.equal(root, order));
+
+		criteria.select(root);
+
+		TypedQuery<Order> query = getEm().createQuery(criteria);
+		Order results = query.getSingleResult();
+
+		return results;
+	}
+
 }

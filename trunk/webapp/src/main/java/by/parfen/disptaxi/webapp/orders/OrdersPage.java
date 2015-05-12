@@ -26,7 +26,7 @@ public class OrdersPage extends BaseLayout {
 		add(new ListView<Order>("detailsPanel", allOrders) {
 			@Override
 			protected void populateItem(ListItem<Order> item) {
-				final Order order = item.getModelObject();
+				final Order order = orderService.getWithDetails(item.getModelObject());
 				// item.add(new Label("itemPanel", order.getId()));
 				item.add(new OrderInlinePanel("itemPanel", order));
 			}

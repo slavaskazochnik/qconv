@@ -20,4 +20,5 @@ public interface OrderDao extends AbstractDao<Long, Order> {
 
 	Driver getOrderDriver(Order order);
 
+	Order getWithDetails(Order order);
 }

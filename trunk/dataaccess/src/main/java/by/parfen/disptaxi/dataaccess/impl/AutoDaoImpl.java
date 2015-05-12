@@ -118,12 +118,20 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 		return getAll(null, SignActive.YES);
 	}
 
-	@Override
-	public List<Auto> getAllWithDetails() {
+	public List<Auto> getAllWithDetails(Auto auto) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
 		Root<Auto> root = criteria.from(Auto.class);
+
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (auto != null) {
+			predicates.add(cBuilder.equal(root.get(Auto_.id), auto.getId()));
+		}
+		if (predicates.size() > 0) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
+
 		final int detailsMethod = 1;
 		if (detailsMethod == 0) {
 			// Ok
@@ -151,6 +159,21 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 
 		List<Auto> results = query.getResultList();
 		return results;
+	}
+
+	@Override
+	public List<Auto> getAllWithDetails() {
+		return getAllWithDetails(null);
+	}
+
+	@Override
+	public Auto getWithDetails(Auto auto) {
+		List<Auto> autosList = getAllWithDetails(auto);
+		Auto result = null;
+		if (autosList.size() > 0) {
+			result = autosList.get(0);
+		}
+		return result;
 	}
 
 }
