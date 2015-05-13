@@ -21,6 +21,7 @@ public class CarsPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.cars");
 		super.onInitialize();
 		final List<Car> allCars = carService.getAll();
 		add(new ListView<Car>("detailsPanel", allCars) {

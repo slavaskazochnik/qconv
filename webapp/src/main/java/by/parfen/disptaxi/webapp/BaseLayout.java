@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.webapp;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -28,6 +29,16 @@ public abstract class BaseLayout extends WebPage {
 	private static final String MENU_TEXT = "menuText";
 	private static final String MENU_LINK = "menuLink";
 
+	private String currentMenuTitle;
+
+	public String getCurrentMenuTitle() {
+		return currentMenuTitle;
+	}
+
+	public void setCurrentMenuTitle(String currentMenuTitle) {
+		this.currentMenuTitle = currentMenuTitle;
+	}
+
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
@@ -36,6 +47,12 @@ public abstract class BaseLayout extends WebPage {
 		createNavigationMenu();
 
 		add(new FeedbackPanel("feedbackpanel"));
+	}
+
+	private void applyMenuAttrib(final WebMarkupContainer menuItem, String menuTitle) {
+		if (currentMenuTitle == menuTitle) {
+			menuItem.add(new AttributeModifier("class", new Model<String>("current")));
+		}
 	}
 
 	private void createNavigationMenu() {
@@ -48,73 +65,79 @@ public abstract class BaseLayout extends WebPage {
 
 		// #1 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(OrdersPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_VIEWORDERS)));
+		applyMenuAttrib(menuItem, P_MENU_VIEWORDERS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
 		// #2 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(CustomersPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CUSTOMERS)));
+		applyMenuAttrib(menuItem, P_MENU_CUSTOMERS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
 		// #3 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(DriversPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_DRIVERS)));
+		applyMenuAttrib(menuItem, P_MENU_DRIVERS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
 		// #4 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(CarsPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CARS)));
+		applyMenuAttrib(menuItem, P_MENU_CARS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
 		// #5 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(AutosPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_AUTOS)));
+		applyMenuAttrib(menuItem, P_MENU_AUTOS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
 		// #6 Menu element
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link(MENU_LINK) {
+		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
 				setResponsePage(CitiesPage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CITIES)));
+		applyMenuAttrib(menuItem, P_MENU_CITIES);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 	}

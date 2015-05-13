@@ -7,8 +7,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
+import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.services.PointService;
@@ -18,6 +20,8 @@ public class PointEditPage extends BaseLayout {
 
 	@Inject
 	private PointService pointService;
+
+	private City city;
 
 	public PointEditPage(final Point point, final Street street) {
 		super();
@@ -29,19 +33,33 @@ public class PointEditPage extends BaseLayout {
 		tfId.setEnabled(false);
 		form.add(tfId);
 
+		final TextField<String> tfCityName = new TextField<String>("cityName",
+				new Model<String>(street.getCity().getName()));
+		tfCityName.setMarkupId("cityName");
+		tfCityName.setEnabled(false);
+		form.add(tfCityName);
+
+		final TextField<String> tfStreetName = new TextField<String>("streetName", new Model<String>(street.getName()));
+		tfStreetName.setMarkupId("streetName");
+		tfStreetName.setEnabled(false);
+		form.add(tfStreetName);
+
 		final TextField<String> tfName = new TextField<String>("name");
 		tfName.setLabel(new ResourceModel("p.point.nameTitle"));
 		tfName.add(new PropertyValidator<String>());
+		tfName.setMarkupId("pointName");
 		form.add(tfName);
 
 		final TextField<String> tfPointLat = new TextField<String>("pointLat");
 		tfPointLat.setLabel(new ResourceModel("p.point.pointLatTitle"));
 		tfPointLat.add(new PropertyValidator<String>());
+		tfPointLat.setMarkupId("pointLat");
 		form.add(tfPointLat);
 
 		final TextField<String> tfPointLng = new TextField<String>("pointLng");
 		tfPointLng.setLabel(new ResourceModel("p.point.pointLngTitle"));
 		tfPointLng.add(new PropertyValidator<String>());
+		tfPointLng.setMarkupId("pointLng");
 		form.add(tfPointLng);
 
 		form.add(new SubmitLink("sumbitLink") {

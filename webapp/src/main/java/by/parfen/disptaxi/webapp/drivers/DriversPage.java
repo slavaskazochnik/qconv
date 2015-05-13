@@ -21,6 +21,7 @@ public class DriversPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.drivers");
 		super.onInitialize();
 		final List<Driver> allDrivers = driverService.getAllWithDetails();
 		add(new ListView<Driver>("detailsPanel", allDrivers) {

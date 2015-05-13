@@ -21,6 +21,7 @@ public class CustomersPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.customers");
 		super.onInitialize();
 		final List<Customer> allCustomers = customerService.getAllWithDetails();
 		add(new ListView<Customer>("detailsPanel", allCustomers) {

@@ -245,14 +245,14 @@ public abstract class AbstractServiceTest {
 	}
 
 	protected String getRandomLat() {
-		final double lower = 23.730624;
-		final double upper = 23.883176;
+		final double lower = 53.603905;
+		final double upper = 53.751686;
 		return getRandomGeo(lower, upper);
 	}
 
 	protected String getRandomLng() {
-		final double lower = 53.603905;
-		final double upper = 53.751686;
+		final double lower = 23.730624;
+		final double upper = 23.883176;
 		return getRandomGeo(lower, upper);
 	}
 }

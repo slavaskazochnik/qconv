@@ -21,6 +21,7 @@ public class AutosPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.autos");
 		super.onInitialize();
 		final List<Auto> allAutos = autoService.getAllWithDetails();
 		add(new ListView<Auto>("detailsPanel", allAutos) {

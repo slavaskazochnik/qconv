@@ -60,13 +60,13 @@ ol, ul {
 #main-menu ul li a {
   font-size: 15pt;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffdfa5;
 }
 #main-menu ul li a:hover {
   text-decoration: underline;
 }
 #main-menu ul li.current a {
-  color: #f7af06;
+  color: #FFFFFF;
 }
 #main-menu ul li.current#home-logo a {
   background-position: 0 0;
@@ -171,3 +171,6 @@ div.table-cell {
 	padding-right: 1em;
 }
 
+div.yandexMap {
+	display: inline-block;
+}
