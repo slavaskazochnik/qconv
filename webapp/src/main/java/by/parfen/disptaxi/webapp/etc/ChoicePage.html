@@ -1,0 +1,14 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+This example demonstrates a AjaxFormComponentUpdatingBehavior.
+
+Whenever the Make select box value is changed it will submit the new value to server via ajax and update the choices in the Model select box.
+
+<br/><br/>
+<form wicket:id="form">
+	<select wicket:id="streets"></select>
+	<select wicket:id="points"></select>
+	<input type="submit" wicket:id="go" value="Submit"/>
+</form>
+<div wicket:id="feedback"></div>
+</wicket:extend>
