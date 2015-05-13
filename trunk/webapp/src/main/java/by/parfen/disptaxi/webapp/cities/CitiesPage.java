@@ -21,6 +21,7 @@ public class CitiesPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.cities");
 		super.onInitialize();
 		final List<City> allCities = cityService.getAll();
 		add(new ListView<City>("detailsPanel", allCities) {

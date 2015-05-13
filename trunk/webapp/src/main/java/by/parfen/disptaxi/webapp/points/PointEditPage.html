@@ -1,27 +1,45 @@
+<wicket:head>
+	<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
+</wicket:head>
+
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<h1><wicket:message key="p.point.edit.pageTitle" /></h1>
 	<form wicket:id="inputForm">
 		<fieldset>
-			<div>
-<!-- 				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.city.nameTitle" /></label> -->
-<!-- 				<input wicket:id="name" class="inputForm-text" type="text" /> -->
+			<table><tr>
+			<td>
+			<div class="table-cell">
+				
+				<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
+				<input wicket:id="cityName" class="inputForm-text" type="text" />
+
+				<label class="inputForm-label"><wicket:message key="p.point.streetTitle" /></label>
+				<input wicket:id="streetName" class="inputForm-text" type="text" />
 				
 				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.point.idTitle" /></label>
 				<input wicket:id="id" class="inputForm-text" type="text"/>
 
 				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.point.nameTitle" /></label>
 				<input wicket:id="name" class="inputForm-text" type="text" />
+				<br />
+				<input type="button" class="button orange medium" wicket:message="value:p.point.searchByAddress" onclick="SearchLocation(1)" value="Search and set" />
+				<div id="info"></div>
 				
 				<label wicket:for="pointLat" class="inputForm-label"><wicket:message key="p.point.pointLatTitle" /></label>
 				<input wicket:id="pointLat" class="inputForm-text" type="text" />
 				
 				<label wicket:for="pointLng" class="inputForm-label"><wicket:message key="p.point.pointLngTitle" /></label>
 				<input wicket:id="pointLng" class="inputForm-text" type="text" />
+				<br />
+				<input type="button" class="button orange medium" wicket:message="value:p.point.searchByGeo" onclick="GetLocation()" value="Search Location" />
 			</div>
-				
-			<div class="map-point">
-				Put here the map frame
-			</div>
+			</td>
+			
+			<td>
+				<div id="yandexMap" style="width: 500px; float-reference: inline; float: block-end; height: 450px"></div>
+			</td>
+			
+			</tr></table>
 
 			<div class="inputForm-buttons">
 			<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
@@ -30,4 +48,72 @@
 			</div>
 		</fieldset>
 	</form>
+	<script>
+    function GetLocation() {
+		var pointLat = document.getElementById("pointLat").value;
+		var pointLng = document.getElementById("pointLng").value;
+		if (pointLat=="") {
+			SearchLocation(0);
+			return;
+		}
+		var pointName = document.getElementById("pointName").value;
+		var streetName = document.getElementById("streetName").value;
+		mapZoom = "16";
+		mapPoint = new YMaps.GeoPoint(pointLng, pointLat);
+
+		var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+		mapY.setCenter(mapPoint, mapZoom);
+
+		var placemark = new YMaps.Placemark(mapPoint);
+		placemark.name = streetName;
+		placemark.description = pointName;
+		mapY.addOverlay(placemark);
+		placemark.openBalloon();
+		
+		mapY.addControl(new YMaps.Zoom());
+    }
+
+    function SearchLocation(signSet) {
+        var address;
+		var pointName = document.getElementById("pointName").value;
+		var streetName = document.getElementById("streetName").value;
+		var cityName = document.getElementById("cityName").value;
+		mapZoom = "17";
+		mapPoint = new YMaps.GeoPoint(pointLat, pointLng);
+
+		var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+		mapY.setCenter(new YMaps.GeoPoint(23.84, 53.64), mapZoom);
+
+		address = cityName + ", " + streetName + ", " + pointName;
+		var geocoder = new YMaps.Geocoder(address);
+		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+		    if (this.length()) {
+		        //mapY.addOverlay(this.get(0));
+		        mapY.panTo(this.get(0).getGeoPoint())
+		        var latitude = this.get(0).getGeoPoint().getLat();
+		        var longitude = this.get(0).getGeoPoint().getLng();
+		        var infoContainer = document.getElementById("info");
+		        infoContainer.innerHTML = address + "<br/>" + this.length()+ "(" + longitude.toFixed(6) +", "+ latitude.toFixed(6) +")";
+		        if (signSet == 1) {
+			        document.getElementById("pointLat").value = latitude;
+			        document.getElementById("pointLng").value = longitude;
+  			 	  }
+				placemark = new YMaps.Placemark(this.get(0).getGeoPoint(),{draggable: true, style: "default#redPoint"});
+				placemark.setIconContent(address); 
+				mapY.addOverlay(placemark); 
+        		YMaps.Events.observe(placemark, placemark.Events.Drag, function (obj) { 
+              		document.getElementById("pointLng").value = obj.getGeoPoint().getLng().toFixed(6); 
+              		document.getElementById("pointLat").value = obj.getGeoPoint().getLat().toFixed(6); 
+            	}); 
+	    	} else {
+		        alert("Ничего не найдено"); 
+			}
+		});
+    }
+
+    window.onload = function () {
+    	 GetLocation()
+    }
+	</script>
+
 </wicket:extend>

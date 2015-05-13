@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.City;
@@ -31,6 +32,11 @@ public class StreetEditPage extends BaseLayout {
 
 		Form<Street> form = new Form<Street>("inputForm", new CompoundPropertyModel<Street>(street));
 
+		final TextField<String> tfCityName = new TextField<String>("cityName", new Model<String>(city.getName()));
+		tfCityName.setMarkupId("cityName");
+		tfCityName.setEnabled(false);
+		form.add(tfCityName);
+
 		final TextField<String> tfId = new TextField<String>("id");
 		tfId.setLabel(new ResourceModel("p.street.idTitle"));
 		tfId.setEnabled(false);
@@ -39,6 +45,7 @@ public class StreetEditPage extends BaseLayout {
 		final TextField<String> tfName = new TextField<String>("name");
 		tfName.setLabel(new ResourceModel("p.street.nameTitle"));
 		tfName.add(new PropertyValidator<String>());
+		tfName.setMarkupId("streetName");
 		form.add(tfName);
 
 		form.add(new SubmitLink("sumbitLink") {

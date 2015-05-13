@@ -21,6 +21,7 @@ public class OrdersPage extends BaseLayout {
 
 	@Override
 	protected void onInitialize() {
+		super.setCurrentMenuTitle("p.menu.vieworders");
 		super.onInitialize();
 		final List<Order> allOrders = orderService.getAll();
 		add(new ListView<Order>("detailsPanel", allOrders) {

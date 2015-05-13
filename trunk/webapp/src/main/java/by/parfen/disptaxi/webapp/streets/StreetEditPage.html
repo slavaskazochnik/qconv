@@ -1,23 +1,71 @@
+<wicket:head>
+	<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
+</wicket:head>
+
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<h1><wicket:message key="p.street.edit.pageTitle" /></h1>
 	<form wicket:id="inputForm">
 		<fieldset>
+			<table><tr>
+			<td>
 			<div>
-<!-- 				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.city.nameTitle" /></label> -->
-<!-- 				<input wicket:id="name" class="inputForm-text" type="text" /> -->
-				
+				<label class="inputForm-label"><wicket:message key="p.street.cityTitle" /></label>
+				<input wicket:id="cityName" class="inputForm-text" type="text" />
+
 				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.street.idTitle" /></label>
 				<input wicket:id="id" class="inputForm-text" type="text"/>
 
 				<label wicket:for="name" class="inputForm-label"><wicket:message key="p.street.nameTitle" /></label>
 				<input wicket:id="name" class="inputForm-text" type="text" />
+				<br />
+				<input type="button" class="button orange medium" wicket:message="value:p.point.searchByAddress" onclick="SearchLocation(1)" value="Search and set" />
+				<div id="info"></div>
+			</div>
+			</td>
+			
+			<td>
+				<div id="yandexMap" style="width: 500px; height: 450px"></div>
+			</td>
+			
+			</tr></table>
 				
-				<div class="inputForm-buttons">
-				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
-				<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
-				<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
-				</div>
+			<div class="inputForm-buttons">
+			<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+			<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+			<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
 			</div>
 		</fieldset>
 	</form>
+	<script>
+    function SearchLocation() {
+        var address;
+		var streetName = document.getElementById("streetName").value;
+		var cityName = document.getElementById("cityName").value;
+		mapZoom = "16";
+
+		var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+		mapY.setCenter(new YMaps.GeoPoint(23.84, 53.64), mapZoom);
+
+		address = cityName + ", " + streetName;
+		var geocoder = new YMaps.Geocoder(address);
+		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+		    if (this.length()) {
+		        mapY.addOverlay(this.get(0));
+		        mapY.panTo(this.get(0).getGeoPoint())
+		        var latitude = this.get(0).getGeoPoint().getLat();
+		        var longitude = this.get(0).getGeoPoint().getLng();
+		        var infoContainer = document.getElementById("info");
+		        infoContainer.innerHTML = address + "<br/>" + this.length()+ "(" + longitude.toFixed(6) +", "+ latitude.toFixed(6) +")";
+		    } else {
+		        alert("Ничего не найдено"); 
+		    }
+		});
+		
+		mapY.addControl(new YMaps.Zoom());
+    }
+
+    window.onload = function () {
+    	SearchLocation()
+    }
+	</script>
 </wicket:extend>
