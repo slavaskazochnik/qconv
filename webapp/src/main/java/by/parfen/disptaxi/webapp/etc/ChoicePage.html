@@ -1,14 +1,38 @@
+<wicket:head>
+	<style>
+	    div.wicket-aa {
+	        font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana;
+	        font-size: 12px;
+	        background-color: white;
+	        border-width: 1px;
+	        border-color: #cccccc;
+	        border-style: solid;
+	        padding: 2px;
+	        margin: 1px 0 0 0;
+	        text-align:left;
+	    }
+	    div.wicket-aa ul { list-style:none; padding: 2px; margin:0; }
+	    div.wicket-aa ul li.selected { background-color: #FFFF00; padding: 2px; margin:0; }
+	</style>
+</wicket:head>
+        
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 
 This example demonstrates a AjaxFormComponentUpdatingBehavior.
 
 Whenever the Make select box value is changed it will submit the new value to server via ajax and update the choices in the Model select box.
 
-<br/><br/>
-<form wicket:id="form">
-	<select wicket:id="streets"></select>
-	<select wicket:id="points"></select>
-	<input type="submit" wicket:id="go" value="Submit"/>
-</form>
-<div wicket:id="feedback"></div>
+<br />
+	<br />
+	<form wicket:id="form">
+		<select wicket:id="streets" class="inputForm-text"></select> <select
+			wicket:id="points" class="inputForm-text"></select> <input
+			type="submit" wicket:id="go" value="Submit" />
+
+	</form>
+	<form wicket:id="ajaxForm">
+		Selected value is: <span wicket:id="selectedValue"></span><br />
+		Country: <input type="text" wicket:id="ac" size="50" class="inputForm-text" />
+	</form>
+	<div wicket:id="feedback"></div>
 </wicket:extend>

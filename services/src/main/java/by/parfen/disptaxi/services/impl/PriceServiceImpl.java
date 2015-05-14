@@ -84,4 +84,14 @@ public class PriceServiceImpl implements PriceService {
 		return dao.getAllByFieldRestriction(Price_.carType, carType);
 	}
 
+	@Override
+	public Price getByCarType(CarType carType) {
+		Price result = null;
+		List<Price> prices = dao.getAllByFieldRestriction(Price_.carType, carType);
+		if (prices.size() > 0) {
+			result = prices.get(0);
+		}
+		return result;
+	}
+
 }

@@ -18,26 +18,18 @@ package by.parfen.disptaxi.webapp.etc;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.util.string.Strings;
 
 import by.parfen.disptaxi.datamodel.City;
@@ -48,11 +40,15 @@ import by.parfen.disptaxi.services.PointService;
 import by.parfen.disptaxi.services.StreetService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 
-public class ChoicePage extends BaseLayout {
+public class AutoComplitePage extends BaseLayout {
 
+	private City selectedCity;
 	private String selectedStreetName;
-
 	private Street selectedStreet;
+	private Point selectedPoint;
+
+	private List<Street> streetsList;
+	private List<Point> pointsList;
 
 	@Inject
 	private CityService cityService;
@@ -61,85 +57,40 @@ public class ChoicePage extends BaseLayout {
 	@Inject
 	private PointService pointService;
 
-	private final Map<String, List<String>> pointsMap = new HashMap<String, List<String>>(); // map:F1->F2
-
 	public void setSelectedStreet(Street selectedStreet) {
 		this.selectedStreet = selectedStreet;
+		if (selectedStreet != null) {
+			pointsList = pointService.getAllByStreet(selectedStreet);
+		}
+	}
+
+	public void setSelectedStreetName(String selectedStreetName) {
+		this.selectedStreetName = selectedStreetName;
+		List<Street> streetList = streetService.getAllByCityAndName(selectedCity, selectedStreetName);
+		if (streetList.size() == 1) {
+			setSelectedStreet(streetList.get(0));
+		} else {
+			setSelectedStreet(null);
+		}
+	}
+
+	public List<Street> getStreetsList() {
+		return streetsList;
 	}
 
 	/**
 	 * Constructor.
 	 */
-	public ChoicePage() {
-		final City city = cityService.get(15L);
-		List<Street> streetsList;
-		streetsList = streetService.getAllByCity(city);
-		for (Street streetItem : streetsList) {
-			List<Point> pointsList = pointService.getAllByStreet(streetItem);
-			List<String> pointNames = new ArrayList<String>();
-			for (Point pointItem : pointsList) {
-				pointNames.add(pointItem.getName());
-			}
-			pointsMap.put(streetItem.getName(), pointNames);
-		}
-		// pointsMap.put("Лиможа", Arrays.asList("12", "22", "34"));
-		// pointsMap.put("Горького", Arrays.asList("2", "4", "45", "13", "78"));
-		// pointsMap.put("Ожешко", Arrays.asList("10", "12", "22", "4", "6"));
-
-		IModel<List<? extends String>> makeChoices = new AbstractReadOnlyModel<List<? extends String>>() {
-			@Override
-			public List<String> getObject() {
-				return new ArrayList<String>(pointsMap.keySet());
-			}
-
-		};
-
-		IModel<List<? extends String>> modelChoices = new AbstractReadOnlyModel<List<? extends String>>() {
-			@Override
-			public List<String> getObject() {
-				List<String> points = pointsMap.get(selectedStreetName);
-				if (points == null) {
-					points = Collections.emptyList();
-				}
-				return points;
-			}
-
-		};
-
-		Form<Void> form = new Form<Void>("form");
-		add(form);
-
-		final DropDownChoice<String> streets = new DropDownChoice<String>("streets", new PropertyModel<String>(this,
-				"selectedStreetName"), makeChoices);
-
-		final DropDownChoice<String> points = new DropDownChoice<String>("points", new Model<String>(), modelChoices);
-		points.setOutputMarkupId(true);
-
-		form.add(streets);
-		form.add(points);
+	public AutoComplitePage() {
+		selectedCity = cityService.get(15L);
+		streetsList = streetService.getAllByCity(selectedCity);
 
 		final FeedbackPanel feedback = new FeedbackPanel("feedback");
 		feedback.setOutputMarkupId(true);
 		add(feedback);
 
-		form.add(new AjaxButton("go") {
-			@Override
-			protected void onAfterSubmit(AjaxRequestTarget target, Form<?> form) {
-				super.onAfterSubmit(target, form);
-				info("Выбранное значение: " + streets.getModelObject() + " " + points.getModelObject());
-				target.add(feedback);
-			}
-		});
-
-		streets.add(new AjaxFormComponentUpdatingBehavior("change") {
-			@Override
-			protected void onUpdate(AjaxRequestTarget target) {
-				target.add(points);
-			}
-		});
-
-		Form<Void> ajaxForm = new Form<Void>("ajaxForm");
-		add(ajaxForm);
+		Form<Void> form = new Form<Void>("form");
+		add(form);
 
 		final AutoCompleteTextField<String> field = new AutoCompleteTextField<String>("ac", new Model<String>("")) {
 			@Override
@@ -150,8 +101,6 @@ public class ChoicePage extends BaseLayout {
 				}
 
 				List<String> choices = new ArrayList<String>(10);
-
-				List<Street> streetsList = streetService.getAllByCity(city);
 
 				for (final Street streetItem : streetsList) {
 					final String streetName = streetItem.getName();
@@ -168,20 +117,17 @@ public class ChoicePage extends BaseLayout {
 			}
 		};
 
-		ajaxForm.add(field);
+		form.add(field);
 
 		final Label label = new Label("selectedValue", field.getDefaultModel());
 		label.setOutputMarkupId(true);
-		ajaxForm.add(label);
+		form.add(label);
 
-		field.add(new AjaxFormSubmitBehavior(ajaxForm, "onchange") {
+		field.add(new AjaxFormSubmitBehavior(form, "onchange") {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target) {
 				target.add(label);
-				List<Street> streetList = streetService.getAllByCityAndName(city, label.getDefaultModelObjectAsString());
-				if (streetList.size() == 1) {
-					setSelectedStreet(streetList.get(0));
-				}
+				setSelectedStreetName(label.getDefaultModelObjectAsString());
 			}
 
 			@Override

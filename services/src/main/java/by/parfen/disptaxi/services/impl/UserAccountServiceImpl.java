@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.services.impl;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.UserAccountDao;
 import by.parfen.disptaxi.datamodel.UserAccount;
+import by.parfen.disptaxi.datamodel.UserAccount_;
 import by.parfen.disptaxi.datamodel.UserRole;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.services.UserAccountService;
 
 @Service
@@ -64,13 +67,20 @@ public class UserAccountServiceImpl implements UserAccountService {
 	}
 
 	@Override
-	public Long getCount() {
-		return dao.getCount();
+	public List<UserAccount> getAll() {
+		return dao.getAll();
 	}
 
 	@Override
-	public List<UserAccount> getAll() {
-		return dao.getAll();
+	public UserAccount getAccountByEmail(String userName) {
+		final List<UserAccount> allByFieldRestriction = dao.getAllByFieldRestriction(UserAccount_.email, userName);
+		return !allByFieldRestriction.isEmpty() ? allByFieldRestriction.get(0) : null;
+	}
+
+	@Override
+	public List<AppRole> getRoles(Long userId) {
+		// FIXME replace with call to DB
+		return Arrays.asList(AppRole.ADMIN_ROLE);
 	}
 
 }

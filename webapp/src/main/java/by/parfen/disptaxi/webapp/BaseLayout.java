@@ -16,7 +16,8 @@ import by.parfen.disptaxi.webapp.cars.CarsPage;
 import by.parfen.disptaxi.webapp.cities.CitiesPage;
 import by.parfen.disptaxi.webapp.customers.CustomersPage;
 import by.parfen.disptaxi.webapp.drivers.DriversPage;
-import by.parfen.disptaxi.webapp.etc.ChoicePage;
+import by.parfen.disptaxi.webapp.etc.AutoComplitePage;
+import by.parfen.disptaxi.webapp.login.component.LoginPanel;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
 
 public abstract class BaseLayout extends WebPage {
@@ -147,13 +148,16 @@ public abstract class BaseLayout extends WebPage {
 		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
-				setResponsePage(ChoicePage.class);
+				// setResponsePage(ChoicePage.class);
+				setResponsePage(AutoComplitePage.class);
 			}
 		};
 		link.add(new Label(MENU_TEXT, new Model<String>("***")));
 		applyMenuAttrib(menuItem, "***");
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
+
+		add(new LoginPanel("loginPanel"));
 
 	}
 

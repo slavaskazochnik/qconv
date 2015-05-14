@@ -15,64 +15,68 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import by.parfen.disptaxi.webapp.home.HomePage;
-import by.parfen.disptaxi.webapp.page.LoginPage;
+import by.parfen.disptaxi.webapp.login.LoginPage;
 
 @Component("wicketWebApplicationBean")
 public class WicketWebApplication extends AuthenticatedWebApplication {
 
-    @Inject
-    private ApplicationContext applicationContext;
+	public static final String LOGIN_URL = "/login";
 
-    /**
-     * @see org.apache.wicket.Application#init()
-     */
-    @Override
-    public void init() {
-        super.init();
-        getComponentInstantiationListeners().add(new SpringComponentInjector(this, getApplicationContext()));
+	@Inject
+	private ApplicationContext applicationContext;
 
-        final BeanValidationConfiguration beanValidationConfiguration = new BeanValidationConfiguration();
-        beanValidationConfiguration.configure(this);
+	/**
+	 * @see org.apache.wicket.Application#init()
+	 */
+	@Override
+	public void init() {
+		super.init();
+		getComponentInstantiationListeners().add(new SpringComponentInjector(this, getApplicationContext()));
 
-        getSecuritySettings().setAuthorizationStrategy(new AnnotationsRoleAuthorizationStrategy(this));
-        getStoreSettings().setMaxSizePerSession(Bytes.kilobytes(500));
-        getStoreSettings().setInmemoryCacheSize(50);
-        if (RuntimeConfigurationType.DEPLOYMENT.equals(getConfigurationType())) {
-            getDebugSettings().setDevelopmentUtilitiesEnabled(false);
-            getDebugSettings().setComponentUseCheck(false);
-            getDebugSettings().setAjaxDebugModeEnabled(false);
-            getMarkupSettings().setStripComments(true);
-            getMarkupSettings().setCompressWhitespace(true);
-            getMarkupSettings().setStripWicketTags(true);
-        } else {
-            getComponentPostOnBeforeRenderListeners().add(new StatelessChecker());
-            getDebugSettings().setDevelopmentUtilitiesEnabled(true);
-            getDebugSettings().setComponentUseCheck(true);
-            getDebugSettings().setAjaxDebugModeEnabled(true);
-            getMarkupSettings().setStripComments(false);
-            getMarkupSettings().setCompressWhitespace(true);
-            getMarkupSettings().setStripWicketTags(true);
-        }
+		final BeanValidationConfiguration beanValidationConfiguration = new BeanValidationConfiguration();
+		beanValidationConfiguration.configure(this);
 
-    }
+		getSecuritySettings().setAuthorizationStrategy(new AnnotationsRoleAuthorizationStrategy(this));
+		getStoreSettings().setMaxSizePerSession(Bytes.kilobytes(500));
+		getStoreSettings().setInmemoryCacheSize(50);
+		if (RuntimeConfigurationType.DEPLOYMENT.equals(getConfigurationType())) {
+			getDebugSettings().setDevelopmentUtilitiesEnabled(false);
+			getDebugSettings().setComponentUseCheck(false);
+			getDebugSettings().setAjaxDebugModeEnabled(false);
+			getMarkupSettings().setStripComments(true);
+			getMarkupSettings().setCompressWhitespace(true);
+			getMarkupSettings().setStripWicketTags(true);
+		} else {
+			getComponentPostOnBeforeRenderListeners().add(new StatelessChecker());
+			getDebugSettings().setDevelopmentUtilitiesEnabled(true);
+			getDebugSettings().setComponentUseCheck(true);
+			getDebugSettings().setAjaxDebugModeEnabled(true);
+			getMarkupSettings().setStripComments(false);
+			getMarkupSettings().setCompressWhitespace(true);
+			getMarkupSettings().setStripWicketTags(true);
+		}
 
-    @Override
-    protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
-        return BasicAuthenticationSession.class;
-    }
+		mountPage(LOGIN_URL, LoginPage.class);
 
-    @Override
-    protected Class<? extends WebPage> getSignInPageClass() {
-        return LoginPage.class;
-    }
+	}
 
-    @Override
-    public final Class<? extends WebPage> getHomePage() {
-        return HomePage.class;
-    }
+	@Override
+	protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
+		return BasicAuthenticationSession.class;
+	}
 
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
+	@Override
+	protected Class<? extends WebPage> getSignInPageClass() {
+		return LoginPage.class;
+	}
+
+	@Override
+	public final Class<? extends WebPage> getHomePage() {
+		return HomePage.class;
+	}
+
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
 
 }

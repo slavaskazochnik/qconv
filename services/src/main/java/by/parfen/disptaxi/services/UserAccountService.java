@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserRole;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 
 public interface UserAccountService {
 
@@ -23,8 +24,9 @@ public interface UserAccountService {
 	@Transactional
 	void deleteAll();
 
-	Long getCount();
-
 	List<UserAccount> getAll();
 
+	UserAccount getAccountByEmail(String userName);
+
+	List<AppRole> getRoles(Long userId);
 }

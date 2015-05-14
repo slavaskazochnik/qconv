@@ -32,4 +32,6 @@ public interface PriceService {
 	List<Price> getAll(SingularAttribute<Price, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 	List<Price> getAllByCarType(CarType carType);
+
+	Price getByCarType(CarType carType);
 }

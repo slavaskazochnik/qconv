@@ -26,6 +26,13 @@
 	<entry key="p.menu.cars">Авто</entry>
 	<entry key="p.menu.autos">Такси</entry>
 	<entry key="p.menu.cities">Города</entry>
+	
+	<entry key="p.login.authenticationFailed">Ошибка авторизации</entry>
+	<entry key="p.login.pageTitle">Вход в аккаунт</entry>
+	<entry key="p.login.loginButtonTitle">Войти</entry>
+	<entry key="p.login.logoutButtonTitle">Выйти</entry>
+	<entry key="p.login.username">Логин</entry>
+	<entry key="p.login.password">Пароль</entry>
 
 	<entry key="p.cities.listTitle">Список городов</entry>
 	<entry key="p.city.idTitle">Код города</entry>
@@ -100,6 +107,12 @@
 	<entry key="p.order.driverTitle">Водитель</entry>
 	<entry key="p.order.customerTitle">Клиент</entry>
 	<entry key="p.order.autoTitle">Такси</entry>
+	<entry key="p.order.edit.orderStatusTitle">Статус</entry>
+	<entry key="p.order.edit.orderResultTitle">Результат</entry>
+	<entry key="p.order.edit.routeLengthTitle">Длина, км</entry>
+	<entry key="p.order.edit.orderPriceTitle">Стоимость, руб.</entry>
+	<entry key="p.order.edit.customerRatingTitle">Рейтинг клиента</entry>
+	<entry key="p.order.edit.driverRatingTitle">Рейтинг водителя</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
@@ -114,4 +127,21 @@
 	<entry key="CarType.SEDAN">Седан</entry>
 	<entry key="CarType.VAN">Микроавтобус</entry>
 	
+	<entry key="OrderStatus.NEW">Новый</entry>
+	<entry key="OrderStatus.ACCEPTED">Подтверждён</entry>
+	<entry key="OrderStatus.ARRIVED">У клиента</entry>
+	<entry key="OrderStatus.ON_WAY">В пути</entry>
+	<entry key="OrderStatus.DONE">Закрыт</entry>
+	
+	<entry key="OrderResult.NONE">Новый</entry>
+	<entry key="OrderResult.OK">Выполнен</entry>
+	<entry key="OrderResult.CANCELED">Отменён</entry>
+	<entry key="OrderResult.CANCELED_BY_DRIVER">Отменён водителем</entry>
+	<entry key="OrderResult.CANCELED_BY_CUSTOMER">Отменён клиентом</entry>
+
+	<entry key="AppRole.ADMIN_ROLE">Администратор</entry>
+	<entry key="AppRole.OPERATOR_ROLE">Диспетчер</entry>
+	<entry key="AppRole.DRIVER_ROLE">Водитель</entry>
+	<entry key="AppRole.CUSTOMER_ROLE">Клиент</entry>
+
 </properties>
