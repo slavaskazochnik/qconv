@@ -174,3 +174,8 @@ div.table-cell {
 div.yandexMap {
 	display: inline-block;
 }
+
+span.login-username {
+	color: #FFFFFF;
+	opacity: 0.6;
+}

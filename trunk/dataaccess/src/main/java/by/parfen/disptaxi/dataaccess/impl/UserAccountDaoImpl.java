@@ -20,12 +20,6 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<Long, UserAccount> imple
 	}
 
 	@Override
-	public Long getCount() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<UserAccount> getAll() {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 

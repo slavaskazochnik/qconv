@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import by.parfen.disptaxi.util.Password;
-
 @Entity
 public class UserAccount extends AbstractEntity {
 
@@ -64,8 +62,9 @@ public class UserAccount extends AbstractEntity {
 	}
 
 	public void setPassw(String password) {
-		Password pasw = new Password();
-		this.password = pasw.getHash(password);
+		// Password pasw = new Password();
+		// this.password = pasw.getHash(password);
+		this.password = password;
 	}
 
 	public String getEmail() {

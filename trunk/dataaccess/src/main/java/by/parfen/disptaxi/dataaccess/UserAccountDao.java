@@ -4,6 +4,4 @@ import by.parfen.disptaxi.datamodel.UserAccount;
 
 public interface UserAccountDao extends AbstractDao<Long, UserAccount> {
 
-	Long getCount();
-
 }

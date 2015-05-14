@@ -4,10 +4,7 @@
 		<fieldset>
 			<div>
 				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.order.edit.idTitle" /></label>
-				<input wicket:id="id" class="inputForm-text" type="text" />
-
-<!-- 				<label wicket:for="driver" class="inputForm-label"><wicket:message key="p.order.driverTitle" /></label> -->
-<!-- 				<select wicket:id="driver" class="inputForm-text"/> -->
+				<input wicket:id="id" class="inputForm-text" type="text" size="10" />
 
 				<label wicket:for="customer" class="inputForm-label"><wicket:message key="p.order.customerTitle" /></label>
 				<select wicket:id="customer" class="inputForm-text"/>
@@ -15,15 +12,37 @@
 				<label wicket:for="auto" class="inputForm-label"><wicket:message key="p.order.autoTitle" /></label>
 				<select wicket:id="auto" class="inputForm-text"/>
 
-				<form wicket:id="autosForm">
+				<form wicket:id="autoForm">
 					<fieldset>
 						<div>
 							<label><wicket:message key="p.car.edit.carModelTitle" /></label>
-							<input wicket:id="car.carModel" class="inputForm-text" type="text" />
-							<label><wicket:message key="p.order.driverTitle" />: </label>
+							<input wicket:id="car.carModel" class="inputForm-text" type="text" size="32"/>
+
+							<form wicket:id="driverForm">
+								<label><wicket:message key="p.order.driverTitle" /></label>
+								<input wicket:id="userProfile.getUserInfo" class="inputForm-text" type="text" size="40"/>
+							</form>
 						</div>
 					</fieldset>
 				</form>
+
+				<label wicket:for="routeLength" class="inputForm-label"><wicket:message key="p.order.edit.routeLengthTitle" /></label>
+				<input wicket:id="routeLength" class="inputForm-text" type="text"  size="5"/>
+
+				<label wicket:for="orderPrice" class="inputForm-label"><wicket:message key="p.order.edit.orderPriceTitle" /></label>
+				<input wicket:id="orderPrice" class="inputForm-text" type="text" size="10"/>
+
+				<label wicket:for="customerRating"><wicket:message key="p.order.edit.customerRatingTitle" /></label>
+				<input wicket:id="customerRating" class="inputForm-text" type="text" size="3" />
+
+				<label wicket:for="driverRating"><wicket:message key="p.order.edit.driverRatingTitle" /></label>
+				<input wicket:id="driverRating" class="inputForm-text" type="text" size="3"/>
+
+				<label wicket:for="orderStatus" class="inputForm-label"><wicket:message key="p.order.edit.orderStatusTitle" /></label>
+				<select wicket:id="orderStatus" class="inputForm-text" />
+
+				<label wicket:for="orderResult" class="inputForm-label"><wicket:message key="p.order.edit.orderResultTitle" /></label>
+				<select wicket:id="orderResult" class="inputForm-text" />
 
 				<div class="inputForm-buttons">
 				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
