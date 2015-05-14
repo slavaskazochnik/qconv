@@ -2,7 +2,6 @@
 	<style>
 	    div.wicket-aa {
 	        font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana;
-	        font-size: 12px;
 	        background-color: white;
 	        border-width: 1px;
 	        border-color: #cccccc;
@@ -12,17 +11,21 @@
 	        text-align:left;
 	    }
 	    div.wicket-aa ul { list-style:none; padding: 2px; margin:0; }
-	    div.wicket-aa ul li.selected { background-color: #FFFF00; padding: 2px; margin:0; }
+	    div.wicket-aa ul li.selected { background-color: #fdd286; padding: 2px; margin:0; }
 	</style>
 </wicket:head>
-        
+
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 
-<br />
+	<br />
 	<br />
 	<form wicket:id="form">
-		Selected value is: <span wicket:id="selectedValue"></span><br />
-		Streets: <input type="text" wicket:id="ac" size="50" class="inputForm-text" />
+		<div id="pointSrc">
+			<span>1.</span>
+			<input type="text" wicket:id="acStreet" size="50" class="inputForm-text" />
+			<input type="text" wicket:id="acPoint" size="50" class="inputForm-text" />
+		</div>
 	</form>
+	<span wicket:id="label" style="border: 1px solid red"></span>
 	<div wicket:id="feedback"></div>
 </wicket:extend>

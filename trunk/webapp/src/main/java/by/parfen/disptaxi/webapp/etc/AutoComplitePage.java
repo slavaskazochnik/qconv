@@ -21,69 +21,42 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
+import org.apache.wicket.event.Broadcast;
+import org.apache.wicket.event.IEvent;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
 
-import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Point;
 import by.parfen.disptaxi.datamodel.Street;
-import by.parfen.disptaxi.services.CityService;
-import by.parfen.disptaxi.services.PointService;
-import by.parfen.disptaxi.services.StreetService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 
 public class AutoComplitePage extends BaseLayout {
 
-	private City selectedCity;
-	private String selectedStreetName;
-	private Street selectedStreet;
-	private Point selectedPoint;
+	private static final int MAX_AUTO_COMPLETE_ELEMENTS = 10;
+
+	private SampleEvent sampleEvent;
 
 	private List<Street> streetsList;
 	private List<Point> pointsList;
-
-	@Inject
-	private CityService cityService;
-	@Inject
-	private StreetService streetService;
-	@Inject
-	private PointService pointService;
-
-	public void setSelectedStreet(Street selectedStreet) {
-		this.selectedStreet = selectedStreet;
-		if (selectedStreet != null) {
-			pointsList = pointService.getAllByStreet(selectedStreet);
-		}
-	}
-
-	public void setSelectedStreetName(String selectedStreetName) {
-		this.selectedStreetName = selectedStreetName;
-		List<Street> streetList = streetService.getAllByCityAndName(selectedCity, selectedStreetName);
-		if (streetList.size() == 1) {
-			setSelectedStreet(streetList.get(0));
-		} else {
-			setSelectedStreet(null);
-		}
-	}
-
-	public List<Street> getStreetsList() {
-		return streetsList;
-	}
 
 	/**
 	 * Constructor.
 	 */
 	public AutoComplitePage() {
-		selectedCity = cityService.get(15L);
-		streetsList = streetService.getAllByCity(selectedCity);
+		Injector.get().inject(this);
+
+		sampleEvent = new SampleEvent();
+		// selectedCity = cityService.get(15L);
+		sampleEvent.setCityById(60L);
+		streetsList = sampleEvent.getStreets();
+		// pointsList = sampleEvent.getPointsList();
 
 		final FeedbackPanel feedback = new FeedbackPanel("feedback");
 		feedback.setOutputMarkupId(true);
@@ -92,7 +65,7 @@ public class AutoComplitePage extends BaseLayout {
 		Form<Void> form = new Form<Void>("form");
 		add(form);
 
-		final AutoCompleteTextField<String> field = new AutoCompleteTextField<String>("ac", new Model<String>("")) {
+		final AutoCompleteTextField<String> field = new AutoCompleteTextField<String>("acStreet", new Model<String>("")) {
 			@Override
 			protected Iterator<String> getChoices(String input) {
 				if (Strings.isEmpty(input)) {
@@ -100,14 +73,14 @@ public class AutoComplitePage extends BaseLayout {
 					return emptyList.iterator();
 				}
 
-				List<String> choices = new ArrayList<String>(10);
+				List<String> choices = new ArrayList<String>(MAX_AUTO_COMPLETE_ELEMENTS);
 
 				for (final Street streetItem : streetsList) {
 					final String streetName = streetItem.getName();
 
 					if (streetName.toUpperCase().startsWith(input.toUpperCase())) {
 						choices.add(streetName);
-						if (choices.size() == 10) {
+						if (choices.size() == MAX_AUTO_COMPLETE_ELEMENTS) {
 							break;
 						}
 					}
@@ -117,22 +90,63 @@ public class AutoComplitePage extends BaseLayout {
 			}
 		};
 
-		form.add(field);
+		final AutoCompleteTextField<String> fieldPoint = new AutoCompleteTextField<String>("acPoint", new Model<String>("")) {
+			@Override
+			protected Iterator<String> getChoices(String input) {
+				if (Strings.isEmpty(input)) {
+					List<String> emptyList = Collections.emptyList();
+					return emptyList.iterator();
+				}
 
-		final Label label = new Label("selectedValue", field.getDefaultModel());
+				List<String> choices = new ArrayList<String>(MAX_AUTO_COMPLETE_ELEMENTS);
+
+				for (final Point pointItem : sampleEvent.getPointsList()) {
+					final String pointName = pointItem.getName();
+
+					if (pointName.toUpperCase().startsWith(input.toUpperCase())) {
+						choices.add(pointName);
+						if (choices.size() == MAX_AUTO_COMPLETE_ELEMENTS) {
+							break;
+						}
+					}
+				}
+
+				return choices.iterator();
+			}
+		};
+
+		final Label label = new Label("label", field.getDefaultModel()) {
+
+			@Override
+			public void onEvent(IEvent<?> event) {
+				Object payload = event.getPayload();
+				if (payload instanceof SampleEvent) {
+					SampleEvent sampelEvent = (SampleEvent) payload;
+					setDefaultModel(Model.of(sampelEvent.getSelectedStreetName() + ", " + sampelEvent.getSelectedPointName()));
+					sampelEvent.getTarget().add(this);
+				}
+			}
+
+		};
 		label.setOutputMarkupId(true);
-		form.add(label);
+		add(label);
+
+		form.add(field);
+		form.add(fieldPoint);
 
 		field.add(new AjaxFormSubmitBehavior(form, "onchange") {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target) {
-				target.add(label);
-				setSelectedStreetName(label.getDefaultModelObjectAsString());
+				sampleEvent.setTarget(target);
+				sampleEvent.setSelectedStreetName(field.getDefaultModelObjectAsString());
+				sampleEvent.setSelectedPointName(fieldPoint.getDefaultModelObjectAsString());
+				send(getPage(), Broadcast.BREADTH, sampleEvent);
 			}
 
 			@Override
 			protected void onError(AjaxRequestTarget target) {
 			}
 		});
+
 	}
 }
