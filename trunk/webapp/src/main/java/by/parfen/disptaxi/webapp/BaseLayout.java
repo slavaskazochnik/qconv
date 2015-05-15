@@ -11,6 +11,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
+import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.webapp.autos.AutosPage;
 import by.parfen.disptaxi.webapp.cars.CarsPage;
 import by.parfen.disptaxi.webapp.cities.CitiesPage;
@@ -32,6 +33,7 @@ public abstract class BaseLayout extends WebPage {
 	private static final String MENU_LINK = "menuLink";
 
 	private String currentMenuTitle;
+	private City currentCity;
 
 	public String getCurrentMenuTitle() {
 		return currentMenuTitle;
@@ -163,5 +165,13 @@ public abstract class BaseLayout extends WebPage {
 
 	protected IModel<String> getPageTitle() {
 		return new Model<String>(getClass().getSimpleName());
+	}
+
+	public City getCurrentCity() {
+		return currentCity;
+	}
+
+	public void setCurrentCity(City currentCity) {
+		this.currentCity = currentCity;
 	}
 }

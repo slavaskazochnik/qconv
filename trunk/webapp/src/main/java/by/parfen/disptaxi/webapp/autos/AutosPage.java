@@ -19,6 +19,19 @@ public class AutosPage extends BaseLayout {
 	@Inject
 	private AutoService autoService;
 
+	private int chooseMode;
+
+	public AutosPage(int chooseMode) {
+		this.chooseMode = chooseMode;
+		if (chooseMode != 1) {
+			this.chooseMode = 0;
+		}
+	}
+
+	public AutosPage() {
+		this(0);
+	}
+
 	@Override
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.autos");
@@ -42,6 +55,7 @@ public class AutosPage extends BaseLayout {
 		};
 		listButtons.add(linkToEdit);
 		add(listButtons);
-	}
 
+		linkToEdit.setVisible(chooseMode != 1);
+	}
 }

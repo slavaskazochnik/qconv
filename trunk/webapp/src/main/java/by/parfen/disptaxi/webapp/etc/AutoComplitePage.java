@@ -115,7 +115,7 @@ public class AutoComplitePage extends BaseLayout {
 			}
 		};
 
-		final Label label = new Label("label", field.getDefaultModel()) {
+		final Label label = new Label("label", form.getDefaultModel()) {
 
 			@Override
 			public void onEvent(IEvent<?> event) {
@@ -128,6 +128,7 @@ public class AutoComplitePage extends BaseLayout {
 			}
 
 		};
+
 		label.setOutputMarkupId(true);
 		add(label);
 
@@ -139,7 +140,7 @@ public class AutoComplitePage extends BaseLayout {
 			protected void onSubmit(AjaxRequestTarget target) {
 				sampleEvent.setTarget(target);
 				sampleEvent.setSelectedStreetName(field.getDefaultModelObjectAsString());
-				sampleEvent.setSelectedPointName(fieldPoint.getDefaultModelObjectAsString());
+				sampleEvent.setSelectedPointName("");
 				send(getPage(), Broadcast.BREADTH, sampleEvent);
 			}
 
@@ -148,5 +149,17 @@ public class AutoComplitePage extends BaseLayout {
 			}
 		});
 
+		fieldPoint.add(new AjaxFormSubmitBehavior(form, "onchange") {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				sampleEvent.setTarget(target);
+				sampleEvent.setSelectedPointName(fieldPoint.getDefaultModelObjectAsString());
+				send(getPage(), Broadcast.BREADTH, sampleEvent);
+			}
+
+			@Override
+			protected void onError(AjaxRequestTarget target) {
+			}
+		});
 	}
 }

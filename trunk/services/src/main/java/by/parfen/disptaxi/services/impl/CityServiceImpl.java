@@ -65,4 +65,10 @@ public class CityServiceImpl implements CityService {
 	public List<City> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public List<City> getAllByName(String name) {
+		return dao.getAllByName(name);
+	}
+
 }
