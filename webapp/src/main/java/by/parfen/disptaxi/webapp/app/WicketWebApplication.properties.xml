@@ -113,11 +113,27 @@
 	<entry key="p.order.edit.orderPriceTitle">Стоимость, руб.</entry>
 	<entry key="p.order.edit.customerRatingTitle">Рейтинг клиента</entry>
 	<entry key="p.order.edit.driverRatingTitle">Рейтинг водителя</entry>
+	
+	<entry key="p.neworder.createRouteTitle">Построение маршрута</entry>
+	<entry key="p.neworder.chooseAutoTitle">Выбор такси</entry>
+	<entry key="p.neworder.confirmTitle">Подтверждение заказа</entry>
+	<entry key="p.neworder.searchAddressTitle">Поиск по адресу</entry>
+	<entry key="p.neworder.setPoint">Установить</entry>
+	<entry key="p.neworder.srcPointTitle">Начальный адрес</entry>
+	<entry key="p.neworder.dstPointTitle">Конечный адрес</entry>
+	<entry key="p.neworder.calculateRoute">Построить маршрут</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
 	<entry key="p.inputForm.removeButton">Удалить</entry>
 	<entry key="p.inputForm.addButton">Добавить</entry>
+	<entry key="p.inputForm.newOrderButton">Новый заказ</entry>
+
+	<entry key="p.neworder.page1.nextButton">Поиск такси</entry>
+	<entry key="p.neworder.page2.nextButton">Предварительный просмотр</entry>
+	<entry key="p.neworder.page2.backButton">Вернуться к маршруту</entry>
+	<entry key="p.neworder.page3.nextButton">Оформить</entry>
+	<entry key="p.neworder.page3.backButton">Вернуться к выбору такси</entry>
 
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
 	

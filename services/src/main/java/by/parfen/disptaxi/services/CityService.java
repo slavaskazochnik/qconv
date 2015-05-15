@@ -22,4 +22,6 @@ public interface CityService {
 	Long getCount();
 
 	List<City> getAll();
+
+	List<City> getAllByName(String name);
 }
