@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
@@ -30,7 +31,7 @@ public class Page1Route extends BaseLayout {
 	private static final int MAX_AUTO_COMPLETE_ELEMENTS = 10;
 
 	private final ChooseCity chooseCity;
-	// private List<Street> streetList;
+	private List<String> streetNameList, pointNameList, latList, lngList;
 
 	private Route route;
 
@@ -40,6 +41,10 @@ public class Page1Route extends BaseLayout {
 		chooseCity.setCurrentCityByName("Гродно");
 		this.setCurrentCity(chooseCity.getCurrentCity());
 		// streetList = chooseCity.getStreetList();
+		streetNameList = new ArrayList<String>();
+		pointNameList = new ArrayList<String>();
+		latList = new ArrayList<String>();
+		lngList = new ArrayList<String>();
 	}
 
 	@Override
@@ -58,7 +63,8 @@ public class Page1Route extends BaseLayout {
 		tfCityName.setEnabled(false);
 		addressForm.add(tfCityName);
 
-		final AutoCompleteTextField<String> field = new AutoCompleteTextField<String>("acStreet", new Model<String>("")) {
+		final AutoCompleteTextField<String> fieldStreet = new AutoCompleteTextField<String>("acStreet", new Model<String>(
+				"")) {
 			@Override
 			protected Iterator<String> getChoices(String input) {
 				if (Strings.isEmpty(input)) {
@@ -82,7 +88,7 @@ public class Page1Route extends BaseLayout {
 				return choices.iterator();
 			}
 		};
-		field.setMarkupId("acStreet");
+		fieldStreet.setMarkupId("acStreet");
 
 		final AutoCompleteTextField<String> fieldPoint = new AutoCompleteTextField<String>("acPoint", new Model<String>("")) {
 			@Override
@@ -110,25 +116,16 @@ public class Page1Route extends BaseLayout {
 		};
 		fieldPoint.setMarkupId("acPoint");
 
-		addressForm.add(field);
+		addressForm.add(fieldStreet);
 		addressForm.add(fieldPoint);
 
-		field.add(new AjaxFormSubmitBehavior(addressForm, "onchange") {
-			@Override
-			protected void onSubmit(AjaxRequestTarget target) {
-				target.add(getPage());
-				chooseCity.setCurrentStreetByName(field.getDefaultModelObjectAsString());
-			}
-		});
+		final TextField<String> tfPointLat = new TextField<String>("pointLat", new Model<String>(""));
+		tfPointLat.setMarkupId("pointLat");
+		addressForm.add(tfPointLat);
 
-		fieldPoint.add(new AjaxFormSubmitBehavior(addressForm, "onchange") {
-			@Override
-			protected void onSubmit(AjaxRequestTarget target) {
-				target.add(getPage());
-				chooseCity.setCurrentPointByName(fieldPoint.getDefaultModelObjectAsString());
-				send(getPage(), Broadcast.BREADTH, chooseCity);
-			}
-		});
+		final TextField<String> tfPointLng = new TextField<String>("pointLng", new Model<String>(""));
+		tfPointLng.setMarkupId("pointLng");
+		addressForm.add(tfPointLng);
 
 		final Label label = new Label("label", addressForm.getDefaultModel()) {
 
@@ -138,13 +135,141 @@ public class Page1Route extends BaseLayout {
 				if (payload instanceof ChooseCity) {
 					ChooseCity chooseCity = (ChooseCity) payload;
 					setDefaultModel(Model.of(chooseCity.getSelectedStreet() + ", " + chooseCity.getSelectedPoint() + ": <"
-							+ chooseCity.getCurrentCity().getId().toString() + ">,<" + chooseCity.getCurrentPoint().getId() + ">"));
+							+ chooseCity.getCurrentStreet().getId().toString() + ">,<" + chooseCity.getCurrentPoint().getId() + ">"));
 				}
 			}
 
 		};
-
+		label.setOutputMarkupId(true);
 		addressForm.add(label);
+
+		fieldStreet.add(new AjaxFormSubmitBehavior(addressForm, "onchange") {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				target.add(fieldPoint);
+				target.add(label);
+				chooseCity.setCurrentStreetByName(fieldStreet.getDefaultModelObjectAsString());
+				send(getPage(), Broadcast.BREADTH, chooseCity);
+			}
+		});
+
+		fieldPoint.add(new AjaxFormSubmitBehavior(addressForm, "onchange") {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				target.add(fieldPoint);
+				target.add(label);
+				chooseCity.setCurrentPointByName(fieldPoint.getDefaultModelObjectAsString());
+				send(getPage(), Broadcast.BREADTH, chooseCity);
+			}
+		});
+
+		final TextField<String> tfSrcStreetName = new TextField<String>("srcStreetName", new Model<String>(""));
+		tfSrcStreetName.setMarkupId("srcStreetName");
+		addressForm.add(tfSrcStreetName);
+		// TODO Fill fieldsw by Route object!!!!!
+
+		final TextField<String> tfSrcPointName = new TextField<String>("srcPointName", new Model<String>(""));
+		tfSrcPointName.setMarkupId("srcPointName");
+		addressForm.add(tfSrcPointName);
+
+		final TextField<String> tfSrcPointLat = new TextField<String>("srcPointLat", new Model<String>(""));
+		tfSrcPointLat.setMarkupId("srcPointLat");
+		addressForm.add(tfSrcPointLat);
+
+		final TextField<String> tfSrcPointLng = new TextField<String>("srcPointLng", new Model<String>(""));
+		tfSrcPointLng.setMarkupId("srcPointLng");
+		addressForm.add(tfSrcPointLng);
+
+		final TextField<String> tfDstStreetName = new TextField<String>("dstStreetName", new Model<String>(""));
+		tfDstStreetName.setMarkupId("dstStreetName");
+		addressForm.add(tfDstStreetName);
+
+		final TextField<String> tfDstPointName = new TextField<String>("dstPointName", new Model<String>(""));
+		tfDstPointName.setMarkupId("dstPointName");
+		addressForm.add(tfDstPointName);
+
+		final TextField<String> tfDstPointLat = new TextField<String>("dstPointLat", new Model<String>(""));
+		tfDstPointLat.setMarkupId("dstPointLat");
+		addressForm.add(tfDstPointLat);
+
+		final TextField<String> tfDstPointLng = new TextField<String>("dstPointLng", new Model<String>(""));
+		tfDstPointLng.setMarkupId("dstPointLng");
+		addressForm.add(tfDstPointLng);
+
+		final TextField<String> tfRouteDistance = new TextField<String>("routeDistance", new Model<String>(""));
+		tfRouteDistance.setMarkupId("routeDistance");
+		addressForm.add(tfRouteDistance);
+
+		final TextField<String> tfRouteDuration = new TextField<String>("routeDuration", new Model<String>(""));
+		tfRouteDuration.setMarkupId("routeDuration");
+		addressForm.add(tfRouteDuration);
+
+		final TextField<String> tfRoutePrice = new TextField<String>("routePrice", new Model<String>(""));
+		tfRoutePrice.setMarkupId("routePrice");
+		addressForm.add(tfRoutePrice);
+
+		final AjaxButton ajaxSetSrcPointButton = new AjaxButton("showRoutePriceButton", addressForm) {
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+				streetNameList.add(tfSrcStreetName.getDefaultModelObjectAsString());
+				streetNameList.add(tfDstStreetName.getDefaultModelObjectAsString());
+				pointNameList.add(tfSrcPointName.getDefaultModelObjectAsString());
+				pointNameList.add(tfDstPointName.getDefaultModelObjectAsString());
+				latList.add(tfSrcPointLat.getDefaultModelObjectAsString());
+				latList.add(tfDstPointLat.getDefaultModelObjectAsString());
+				lngList.add(tfSrcPointLng.getDefaultModelObjectAsString());
+				lngList.add(tfDstPointLng.getDefaultModelObjectAsString());
+				String estlLength = tfRouteDistance.getDefaultModelObjectAsString();
+				if (!estlLength.isEmpty()) {
+					route.setEstLength(Long.valueOf(estlLength));
+				}
+				String estTime = tfRouteDuration.getDefaultModelObjectAsString();
+				if (!estTime.isEmpty()) {
+					route.setEstTime(Long.valueOf(estTime));
+				}
+				fillRoute();
+				target.add(tfRoutePrice);
+			}
+		};
+		addressForm.add(ajaxSetSrcPointButton);
+
+		tfPointLng.setEnabled(false);
+		tfPointLat.setEnabled(false);
+		tfSrcPointLng.setEnabled(false);
+		tfSrcPointLat.setEnabled(false);
+		tfDstPointLng.setEnabled(false);
+		tfDstPointLat.setEnabled(false);
+
+	}
+
+	private void treatPoint(int index, int size, String streetName, String pointName, String lat, String lng) {
+		if (streetName != null) {
+			chooseCity.setCurrentStreetByName(streetName);
+			Street street = chooseCity.getCurrentStreet();
+			chooseCity.setCurrentPointByName(pointName);
+			Point point = chooseCity.getCurrentPoint();
+			point.setStreet(street);
+			if (point.getId() == null) {
+				point.setPositionLat(lat);
+				point.setPositionLng(lng);
+			}
+			if (index == 0) {
+				route.setSrcPoint(point);
+			} else if (index == size - 1) {
+				route.setDstPoint(point);
+			}
+		}
+	}
+
+	private void fillRoute() {
+		int index;
+		index = 0;
+		treatPoint(index, streetNameList.size(), streetNameList.get(index), pointNameList.get(index), latList.get(index),
+				lngList.get(index));
+		index = 1;
+		treatPoint(index, streetNameList.size(), streetNameList.get(index), pointNameList.get(index), latList.get(index),
+				lngList.get(index));
+		chooseCity.searchPrice();
 
 	}
 
@@ -164,7 +289,7 @@ public class Page1Route extends BaseLayout {
 				@Override
 				public void onSubmit() {
 					super.onSubmit();
-					final Page2Autos page = new Page2Autos(route);
+					final Page2Autos page = new Page2Autos(((Page1Route) getPage()).route);
 					setResponsePage(page);
 				}
 			});

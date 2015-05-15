@@ -13,6 +13,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Route;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.autos.panel.AutoInlinePanel;
@@ -39,11 +40,12 @@ public class Page2Autos extends BaseLayout {
 		// autoService.getAllActiveByCarTypeAndGeo(CarType.SEDAN,
 		// route.getSrcPoint()
 		// .getPositionLat(), route.getSrcPoint().getPositionLng());
-		final List<Auto> allAutos = autoService.getAllWithDetails();
+		final List<Auto> allAutos = autoService.getAllActiveByCarTypeAndGeo(CarType.SEDAN, null, null);
+		// final List<Auto> allAutos = autoService.getAllWithDetails();
 		add(new ListView<Auto>("detailsPanel", allAutos) {
 			@Override
 			protected void populateItem(ListItem<Auto> item) {
-				final Auto auto = item.getModelObject();
+				Auto auto = autoService.getWithDetails((Auto) item.getModelObject());
 				item.add(new AutoInlinePanel("itemPanel", auto));
 			}
 		});

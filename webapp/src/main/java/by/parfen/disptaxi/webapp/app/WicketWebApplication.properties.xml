@@ -122,6 +122,7 @@
 	<entry key="p.neworder.srcPointTitle">Начальный адрес</entry>
 	<entry key="p.neworder.dstPointTitle">Конечный адрес</entry>
 	<entry key="p.neworder.calculateRoute">Построить маршрут</entry>
+	<entry key="p.neworder.showRoutePrice">Стоимость проезда</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
