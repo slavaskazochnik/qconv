@@ -9,9 +9,11 @@ import org.apache.wicket.injection.Injector;
 
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Point;
+import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Street;
 import by.parfen.disptaxi.services.CityService;
 import by.parfen.disptaxi.services.PointService;
+import by.parfen.disptaxi.services.PriceService;
 import by.parfen.disptaxi.services.StreetService;
 
 public final class ChooseCity {
@@ -24,26 +26,26 @@ public final class ChooseCity {
 	private StreetService streetService;
 	@Inject
 	private PointService pointService;
+	@Inject
+	private PriceService priceService;
 
 	private City currentCity;
+
 	private String selectedStreet;
 	private Street currentStreet;
 
-	public String getSelectedStreet() {
-		return selectedStreet;
-	}
-
-	public String getSelectedPoint() {
-		return selectedPoint;
-	}
-
 	private String selectedPoint;
 	private Point currentPoint;
+
 	private List<Street> streetList;
 	private List<Point> pointList;
 
+	private Price price;
+
 	public ChooseCity() {
 		Injector.get().inject(this);
+		currentStreet = new Street();
+		currentPoint = new Point();
 	}
 
 	public City getCurrentCity() {
@@ -57,6 +59,14 @@ public final class ChooseCity {
 		} else {
 			streetList = null;
 		}
+	}
+
+	public String getSelectedStreet() {
+		return selectedStreet;
+	}
+
+	public String getSelectedPoint() {
+		return selectedPoint;
 	}
 
 	public List<Street> getStreetList() {
@@ -98,8 +108,10 @@ public final class ChooseCity {
 		setCurrentStreet(searchStreetByName(selectedStreet));
 	}
 
-	private Street searchStreetByName(String streetName) {
+	public Street searchStreetByName(String streetName) {
 		Street result = new Street();
+		result.setName(streetName);
+		result.setCity(currentCity);
 		List<Street> streets = streetService.getAllByName(streetName);
 		if (streets != null && streets.size() == 1) {
 			result = streets.get(0);
@@ -120,8 +132,9 @@ public final class ChooseCity {
 		setCurrentPoint(searchPointByName(selectedPoint));
 	}
 
-	private Point searchPointByName(String pointName) {
+	public Point searchPointByName(String pointName) {
 		Point result = new Point();
+		result.setName(pointName);
 		if (currentStreet != null && currentStreet.getId() != null) {
 			List<Point> points = pointService.getAllByStreetAndName(currentStreet, pointName);
 			if (points != null && points.size() == 1) {
@@ -138,4 +151,20 @@ public final class ChooseCity {
 	public void setTarget(AjaxRequestTarget target) {
 		this.target = target;
 	}
+
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
+	}
+
+	public void searchPrice() {
+		List<Price> prices = priceService.getAll();
+		if (prices != null && prices.size() > 0) {
+			setPrice(prices.get(0));
+		}
+	}
+
 }

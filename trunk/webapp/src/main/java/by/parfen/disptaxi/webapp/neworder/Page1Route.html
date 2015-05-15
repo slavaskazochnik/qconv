@@ -7,7 +7,8 @@
 	<h1><wicket:message key="p.neworder.createRouteTitle" /></h1>
 
 	<table>
-		<tr>			<td valign="top">
+		<tr>
+           <td valign="top">
 				<form wicket:id="addressForm">
 					<div id="pointSrc">
 						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
@@ -16,34 +17,40 @@
 						<label class="inputForm-label"><wicket:message key="p.neworder.searchAddressTitle" /></label>
 						<input type="text" wicket:id="acStreet" size="20" class="inputForm-text" />
 						<input type="text" wicket:id="acPoint" size="4" class="inputForm-text" />
-						<a href="#" class="button green medium" onclick="SearchLocation(1)"><wicket:message key="p.point.searchByAddress"/></a>
+						<a href="#" class="button green medium" onclick="SearchLocation(0,1)"><wicket:message key="p.point.searchByAddress"/></a>
 						<br/>
-						<input id="pointLat" class="inputForm-text" type="text" size="6"/>
-						<input id="pointLng" class="inputForm-text" type="text" size="6" />
+						<input wicket:id="pointLat" class="inputForm-text" type="text" size="7"/>
+						<input wicket:id="pointLng" class="inputForm-text" type="text" size="7" />
 						
 						<label class="inputForm-label"><wicket:message key="p.neworder.srcPointTitle" /></label>
-						<input type="text" size="20" class="inputForm-text" />
-						<input type="text" size="4" class="inputForm-text" />
-						<a href="#" class="button green medium">&lArr; <wicket:message key="p.neworder.setPoint"/></a>
+						<input type="text" wicket:id="srcStreetName" size="20" class="inputForm-text" />
+						<input type="text" wicket:id="srcPointName" size="4" class="inputForm-text" />
+						<a href="#" class="button green medium" onclick="SearchLocation(1,1)">&lArr; <wicket:message key="p.neworder.setPoint"/></a>
+<!-- 						<input type="submit" wicket:id="setSrcPointButton" class="button green medium" wicket:message="value:p.neworder.setPoint"/> -->
 						<br/>
-						<input id="srcPointLat" class="inputForm-text" type="text" size="6"/>
-						<input id="srcPointLng" class="inputForm-text" type="text" size="6" />
+						<input wicket:id="srcPointLat" class="inputForm-text" type="text" size="7"/>
+						<input wicket:id="srcPointLng" class="inputForm-text" type="text" size="7" />
 
 						<label class="inputForm-label"><wicket:message key="p.neworder.dstPointTitle" /></label>
-						<input type="text" size="20" class="inputForm-text" />
-						<input type="text" size="4" class="inputForm-text" />
-						<a href="#" class="button green medium">&lArr; <wicket:message key="p.neworder.setPoint"/></a>
+						<input type="text" wicket:id="dstStreetName" size="20" class="inputForm-text" />
+						<input type="text" wicket:id="dstPointName" size="4" class="inputForm-text" />
+						<a href="#" class="button green medium" onclick="SearchLocation(2,1)">&lArr; <wicket:message key="p.neworder.setPoint"/></a>
 						<br/>
-						<input id="dspPointLat" class="inputForm-text" type="text" size="6"/>
-						<input id="dspPointLng" class="inputForm-text" type="text" size="6" />
+						<input wicket:id="dstPointLat" class="inputForm-text" type="text" size="7"/>
+						<input wicket:id="dstPointLng" class="inputForm-text" type="text" size="7" />
 
 						<div class="inputForm-buttons">
-						<a href="#" class="button green medium"><wicket:message key="p.neworder.calculateRoute"/></a>
+						<a href="#" class="button green medium"onclick="CreateRoute()"><wicket:message key="p.neworder.calculateRoute"/></a>
 						</div>
 						
 						<br/>
 						<span wicket:id="label" class="inputForm-label"></span>
 						<div id="info"></div>
+						<br/>
+						<input wicket:id="routeDistance" class="inputForm-text" type="text" size="6"/>
+						<input wicket:id="routeDuration" class="inputForm-text" type="text" size="6" />
+						<input type="submit" wicket:id="showRoutePriceButton" class="button green medium" wicket:message="value:p.neworder.showRoutePrice"/>
+						<input wicket:id="routePrice" class="inputForm-text" type="text" size="6" />
 					</div>
 				</form>
 			</td>
@@ -68,11 +75,29 @@
 	</form>
 
 	<script>
-		function SearchLocation(signSet) {
+		function SearchLocation(signElement,signSet) {
 			var address;
-			var pointName = document.getElementById("acPoint").value;
-			var streetName = document.getElementById("acStreet").value;
-			var cityName = document.getElementById("cityName").value;
+			var cityId, pointId, streetId, latId, lngId;
+			cityId = "cityName";
+			pointId = "acPoint";
+			streetId = "acStreet";
+			latId = "pointLat";
+			lngId = "pointLng";
+			if (signElement==1) {
+			  pointId = "srcPointName";
+			  streetId = "srcStreetName";
+			  latId = "srcPointLat";
+			  lngId = "srcPointLng";
+			}
+			if (signElement==2) {
+			  pointId = "dstPointName";
+			  streetId = "dstStreetName";
+			  latId = "dstPointLat";
+			  lngId = "dstPointLng";
+			}
+			var pointName = document.getElementById(pointId).value;
+			var streetName = document.getElementById(streetId).value;
+			var cityName = document.getElementById(cityId).value;
 			mapZoom = "17";
 			mapCenter = new YMaps.GeoPoint(23.84, 53.64);
 
@@ -83,17 +108,16 @@
 			var geocoder = new YMaps.Geocoder(address);
 			YMaps.Events.observe(geocoder, geocoder.Events.Load, function() {
 				if (this.length()) {
-					//mapY.addOverlay(this.get(0));
 					mapY.panTo(this.get(0).getGeoPoint())
 					var latitude = this.get(0).getGeoPoint().getLat();
 					var longitude = this.get(0).getGeoPoint().getLng();
 					var infoContainer = document.getElementById("info");
 					infoContainer.innerHTML = address + "<br/>" + this.length()
-							+ "(" + longitude.toFixed(6) + ", "
-							+ latitude.toFixed(6) + ")";
+						+ "(" + longitude.toFixed(6) + ", "
+						+ latitude.toFixed(6) + ")";
 					if (signSet == 1) {
-						document.getElementById("pointLat").value = latitude;
-						document.getElementById("pointLng").value = longitude;
+						document.getElementById(lngId).value = longitude;
+						document.getElementById(latId).value = latitude;
 					}
 					placemark = new YMaps.Placemark(this.get(0).getGeoPoint(),
 							{
@@ -104,8 +128,8 @@
 					mapY.addOverlay(placemark);
 					YMaps.Events.observe(placemark, placemark.Events.Drag,
 							function(obj) {
-								document.getElementById("pointLng").value = obj.getGeoPoint().getLng().toFixed(6);
-								document.getElementById("pointLat").value = obj.getGeoPoint().getLat().toFixed(6);
+								document.getElementById(lngId).value = obj.getGeoPoint().getLng().toFixed(6);
+								document.getElementById(latId).value = obj.getGeoPoint().getLat().toFixed(6);
 							});
 				} else {
 					alert("Ничего не найдено");
@@ -113,7 +137,40 @@
 			});
 		}
 
-		window.onload = function() {
+	      function CreateRoute() {
+	    	var cityId = "cityName";
+	    	var cityName = document.getElementById(cityId).value;
+	        var addressFrom = cityName+", "+document.getElementById("srcStreetName").value + ", "+document.getElementById("srcPointName").value;
+	        //var addressMid = document.getElementById("txtAddressMid").value;
+	        var addressTo = cityName+", "+document.getElementById("dstStreetName").value + ", "+document.getElementById("dstPointName").value;
+	        var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+	        mapY.setCenter(new YMaps.GeoPoint(23.84, 53.64), 15);
+	        var router = new YMaps.Router([
+	                  addressFrom,
+	                  addressTo], [1], {viewAutoApply: 1});
+
+	        YMaps.Events.observe(router, router.Events.Success, function() {
+	              router.getWayPoint(0).setIconContent('Точка отправления');
+	              router.getWayPoint(1).setIconContent('Точка прибытия');
+	              //router.getViaPoint(0).setIconContent('Точка остановки');
+	              mapY.addOverlay(router);
+	              var routeDistance = router.getDistance();
+	              var routeDuration = router.getDuration()/60;
+	              var infoContainer = document.getElementById("info");
+	              infoContainer.innerHTML = "Маршрут из " + addressFrom + " в "+ addressTo + " построен!"
+	                + "<br> Длина: " + routeDistance.toFixed(0) + " м."
+	                + "<br> Время: " + routeDuration.toFixed(0) + " мин.";
+	              document.getElementById("routeDistance").value = routeDistance.toFixed(0); 
+	              document.getElementById("routeDuration").value = routeDuration.toFixed(0); 
+	              //alert("Done!");
+	        });
+
+	        YMaps.Events.observe(mapY, mapY.Events.Click, function() {
+	          alert("Маршрут из " + addressFrom + " в "+ addressToLast + " построен!");
+	        });
+	      };
+
+	    window.onload = function() {
 			SearchLocation()
 		}
 	</script>
