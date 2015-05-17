@@ -29,6 +29,7 @@ import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTe
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
@@ -114,6 +115,19 @@ public class AutoComplitePage extends BaseLayout {
 				return choices.iterator();
 			}
 		};
+
+		final ItemPanel itemPanel = new ItemPanel("itemPanel");
+		add(itemPanel);
+
+		add(new Link<Void>("linkItemInfo") {
+
+			@Override
+			public void onClick() {
+				info("onSubmit");
+				info(itemPanel.getItemInfo());
+			}
+
+		});
 
 		final Label label = new Label("label", form.getDefaultModel()) {
 

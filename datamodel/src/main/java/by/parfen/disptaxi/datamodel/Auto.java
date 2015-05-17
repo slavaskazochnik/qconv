@@ -35,6 +35,9 @@ public class Auto {
 	@Column
 	private String positionLng;
 	@Column
+	private String positionAddress;
+
+	@Column
 	@Enumerated(EnumType.ORDINAL)
 	private SignActive signActive;
 	@Column
@@ -96,6 +99,14 @@ public class Auto {
 		this.positionLng = positionLng;
 	}
 
+	public String getPositionAddress() {
+		return positionAddress;
+	}
+
+	public void setPositionAddress(String positionAddress) {
+		this.positionAddress = positionAddress;
+	}
+
 	public SignActive getSignActive() {
 		return signActive;
 	}
@@ -114,9 +125,8 @@ public class Auto {
 
 	@Override
 	public String toString() {
-		return "Autos [id=" + id + ", rWaiting=" + rWaiting + ", rRoute=" + rRoute + ", positionLat="
-				+ positionLat + ", positionLng=" + positionLng + ", signActive=" + signActive + ", creationDate="
-				+ creationDate + "]";
+		return "Autos [id=" + id + ", rWaiting=" + rWaiting + ", rRoute=" + rRoute + ", positionLat=" + positionLat
+				+ ", positionLng=" + positionLng + ", signActive=" + signActive + ", creationDate=" + creationDate + "]";
 	}
 
 }

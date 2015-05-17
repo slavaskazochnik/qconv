@@ -25,6 +25,8 @@ import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CarService;
 import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.webapp.BaseLayout;
+import by.parfen.disptaxi.webapp.address.Address;
+import by.parfen.disptaxi.webapp.address.AddressLocatorPanel;
 
 public class AutoEditPage extends BaseLayout {
 
@@ -37,6 +39,8 @@ public class AutoEditPage extends BaseLayout {
 
 	private Car selectedCar;
 	private Driver selectedDriver;
+
+	private Address address;
 
 	public Driver getSelectedDriver() {
 		return selectedDriver;
@@ -56,6 +60,9 @@ public class AutoEditPage extends BaseLayout {
 
 	public AutoEditPage(final Auto auto) {
 		super();
+		address = new Address();
+		address.setAddress(auto.getPositionAddress());
+
 		Form<Auto> form = new Form<Auto>("inputForm", new CompoundPropertyModel<Auto>(auto));
 
 		final TextField<String> tfAutoId = new TextField<String>("id");
@@ -84,10 +91,36 @@ public class AutoEditPage extends BaseLayout {
 				"selectedDriver"), driversList, new ChoiceRenderer<Driver>("userProfile.getUserInfo", "id"));
 		form.add(ddcDriver);
 
+		final TextField<String> tfPositionAddress = new TextField<String>("positionAddress");
+		tfPositionAddress.setMarkupId("positionAddress");
+		form.add(tfPositionAddress);
+
+		final TextField<String> tfPositionLat = new TextField<String>("positionLat");
+		tfPositionLat.setMarkupId("positionLat");
+		form.add(tfPositionLat);
+		tfPositionLat.setEnabled(false);
+
+		final TextField<String> tfPositionLng = new TextField<String>("positionLng");
+		tfPositionLng.setMarkupId("positionLng");
+		form.add(tfPositionLng);
+		tfPositionLng.setEnabled(false);
+
+		address.setPointLat(auto.getPositionLat());
+		address.setPointLng(auto.getPositionLng());
+		final AddressLocatorPanel addressLocatorPanel = new AddressLocatorPanel("addressPanel", address);
+		form.add(addressLocatorPanel);
+
 		form.add(new SubmitLink("sumbitLink") {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				auto.setPositionAddress(address.getAddress());
+				auto.setPositionLat(address.getPointLat());
+				auto.setPositionLng(address.getPointLng());
+				// final String lat =
+				// addressLocatorPanel.getTfPointLat().getDefaultModelObjectAsString();
+				// final String lng =
+				// addressLocatorPanel.getTfPointLng().getDefaultModelObjectAsString();
 				auto.setCar(selectedCar);
 				auto.setDriver(selectedDriver);
 				autoService.update(auto);

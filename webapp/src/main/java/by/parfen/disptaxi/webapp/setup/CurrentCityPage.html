@@ -1,0 +1,14 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1><wicket:message key="p.setup.selectCityPageTitle" /></h1>
+
+	<form wicket:id="inputForm">
+		<label wicket:for="city" class="inputForm-label"><wicket:message key="p.city.nameTitle" /></label>
+		<select wicket:id="city" class="inputForm-text"/>
+	
+		<div class="inputForm-buttons">
+			<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+			<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+		</div>
+	</form>
+
+</wicket:extend>

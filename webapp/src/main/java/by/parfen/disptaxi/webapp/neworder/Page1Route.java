@@ -228,6 +228,7 @@ public class Page1Route extends BaseLayout {
 					route.setEstTime(Long.valueOf(estTime));
 				}
 				fillRoute();
+				tfRoutePrice.setDefaultModelObject("12345");
 				target.add(tfRoutePrice);
 			}
 		};
@@ -270,7 +271,6 @@ public class Page1Route extends BaseLayout {
 		treatPoint(index, streetNameList.size(), streetNameList.get(index), pointNameList.get(index), latList.get(index),
 				lngList.get(index));
 		chooseCity.searchPrice();
-
 	}
 
 	static public final class RouteForm extends Form<Route> {
