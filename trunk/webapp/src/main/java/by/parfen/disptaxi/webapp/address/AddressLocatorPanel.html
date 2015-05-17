@@ -1,0 +1,96 @@
+<wicket:head>
+<link rel="stylesheet" type="text/css" href="css/wicket_ac.css" />
+<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
+</wicket:head>
+
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<fieldset>
+	<legend><wicket:message key="p.addressLocator.fieldsetTitle" /></legend>
+	<table>
+		<tr>
+      <td valign="top">
+				<form wicket:id="addressForm">
+					<div id="point">
+						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
+						<input wicket:id="cityName" class="inputForm-text" type="text" size="20"/>
+						
+						<label class="inputForm-label"><wicket:message key="p.addressLocator.addressTitle" /></label>
+						<input type="text" wicket:id="streetName" size="24" class="inputForm-text" />
+						<input type="text" wicket:id="pointName" size="4" class="inputForm-text" />
+						<a href="#" class="button green medium" onclick="SearchLocation(1,1)">&lArr; <wicket:message key="p.addressLocator.addressOnMapTitle"/></a>
+						<br/>
+						<input wicket:id="pointLat" class="inputForm-text" type="text" size="7"/>
+						<input wicket:id="pointLng" class="inputForm-text" type="text" size="7" />
+					</div>
+					<br/>
+					<span wicket:id="label" class="inputForm-label"></span>
+					<div id="info"></div>
+				</form>
+			</td>
+
+			<td valign="middle">
+				<div id="yandexMap"
+					style="width: 500px; float-reference: inline; float: block-end; height: 450px"></div>
+			</td>
+
+		</tr>
+	</table>
+	</fieldset>
+
+	<script>
+		function SearchLocation(signElement,signSet) {
+			var address;
+			var cityId, pointId, streetId, latId, lngId;
+			cityId = "cityName";
+			streetId = "streetName";
+			pointId = "pointName";
+			latId = "pointLat";
+			lngId = "pointLng";
+			var cityName = document.getElementById(cityId).value;
+			var streetName = document.getElementById(streetId).value;
+			var pointName = document.getElementById(pointId).value;
+			mapZoom = "17";
+			mapCenter = new YMaps.GeoPoint(23.84, 53.64);
+
+			var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+			mapY.setCenter(mapCenter, mapZoom);
+
+			address = cityName + ", " + streetName + ", " + pointName;
+			var geocoder = new YMaps.Geocoder(address);
+			YMaps.Events.observe(geocoder, geocoder.Events.Load, function() {
+				if (this.length()) {
+					mapY.panTo(this.get(0).getGeoPoint())
+					var latitude = this.get(0).getGeoPoint().getLat();
+					var longitude = this.get(0).getGeoPoint().getLng();
+					var infoContainer = document.getElementById("info");
+					infoContainer.innerHTML = address + "<br/>" + this.length()
+						+ "(" + longitude.toFixed(6) + ", "
+						+ latitude.toFixed(6) + ")";
+					if (signSet == 1) {
+						document.getElementById(lngId).value = longitude;
+						document.getElementById(latId).value = latitude;
+					}
+					placemark = new YMaps.Placemark(this.get(0).getGeoPoint(),
+							{
+								draggable : true,
+								style : "default#redPoint"
+							});
+					placemark.setIconContent(address);
+					mapY.addOverlay(placemark);
+					YMaps.Events.observe(placemark, placemark.Events.Drag,
+							function(obj) {
+								document.getElementById(lngId).value = obj.getGeoPoint().getLng().toFixed(6);
+								document.getElementById(latId).value = obj.getGeoPoint().getLat().toFixed(6);
+							});
+				} else {
+					alert("Ничего не найдено");
+				}
+			});
+		}
+
+	    window.onload = function() {
+			SearchLocation()
+		}
+	</script>
+
+</wicket:panel>

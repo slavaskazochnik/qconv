@@ -34,6 +34,9 @@
 	<entry key="p.login.username">Логин</entry>
 	<entry key="p.login.password">Пароль</entry>
 
+	<entry key="p.setup.selectCityPageTitle">Выбор города</entry>
+	<entry key="p.setup.selectCityButtonTitle">Выбрать город</entry>
+	
 	<entry key="p.cities.listTitle">Список городов</entry>
 	<entry key="p.city.idTitle">Код города</entry>
 	<entry key="p.city.nameTitle">Название города</entry>
@@ -83,7 +86,12 @@
 	<entry key="p.auto.carTitle">Автомобиль</entry>
 	<entry key="p.auto.driverTitle">Водитель</entry>
 	<entry key="p.auto.signActiveTitle">Доступно</entry>
-
+	<entry key="p.auto.positionAddressTitle">Текущее положение</entry>
+	
+	<entry key="p.addressLocator.addressTitle">Положение</entry>
+	<entry key="p.addressLocator.addressOnMapTitle">На карте</entry>
+	<entry key="p.addressLocator.fieldsetTitle">Поиск по карте</entry>
+	
 	<entry key="p.cars.listTitle">Список автомобилей</entry>
 	<entry key="p.car.edit.pageTitle">Редактирование данных автомобиля</entry>
 
@@ -119,8 +127,8 @@
 	<entry key="p.neworder.confirmTitle">Подтверждение заказа</entry>
 	<entry key="p.neworder.searchAddressTitle">Поиск по адресу</entry>
 	<entry key="p.neworder.setPoint">Установить</entry>
-	<entry key="p.neworder.srcPointTitle">Начальный адрес</entry>
-	<entry key="p.neworder.dstPointTitle">Конечный адрес</entry>
+	<entry key="p.neworder.srcPointTitle">Откуда</entry>
+	<entry key="p.neworder.dstPointTitle">Куда</entry>
 	<entry key="p.neworder.calculateRoute">Построить маршрут</entry>
 	<entry key="p.neworder.showRoutePrice">Стоимость проезда</entry>
 
@@ -129,6 +137,7 @@
 	<entry key="p.inputForm.removeButton">Удалить</entry>
 	<entry key="p.inputForm.addButton">Добавить</entry>
 	<entry key="p.inputForm.newOrderButton">Новый заказ</entry>
+	<entry key="p.inputForm.selectButton">Выбрать</entry>
 
 	<entry key="p.neworder.page1.nextButton">Поиск такси</entry>
 	<entry key="p.neworder.page2.nextButton">Предварительный просмотр</entry>
@@ -137,6 +146,7 @@
 	<entry key="p.neworder.page3.backButton">Вернуться к выбору такси</entry>
 
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
+	<entry key="p.inlineMenu.selectButton">Выбрать</entry>
 	
 	<entry key="SignActive.NO">Нет</entry>
 	<entry key="SignActive.YES">Да</entry>

@@ -46,7 +46,7 @@ public class Page2Autos extends BaseLayout {
 			@Override
 			protected void populateItem(ListItem<Auto> item) {
 				Auto auto = autoService.getWithDetails((Auto) item.getModelObject());
-				item.add(new AutoInlinePanel("itemPanel", auto));
+				item.add(new AutoInlinePanel("itemPanel", auto, 1));
 			}
 		});
 

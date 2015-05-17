@@ -12,6 +12,7 @@ import org.apache.wicket.request.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.services.UserAccountService;
@@ -24,6 +25,8 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 	private UserAccount user;
 
 	private Roles resultRoles;
+
+	private City city;
 
 	@Inject
 	private UserAccountService userService;
@@ -68,6 +71,14 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 
 	public UserAccount getUser() {
 		return user;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 }

@@ -25,6 +25,10 @@ public class Route {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Point.class)
 	private Point dstPoint;
 	@Column
+	private String srcPointAddress;
+	@Column
+	private String dstPointAddress;
+	@Column
 	private Long estLength;
 	@Column
 	private Long factLength;

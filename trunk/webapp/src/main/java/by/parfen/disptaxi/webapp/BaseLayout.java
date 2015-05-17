@@ -20,6 +20,7 @@ import by.parfen.disptaxi.webapp.drivers.DriversPage;
 import by.parfen.disptaxi.webapp.etc.AutoComplitePage;
 import by.parfen.disptaxi.webapp.login.component.LoginPanel;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
+import by.parfen.disptaxi.webapp.setup.panel.CurrentCityPanel;
 
 public abstract class BaseLayout extends WebPage {
 
@@ -158,6 +159,8 @@ public abstract class BaseLayout extends WebPage {
 		applyMenuAttrib(menuItem, "***");
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
+
+		add(new CurrentCityPanel("currentCityPanel"));
 
 		add(new LoginPanel("loginPanel"));
 

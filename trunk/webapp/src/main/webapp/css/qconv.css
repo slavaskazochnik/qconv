@@ -104,15 +104,12 @@ div.footer {
 }
 
 div.inline-list-item {
-/*   display: inline; */
 	border-top-style: dotted;
 	border-top-width: 1px;
 }
 
-div.inline-list-item {
-/*   display: inline; */
-	border-top-style: dotted;
-	border-top-width: 1px;
+div.inline-list-item:hover {
+	background-color: white;
 }
 
 .inline-list-item h3{
@@ -178,4 +175,18 @@ div.yandexMap {
 span.login-username {
 	color: #FFFFFF;
 	opacity: 0.6;
+}
+
+div.online, div.offline {
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+div.online {
+	background-image: url("../images/online.png");
+}
+
+div.offline {
+	background-image: url("../images/offline.png");
 }

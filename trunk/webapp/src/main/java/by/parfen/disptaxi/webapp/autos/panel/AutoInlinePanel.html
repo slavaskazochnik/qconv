@@ -6,6 +6,7 @@
 		<div class="list-item-details">
 			<wicket:container wicket:id="itemDetails">
 				<div class="table-row">
+					<div class="table-cell"><div wicket:id="itemSignActive"/></div>
 					<div class="table-cell"><wicket:container wicket:id="carInfo"/></div>
 					<div class="table-cell"><wicket:container wicket:id="driverInfo"/></div>
 				</div>
@@ -13,6 +14,7 @@
 		</div>
 		<div class="item-menu">
 			<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>
+			<a wicket:id="linkToSelect" class="button medium orange"><wicket:message key="p.inlineMenu.selectButton" /></a>
 		</div>
 	</div>
 </wicket:panel>
