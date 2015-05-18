@@ -2,6 +2,8 @@ package by.parfen.disptaxi.webapp.neworder;
 
 import java.util.List;
 
+import org.apache.wicket.model.ResourceModel;
+
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
@@ -35,6 +37,10 @@ public class NewOrderClass {
 
 	public void setCarType(CarType carType) {
 		this.carType = carType;
+	}
+
+	public Auto getAuto() {
+		return auto;
 	}
 
 	public void setAuto(Auto auto) {
@@ -85,6 +91,7 @@ public class NewOrderClass {
 
 	public void setRouteDistance(Long routeDistance) {
 		this.routeDistance = routeDistance;
+		route.setEstLength(routeDistance / 1000);
 	}
 
 	public Long getRouteDuration() {
@@ -93,6 +100,7 @@ public class NewOrderClass {
 
 	public void setRouteDuration(Long routeDuration) {
 		this.routeDuration = routeDuration;
+		route.setEstTime(routeDuration);
 	}
 
 	public Driver getDriver() {
@@ -109,6 +117,34 @@ public class NewOrderClass {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getPriceInfo() {
+		String result;
+		final String currency = (new ResourceModel("p.price.currency")).getObject();
+		result = price.getCostBefore() + " " + currency + " + " + price.getCostKm() + " " + currency + "/"
+				+ (new ResourceModel("p.route.length.km")).getObject();
+		return result;
+	}
+
+	public String getTotalInfo() {
+		String result;
+		final String currency = (new ResourceModel("p.price.currency")).getObject();
+		result = route.getEstLength() + " " + (new ResourceModel("p.route.length.km")).getObject();
+		result += ", " + route.getEstTime().toString() + (new ResourceModel("p.route.time.measure")).getObject();
+		Long cost = price.getCostBefore() + price.getCostKm() * route.getEstLength();
+		result += " " + cost + " " + currency;
+		return result;
+	}
+
+	public String getRouteInfo() {
+		String result = null;
+		if (routePoints.size() > 1) {
+			result = (new ResourceModel("p.neworder.fromTitle")).getObject() + " " + routePoints.get(0);
+			result += " " + (new ResourceModel("p.neworder.toTitle")).getObject() + " "
+					+ routePoints.get(routePoints.size() - 1);
+		}
+		return result;
 	}
 
 }

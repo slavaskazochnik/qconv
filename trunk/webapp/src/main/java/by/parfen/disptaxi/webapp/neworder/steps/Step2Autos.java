@@ -49,14 +49,6 @@ public class Step2Autos extends BaseLayout {
 			}
 		}.setDefaultFormProcessing(false));
 
-		inputForm.add(new SubmitLink("sumbitLink") {
-			@Override
-			public void onSubmit() {
-				super.onSubmit();
-				final Step3Confirm page = new Step3Confirm(newOrder);
-				setResponsePage(page);
-			}
-		});
 	}
 
 }

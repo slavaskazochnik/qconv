@@ -30,7 +30,9 @@
 	
 	<entry key="p.country.name">Беларусь</entry>
 	<entry key="p.route.length.measure">м</entry>
+	<entry key="p.route.length.km">км</entry>
 	<entry key="p.route.time.measure">мин.</entry>
+	<entry key="p.price.currency">руб.</entry>
 
 	<entry key="p.login.authenticationFailed">Ошибка авторизации</entry>
 	<entry key="p.login.pageTitle">Вход в аккаунт</entry>
@@ -135,7 +137,13 @@
 	<entry key="p.neworder.srcPointTitle">Откуда</entry>
 	<entry key="p.neworder.dstPointTitle">Куда</entry>
 	<entry key="p.neworder.calculateRoute">Построить маршрут</entry>
+	<entry key="p.neworder.routeInfoTitle">Маршрут</entry>
+	<entry key="p.neworder.autoInfoTitle">Такси</entry>
+	<entry key="p.neworder.priceInfoTitle">Цена</entry>
+	<entry key="p.neworder.totalInfoTitle">Итог</entry>
 	<entry key="p.neworder.showRoutePrice">Стоимость проезда</entry>
+	<entry key="p.neworder.fromTitle">От</entry>
+	<entry key="p.neworder.toTitle">до</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>

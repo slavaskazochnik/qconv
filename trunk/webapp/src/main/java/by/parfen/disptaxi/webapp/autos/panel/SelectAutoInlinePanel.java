@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
@@ -25,25 +26,23 @@ public class SelectAutoInlinePanel extends Panel {
 	public SelectAutoInlinePanel(String id, final Auto auto, final NewOrder newOrder) {
 		super(id);
 		this.auto = auto;
+		this.auto.getDriver().setUserProfile(newOrder.getUserProfile(this.auto.getDriver().getId()));
 		this.newOrder = newOrder;
 	}
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+		final Form<Auto> form = new Form<Auto>("form", new CompoundPropertyModel<Auto>(auto));
+		add(form);
+
 		final WebMarkupContainer listItem = new WebMarkupContainer("listItem");
 
-		final WebMarkupContainer itemHeader = new WebMarkupContainer("itemHeader");
-		listItem.add(itemHeader);
-
-		final String autoName = getString("p.auto.idTitle") + ": " + auto.getId().toString();
-		itemHeader.add(new Label("itemName", new Model<String>(autoName)));
-
-		final Form<Auto> form = new Form<Auto>("form", new CompoundPropertyModel<Auto>(auto));
-		listItem.add(form);
+		String autoName = auto.getCar().getCarInfo();
+		listItem.add(new Label("itemName", new Model<String>(autoName)));
 
 		final WebMarkupContainer itemSignActive = new WebMarkupContainer("itemSignActive");
-		form.add(itemSignActive);
+		listItem.add(itemSignActive);
 
 		String signActiveClass = CSS_OFFLINE;
 		if (auto.getSignActive() == SignActive.YES) {
@@ -51,23 +50,25 @@ public class SelectAutoInlinePanel extends Panel {
 		}
 		itemSignActive.add(new AttributeModifier("class", new Model<String>(signActiveClass)));
 
-		final WebMarkupContainer carRegNum = new WebMarkupContainer("car.regNum", Model.of(auto.getCar().getRegNum()));
-		form.add(carRegNum);
+		listItem.add(new Label("seatsQuan", new PropertyModel<String>(auto, "car.seatsQuan")));
+		final Label childSeatsQuan = new Label("childSeatsQuan", new PropertyModel<String>(auto, "car.childSeatsQuan"));
+		listItem.add(childSeatsQuan);
+		if (auto.getCar().getChildSeatsQuan() == null || auto.getCar().getChildSeatsQuan() == 0) {
+			childSeatsQuan.setVisible(false);
+		}
 
-		final WebMarkupContainer driverId = new WebMarkupContainer("driver.id", Model.of(auto.getDriver().getId()));
-		form.add(driverId);
+		listItem.add(new Label("driverInfo", new PropertyModel<String>(auto, "driver.userProfile.firstName")));
 
-		add(listItem);
+		form.add(listItem);
 
 		Link<Void> linkToSelect = new Link<Void>("linkToSelect") {
 			@Override
 			public void onClick() {
-				// TODO go back to NewOrder.Page2 with saved Route and selected Auto
 				newOrder.setAuto(auto);
 				setResponsePage(new Step3Confirm(newOrder));
 			}
 		};
-		form.add(linkToSelect);
+		listItem.add(linkToSelect);
 
 	}
 }
