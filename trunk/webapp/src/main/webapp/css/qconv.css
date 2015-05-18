@@ -124,6 +124,9 @@ div.inline-list-item:hover {
 .inputForm-text {
 	font-size: 15pt;
 }
+.numbers{
+	text-align: right;
+}
 
 div.inputForm-buttons {
 	margin-top: 1em;

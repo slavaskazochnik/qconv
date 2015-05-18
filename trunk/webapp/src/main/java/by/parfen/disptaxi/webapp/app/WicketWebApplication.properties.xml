@@ -19,6 +19,7 @@
 	<entry key="org.hibernate.validator.constraints.Range.message">Значение '${label}' должно быть от ${min} до ${max}</entry>
 
 	<entry key="p.home.title">DispTaxi</entry>
+	
 	<entry key="p.menu.aboutus">О нас</entry>
 	<entry key="p.menu.vieworders">Заказы</entry>
 	<entry key="p.menu.customers">Клиенты</entry>
@@ -27,6 +28,10 @@
 	<entry key="p.menu.autos">Такси</entry>
 	<entry key="p.menu.cities">Города</entry>
 	
+	<entry key="p.country.name">Беларусь</entry>
+	<entry key="p.route.length.measure">м</entry>
+	<entry key="p.route.time.measure">мин.</entry>
+
 	<entry key="p.login.authenticationFailed">Ошибка авторизации</entry>
 	<entry key="p.login.pageTitle">Вход в аккаунт</entry>
 	<entry key="p.login.loginButtonTitle">Войти</entry>
