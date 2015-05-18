@@ -30,4 +30,6 @@ public interface NewOrderService {
 
 	UserProfile getUserProfile(Long userId);
 
+	void insertRouteIntoDB();
+
 }

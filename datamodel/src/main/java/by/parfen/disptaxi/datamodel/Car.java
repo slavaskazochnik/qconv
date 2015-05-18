@@ -103,6 +103,14 @@ public class Car {
 		this.creationDate = creationDate;
 	}
 
+	public String getCarInfo() {
+		String result = getRegNum();
+		if (getCarModel() != null) {
+			result += ", " + getCarModel();
+		}
+		return result;
+	}
+
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", regNum=" + regNum + ", seatsQuan=" + seatsQuan + ", childSeatsQuan=" + childSeatsQuan

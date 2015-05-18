@@ -27,6 +27,7 @@ public class NewOrder extends NewOrderClass implements NewOrderService {
 
 	public NewOrder() {
 		Injector.get().inject(this);
+		route = new Route();
 		routePoints = new ArrayList<String>();
 	}
 
@@ -69,6 +70,12 @@ public class NewOrder extends NewOrderClass implements NewOrderService {
 	@Override
 	public UserProfile getUserProfile(Long userId) {
 		return userProfileService.get(userId);
+	}
+
+	@Override
+	public void insertRouteIntoDB() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

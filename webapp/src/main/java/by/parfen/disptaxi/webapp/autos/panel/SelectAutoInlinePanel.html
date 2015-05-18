@@ -1,21 +1,35 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-	<div wicket:id="listItem" class="inline-list-item">
-		<h3 wicket:id="itemHeader">
-			<wicket:container wicket:id="itemName" />
-		</h3>
-		<form wicket:id="form">
+	<form wicket:id="form">
+		<div wicket:id="listItem" class="inline-list-item">
+			<h3>
+				<wicket:container wicket:id="itemName" />
+			</h3>
 			<div class="list-item-details">
 				<div class="table-row">
 					<div class="table-cell">
 						<div wicket:id="itemSignActive"></div>
-						<span wicket:id="car.regNum"></span>
-						<span wicket:id="driver.id"></span>
+					</div>
+					<div class="table-cell">
+					
+					<label><wicket:message key="p.car.seatsQuanTitle"/>: </label>
+					<span wicket:id="seatsQuan" />
+					
+					<wicket:enclosure child="childSeatsQuan">
+					(<label><wicket:message key="p.car.childSeatsQuanTitle"/>: </label>
+					<span wicket:id="childSeatsQuan" />)
+					</wicket:enclosure>
+					
+					<br/>
+					<span wicket:id="driverInfo"></span>
+					</div>
+					<div class="table-cell">
+					[Put price info HERE]
 					</div>
 				</div>
 			</div>
 			<div class="item-menu">
 				<a wicket:id="linkToSelect" class="button medium orange"><wicket:message key="p.inlineMenu.selectButton" /></a>
 			</div>
-		</form>
-	</div>
+		</div>
+	</form>
 </wicket:panel>

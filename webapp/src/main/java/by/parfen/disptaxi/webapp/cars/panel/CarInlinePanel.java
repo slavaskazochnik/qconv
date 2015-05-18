@@ -59,11 +59,7 @@ public class CarInlinePanel extends Panel {
 		final WebMarkupContainer itemHeader = new WebMarkupContainer("itemHeader");
 		listItem.add(itemHeader);
 
-		String carDisplayName = car.getRegNum();
-		if (car.getCarModel() != null) {
-			carDisplayName += ", " + car.getCarModel();
-		}
-
+		String carDisplayName = car.getCarInfo();
 		itemHeader.add(new Label("itemName", new Model<String>(carDisplayName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");

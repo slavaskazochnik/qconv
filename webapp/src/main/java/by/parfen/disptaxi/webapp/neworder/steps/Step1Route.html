@@ -1,51 +1,56 @@
 <wicket:head>
-<link rel="stylesheet" type="text/css" href="css/wicket_ac.css" />
-<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="css/wicket_ac.css" />
+	<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
 </wicket:head>
 
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<h1><wicket:message key="p.neworder.createRouteTitle" /></h1>
+	<h1>
+		<wicket:message key="p.neworder.createRouteTitle" />
+	</h1>
 
 	<form wicket:id="addressForm">
-	<table>
-		<tr>
-           <td valign="top">
+		<table>
+			<tr>
+				<td valign="top">
 					<div id="pointSrc">
-						<input wicket:id="countryName" style="visibility: hidden;" class="inputForm-text" type="text" size="20"/>
+						<input wicket:id="countryName" style="visibility: hidden;" class="inputForm-text" type="text" size="20" /> <label
+							class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label> <input wicket:id="cityName"
+							class="inputForm-text" type="text" size="20" /> <label class="inputForm-label"><wicket:message
+								key="p.neworder.srcPointTitle" /></label> <input type="text" wicket:id="srcAddress" size="20" class="inputForm-text" />
 
-						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
-						<input wicket:id="cityName" class="inputForm-text" type="text" size="20"/>
-						
-						<label class="inputForm-label"><wicket:message key="p.neworder.srcPointTitle" /></label>
-						<input type="text" wicket:id="srcAddress" size="20" class="inputForm-text" />
-
-						<label class="inputForm-label"><wicket:message key="p.neworder.dstPointTitle" /></label>
-						<input type="text" wicket:id="dstAddress" size="20" class="inputForm-text" />
+						<label class="inputForm-label"><wicket:message key="p.neworder.dstPointTitle" /></label> <input type="text"
+							wicket:id="dstAddress" size="20" class="inputForm-text" />
 
 						<div class="inputForm-buttons">
-						<a href="#" class="button green medium"onclick="CreateRoute()"><wicket:message key="p.neworder.calculateRoute"/></a>
+							<a href="#" class="button green medium" onclick="CreateRoute()"><wicket:message
+									key="p.neworder.calculateRoute" /></a>
 						</div>
-						
-						<br/>
+
+						<br />
 						<div id="info"></div>
-						<input wicket:id="routeDistance" class="inputForm-text numbers" type="text" size="4"/><wicket:message key="p.route.length.measure"/>
-						<input wicket:id="routeDuration" class="inputForm-text numbers" type="text" size="2" /><wicket:message key="p.route.time.measure"/>
+						<input wicket:id="routeDistance" class="inputForm-text numbers" type="text" size="4" />
+						<wicket:message key="p.route.length.measure" />
+						<input wicket:id="routeDuration" class="inputForm-text numbers" type="text" size="2" />
+						<wicket:message key="p.route.time.measure" />
 					</div>
-			</td>
+				</td>
 
-			<td valign="middle">
-				<div id="yandexMap"
-					style="width: 500px; float-reference: inline; float: block-end; height: 450px"></div>
-			</td>
+				<td valign="middle">
+					<div id="yandexMap" style="width: 500px; float-reference: inline; float: block-end; height: 450px"></div>
+				</td>
 
-		</tr>
-	</table>
+			</tr>
+		</table>
 
 		<fieldset>
 			<div>
 				<div class="inputForm-buttons">
-				<button type="submit" wicket:id="sumbitLink" class="button green bigrounded"><wicket:message key="p.neworder.page1.nextButton" /></button>
-				<button type="submit" wicket:id="cancelLink" class="button gray bigrounded"><wicket:message key="p.inputForm.cancelButton" /></button>
+					<button type="submit" wicket:id="sumbitLink" class="button green bigrounded">
+						<wicket:message key="p.neworder.page1.nextButton" />
+					</button>
+					<button type="submit" wicket:id="cancelLink" class="button gray bigrounded">
+						<wicket:message key="p.inputForm.cancelButton" />
+					</button>
 				</div>
 			</div>
 		</fieldset>
@@ -53,12 +58,14 @@
 
 	<script>
 		function CreateRoute() {
+			var countryId = "countryName";
 			var cityId = "cityName";
+			var countryName = document.getElementById(countryId).value;
 			var cityName = document.getElementById(cityId).value;
-			var addressFrom = cityName + ", "
+			var addressFrom = countryName + ", " + cityName + ", "
 					+ document.getElementById("srcAddress").value;
 			//var addressMid = document.getElementById("txtAddressMid").value;
-			var addressTo = cityName + ", "
+			var addressTo = countryName + ", " + cityName + ", "
 					+ document.getElementById("dstAddress").value;
 			if (!addressFrom && !addressTo) {
 				return;

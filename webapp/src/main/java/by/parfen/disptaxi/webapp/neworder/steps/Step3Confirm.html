@@ -1,12 +1,52 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<h1><wicket:message key="p.neworder.confirmTitle" /></h1>
+	<h1>
+		<wicket:message key="p.neworder.confirmTitle" />
+	</h1>
 	<form wicket:id="inputForm">
 		<fieldset>
+			<div class="table-row">
+				<div class="table-cell title-cell">
+					<label><wicket:message key="p.neworder.routeInfoTitle" /></label>
+				</div>
+				<div class="table-cell">
+					<span wicket:id="routeInfo" />
+				</div>
+			</div>
+			<div class="table-row">
+				<div class="table-cell title-cell">
+					<label><wicket:message key="p.neworder.autoInfoTitle" /></label>
+				</div>
+				<div class="table-cell">
+					<span wicket:id="autoInfo" />
+				</div>
+			</div>
+			<div class="table-row">
+				<div class="table-cell title-cell">
+					<label><wicket:message key="p.neworder.priceInfoTitle" /></label>
+				</div>
+				<div class="table-cell">
+					<span wicket:id="priceInfo" />
+				</div>
+			</div>
+			<div class="table-row">
+				<div class="table-cell title-cell">
+					<label><wicket:message key="p.neworder.totalInfoTitle" /></label>
+				</div>
+				<div class="table-cell">
+					<span wicket:id="totalInfo" />
+				</div>
+			</div>
 			<div>
 				<div class="inputForm-buttons">
-				<button type="submit" wicket:id="backLink" class="button blue bigrounded"><wicket:message key="p.neworder.page3.backButton" /></button>
-				<button type="submit" wicket:id="sumbitLink" class="button green bigrounded"><wicket:message key="p.neworder.page3.nextButton" /></button>
-				<button type="submit" wicket:id="cancelLink" class="button gray bigrounded"><wicket:message key="p.inputForm.cancelButton" /></button>
+					<button type="submit" wicket:id="backLink" class="button blue bigrounded">
+						<wicket:message key="p.neworder.page3.backButton" />
+					</button>
+					<button type="submit" wicket:id="sumbitLink" class="button green bigrounded">
+						<wicket:message key="p.neworder.page3.nextButton" />
+					</button>
+					<button type="submit" wicket:id="cancelLink" class="button gray bigrounded">
+						<wicket:message key="p.inputForm.cancelButton" />
+					</button>
 				</div>
 			</div>
 		</fieldset>

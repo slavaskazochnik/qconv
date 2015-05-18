@@ -171,6 +171,10 @@ div.table-cell {
 	padding-right: 1em;
 }
 
+div.table-cell.title-cell{
+	text-align: right;
+}
+
 div.yandexMap {
 	display: inline-block;
 }
