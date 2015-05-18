@@ -1,0 +1,21 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div wicket:id="listItem" class="inline-list-item">
+		<h3 wicket:id="itemHeader">
+			<wicket:container wicket:id="itemName" />
+		</h3>
+		<form wicket:id="form">
+			<div class="list-item-details">
+				<div class="table-row">
+					<div class="table-cell">
+						<div wicket:id="itemSignActive"></div>
+						<span wicket:id="car.regNum"></span>
+						<span wicket:id="driver.id"></span>
+					</div>
+				</div>
+			</div>
+			<div class="item-menu">
+				<a wicket:id="linkToSelect" class="button medium orange"><wicket:message key="p.inlineMenu.selectButton" /></a>
+			</div>
+		</form>
+	</div>
+</wicket:panel>

@@ -1,0 +1,100 @@
+<wicket:head>
+<link rel="stylesheet" type="text/css" href="css/wicket_ac.css" />
+<script src="http://api-maps.yandex.ru/1.1/?lang=ru_RU" type="text/javascript"></script>
+</wicket:head>
+
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1><wicket:message key="p.neworder.createRouteTitle" /></h1>
+
+	<form wicket:id="addressForm">
+	<table>
+		<tr>
+           <td valign="top">
+					<div id="pointSrc">
+						<input wicket:id="countryName" style="visibility: hidden;" class="inputForm-text" type="text" size="20"/>
+
+						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
+						<input wicket:id="cityName" class="inputForm-text" type="text" size="20"/>
+						
+						<label class="inputForm-label"><wicket:message key="p.neworder.srcPointTitle" /></label>
+						<input type="text" wicket:id="srcAddress" size="20" class="inputForm-text" />
+
+						<label class="inputForm-label"><wicket:message key="p.neworder.dstPointTitle" /></label>
+						<input type="text" wicket:id="dstAddress" size="20" class="inputForm-text" />
+
+						<div class="inputForm-buttons">
+						<a href="#" class="button green medium"onclick="CreateRoute()"><wicket:message key="p.neworder.calculateRoute"/></a>
+						</div>
+						
+						<br/>
+						<div id="info"></div>
+						<input wicket:id="routeDistance" class="inputForm-text numbers" type="text" size="4"/><wicket:message key="p.route.length.measure"/>
+						<input wicket:id="routeDuration" class="inputForm-text numbers" type="text" size="2" /><wicket:message key="p.route.time.measure"/>
+					</div>
+			</td>
+
+			<td valign="middle">
+				<div id="yandexMap"
+					style="width: 500px; float-reference: inline; float: block-end; height: 450px"></div>
+			</td>
+
+		</tr>
+	</table>
+
+		<fieldset>
+			<div>
+				<div class="inputForm-buttons">
+				<button type="submit" wicket:id="sumbitLink" class="button green bigrounded"><wicket:message key="p.neworder.page1.nextButton" /></button>
+				<button type="submit" wicket:id="cancelLink" class="button gray bigrounded"><wicket:message key="p.inputForm.cancelButton" /></button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+	<script>
+		function CreateRoute() {
+			var cityId = "cityName";
+			var cityName = document.getElementById(cityId).value;
+			var addressFrom = cityName + ", "
+					+ document.getElementById("srcAddress").value;
+			//var addressMid = document.getElementById("txtAddressMid").value;
+			var addressTo = cityName + ", "
+					+ document.getElementById("dstAddress").value;
+			if (!addressFrom && !addressTo) {
+				return;
+			}
+			var mapY = new YMaps.Map(document.getElementById("yandexMap"));
+			mapY.setCenter(new YMaps.GeoPoint(23.84, 53.64), 15);
+			var router = new YMaps.Router([ addressFrom, addressTo ], [ 1 ], {
+				viewAutoApply : 1
+			});
+
+			YMaps.Events.observe(router, router.Events.Success, function() {
+				router.getWayPoint(0).setIconContent('1');
+				router.getWayPoint(1).setIconContent('2');
+				//router.getViaPoint(0).setIconContent('Точка остановки');
+				mapY.addOverlay(router);
+				var routeDistance = router.getDistance();
+				var routeDuration = router.getDuration() / 60;
+				var infoContainer = document.getElementById("info");
+				// 	              infoContainer.innerHTML = "Маршрут из " + addressFrom + " в "+ addressTo + " построен!"
+				// 	                + "<br> Длина: " + routeDistance.toFixed(0) + " м."
+				// 	                + "<br> Время: " + routeDuration.toFixed(0) + " мин.";
+				document.getElementById("routeDistance").value = routeDistance
+						.toFixed(0);
+				document.getElementById("routeDuration").value = routeDuration
+						.toFixed(0);
+				//alert("Done!");
+			});
+
+			// 	        YMaps.Events.observe(mapY, mapY.Events.Click, function() {
+			// 	          alert("Маршрут из " + addressFrom + " в "+ addressToLast + " построен!");
+			// 	        });
+		};
+
+		window.onload = function() {
+			SearchLocation();
+		}
+	</script>
+
+</wicket:extend>

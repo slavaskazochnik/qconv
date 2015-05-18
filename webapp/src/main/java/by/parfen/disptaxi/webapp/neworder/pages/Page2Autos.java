@@ -1,4 +1,4 @@
-package by.parfen.disptaxi.webapp.neworder;
+package by.parfen.disptaxi.webapp.neworder.pages;
 
 import java.util.List;
 
