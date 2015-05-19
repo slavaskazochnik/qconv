@@ -22,6 +22,7 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BasicAuthenticationSession.class);
 
 	public static final String ROLE_SIGNED_IN = "SIGNED_IN";
+
 	private UserAccount user;
 
 	private Roles resultRoles;

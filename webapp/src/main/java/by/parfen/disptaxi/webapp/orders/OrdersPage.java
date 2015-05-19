@@ -8,12 +8,13 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
-import by.parfen.disptaxi.webapp.neworder.steps.Step1Route;
+import by.parfen.disptaxi.webapp.neworder.steps.Step0Customer;
 import by.parfen.disptaxi.webapp.orders.panel.OrderInlinePanel;
 
 public class OrdersPage extends BaseLayout {
@@ -48,7 +49,8 @@ public class OrdersPage extends BaseLayout {
 		Link<Void> linkToNewOrder = new Link<Void>("linkToNewOrder") {
 			@Override
 			public void onClick() {
-				setResponsePage(new Step1Route(new NewOrder()));
+				// setResponsePage(new Step1Route(new Model<NewOrder>(new NewOrder())));
+				setResponsePage(new Step0Customer(new Model<NewOrder>(new NewOrder())));
 			}
 		};
 		listButtons.add(linkToNewOrder);

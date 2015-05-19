@@ -13,6 +13,7 @@ import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.customers.panel.CustomerInlinePanel;
+import by.parfen.disptaxi.webapp.customers.panel.CustomerListPanel;
 
 public class CustomersPage extends BaseLayout {
 
@@ -23,6 +24,9 @@ public class CustomersPage extends BaseLayout {
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.customers");
 		super.onInitialize();
+
+		add(new CustomerListPanel("itemsList"));
+
 		final List<Customer> allCustomers = customerService.getAllWithDetails();
 		add(new ListView<Customer>("detailsPanel", allCustomers) {
 			@Override

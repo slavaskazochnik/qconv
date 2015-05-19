@@ -1,22 +1,23 @@
 package by.parfen.disptaxi.webapp.neworder.steps;
 
-import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.webapp.BaseLayout;
-import by.parfen.disptaxi.webapp.autos.SelectAutoPanel;
+import by.parfen.disptaxi.webapp.customers.SelectCustomerPanel;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
 
-public class Step2Autos extends BaseLayout {
+public class Step0Customer extends BaseLayout {
 
 	private NewOrder newOrder;
 
-	public Step2Autos(IModel<NewOrder> newOrderModel) {
-		Injector.get().inject(this);
+	private Customer customer;
+
+	public Step0Customer(IModel<NewOrder> newOrderModel) {
 		newOrder = newOrderModel.getObject();
 	}
 
@@ -24,7 +25,7 @@ public class Step2Autos extends BaseLayout {
 	protected void onInitialize() {
 		super.onInitialize();
 
-		add(new SelectAutoPanel("itemsList", new Model<NewOrder>(newOrder)));
+		add(new SelectCustomerPanel("itemsList", new Model<NewOrder>(newOrder)));
 
 		final Form<Void> inputForm = new Form<Void>("inputForm");
 		add(inputForm);
@@ -33,13 +34,6 @@ public class Step2Autos extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				setResponsePage(new OrdersPage());
-			}
-		}.setDefaultFormProcessing(false));
-
-		inputForm.add(new SubmitLink("backLink") {
-			@Override
-			public void onSubmit() {
-				setResponsePage(new Step1Route(new Model<NewOrder>(newOrder)));
 			}
 		}.setDefaultFormProcessing(false));
 

@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
@@ -23,11 +24,11 @@ public class SelectAutoInlinePanel extends Panel {
 	private Auto auto;
 	private NewOrder newOrder;
 
-	public SelectAutoInlinePanel(String id, final Auto auto, final NewOrder newOrder) {
+	public SelectAutoInlinePanel(String id, IModel<Auto> autoModel, IModel<NewOrder> newOrderModel) {
 		super(id);
-		this.auto = auto;
-		this.auto.getDriver().setUserProfile(newOrder.getUserProfile(this.auto.getDriver().getId()));
-		this.newOrder = newOrder;
+		newOrder = newOrderModel.getObject();
+		auto = newOrder.getAutoWithDetails(autoModel.getObject());
+		auto.getDriver().setUserProfile(newOrder.getUserProfile(this.auto.getDriver().getId()));
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class SelectAutoInlinePanel extends Panel {
 			@Override
 			public void onClick() {
 				newOrder.setAuto(auto);
-				setResponsePage(new Step3Confirm(newOrder));
+				setResponsePage(new Step3Confirm(new Model<NewOrder>(newOrder)));
 			}
 		};
 		listItem.add(linkToSelect);

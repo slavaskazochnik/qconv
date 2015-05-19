@@ -98,7 +98,10 @@ public class UserProfile extends AbstractEntity {
 
 	public String getUserInfo() {
 		String result;
-		result = firstName + " " + lastName;
+		result = firstName;
+		if (lastName != null) {
+			result += " " + lastName;
+		}
 		result.trim();
 		result += (telNum == null) ? "" : " (" + telNum + ")";
 		return result;

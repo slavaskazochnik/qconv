@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.enums.CarType;
@@ -15,9 +17,9 @@ public class SelectAutoPanel extends Panel {
 
 	private NewOrder newOrder;
 
-	public SelectAutoPanel(String id, final NewOrder newOrder) {
+	public SelectAutoPanel(String id, IModel<NewOrder> newOrderModel) {
 		super(id);
-		this.newOrder = newOrder;
+		newOrder = newOrderModel.getObject();
 	}
 
 	@Override
@@ -28,8 +30,7 @@ public class SelectAutoPanel extends Panel {
 		add(new ListView<Auto>("detailsPanel", allAutos) {
 			@Override
 			protected void populateItem(ListItem<Auto> item) {
-				Auto auto = newOrder.getAutoWithDetails((Auto) item.getModelObject());
-				item.add(new SelectAutoInlinePanel("itemPanel", auto, newOrder));
+				item.add(new SelectAutoInlinePanel("itemPanel", item.getModel(), new Model<NewOrder>(newOrder)));
 			}
 		});
 
