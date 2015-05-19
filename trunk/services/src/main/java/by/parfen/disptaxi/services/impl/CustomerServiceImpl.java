@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -77,4 +78,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getAllWithDetails() {
 		return dao.getAllWithDetails();
 	}
+
+	@Override
+	public List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord,
+			int pageSize) {
+		return dao.getAllWithDetails(attr, ascending, startRecord, pageSize);
+	}
+
 }

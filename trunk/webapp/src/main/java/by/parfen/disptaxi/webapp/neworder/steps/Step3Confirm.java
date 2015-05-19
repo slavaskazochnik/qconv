@@ -3,6 +3,7 @@ package by.parfen.disptaxi.webapp.neworder.steps;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.webapp.BaseLayout;
@@ -14,9 +15,15 @@ public class Step3Confirm extends BaseLayout {
 
 	private NewOrder newOrder;
 
-	public Step3Confirm(final NewOrder newOrder) {
+	public Step3Confirm(IModel<NewOrder> newOrderModel) {
+		newOrder = newOrderModel.getObject();
 		newOrder.setPrice(newOrder.getPrice(newOrder.getAuto()));
-		this.newOrder = newOrder;
+	}
+
+	@Override
+	protected void onConfigure() {
+		// TODO Auto-generated method stub
+		super.onConfigure();
 	}
 
 	@Override
@@ -25,6 +32,8 @@ public class Step3Confirm extends BaseLayout {
 
 		final Form<NewOrder> form = new Form<NewOrder>("inputForm");
 		add(form);
+
+		form.add(new Label("customerInfo", new Model<String>(newOrder.getCustomerInfo())));
 
 		form.add(new Label("routeInfo", new Model<String>(newOrder.getRouteInfo())));
 
@@ -44,7 +53,7 @@ public class Step3Confirm extends BaseLayout {
 		form.add(new SubmitLink("backLink") {
 			@Override
 			public void onSubmit() {
-				setResponsePage(new Step2Autos(newOrder));
+				setResponsePage(new Step2Autos(new Model<NewOrder>(newOrder)));
 			}
 		}.setDefaultFormProcessing(false));
 

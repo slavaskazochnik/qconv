@@ -119,6 +119,12 @@ public class NewOrderClass {
 		this.customer = customer;
 	}
 
+	public String getCustomerInfo() {
+		String result;
+		result = customer.getUserProfile().getUserInfo();
+		return result;
+	}
+
 	public String getPriceInfo() {
 		String result;
 		final String currency = (new ResourceModel("p.price.currency")).getObject();

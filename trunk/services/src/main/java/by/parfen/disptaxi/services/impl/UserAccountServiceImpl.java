@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.UserAccountDao;
+import by.parfen.disptaxi.dataaccess.UserRoleDao;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserAccount_;
 import by.parfen.disptaxi.datamodel.UserRole;
@@ -24,6 +25,8 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	@Inject
 	private UserAccountDao dao;
+	@Inject
+	private UserRoleDao daoRoles;
 
 	@PostConstruct
 	private void init() {
@@ -78,9 +81,13 @@ public class UserAccountServiceImpl implements UserAccountService {
 	}
 
 	@Override
-	public List<AppRole> getRoles(Long userId) {
+	public List<AppRole> getRoles(Long userAccountId) {
 		// FIXME replace with call to DB
-		return Arrays.asList(AppRole.ADMIN_ROLE);
+		AppRole result = AppRole.CUSTOMER_ROLE;
+		if (userAccountId != null) {
+			result = daoRoles.getById(userAccountId).getAppRole();
+		}
+		return Arrays.asList(result);
 	}
 
 }

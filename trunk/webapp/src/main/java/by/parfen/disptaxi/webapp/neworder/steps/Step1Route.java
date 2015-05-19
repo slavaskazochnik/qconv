@@ -10,8 +10,8 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.util.string.Strings;
 
@@ -32,10 +32,10 @@ public class Step1Route extends BaseLayout {
 	private String srcAddress;
 	private String dstAddress;
 
-	public Step1Route(final NewOrder newOrder) {
-		this.newOrder = newOrder;
-		this.srcAddress = newOrder.getSrcAddress();
-		this.dstAddress = newOrder.getDstAddress();
+	public Step1Route(IModel<NewOrder> newOrderModel) {
+		newOrder = newOrderModel.getObject();
+		srcAddress = newOrder.getSrcAddress();
+		dstAddress = newOrder.getDstAddress();
 		address = new Address();
 	}
 
@@ -83,9 +83,10 @@ public class Step1Route extends BaseLayout {
 			}
 		};
 		tfSrcAddress.setMarkupId("srcAddress");
+		tfSrcAddress.setLabel(new ResourceModel("p.neworder.srcPointTitle"));
+		tfSrcAddress.setRequired(true);
 
-		final AutoCompleteTextField<String> tfDstAddress = new AutoCompleteTextField<String>("dstAddress",
-				new PropertyModel<String>(this, "dstAddress")) {
+		final AutoCompleteTextField<String> tfDstAddress = new AutoCompleteTextField<String>("dstAddress") {
 			@Override
 			protected Iterator<String> getChoices(String input) {
 				if (Strings.isEmpty(input)) {
@@ -110,6 +111,8 @@ public class Step1Route extends BaseLayout {
 			}
 		};
 		tfDstAddress.setMarkupId("dstAddress");
+		tfDstAddress.setLabel(new ResourceModel("p.neworder.dstPointTitle"));
+		tfDstAddress.setRequired(true);
 
 		addressForm.add(tfSrcAddress);
 		addressForm.add(tfDstAddress);
@@ -121,6 +124,13 @@ public class Step1Route extends BaseLayout {
 		final TextField<String> tfRouteDuration = new TextField<String>("routeDuration");
 		tfRouteDuration.setMarkupId("routeDuration");
 		addressForm.add(tfRouteDuration);
+
+		addressForm.add(new SubmitLink("backLink") {
+			@Override
+			public void onSubmit() {
+				setResponsePage(new Step0Customer(new Model<NewOrder>(newOrder)));
+			}
+		}.setDefaultFormProcessing(false));
 
 		addressForm.add(new SubmitLink("cancelLink") {
 			@Override
@@ -134,9 +144,7 @@ public class Step1Route extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				newOrder.addAddressToRoute(srcAddress);
-				newOrder.addAddressToRoute(dstAddress);
-				final Step2Autos page = new Step2Autos(newOrder);
+				final Step2Autos page = new Step2Autos(new Model<NewOrder>(newOrder));
 				setResponsePage(page);
 			}
 		});

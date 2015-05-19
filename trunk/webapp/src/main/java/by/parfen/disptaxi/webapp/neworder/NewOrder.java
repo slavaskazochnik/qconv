@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.webapp.neworder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,15 +9,17 @@ import javax.inject.Inject;
 import org.apache.wicket.injection.Injector;
 
 import by.parfen.disptaxi.datamodel.Auto;
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.AutoService;
+import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.services.PriceService;
 import by.parfen.disptaxi.services.UserProfileService;
 
-public class NewOrder extends NewOrderClass implements NewOrderService {
+public class NewOrder extends NewOrderClass implements NewOrderService, Serializable {
 
 	@Inject
 	private AutoService autoService;
@@ -24,6 +27,8 @@ public class NewOrder extends NewOrderClass implements NewOrderService {
 	private PriceService priceService;
 	@Inject
 	private UserProfileService userProfileService;
+	@Inject
+	private CustomerService customerService;
 
 	public NewOrder() {
 		Injector.get().inject(this);
@@ -76,6 +81,11 @@ public class NewOrder extends NewOrderClass implements NewOrderService {
 	public void insertRouteIntoDB() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Customer> getAllCustomersWithDetails() {
+		return customerService.getAllWithDetails();
 	}
 
 }

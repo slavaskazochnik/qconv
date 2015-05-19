@@ -3,6 +3,7 @@ package by.parfen.disptaxi.webapp.neworder;
 import java.util.List;
 
 import by.parfen.disptaxi.datamodel.Auto;
+import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.UserProfile;
@@ -32,4 +33,5 @@ public interface NewOrderService {
 
 	void insertRouteIntoDB();
 
+	List<Customer> getAllCustomersWithDetails();
 }

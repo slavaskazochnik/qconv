@@ -131,15 +131,17 @@
 	
 	<entry key="p.neworder.createRouteTitle">Построение маршрута</entry>
 	<entry key="p.neworder.chooseAutoTitle">Выбор такси</entry>
+	<entry key="p.neworder.chooseCustomerTitle">Выбор клиента</entry>
 	<entry key="p.neworder.confirmTitle">Подтверждение заказа</entry>
 	<entry key="p.neworder.searchAddressTitle">Поиск по адресу</entry>
 	<entry key="p.neworder.setPoint">Установить</entry>
 	<entry key="p.neworder.srcPointTitle">Откуда</entry>
 	<entry key="p.neworder.dstPointTitle">Куда</entry>
 	<entry key="p.neworder.calculateRoute">Построить маршрут</entry>
+	<entry key="p.neworder.customerInfoTitle">Клиент</entry>
 	<entry key="p.neworder.routeInfoTitle">Маршрут</entry>
 	<entry key="p.neworder.autoInfoTitle">Такси</entry>
-	<entry key="p.neworder.priceInfoTitle">Цена</entry>
+	<entry key="p.neworder.priceInfoTitle">Тариф</entry>
 	<entry key="p.neworder.totalInfoTitle">Итог</entry>
 	<entry key="p.neworder.showRoutePrice">Стоимость проезда</entry>
 	<entry key="p.neworder.fromTitle">От</entry>
@@ -153,6 +155,7 @@
 	<entry key="p.inputForm.selectButton">Выбрать</entry>
 
 	<entry key="p.neworder.page1.nextButton">Поиск такси</entry>
+	<entry key="p.neworder.page1.backButton">Вернуться к выбору клиентов</entry>
 	<entry key="p.neworder.page2.nextButton">Предварительный просмотр</entry>
 	<entry key="p.neworder.page2.backButton">Вернуться к маршруту</entry>
 	<entry key="p.neworder.page3.nextButton">Оформить</entry>

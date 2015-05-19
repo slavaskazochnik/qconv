@@ -2,6 +2,8 @@ package by.parfen.disptaxi.services;
 
 import java.util.List;
 
+import javax.persistence.metamodel.SingularAttribute;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Customer;
@@ -28,5 +30,7 @@ public interface CustomerService {
 	List<Customer> getAll();
 
 	List<Customer> getAllWithDetails();
+
+	List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 }
