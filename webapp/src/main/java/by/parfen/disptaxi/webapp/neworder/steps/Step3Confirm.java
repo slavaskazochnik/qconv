@@ -8,7 +8,6 @@ import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
-import by.parfen.disptaxi.webapp.orders.OrderEditPage;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
 
 public class Step3Confirm extends BaseLayout {
@@ -63,7 +62,9 @@ public class Step3Confirm extends BaseLayout {
 				super.onSubmit();
 				// TODO Check User==Customer?setCustomer():selectCustomer()
 				// Step4Customer
-				setResponsePage(new OrderEditPage(null));
+				newOrder.insertOrderIntoDB();
+				// setResponsePage(new OrderEditPage(newOrder.getOrder()));
+				setResponsePage(new OrdersPage());
 			}
 		});
 	}

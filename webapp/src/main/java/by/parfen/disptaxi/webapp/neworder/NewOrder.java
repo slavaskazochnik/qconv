@@ -1,7 +1,7 @@
 package by.parfen.disptaxi.webapp.neworder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,17 +10,24 @@ import org.apache.wicket.injection.Injector;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Customer;
+import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.services.PriceService;
+import by.parfen.disptaxi.services.RouteService;
 import by.parfen.disptaxi.services.UserProfileService;
 
 public class NewOrder extends NewOrderClass implements NewOrderService, Serializable {
 
+	@Inject
+	private OrderService orderService;
 	@Inject
 	private AutoService autoService;
 	@Inject
@@ -29,11 +36,12 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 	private UserProfileService userProfileService;
 	@Inject
 	private CustomerService customerService;
+	@Inject
+	private RouteService routeService;
 
 	public NewOrder() {
+		super();
 		Injector.get().inject(this);
-		route = new Route();
-		routePoints = new ArrayList<String>();
 	}
 
 	@Override
@@ -78,9 +86,34 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 	}
 
 	@Override
-	public void insertRouteIntoDB() {
-		// TODO Auto-generated method stub
-
+	public void insertOrderIntoDB() {
+		final Order order = new Order();
+		if (customer.getId() == null) {
+			// TODO create Customer
+		}
+		order.setCustomer(customer);
+		order.setAuto(auto);
+		order.setPrice(price);
+		order.setCreationDate(new Date());
+		order.setOrderStatus(OrderStatus.NEW);
+		order.setOrderResult(OrderResult.NONE);
+		if (order.getId() == null) {
+			order.setCreationDate(new Date());
+			orderService.create(order);
+		} else {
+			orderService.update(order);
+		}
+		setOrder(order);
+		fillRouteByPoints();
+		for (Route route : routeList) {
+			route.setOrder(order);
+			if (route.getId() == null) {
+				routeService.create(route);
+			} else {
+				routeService.update(route);
+			}
+			setRoute(route);
+		}
 	}
 
 	@Override
