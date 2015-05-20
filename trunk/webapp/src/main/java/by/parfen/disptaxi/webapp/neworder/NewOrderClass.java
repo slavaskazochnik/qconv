@@ -1,5 +1,7 @@
 package by.parfen.disptaxi.webapp.neworder;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.wicket.model.ResourceModel;
@@ -8,17 +10,27 @@ import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 
 public class NewOrderClass {
+	//
+	// Create only one Route item now.
+	// But must be modified for building the route with more than two points.
+	//
 
-	List<String> routePoints;
-
+	// current City
 	City city;
+	Order order;
+	// Route info
 	Route route;
+	List<Route> routeList;
+	List<String> routePoints;
+	// selected CarType
 	CarType carType;
+	// selected Auto, Price, Driver, Customer
 	Auto auto;
 	Price price;
 	Driver driver;
@@ -26,6 +38,12 @@ public class NewOrderClass {
 
 	Long routeDistance;
 	Long routeDuration;
+
+	public NewOrderClass() {
+		route = new Route();
+		routeList = new ArrayList<Route>();
+		routePoints = new ArrayList<String>();
+	}
 
 	public void setCity(City city) {
 		this.city = city;
@@ -134,6 +152,8 @@ public class NewOrderClass {
 	}
 
 	public String getTotalInfo() {
+		// number of `routeList` items = 2 (now)
+		// use `route` instead `routeList`
 		String result;
 		final String currency = (new ResourceModel("p.price.currency")).getObject();
 		result = route.getEstLength() + " " + (new ResourceModel("p.route.length.km")).getObject();
@@ -153,4 +173,34 @@ public class NewOrderClass {
 		return result;
 	}
 
+	public void fillRouteByPoints() {
+		// number of items = 2 (now)
+		if (routePoints != null) {
+			Iterator<String> iterator = routePoints.iterator();
+			String currAddress = null, prevAddress = null;
+			int pointIndex = 0;
+			while (iterator.hasNext() && pointIndex < 2) {
+				if (pointIndex > 0) {
+					prevAddress = currAddress;
+				}
+				currAddress = iterator.next();
+				if (pointIndex > 0) {
+					Route routeItem = new Route();
+					routeItem.setPointIndex(Long.valueOf(pointIndex));
+					routeItem.setSrcPointAddress(prevAddress);
+					routeItem.setDstPointAddress(currAddress);
+					routeList.add(routeItem);
+				}
+				pointIndex++;
+			}
+		}
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 }

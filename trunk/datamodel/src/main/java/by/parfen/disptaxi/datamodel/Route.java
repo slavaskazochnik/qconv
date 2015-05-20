@@ -99,4 +99,20 @@ public class Route {
 		this.estTime = estTime;
 	}
 
+	public String getSrcPointAddress() {
+		return srcPointAddress;
+	}
+
+	public void setSrcPointAddress(String srcPointAddress) {
+		this.srcPointAddress = srcPointAddress;
+	}
+
+	public String getDstPointAddress() {
+		return dstPointAddress;
+	}
+
+	public void setDstPointAddress(String dstPointAddress) {
+		this.dstPointAddress = dstPointAddress;
+	}
+
 }
