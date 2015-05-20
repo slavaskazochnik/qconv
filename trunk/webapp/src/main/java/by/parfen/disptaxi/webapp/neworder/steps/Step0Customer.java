@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.webapp.BaseLayout;
@@ -39,4 +40,8 @@ public class Step0Customer extends BaseLayout {
 
 	}
 
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.neworder.chooseCustomerTitle");
+	}
 }

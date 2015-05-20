@@ -17,6 +17,8 @@ import by.parfen.disptaxi.datamodel.Route_;
 @Repository
 public class RouteDaoImpl extends AbstractDaoImpl<Long, Route> implements RouteDao {
 
+	private static final String DELETE_FROM_WHERE_ORDER_ID_EQ = "delete from %s e where e.%s = :id";
+
 	protected RouteDaoImpl() {
 		super(Route.class);
 	}
@@ -55,4 +57,17 @@ public class RouteDaoImpl extends AbstractDaoImpl<Long, Route> implements RouteD
 	public List<Route> getAll() {
 		return this.getAllByOrder(null);
 	}
+
+	@Override
+	public void deleteByOrderId(Long orderId) {
+		// final String deleteSql = String.format(DELETE_FROM_WHERE_ORDER_ID_EQ,
+		// Route.class.getSimpleName(),
+		// Route_.order.getName());
+		// getEm().createQuery(deleteSql).setParameter("id",
+		// orderId).executeUpdate();
+		String deleteSql = new StringBuilder("DELETE FROM ").append(Route.class.getSimpleName()).append(" e WHERE ")
+				.append(Route_.order.getName()).append(" = ").append(orderId).toString();
+		getEm().createQuery(deleteSql).executeUpdate();
+	}
+
 }

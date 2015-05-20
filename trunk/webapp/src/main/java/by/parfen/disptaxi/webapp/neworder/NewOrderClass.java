@@ -151,6 +151,10 @@ public class NewOrderClass {
 		return result;
 	}
 
+	public Long getCost() {
+		return Long.valueOf(price.getCostBefore() + price.getCostKm() * route.getEstLength());
+	}
+
 	public String getTotalInfo() {
 		// number of `routeList` items = 2 (now)
 		// use `route` instead `routeList`
@@ -158,7 +162,7 @@ public class NewOrderClass {
 		final String currency = (new ResourceModel("p.price.currency")).getObject();
 		result = route.getEstLength() + " " + (new ResourceModel("p.route.length.km")).getObject();
 		result += ", " + route.getEstTime().toString() + (new ResourceModel("p.route.time.measure")).getObject();
-		Long cost = price.getCostBefore() + price.getCostKm() * route.getEstLength();
+		Long cost = getCost();
 		result += " " + cost + " " + currency;
 		return result;
 	}

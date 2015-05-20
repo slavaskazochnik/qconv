@@ -197,17 +197,3 @@ div.online {
 div.offline {
 	background-image: url("../images/offline.png");
 }
-
-table.table-list tr th { background-position: right; background-repeat:no-repeat; 
-}
-table.table-list tr th.wicket_orderDown {
-   background-image: url("..images/arrow_down.png"); }
-table.table-list tr th.wicket_orderUp {
-   background-image: url("..images/arrow_up.png"); }
-table.table-list tr th.wicket_orderNone {
-   background-image: url("..images/arrow_off.png");
-}
-table.table-list tr:hover {
-	background-color: white;
-}
-   

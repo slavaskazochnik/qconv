@@ -1,18 +1,15 @@
 package by.parfen.disptaxi.webapp.customers;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.webapp.BaseLayout;
-import by.parfen.disptaxi.webapp.customers.panel.CustomerInlinePanel;
 import by.parfen.disptaxi.webapp.customers.panel.CustomerListPanel;
 
 public class CustomersPage extends BaseLayout {
@@ -27,14 +24,14 @@ public class CustomersPage extends BaseLayout {
 
 		add(new CustomerListPanel("itemsList"));
 
-		final List<Customer> allCustomers = customerService.getAllWithDetails();
-		add(new ListView<Customer>("detailsPanel", allCustomers) {
-			@Override
-			protected void populateItem(ListItem<Customer> item) {
-				final Customer customer = item.getModelObject();
-				item.add(new CustomerInlinePanel("itemPanel", customer));
-			}
-		});
+		// final List<Customer> allCustomers = customerService.getAllWithDetails();
+		// add(new ListView<Customer>("detailsPanel", allCustomers) {
+		// @Override
+		// protected void populateItem(ListItem<Customer> item) {
+		// final Customer customer = item.getModelObject();
+		// item.add(new CustomerInlinePanel("itemPanel", customer));
+		// }
+		// });
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
 		Link<Void> linkToEdit = new Link<Void>("linkToAdd") {
@@ -48,4 +45,8 @@ public class CustomersPage extends BaseLayout {
 		add(listButtons);
 	}
 
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.customers.listTitle");
+	}
 }

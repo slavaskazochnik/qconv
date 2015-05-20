@@ -85,6 +85,7 @@
 	<entry key="p.user.firstNameTitle">Имя</entry>
 	<entry key="p.user.lastNameTitle">Фамилия</entry>
 	<entry key="p.user.telNumTitle">Тел.</entry>
+	<entry key="p.user.emailTitle">email</entry>
 	<entry key="p.user.avgRatingTitle">Рейтинг</entry>
 
 	<entry key="p.autos.listTitle">Список такси</entry>
@@ -117,6 +118,7 @@
 
 	<entry key="p.orders.listTitle">Список заказов</entry>
 	<entry key="p.order.edit.pageTitle">Редактирование данных заказа</entry>
+	<entry key="p.order.creationDateTitle">Дата создания</entry>
 	<entry key="p.order.idTitle">Код заказа</entry>
 	<entry key="p.order.edit.idTitle">Код</entry>
 	<entry key="p.order.driverTitle">Водитель</entry>

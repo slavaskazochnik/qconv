@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.OrderDao;
+import by.parfen.disptaxi.dataaccess.RouteDao;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Order;
@@ -29,6 +30,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Inject
 	private OrderDao dao;
+	@Inject
+	private RouteDao routeDao;
 
 	@Inject
 	private OrderTimetableService ottService;
@@ -136,6 +139,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order getWithDetails(Order order) {
 		return dao.getWithDetails(order);
+	}
+
+	@Override
+	public void deleteWithDetails(Order order) {
+		routeDao.deleteByOrderId(order.getId());
+		delete(order);
 	}
 
 }

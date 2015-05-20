@@ -2,11 +2,8 @@
 	<h1><wicket:message key="p.orders.listTitle" /></h1>
 	<div wicket:id="listButtons" class="items-list-buttons">
 		<button type="submit" wicket:id="linkToAdd" class="button green medium"><wicket:message key="p.inputForm.addButton" /></button>
-		<button type="submit" wicket:id="linkToNewOrder" class="button green medium"><wicket:message key="p.inputForm.newOrderButton" /></button>
 	</div>
 	<div class="items-list">
-		<wicket:container wicket:id="detailsPanel">
-			<wicket:container wicket:id="itemPanel" />
-		</wicket:container>
+		<wicket:container wicket:id="itemsList" />
 	</div>
 </wicket:extend>

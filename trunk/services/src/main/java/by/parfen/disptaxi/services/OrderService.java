@@ -30,6 +30,9 @@ public interface OrderService {
 	@Transactional
 	void deleteAll();
 
+	@Transactional
+	void deleteWithDetails(Order order);
+
 	List<Order> getAll();
 
 	List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize);

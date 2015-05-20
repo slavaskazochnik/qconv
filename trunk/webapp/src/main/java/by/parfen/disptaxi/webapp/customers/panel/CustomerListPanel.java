@@ -9,6 +9,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
@@ -19,10 +20,11 @@ import org.apache.wicket.model.IModel;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Customer_;
 import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.webapp.customers.CustomerEditPage;
 
 public class CustomerListPanel extends Panel {
 
-	private static final int CUSTOMERS_PER_PAGE = 10;
+	private static final int ITEMS_PER_PAGE = 15;
 
 	@Inject
 	CustomerService customerService;
@@ -36,12 +38,22 @@ public class CustomerListPanel extends Panel {
 		tableBody.setOutputMarkupId(true);
 		add(tableBody);
 
-		DataView<Customer> dataView = new DataView<Customer>("tableRows", customerDataProvider, CUSTOMERS_PER_PAGE) {
+		DataView<Customer> dataView = new DataView<Customer>("tableRows", customerDataProvider, ITEMS_PER_PAGE) {
 			@Override
 			protected void populateItem(Item<Customer> item) {
+				final Customer customer = item.getModelObject();
 				item.add(new Label("userProfile.firstName"));
 				item.add(new Label("userProfile.lastName"));
 				item.add(new Label("userProfile.telNum"));
+				item.add(new Label("avgRating"));
+
+				item.add(new Link<Void>("linkToEdit") {
+					@Override
+					public void onClick() {
+						setResponsePage(new CustomerEditPage(customer));
+					}
+				});
+
 			}
 		};
 

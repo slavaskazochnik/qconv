@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
@@ -98,4 +99,8 @@ public class PointEditPage extends BaseLayout {
 		add(form);
 	}
 
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.point.edit.pageTitle");
+	}
 }

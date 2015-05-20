@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
@@ -69,4 +70,8 @@ public class Step3Confirm extends BaseLayout {
 		});
 	}
 
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.neworder.confirmTitle");
+	}
 }
