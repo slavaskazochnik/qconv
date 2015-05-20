@@ -95,6 +95,8 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 		order.setAuto(auto);
 		order.setPrice(price);
 		order.setCreationDate(new Date());
+		order.setRouteLength(routeDistance);
+		order.setOrderPrice(getCost());
 		order.setOrderStatus(OrderStatus.NEW);
 		order.setOrderResult(OrderResult.NONE);
 		if (order.getId() == null) {

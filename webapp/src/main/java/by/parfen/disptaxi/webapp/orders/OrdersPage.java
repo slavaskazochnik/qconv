@@ -1,52 +1,28 @@
 package by.parfen.disptaxi.webapp.orders;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 
-import by.parfen.disptaxi.datamodel.Order;
-import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
 import by.parfen.disptaxi.webapp.neworder.steps.Step0Customer;
-import by.parfen.disptaxi.webapp.orders.panel.OrderInlinePanel;
+import by.parfen.disptaxi.webapp.orders.panel.OrderListPanel;
 
 public class OrdersPage extends BaseLayout {
-
-	@Inject
-	private OrderService orderService;
 
 	@Override
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.vieworders");
 		super.onInitialize();
-		final List<Order> allOrders = orderService.getAll();
-		add(new ListView<Order>("detailsPanel", allOrders) {
-			@Override
-			protected void populateItem(ListItem<Order> item) {
-				final Order order = orderService.getWithDetails(item.getModelObject());
-				// item.add(new Label("itemPanel", order.getId()));
-				item.add(new OrderInlinePanel("itemPanel", order));
-			}
-		});
+
+		add(new OrderListPanel("itemsList"));
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
-		Link<Void> linkToEdit = new Link<Void>("linkToAdd") {
-			@Override
-			public void onClick() {
-				final Order order = new Order();
-				setResponsePage(new OrderEditPage(order));
-			}
-		};
-		listButtons.add(linkToEdit);
 
-		Link<Void> linkToNewOrder = new Link<Void>("linkToNewOrder") {
+		Link<Void> linkToNewOrder = new Link<Void>("linkToAdd") {
 			@Override
 			public void onClick() {
 				// setResponsePage(new Step1Route(new Model<NewOrder>(new NewOrder())));
@@ -56,6 +32,11 @@ public class OrdersPage extends BaseLayout {
 		listButtons.add(linkToNewOrder);
 
 		add(listButtons);
+	}
+
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.orders.listTitle");
 	}
 
 }

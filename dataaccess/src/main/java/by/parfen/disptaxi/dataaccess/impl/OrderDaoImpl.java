@@ -10,6 +10,7 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
+import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.OrderDao;
@@ -48,8 +49,14 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		Root<Order> root = criteria.from(Order.class);
 
 		criteria.select(root);
+		if (attr != null) {
+			criteria.orderBy(new OrderImpl(root.get(attr), ascending));
+		}
 
 		TypedQuery<Order> query = getEm().createQuery(criteria);
+		query.setFirstResult(startRecord);
+		query.setMaxResults(pageSize);
+
 		List<Order> results = query.getResultList();
 		return results;
 	}

@@ -152,4 +152,9 @@ public class Step1Route extends BaseLayout {
 		add(addressForm);
 
 	}
+
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.neworder.createRouteTitle");
+	}
 }

@@ -24,6 +24,9 @@ public interface RouteService {
 	@Transactional
 	void deleteAll();
 
+	@Transactional
+	void deleteByOrderId(Long orderId);
+
 	Long getCount();
 
 	List<Route> getAll();

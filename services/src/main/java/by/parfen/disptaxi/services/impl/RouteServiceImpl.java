@@ -17,6 +17,7 @@ import by.parfen.disptaxi.services.RouteService;
 
 @Service
 public class RouteServiceImpl implements RouteService {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(RouteServiceImpl.class);
 
 	@Inject
@@ -74,6 +75,11 @@ public class RouteServiceImpl implements RouteService {
 	@Override
 	public List<Route> getAllByOrder(Order order) {
 		return dao.getAllByOrder(order);
+	}
+
+	@Override
+	public void deleteByOrderId(Long orderId) {
+		dao.deleteByOrderId(orderId);
 	}
 
 }

@@ -8,6 +8,8 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.services.CityService;
@@ -44,4 +46,8 @@ public class CitiesPage extends BaseLayout {
 		add(listButtons);
 	}
 
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.cities.listTitle");
+	}
 }

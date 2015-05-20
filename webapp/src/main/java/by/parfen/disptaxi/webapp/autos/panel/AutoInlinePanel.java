@@ -86,7 +86,6 @@ public class AutoInlinePanel extends Panel {
 		Link<Void> linkToSelect = new Link<Void>("linkToSelect") {
 			@Override
 			public void onClick() {
-				// TODO go back to NewOrder.Page2 with saved Route and selected Auto
 				setResponsePage(new AutoEditPage(auto));
 			}
 		};

@@ -11,4 +11,5 @@ public interface RouteDao extends AbstractDao<Long, Route> {
 
 	List<Route> getAllByOrder(Order order);
 
+	void deleteByOrderId(Long orderId);
 }

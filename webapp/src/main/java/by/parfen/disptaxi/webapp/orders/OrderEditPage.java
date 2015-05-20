@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 
@@ -156,7 +157,7 @@ public class OrderEditPage extends BaseLayout {
 				@Override
 				public void onSubmit() {
 					super.onSubmit();
-					orderService.delete(order);
+					orderService.deleteWithDetails(order);
 					setResponsePage(new OrdersPage());
 				}
 			};
@@ -200,5 +201,10 @@ public class OrderEditPage extends BaseLayout {
 
 		}
 
+	}
+
+	@Override
+	protected IModel<String> getPageTitle() {
+		return new ResourceModel("p.order.edit.pageTitle");
 	}
 }
