@@ -1,14 +1,14 @@
 <?xml version="1.0"  encoding="ISO-8859-1"?>
 <!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
-    <New id="testDS" class="org.eclipse.jetty.plus.jndi.Resource">
+    <New id="db_parfen" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg></Arg>
-        <Arg>jdbc/trainingDS</Arg>
+        <Arg>jdbc/db_parfen</Arg>
         <Arg>
 	         <New class="org.postgresql.ds.PGSimpleDataSource">
-	           <Set name="User">testUser</Set>
+	           <Set name="User">test</Set>
 	           <Set name="Password">test</Set>
-	           <Set name="DatabaseName">training</Set>
+	           <Set name="DatabaseName">db_parfen</Set>
 	           <Set name="ServerName">localhost</Set>
 	           <Set name="PortNumber">5432</Set>
 	        </New>

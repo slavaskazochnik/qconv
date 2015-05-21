@@ -60,4 +60,8 @@
 
 	</dependencies>
 
+	<build>
+		<finalName>parfen</finalName>
+	</build>
+
 </project>
