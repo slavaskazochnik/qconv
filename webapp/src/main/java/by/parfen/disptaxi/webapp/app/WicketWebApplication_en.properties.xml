@@ -19,28 +19,28 @@
 	<entry key="org.hibernate.validator.constraints.Range.message">Значение '${label}' должно быть от ${min} до ${max}</entry>
 
 	<entry key="p.home.title">DispTaxi</entry>
-	<entry key="p.langSelect">Язык</entry>
+	<entry key="p.langSelect">Language</entry>
 	
-	<entry key="p.menu.aboutus">О нас</entry>
-	<entry key="p.menu.vieworders">Заказы</entry>
-	<entry key="p.menu.customers">Клиенты</entry>
-	<entry key="p.menu.drivers">Водители</entry>
-	<entry key="p.menu.cars">Авто</entry>
-	<entry key="p.menu.autos">Такси</entry>
-	<entry key="p.menu.cities">Города</entry>
+	<entry key="p.menu.aboutus">About us</entry>
+	<entry key="p.menu.vieworders">Orders</entry>
+	<entry key="p.menu.customers">Customers</entry>
+	<entry key="p.menu.drivers">Drivers</entry>
+	<entry key="p.menu.cars">Cars</entry>
+	<entry key="p.menu.autos">Taxi</entry>
+	<entry key="p.menu.cities">Cities</entry>
 	
 	<entry key="p.country.name">Беларусь</entry>
-	<entry key="p.route.length.measure">м</entry>
-	<entry key="p.route.length.km">км</entry>
-	<entry key="p.route.time.measure">мин.</entry>
-	<entry key="p.price.currency">руб.</entry>
+	<entry key="p.route.length.measure">m</entry>
+	<entry key="p.route.length.km">km</entry>
+	<entry key="p.route.time.measure">min</entry>
+	<entry key="p.price.currency">BYR</entry>
 
-	<entry key="p.login.authenticationFailed">Ошибка авторизации</entry>
-	<entry key="p.login.pageTitle">Вход в аккаунт</entry>
-	<entry key="p.login.loginButtonTitle">Войти</entry>
-	<entry key="p.login.logoutButtonTitle">Выйти</entry>
-	<entry key="p.login.username">Логин</entry>
-	<entry key="p.login.password">Пароль</entry>
+	<entry key="p.login.authenticationFailed">Authorization Error</entry>
+	<entry key="p.login.pageTitle">Sign in</entry>
+	<entry key="p.login.loginButtonTitle">Sign in</entry>
+	<entry key="p.login.logoutButtonTitle">Sign out</entry>
+	<entry key="p.login.username">Login</entry>
+	<entry key="p.login.password">Password</entry>
 
 	<entry key="p.setup.selectCityPageTitle">Выбор города</entry>
 	<entry key="p.setup.selectCityButtonTitle">Выбрать город</entry>
@@ -155,12 +155,12 @@
 	<entry key="p.neworder.fromTitle">От</entry>
 	<entry key="p.neworder.toTitle">до</entry>
 
-	<entry key="p.inputForm.saveButton">Сохранить</entry>
-	<entry key="p.inputForm.cancelButton">Отказаться</entry>
-	<entry key="p.inputForm.removeButton">Удалить</entry>
-	<entry key="p.inputForm.addButton">Добавить</entry>
-	<entry key="p.inputForm.newOrderButton">Новый заказ</entry>
-	<entry key="p.inputForm.selectButton">Выбрать</entry>
+	<entry key="p.inputForm.saveButton">Save</entry>
+	<entry key="p.inputForm.cancelButton">Cancel</entry>
+	<entry key="p.inputForm.removeButton">Remove</entry>
+	<entry key="p.inputForm.addButton">Add</entry>
+	<entry key="p.inputForm.newOrderButton">New order</entry>
+	<entry key="p.inputForm.selectButton">Choose</entry>
 
 	<entry key="p.neworder.page1.nextButton">Поиск такси</entry>
 	<entry key="p.neworder.page1.backButton">Вернуться к выбору клиентов</entry>
@@ -169,33 +169,33 @@
 	<entry key="p.neworder.page3.nextButton">Оформить</entry>
 	<entry key="p.neworder.page3.backButton">Вернуться к выбору такси</entry>
 
-	<entry key="p.inlineMenu.editButton">Изменить</entry>
-	<entry key="p.inlineMenu.selectButton">Выбрать</entry>
+	<entry key="p.inlineMenu.editButton">Edit</entry>
+	<entry key="p.inlineMenu.selectButton">Select</entry>
 	
-	<entry key="SignActive.NO">Нет</entry>
-	<entry key="SignActive.YES">Да</entry>
+	<entry key="SignActive.NO">No</entry>
+	<entry key="SignActive.YES">Yes</entry>
 	
-	<entry key="autoSignActive.NO">Занят</entry>
-	<entry key="autoSignActive.YES">Свободен</entry>
+	<entry key="autoSignActive.NO">Busy</entry>
+	<entry key="autoSignActive.YES">Free</entry>
 	
-	<entry key="CarType.SEDAN">Седан</entry>
-	<entry key="CarType.VAN">Микроавтобус</entry>
+	<entry key="CarType.SEDAN">Sedan</entry>
+	<entry key="CarType.VAN">Minibus</entry>
 	
-	<entry key="OrderStatus.NEW">Новый</entry>
-	<entry key="OrderStatus.ACCEPTED">Подтверждён</entry>
-	<entry key="OrderStatus.ARRIVED">У клиента</entry>
-	<entry key="OrderStatus.ON_WAY">В пути</entry>
-	<entry key="OrderStatus.DONE">Закрыт</entry>
+	<entry key="OrderStatus.NEW">New</entry>
+	<entry key="OrderStatus.ACCEPTED">Accepted</entry>
+	<entry key="OrderStatus.ARRIVED">Arrived</entry>
+	<entry key="OrderStatus.ON_WAY">On way</entry>
+	<entry key="OrderStatus.DONE">Done</entry>
 	
-	<entry key="OrderResult.NONE">Новый</entry>
-	<entry key="OrderResult.OK">Выполнен</entry>
-	<entry key="OrderResult.CANCELED">Отменён</entry>
-	<entry key="OrderResult.CANCELED_BY_DRIVER">Отменён водителем</entry>
-	<entry key="OrderResult.CANCELED_BY_CUSTOMER">Отменён клиентом</entry>
+	<entry key="OrderResult.NONE">New</entry>
+	<entry key="OrderResult.OK">Ok</entry>
+	<entry key="OrderResult.CANCELED">Cancelled</entry>
+	<entry key="OrderResult.CANCELED_BY_DRIVER">Cancelled by driver</entry>
+	<entry key="OrderResult.CANCELED_BY_CUSTOMER">Cancelled by customer</entry>
 
-	<entry key="AppRole.ADMIN_ROLE">Администратор</entry>
-	<entry key="AppRole.OPERATOR_ROLE">Диспетчер</entry>
-	<entry key="AppRole.DRIVER_ROLE">Водитель</entry>
-	<entry key="AppRole.CUSTOMER_ROLE">Клиент</entry>
+	<entry key="AppRole.ADMIN_ROLE">Administrator</entry>
+	<entry key="AppRole.OPERATOR_ROLE">Dispatcher</entry>
+	<entry key="AppRole.DRIVER_ROLE">Driver</entry>
+	<entry key="AppRole.CUSTOMER_ROLE">Customer</entry>
 
 </properties>
