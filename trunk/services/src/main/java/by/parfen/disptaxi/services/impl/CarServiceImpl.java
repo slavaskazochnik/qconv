@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -77,6 +78,11 @@ public class CarServiceImpl implements CarService {
 	public List<Car> getAllByCarType(CarType carType) {
 		// return dao.getAllByCarType(carType);
 		return dao.getAllByFieldRestriction(Car_.carType, carType);
+	}
+
+	@Override
+	public List<Car> getAll(SingularAttribute<Car, ?> attr, boolean ascending, int startRecord, int pageSize) {
+		return dao.getAll(attr, ascending, startRecord, pageSize);
 	}
 
 }

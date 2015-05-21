@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
@@ -72,6 +73,7 @@ public class AutoInlinePanel extends Panel {
 			signActiveClass = CSS_ONLINE;
 		}
 		itemSignActive.add(new AttributeModifier("class", new Model<String>(signActiveClass)));
+		itemSignActive.add(new AttributeModifier("title", new ResourceModel("autoSignActive." + auto.getSignActive())));
 
 		listItem.add(itemDetails);
 

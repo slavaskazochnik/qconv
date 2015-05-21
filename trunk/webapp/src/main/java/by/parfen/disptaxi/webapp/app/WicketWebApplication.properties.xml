@@ -82,11 +82,16 @@
 	<entry key="p.customer.edit.pageTitle">Редактирование данных клиента</entry>
 	<entry key="p.driver.edit.pageTitle">Редактирование данных водителя</entry>
 
+	<entry key="p.user.idTitle">Код профиля</entry>
 	<entry key="p.user.firstNameTitle">Имя</entry>
 	<entry key="p.user.lastNameTitle">Фамилия</entry>
 	<entry key="p.user.telNumTitle">Тел.</entry>
 	<entry key="p.user.emailTitle">email</entry>
 	<entry key="p.user.avgRatingTitle">Рейтинг</entry>
+	<entry key="p.userProfile.edit.pageTitle">Редактирование данных профиля</entry>
+	<entry key="p.userProfile.appRoleTitle">Роль</entry>
+	<entry key="p.userAccount.nameTitle">Логин</entry>
+	<entry key="p.userAccount.emailTitle">email</entry>
 
 	<entry key="p.autos.listTitle">Список такси</entry>
 	<entry key="p.auto.edit.pageTitle">Редактирование данных такси</entry>
@@ -168,6 +173,9 @@
 	
 	<entry key="SignActive.NO">Нет</entry>
 	<entry key="SignActive.YES">Да</entry>
+	
+	<entry key="autoSignActive.NO">Занят</entry>
+	<entry key="autoSignActive.YES">Свободен</entry>
 	
 	<entry key="CarType.SEDAN">Седан</entry>
 	<entry key="CarType.VAN">Микроавтобус</entry>

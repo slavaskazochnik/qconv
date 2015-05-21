@@ -2,6 +2,8 @@ package by.parfen.disptaxi.services;
 
 import java.util.List;
 
+import javax.persistence.metamodel.SingularAttribute;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Car;
@@ -29,4 +31,5 @@ public interface CarService {
 
 	List<Car> getAllByCarType(CarType carType);
 
+	List<Car> getAll(SingularAttribute<Car, ?> attr, boolean ascending, int startRecord, int pageSize);
 }

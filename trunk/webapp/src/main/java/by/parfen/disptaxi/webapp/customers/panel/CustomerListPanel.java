@@ -16,11 +16,13 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Customer_;
 import by.parfen.disptaxi.services.CustomerService;
-import by.parfen.disptaxi.webapp.customers.CustomerEditPage;
+import by.parfen.disptaxi.webapp.customers.CustomersPage;
+import by.parfen.disptaxi.webapp.users.UserProfileEditPage;
 
 public class CustomerListPanel extends Panel {
 
@@ -50,7 +52,14 @@ public class CustomerListPanel extends Panel {
 				item.add(new Link<Void>("linkToEdit") {
 					@Override
 					public void onClick() {
-						setResponsePage(new CustomerEditPage(customer));
+						// setResponsePage(new CustomerEditPage(customer));
+						setResponsePage(new UserProfileEditPage(new Model(customer.getUserProfile())) {
+							@Override
+							protected void onSetResponsePage() {
+								// where go to back
+								setResponsePage(new CustomersPage());
+							}
+						});
 					}
 				});
 

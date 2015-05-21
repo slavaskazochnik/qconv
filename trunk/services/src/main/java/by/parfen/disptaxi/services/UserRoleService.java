@@ -26,4 +26,6 @@ public interface UserRoleService {
 	Long getCount();
 
 	List<UserRole> getAll();
+
+	List<UserRole> getAllByUserProfile(UserProfile userProfile);
 }

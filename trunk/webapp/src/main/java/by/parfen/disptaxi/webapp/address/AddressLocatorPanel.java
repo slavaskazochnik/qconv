@@ -123,15 +123,19 @@ public class AddressLocatorPanel extends Panel {
 		addressForm.add(tfPointLng);
 		tfPointLng.setEnabled(false);
 
-		final Label label = new Label("label", addressForm.getDefaultModel()) {
+		// final Label label = new Label("label", addressForm.getDefaultModel()) {
+		final Label label = new Label("label", Model.of("")) {
 
 			@Override
 			public void onEvent(IEvent<?> event) {
 				Object payload = event.getPayload();
 				if (payload instanceof Address) {
 					Address address = (Address) payload;
-					String str = address.getStreetName() + " | " + address.getPointName() + ": <" + address.getStreet().getId()
-							+ ">,<" + address.getPoint().getId() + ">";
+					String str = "";
+					if (address != null) {
+						str = address.getStreetName() + " | " + address.getPointName() + ": <" + address.getStreet().getId()
+								+ ">,<" + address.getPoint().getId() + ">";
+					}
 					setDefaultModel(new Model<String>(str));
 				}
 			}

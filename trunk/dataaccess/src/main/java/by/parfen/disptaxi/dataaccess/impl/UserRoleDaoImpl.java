@@ -1,16 +1,20 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import by.parfen.disptaxi.dataaccess.UserRoleDao;
+import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
+import by.parfen.disptaxi.datamodel.UserRole_;
 
 @Repository
 public class UserRoleDaoImpl extends AbstractDaoImpl<Long, UserRole> implements UserRoleDao {
@@ -32,12 +36,19 @@ public class UserRoleDaoImpl extends AbstractDaoImpl<Long, UserRole> implements 
 		return query.getSingleResult();
 	}
 
-	@Override
-	public List<UserRole> getAll() {
+	public List<UserRole> getAll(UserProfile userProfile) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<UserRole> criteria = cBuilder.createQuery(UserRole.class);
 		Root<UserRole> root = criteria.from(UserRole.class);
+
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (userProfile != null) {
+			predicates.add(cBuilder.equal(root.get(UserRole_.userProfile), userProfile));
+		}
+		if (predicates.size() > 0) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
 
 		criteria.select(root);
 
@@ -45,4 +56,25 @@ public class UserRoleDaoImpl extends AbstractDaoImpl<Long, UserRole> implements 
 		List<UserRole> results = query.getResultList();
 		return results;
 	}
+
+	@Override
+	public List<UserRole> getAll() {
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<UserRole> criteria = cBuilder.createQuery(UserRole.class);
+		// Root<UserRole> root = criteria.from(UserRole.class);
+		//
+		// criteria.select(root);
+		//
+		// TypedQuery<UserRole> query = getEm().createQuery(criteria);
+		// List<UserRole> results = query.getResultList();
+		// return results;
+		return getAll(null);
+	}
+
+	@Override
+	public List<UserRole> getAllByUserProfile(UserProfile userProfile) {
+		return getAll(userProfile);
+	}
+
 }

@@ -9,6 +9,7 @@
 				<tr>
 					<th><wicket:message key="p.order.creationDateTitle" /></th>
 					<th><wicket:message key="p.order.idTitle" /></th>
+					<th></th>
 					<th><wicket:message key="p.order.autoTitle" /></th>
 					<th><wicket:message key="p.order.edit.driverRatingTitle" /></th>
 					<th><wicket:message key="p.order.edit.customerRatingTitle" /></th>
@@ -20,6 +21,7 @@
 				<tr wicket:id="tableRows">
 					<td align="center"><wicket:container wicket:id="creationDate" /></td>
 					<td width="10%" align="right"><wicket:container wicket:id="id" /></td>
+					<td width="5%" align="right"><div wicket:id="itemOrderResult"></div></td>
 					<td align="center"><wicket:container wicket:id="auto.car.regNum" /></td>
 					<td width="5%" align="center"><wicket:container wicket:id="driverRating" /></td>
 					<td width="5%" align="center"><wicket:container wicket:id="customerRating" /></td>

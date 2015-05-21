@@ -2,6 +2,8 @@ package by.parfen.disptaxi.services;
 
 import java.util.List;
 
+import javax.persistence.metamodel.SingularAttribute;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Driver;
@@ -28,5 +30,7 @@ public interface DriverService {
 	List<Driver> getAll();
 
 	List<Driver> getAllWithDetails();
+
+	List<Driver> getAllWithDetails(SingularAttribute<Driver, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 }

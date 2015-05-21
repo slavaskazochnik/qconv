@@ -118,12 +118,14 @@ public class OrderEditPage extends BaseLayout {
 			ddcOrderStatus.setLabel(new ResourceModel("p.car.edit.orderStatusTitle"));
 			ddcOrderStatus.add(new PropertyValidator<OrderStatus>());
 			add(ddcOrderStatus);
+			ddcOrderStatus.setEnabled(order.getOrderResult() == OrderResult.NONE);
 
 			DropDownChoice<OrderResult> ddcOrderResult = new DropDownChoice<OrderResult>("orderResult",
 					Arrays.asList(OrderResult.values()), new EnumChoiceRenderer<OrderResult>(this));
 			ddcOrderResult.setLabel(new ResourceModel("p.car.edit.orderResultTitle"));
 			ddcOrderResult.add(new PropertyValidator<OrderResult>());
 			add(ddcOrderResult);
+			ddcOrderResult.setEnabled(order.getOrderStatus() == OrderStatus.DONE);
 
 			add(new SubmitLink("cancelLink") {
 				@Override
@@ -148,6 +150,8 @@ public class OrderEditPage extends BaseLayout {
 					} else {
 						orderService.update(order);
 					}
+					orderService.changeOrderStatus(order, order.getOrderStatus());
+					orderService.changeOrderResult(order, order.getOrderResult());
 					OrdersPage page = new OrdersPage();
 					setResponsePage(page);
 				}

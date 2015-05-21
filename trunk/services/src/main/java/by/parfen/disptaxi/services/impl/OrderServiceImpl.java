@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import by.parfen.disptaxi.dataaccess.AutoDao;
 import by.parfen.disptaxi.dataaccess.OrderDao;
 import by.parfen.disptaxi.dataaccess.RouteDao;
 import by.parfen.disptaxi.datamodel.Customer;
@@ -20,6 +21,7 @@ import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.OrderTimetable;
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
+import by.parfen.disptaxi.datamodel.enums.SignActive;
 import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.services.OrderTimetableService;
 
@@ -32,6 +34,8 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao dao;
 	@Inject
 	private RouteDao routeDao;
+	@Inject
+	private AutoDao autoDao;
 
 	@Inject
 	private OrderTimetableService ottService;
@@ -121,6 +125,13 @@ public class OrderServiceImpl implements OrderService {
 		ott.setOrder(order);
 		ott.setCreationDate(new Date());
 		ottService.create(ott);
+		if (orderStatus == OrderStatus.ACCEPTED) {
+			order.getAuto().setSignActive(SignActive.NO);
+			autoDao.update(order.getAuto());
+		} else if (orderStatus == OrderStatus.DONE) {
+			order.getAuto().setSignActive(SignActive.YES);
+			autoDao.update(order.getAuto());
+		}
 		LOGGER.debug("Change order status to {}", orderStatus);
 		order.setOrderStatus(orderStatus);
 		dao.update(order);
