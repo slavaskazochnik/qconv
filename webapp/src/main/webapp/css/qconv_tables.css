@@ -17,7 +17,7 @@ table.dataview tr {
 }
 
 table.dataview tr:nth-child(even) {
-	background-color: #ffaa56;
+	background-color: #ffd9b3;
 }
 
 table.dataview tr:nth-child(odd) {
@@ -31,13 +31,13 @@ table.dataview tr td {
 }
 
 table.dataview tr th {
-	background: -o-linear-gradient(bottom, #ff7f00 5%, #bf5f00 100%);
+	background: -o-linear-gradient(bottom, #ff7f00 5%, #db6e00 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff7f00
-		), color-stop(1, #bf5f00));
-	background: -moz-linear-gradient(center top, #ff7f00 5%, #bf5f00 100%);
+		), color-stop(1, #db6e00));
+	background: -moz-linear-gradient(center top, #ff7f00 5%, #eb7500 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7f00",
-		endColorstr="#bf5f00");
-	background: -o-linear-gradient(top, #ff7f00, bf5f00);
+		endColorstr="#db6e00");
+	background: -o-linear-gradient(top, #ff7f00, #db6e00);
 	background-color: #ff7f00;
 }
 
@@ -45,7 +45,7 @@ table.dataview tr th {
 	background-position: right;
 	background-repeat: no-repeat;
 	padding: 0.5em;
-	color: white;
+	color: #ffe3c7;
 }
 
 table.dataview tr th.wicket_orderDown {
@@ -75,5 +75,5 @@ table.dataview caption {
 }
 
 table.dataview tr:hover {
-	background-color: #ff7f00;
+	background-color: #ffb870;
 }

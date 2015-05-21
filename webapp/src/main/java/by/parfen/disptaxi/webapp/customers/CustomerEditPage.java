@@ -1,23 +1,32 @@
 package by.parfen.disptaxi.webapp.customers;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
+import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.services.UserRoleService;
 import by.parfen.disptaxi.webapp.BaseLayout;
+import by.parfen.disptaxi.webapp.users.panel.UserRoleInlinePanel;
 
 public class CustomerEditPage extends BaseLayout {
 
 	@Inject
 	private CustomerService customerService;
+	@Inject
+	private UserRoleService userRoleService;
 
 	public CustomerEditPage(final Customer customer) {
 		super();
@@ -47,15 +56,24 @@ public class CustomerEditPage extends BaseLayout {
 		tfAvgRating.add(new PropertyValidator<String>());
 		form.add(tfAvgRating);
 
+		List<UserRole> userRoleList = userRoleService.getAllByUserProfile(customer.getUserProfile());
+		if (userRoleList.size() == 0) {
+			userRoleList.add(new UserRole());
+		}
+		form.add(new ListView<UserRole>("detailsPanel", userRoleList) {
+			@Override
+			protected void populateItem(ListItem<UserRole> item) {
+				final UserRole userRole = item.getModelObject();
+				item.add(new UserRoleInlinePanel("itemPanel", userRole));
+			}
+		});
+
 		form.add(new SubmitLink("sumbitLink") {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
 				customerService.update(customer);
 				CustomersPage page = new CustomersPage();
-				// page.error("Custom error");
-				// page.info("Custom info");
-				// page.warn("Custom warn");
 				setResponsePage(page);
 			}
 		});

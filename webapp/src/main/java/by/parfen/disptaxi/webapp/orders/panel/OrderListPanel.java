@@ -19,17 +19,22 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Order_;
+import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.OrderService;
 import by.parfen.disptaxi.webapp.orders.OrderEditPage;
 
 public class OrderListPanel extends Panel {
 
-	private static final int ITEMS_PER_PAGE = 5;
+	private static final int ITEMS_PER_PAGE = 7;
+	private static final String CSS_NONE = "order-result-none";
+	private static final String CSS_OK = "order-result-ok";
+	private static final String CSS_CANCELLED = "order-result-cancelled";
 
 	@Inject
 	OrderService orderService;
@@ -40,14 +45,7 @@ public class OrderListPanel extends Panel {
 		super(id);
 		OrderDataProvider orderDataProvider = new OrderDataProvider();
 
-		final WebMarkupContainer tableBody = new WebMarkupContainer("tableBody") {
-			@Override
-			protected void onBeforeRender() {
-				super.onBeforeRender();
-				add(new AttributeModifier("title", new Model(System.currentTimeMillis())));
-			}
-		};
-		tableBody.add(new AttributeModifier("title", new Model(System.currentTimeMillis())));
+		final WebMarkupContainer tableBody = new WebMarkupContainer("tableBody");
 
 		tableBody.setOutputMarkupId(true);
 		add(tableBody);
@@ -60,6 +58,20 @@ public class OrderListPanel extends Panel {
 				order.setAuto(auto);
 				item.add(new Label("creationDate"));
 				item.add(new Label("id"));
+
+				final WebMarkupContainer itemOrderResult = new WebMarkupContainer("itemOrderResult");
+				item.add(itemOrderResult);
+				String orderResultClass;
+				if (order.getOrderResult() == OrderResult.NONE) {
+					orderResultClass = CSS_NONE;
+				} else if (order.getOrderResult() == OrderResult.OK) {
+					orderResultClass = CSS_OK;
+				} else {
+					orderResultClass = CSS_CANCELLED;
+				}
+				itemOrderResult.add(new AttributeModifier("class", new Model<String>(orderResultClass)));
+				itemOrderResult.add(new AttributeModifier("title", new ResourceModel("OrderResult." + order.getOrderResult())));
+
 				item.add(new Label("auto.car.regNum", new PropertyModel<String>(auto, "car.regNum")));
 				item.add(new Label("driverRating"));
 				item.add(new Label("customerRating"));

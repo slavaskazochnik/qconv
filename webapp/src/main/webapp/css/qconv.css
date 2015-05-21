@@ -197,3 +197,23 @@ div.online {
 div.offline {
 	background-image: url("../images/offline.png");
 }
+
+div.order-result-none, div.order-result-ok, div.order-result-cancelled {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+}
+
+div.order-result-none {
+	background-image: url("../images/circle_green.png");
+}
+
+div.order-result-ok {
+	background-image: url("../images/accepted.png");
+}
+
+div.order-result-cancelled {
+	background-image: url("../images/cancel.png");
+}
+

@@ -1,21 +1,18 @@
 package by.parfen.disptaxi.webapp.customers;
 
-import javax.inject.Inject;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
-import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.customers.panel.CustomerListPanel;
 
 public class CustomersPage extends BaseLayout {
 
-	@Inject
-	private CustomerService customerService;
+	// @Inject
+	// private CustomerService customerService;
 
 	@Override
 	protected void onInitialize() {

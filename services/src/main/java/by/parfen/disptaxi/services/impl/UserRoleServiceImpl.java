@@ -72,4 +72,10 @@ public class UserRoleServiceImpl implements UserRoleService {
 	public List<UserRole> getAll() {
 		return dao.getAll();
 	}
+
+	@Override
+	public List<UserRole> getAllByUserProfile(UserProfile userProfile) {
+		return dao.getAllByUserProfile(userProfile);
+	}
+
 }

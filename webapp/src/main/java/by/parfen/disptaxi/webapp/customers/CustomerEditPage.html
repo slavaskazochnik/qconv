@@ -1,29 +1,40 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<h1><wicket:message key="p.customer.edit.pageTitle" /></h1>
-	<form wicket:id="inputForm">
-		<fieldset>
-			<div>
-				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.customer.userIdTitle" /></label>
-				<input wicket:id="id" class="inputForm-text" type="text" />
-
-				<label wicket:for="userProfile.firstName" class="inputForm-label"><wicket:message key="p.user.firstNameTitle" /></label>
-				<input wicket:id="userProfile.firstName" class="inputForm-text" type="text" />
-
-				<label wicket:for="userProfile.lastName" class="inputForm-label"><wicket:message key="p.user.lastNameTitle" /></label>
-				<input wicket:id="userProfile.lastName" class="inputForm-text" type="text" />
-				
-				<label wicket:for="userProfile.telNum" class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
-				<input wicket:id="userProfile.telNum" class="inputForm-text" type="text" />
-				
-				<label wicket:for="avgRating" class="inputForm-label"><wicket:message key="p.user.avgRatingTitle" /></label>
-				<input wicket:id="avgRating" class="inputForm-text" type="text" />
-				
-				<div class="inputForm-buttons">
-				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
-				<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
-				<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+		<form wicket:id="inputForm">
+			<fieldset>
+			<table>
+			<tr>
+			<td>
+				<div>
+					<label wicket:for="id" class="inputForm-label"><wicket:message key="p.customer.userIdTitle" /></label>
+					<input wicket:id="id" class="inputForm-text" type="text" />
+	
+					<label wicket:for="userProfile.firstName" class="inputForm-label"><wicket:message key="p.user.firstNameTitle" /></label>
+					<input wicket:id="userProfile.firstName" class="inputForm-text" type="text" />
+	
+					<label wicket:for="userProfile.lastName" class="inputForm-label"><wicket:message key="p.user.lastNameTitle" /></label>
+					<input wicket:id="userProfile.lastName" class="inputForm-text" type="text" />
+					
+					<label wicket:for="userProfile.telNum" class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
+					<input wicket:id="userProfile.telNum" class="inputForm-text" type="text" />
+					
+					<label wicket:for="avgRating" class="inputForm-label"><wicket:message key="p.user.avgRatingTitle" /></label>
+					<input wicket:id="avgRating" class="inputForm-text" type="text" />
+					
+					<div class="inputForm-buttons">
+					<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+					<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+					<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+					</div>
 				</div>
-			</div>
-		</fieldset>
-	</form>
+			</td>
+			<td>
+				<wicket:container wicket:id="detailsPanel">
+					<wicket:container wicket:id="itemPanel" />
+				</wicket:container>
+			</td>
+			</tr>
+			</table>
+			</fieldset>
+		</form>
 </wicket:extend>
