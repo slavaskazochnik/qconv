@@ -93,6 +93,7 @@
 	<entry key="p.userProfile.appRoleTitle">Роль</entry>
 	<entry key="p.userAccount.nameTitle">Логин</entry>
 	<entry key="p.userAccount.emailTitle">email</entry>
+	<entry key="p.userAccount.passwordTitle">Пароль</entry>
 
 	<entry key="p.autos.listTitle">Список такси</entry>
 	<entry key="p.auto.edit.pageTitle">Редактирование данных такси</entry>

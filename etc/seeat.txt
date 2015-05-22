@@ -1,1 +1,11 @@
 http://nevius.ru/text/skript-yandeks-kart
+
+Wicket: get input from TextField updated by script	
+http://stackoverflow.com/questions/17639033/wicket-get-input-from-textfield-updated-by-script
+
+Apache Wicket - Best practices (English)
+http://www.devproof.org/post/apache_wicket_best_practices/
+
+APACHE WICKET: DISPLAYING DATA USING DATATABLE
+FILTER!!!!!!!
+https://www.packtpub.com/books/content/apache-wicket-displaying-data-using-datatable

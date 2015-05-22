@@ -1,48 +1,47 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 	<h1><wicket:message key="p.userProfile.edit.pageTitle" /></h1>
-		<form wicket:id="inputForm">
-			<fieldset>
+	<form wicket:id="inputForm">
+		<fieldset>
 			<table>
 			<tr>
 			<td>
-				<div>
-					<label wicket:for="id" class="inputForm-label"><wicket:message key="p.user.idTitle" /></label>
-					<input wicket:id="id" class="inputForm-text" type="text" />
-	
-					<label wicket:for="firstName" class="inputForm-label"><wicket:message key="p.user.firstNameTitle" /></label>
-					<input wicket:id="firstName" class="inputForm-text" type="text" />
-	
-					<label wicket:for="lastName" class="inputForm-label"><wicket:message key="p.user.lastNameTitle" /></label>
-					<input wicket:id="lastName" class="inputForm-text" type="text" />
-					
-					<label wicket:for="telNum" class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
-					<input wicket:id="telNum" class="inputForm-text" type="text" />
-					
-<!-- 					<label wicket:for="avgRating" class="inputForm-label"><wicket:message key="p.user.avgRatingTitle" /></label> -->
-<!-- 					<input wicket:id="avgRating" class="inputForm-text" type="text" /> -->
-					
-					<div class="inputForm-buttons">
-					<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
-					<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
-					<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+					<div>
+						<label wicket:for="id" class="inputForm-label"><wicket:message key="p.user.idTitle" /></label>
+						<input wicket:id="id" class="inputForm-text" type="text" />
+		
+						<label wicket:for="firstName" class="inputForm-label"><wicket:message key="p.user.firstNameTitle" /></label>
+						<input wicket:id="firstName" class="inputForm-text" type="text" />
+		
+						<label wicket:for="lastName" class="inputForm-label"><wicket:message key="p.user.lastNameTitle" /></label>
+						<input wicket:id="lastName" class="inputForm-text" type="text" />
+						
+						<label wicket:for="telNum" class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
+						<input wicket:id="telNum" class="inputForm-text" type="text" />
+						
+						<div class="inputForm-buttons">
+						<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+						<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+						<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+						</div>
 					</div>
-				</div>
 			</td>
 			<td valign="top">
-				<form wicket:id="userRoleForm">
-					<label wicket:for="appRole" class="inputForm-label"><wicket:message key="p.userProfile.appRoleTitle" /></label>
-					<select wicket:id="appRole" class="inputForm-text"/>
-				</form>
-				<form wicket:id="userAccountForm">
+					<form wicket:id="userRoleForm">
+						<label wicket:for="appRole" class="inputForm-label"><wicket:message key="p.userProfile.appRoleTitle" /></label>
+						<select wicket:id="appRole" class="inputForm-text"/>
+					</form>
+	
 					<label wicket:for="name" class="inputForm-label"><wicket:message key="p.userAccount.nameTitle" /></label>
 					<input wicket:id="name" class="inputForm-text" type="text" />
 
 					<label wicket:for="email" class="inputForm-label"><wicket:message key="p.userAccount.emailTitle" /></label>
 					<input wicket:id="email" class="inputForm-text" type="text" />
-				</form>
+
+					<label wicket:for="password" class="inputForm-label"><wicket:message key="p.userAccount.passwordTitle" /></label>
+					<input wicket:id="password" class="inputForm-text" type="text" />
 			</td>
 			</tr>
 			</table>
-			</fieldset>
-		</form>
+		</fieldset>
+	</form>
 </wicket:extend>

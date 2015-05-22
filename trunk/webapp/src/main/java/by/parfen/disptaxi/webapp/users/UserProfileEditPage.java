@@ -1,6 +1,8 @@
 package by.parfen.disptaxi.webapp.users;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,12 +15,19 @@ import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
+import org.apache.wicket.validation.validator.StringValidator;
 
+import by.parfen.disptaxi.datamodel.Customer;
+import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.UserAccount;
 import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.datamodel.enums.AppRole;
+import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.services.UserProfileService;
 import by.parfen.disptaxi.services.UserRoleService;
@@ -32,6 +41,10 @@ public class UserProfileEditPage extends BaseLayout {
 	private UserRoleService userRoleService;
 	@Inject
 	private UserAccountService userAccountService;
+	@Inject
+	private CustomerService customerService;
+	@Inject
+	private DriverService driverService;
 
 	final UserProfile userProfile;
 	UserRole userRole;
@@ -41,9 +54,13 @@ public class UserProfileEditPage extends BaseLayout {
 		super();
 		userProfile = userProfileModel.getObject();
 
-		List<UserRole> userRoleList = userRoleService.getAllByUserProfile(userProfile);
+		List<UserRole> userRoleList = new ArrayList<UserRole>();
+		if (userProfile != null && userProfile.getId() != null) {
+			userRoleList = userRoleService.getAllByUserProfile(userProfile);
+		}
 		if (userRoleList.size() == 0) {
 			userRole = new UserRole();
+			userRole.setAppRole(AppRole.CUSTOMER_ROLE);
 		} else {
 			// TODO must be multiline
 			userRole = userRoleList.get(0);
@@ -88,40 +105,80 @@ public class UserProfileEditPage extends BaseLayout {
 				new EnumChoiceRenderer<AppRole>(this));
 		ddcAppRole.setLabel(new ResourceModel("p.userProfile.appRoleTitle"));
 		ddcAppRole.add(new PropertyValidator<AppRole>());
+		ddcAppRole.isRequired();
 		userRoleForm.add(ddcAppRole);
 
 		form.add(userRoleForm);
 
-		Form<UserAccount> userAccountForm = new Form<UserAccount>("userAccountForm",
-				new CompoundPropertyModel<UserAccount>(userAccount));
-
-		final TextField<String> userName = new TextField<String>("name");
+		final TextField<String> userName = new TextField<String>("name",
+				new PropertyModel<String>(this.userAccount, "name"));
 		userName.setLabel(new ResourceModel("p.userAccount.nameTitle"));
 		userName.add(new PropertyValidator<String>());
-		userAccountForm.add(userName);
+		form.add(userName);
 
-		final TextField<String> userEmail = new TextField<String>("email");
+		final TextField<String> userEmail = new TextField<String>("email", new PropertyModel<String>(this.userAccount,
+				"email"));
 		userEmail.setLabel(new ResourceModel("p.userAccount.emailTitle"));
-		userEmail.add(new PropertyValidator<String>());
-		userAccountForm.add(userEmail);
+		userEmail.add(EmailAddressValidator.getInstance());
+		form.add(userEmail);
 
-		form.add(userAccountForm);
+		final TextField<String> userPassword = new TextField<String>("password", new PropertyModel<String>(
+				this.userAccount, "password"));
+		userPassword.setLabel(new ResourceModel("p.userAccount.passwordTitle"));
+		userPassword.add(StringValidator.lengthBetween(6, 30));
+		form.add(userPassword);
 
 		form.add(new SubmitLink("sumbitLink") {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				// create user profile
+				if (userProfile.getId() == null) {
+					userProfileService.saveOrUpdate(userProfile);
+				}
+
+				// create user role
+				// create role by profile
 				if (userRole.getId() == null) {
 					userRoleService.create(userRole, userProfile);
 				} else {
 					userRoleService.update(userRole);
 				}
-				if (userAccount.getId() == null) {
-					userAccountService.create(userAccount, userRole);
-				} else {
-					userAccountService.update(userAccount);
+
+				// create account by role
+				if (userAccount.getName() != null && userAccount.getPassw() != null && userAccount.getPassw() != null) {
+					userRole.setUserAccount(userAccount);
+					userRoleService.update(userRole);
 				}
-				userProfileService.saveOrUpdate(userProfile);
+
+				boolean profileAlreadyUpdated = false;
+				if (userRole.getAppRole() == AppRole.CUSTOMER_ROLE) {
+					// create record for customers
+					Customer customer = customerService.get(userProfile.getId());
+					if (customer == null) {
+						customer = new Customer();
+						customer.setCreationDate(new Date());
+						customer.setUserProfile(userProfile);
+						userProfile.setCustomer(customer);
+						userProfileService.saveOrUpdate(userProfile);
+						profileAlreadyUpdated = true;
+					}
+				} else if (userRole.getAppRole() == AppRole.DRIVER_ROLE) {
+					// create record for drivers
+					Driver driver = driverService.get(userProfile.getId());
+					if (driver == null) {
+						driver = new Driver();
+						driver.setCreationDate(new Date());
+						driver.setUserProfile(userProfile);
+						userProfile.setDriver(driver);
+						userProfileService.saveOrUpdate(userProfile);
+						profileAlreadyUpdated = true;
+					}
+				}
+				if (!profileAlreadyUpdated) {
+					userProfileService.saveOrUpdate(userProfile);
+				}
+
 				onSetResponsePage();
 			}
 		});
@@ -130,12 +187,28 @@ public class UserProfileEditPage extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				Driver driver = driverService.get(userProfile.getId());
+				if (driver != null) {
+					driverService.delete(driver);
+				}
+				Customer customer = customerService.get(userProfile.getId());
+				if (customer != null) {
+					customerService.delete(customer);
+				}
+				List<UserRole> userRoleList = userRoleService.getAllByUserProfile(userProfile);
+				for (UserRole userRoleItem : userRoleList) {
+					UserAccount userAccountItem = userAccountService.get(userRoleItem.getId());
+					if (userAccountItem != null && userAccountItem.getId() != null) {
+						userAccountService.delete(userAccountItem);
+					}
+					userRoleService.delete(userRoleItem);
+				}
 				userProfileService.delete(userProfile);
 				onSetResponsePage();
 			}
 		};
 		form.add(removeLink);
-		removeLink.setDefaultFormProcessing(false);
+		// removeLink.setDefaultFormProcessing(false);
 		removeLink.setVisible(userProfile.getId() != null);
 
 		form.add(new SubmitLink("cancelLink") {

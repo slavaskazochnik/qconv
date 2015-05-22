@@ -1,6 +1,7 @@
 package by.parfen.disptaxi.services.impl;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -47,6 +48,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 				"This method should be called for 'not saved yet' userAccount only. Use UPDATE instead");
 		LOGGER.debug("Set user role: {}", userRole);
 		userAccount.setUserRole(userRole);
+		userAccount.setCreationDate(new Date());
 		LOGGER.debug("Insert: {}", userAccount);
 		dao.insert(userAccount);
 	}
