@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class UserAccount extends AbstractEntity {
@@ -20,10 +21,13 @@ public class UserAccount extends AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
+	@Size(max = 30)
 	private String name;
 	@Column
+	@Size(max = 128)
 	private String password;
 	@Column
+	@Size(max = 255)
 	private String email;
 	@Column
 	private Date creationDate;

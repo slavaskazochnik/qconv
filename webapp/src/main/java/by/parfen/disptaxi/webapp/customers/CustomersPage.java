@@ -3,11 +3,14 @@ package by.parfen.disptaxi.webapp.customers;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
+import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.customers.panel.CustomerListPanel;
+import by.parfen.disptaxi.webapp.users.UserProfileEditPage;
 
 public class CustomersPage extends BaseLayout {
 
@@ -31,14 +34,31 @@ public class CustomersPage extends BaseLayout {
 		// });
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
-		Link<Void> linkToEdit = new Link<Void>("linkToAdd") {
+		// Link<Void> linkToAdd = new Link<Void>("linkToAdd") {
+		// @Override
+		// public void onClick() {
+		// final Customer customer = new Customer();
+		// setResponsePage(new CustomerEditPage(customer));
+		// }
+		// };
+
+		Link<Void> linkToAdd = new Link<Void>("linkToAdd") {
 			@Override
 			public void onClick() {
+				// setResponsePage(new CustomerEditPage(customer));
 				final Customer customer = new Customer();
-				setResponsePage(new CustomerEditPage(customer));
+				customer.setUserProfile(new UserProfile());
+				setResponsePage(new UserProfileEditPage(new Model(customer.getUserProfile())) {
+					@Override
+					protected void onSetResponsePage() {
+						// where go to back
+						setResponsePage(new CustomersPage());
+					}
+				});
 			}
 		};
-		listButtons.add(linkToEdit);
+		listButtons.add(linkToAdd);
+
 		add(listButtons);
 	}
 
