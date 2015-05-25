@@ -178,6 +178,7 @@
 
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
 	<entry key="p.inlineMenu.selectButton">Выбрать</entry>
+	<entry key="p.inlineMenu.filterButton">Найти</entry>
 	
 	<entry key="p.aboutus.pageTitle">О сервисе</entry>
 

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import by.parfen.disptaxi.dataaccess.CustomerDao;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 import by.parfen.disptaxi.services.CustomerService;
 
 @Service
@@ -83,6 +84,13 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord,
 			int pageSize) {
 		return dao.getAllWithDetails(attr, ascending, startRecord, pageSize);
+	}
+
+	
+	@Override
+	public List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize,
+			FilterUserProfile filterUserProfile) {
+		return dao.getAllWithDetails(attr, ascending, startRecord, pageSize, filterUserProfile);
 	}
 
 	@Override
