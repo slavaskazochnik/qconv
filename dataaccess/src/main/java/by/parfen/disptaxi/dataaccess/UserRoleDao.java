@@ -10,4 +10,6 @@ public interface UserRoleDao extends AbstractDao<Long, UserRole> {
 	Long getCount();
 
 	List<UserRole> getAllByUserProfile(UserProfile userProfile);
+
+	UserRole getWithDetails(UserRole userRole);
 }

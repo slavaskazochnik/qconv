@@ -13,6 +13,10 @@ input:focus, textarea:focus, input:active, textarea:active {
   outline: none;
 }
 
+select {
+	height: 1.45em;
+}
+
 .clear {
   clear: both;
   float: none !important;
@@ -177,6 +181,14 @@ div.table-cell.title-cell{
 
 div.yandexMap {
 	display: inline-block;
+}
+
+a.login-username{
+  text-decoration: none;
+  color: #ffdfa5;
+}
+a:hover.login-username{
+  text-decoration: underline;
 }
 
 span.login-username {

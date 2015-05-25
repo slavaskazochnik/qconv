@@ -1,5 +1,6 @@
 <wicket:head>
 	<link rel="stylesheet" type="text/css" href="css/qconv_tables.css" />
+	<link rel="stylesheet" type="text/css" href="css/qconv_stars.css" />
 </wicket:head>
 
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
@@ -23,8 +24,18 @@
 					<td width="10%" align="right"><wicket:container wicket:id="id" /></td>
 					<td width="5%" align="right"><div wicket:id="itemOrderResult"></div></td>
 					<td align="center"><wicket:container wicket:id="auto.car.regNum" /></td>
-					<td width="5%" align="center"><wicket:container wicket:id="driverRating" /></td>
-					<td width="5%" align="center"><wicket:container wicket:id="customerRating" /></td>
+					<td width="5%" align="center">
+						<div class="rating_bar">
+							<div class="rating" wicket:id="driverRating" wicket:message="title:p.order.edit.driverRatingTitle"></div>
+						</div>
+<!-- 					<wicket:container wicket:id="driverRating" /> -->
+					</td>
+					<td width="5%" align="center">
+						<div class="rating_bar">
+							<div class="rating" wicket:id="customerRating" wicket:message="title:p.order.edit.customerRatingTitle"></div>
+						</div>
+<!-- 					<wicket:container wicket:id="customerRating" /> -->
+					</td>
 					<td width="5%" align="right"><wicket:container wicket:id="orderPrice" /></td>
 					<td align="center">
 						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>

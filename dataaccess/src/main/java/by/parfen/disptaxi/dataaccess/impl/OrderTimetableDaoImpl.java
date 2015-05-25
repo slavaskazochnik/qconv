@@ -55,4 +55,12 @@ public class OrderTimetableDaoImpl extends AbstractDaoImpl<Long, OrderTimetable>
 	public List<OrderTimetable> getAll() {
 		return this.getAllByOrder(null);
 	}
+
+	@Override
+	public void deleteByOrderId(Long orderId) {
+		String deleteSql = new StringBuilder("DELETE FROM ").append(OrderTimetable.class.getSimpleName())
+				.append(" e WHERE ").append(OrderTimetable_.order.getName()).append(" = ").append(orderId).toString();
+		getEm().createQuery(deleteSql).executeUpdate();
+	}
+
 }

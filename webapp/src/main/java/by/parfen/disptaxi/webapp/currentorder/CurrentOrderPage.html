@@ -1,0 +1,154 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1>
+		<wicket:message key="p.currentOrder.pageTitle" />
+	</h1>
+	<form wicket:id="inputForm">
+		<fieldset>
+			<table>
+				<tr>
+					<td>
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label><wicket:message key="p.order.idTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="id" class="inputForm-text" type="text" disabled />
+							</div>
+						</div>
+
+						<wicket:enclosure child="customerFirstName">
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.currentOrder.customerFirstNameTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="customerFirstName" class="inputForm-text" type="text" disabled />
+							</div>
+
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="customerTelNum" class="inputForm-text" type="text" disabled />
+							</div>
+
+								<div class="table-cell title-cell">
+									<label class="inputForm-label"><wicket:message key="p.user.avgRatingTitle" /></label>
+								</div>
+								<div class="table-cell">
+									<input wicket:id="customerRating" class="inputForm-text" type="text" size="1"/>
+								</div>
+						</div>
+						</wicket:enclosure>
+												
+						<wicket:enclosure child="driverFirstName">
+							<div class="table-row">
+								<div class="table-cell title-cell">
+									<label class="inputForm-label"><wicket:message key="p.currentOrder.autoTitle" /></label>
+								</div>
+								<div class="table-cell">
+									<input wicket:id="car.carInfo" class="inputForm-text" type="text" disabled />
+								</div>
+							</div>
+
+							<div class="table-row">
+								<div class="table-cell title-cell">
+									<label class="inputForm-label"><wicket:message key="p.currentOrder.driverFirstNameTitle" /></label>
+								</div>
+								<div class="table-cell">
+									<input wicket:id="driverFirstName" class="inputForm-text" type="text" disabled />
+								</div>
+
+								<div class="table-cell title-cell">
+									<label class="inputForm-label"><wicket:message key="p.user.telNumTitle" /></label>
+								</div>
+								<div class="table-cell">
+									<input wicket:id="driverTelNum" class="inputForm-text" type="text" disabled />
+								</div>
+
+								<div class="table-cell title-cell">
+									<label class="inputForm-label"><wicket:message key="p.user.avgRatingTitle" /></label>
+								</div>
+								<div class="table-cell">
+									<input wicket:id="driverRating" class="inputForm-text" type="text" size="1"/>
+								</div>
+							</div>
+						</wicket:enclosure>
+
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.currentOrder.routeSrcAddressTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="routeSrcAddress" class="inputForm-text" type="text" disabled />
+							</div>
+						</div>
+
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.currentOrder.routeDstAddressTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="routeDstAddress" class="inputForm-text" type="text" disabled />
+							</div>
+						</div>
+
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.order.edit.orderStatusTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="orderStatus" class="inputForm-text" type="text" disabled />
+							</div>
+						</div>
+
+						<div class="table-row">
+							<div class="table-cell title-cell">
+								<label class="inputForm-label"><wicket:message key="p.order.edit.orderResultTitle" /></label>
+							</div>
+							<div class="table-cell">
+								<input wicket:id="orderResult" class="inputForm-text" type="text" disabled />
+							</div>
+						</div>
+
+						<div class="table-row">
+							<div class="table-cell">
+								<div class="inputForm-buttons">
+									<button type="submit" wicket:id="cancelOrderLink" class="button red bigrounded">
+										<wicket:message key="OrderResult.CANCELED" />
+									</button>
+								</div>
+							</div>
+							<div class="table-cell">
+								<a href="#" wicket:id="changeStatusLink" class="button blue bigrounded">
+<!-- 									<wicket:message key="OrderStatus.ACCEPTED" /> -->
+									<span wicket:id="newStatus"></span>
+								</a>
+								<button type="submit" wicket:id="confirmOrderLink" class="button green bigrounded">
+									<wicket:message key="OrderResult.OK" />
+								</button>
+							</div>
+							<div class="table-cell"></div>
+							<div class="table-cell">
+								<wicket:container wicket:id="orderTimetableList" />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" wicket:id="sumbitLink" class="button green bigrounded">
+							<wicket:message key="p.inputForm.saveButton" />
+						</button>
+						<button type="submit" wicket:id="backLink" class="button gray bigrounded">
+							<wicket:message key="p.inputForm.backButton" />
+						</button>
+						<button type="submit" wicket:id="removeLink" class="button red bigrounded">
+							<wicket:message key="p.inputForm.removeButton" />
+						</button>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</wicket:extend>

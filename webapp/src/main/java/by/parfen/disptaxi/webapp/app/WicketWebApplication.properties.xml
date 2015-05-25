@@ -25,9 +25,11 @@
 	<entry key="p.menu.vieworders">Заказы</entry>
 	<entry key="p.menu.customers">Клиенты</entry>
 	<entry key="p.menu.drivers">Водители</entry>
+	<entry key="p.menu.users">Пользователи</entry>
 	<entry key="p.menu.cars">Авто</entry>
 	<entry key="p.menu.autos">Такси</entry>
 	<entry key="p.menu.cities">Города</entry>
+	<entry key="p.menu.aboutus">О сервисе</entry>
 	
 	<entry key="p.country.name">Беларусь</entry>
 	<entry key="p.route.length.measure">м</entry>
@@ -41,6 +43,7 @@
 	<entry key="p.login.logoutButtonTitle">Выйти</entry>
 	<entry key="p.login.username">Логин</entry>
 	<entry key="p.login.password">Пароль</entry>
+	<entry key="p.login.addButtonTitle">Создать</entry>
 
 	<entry key="p.setup.selectCityPageTitle">Выбор города</entry>
 	<entry key="p.setup.selectCityButtonTitle">Выбрать город</entry>
@@ -89,6 +92,8 @@
 	<entry key="p.user.telNumTitle">Тел.</entry>
 	<entry key="p.user.emailTitle">email</entry>
 	<entry key="p.user.avgRatingTitle">Рейтинг</entry>
+
+	<entry key="p.userProfiles.listTitle">Профили пользователей</entry>
 	<entry key="p.userProfile.edit.pageTitle">Редактирование данных профиля</entry>
 	<entry key="p.userProfile.appRoleTitle">Роль</entry>
 	<entry key="p.userAccount.nameTitle">Логин</entry>
@@ -162,6 +167,7 @@
 	<entry key="p.inputForm.addButton">Добавить</entry>
 	<entry key="p.inputForm.newOrderButton">Новый заказ</entry>
 	<entry key="p.inputForm.selectButton">Выбрать</entry>
+	<entry key="p.inputForm.backButton">Вернуться</entry>
 
 	<entry key="p.neworder.page1.nextButton">Поиск такси</entry>
 	<entry key="p.neworder.page1.backButton">Вернуться к выбору клиентов</entry>
@@ -173,6 +179,8 @@
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
 	<entry key="p.inlineMenu.selectButton">Выбрать</entry>
 	
+	<entry key="p.aboutus.pageTitle">О сервисе</entry>
+
 	<entry key="SignActive.NO">Нет</entry>
 	<entry key="SignActive.YES">Да</entry>
 	
@@ -183,7 +191,7 @@
 	<entry key="CarType.VAN">Микроавтобус</entry>
 	
 	<entry key="OrderStatus.NEW">Новый</entry>
-	<entry key="OrderStatus.ACCEPTED">Подтверждён</entry>
+	<entry key="OrderStatus.ACCEPTED">Принят</entry>
 	<entry key="OrderStatus.ARRIVED">У клиента</entry>
 	<entry key="OrderStatus.ON_WAY">В пути</entry>
 	<entry key="OrderStatus.DONE">Закрыт</entry>
@@ -199,4 +207,10 @@
 	<entry key="AppRole.DRIVER_ROLE">Водитель</entry>
 	<entry key="AppRole.CUSTOMER_ROLE">Клиент</entry>
 
+	<entry key="p.currentOrder.pageTitle">Текущий заказ</entry>
+	<entry key="p.currentOrder.customerFirstNameTitle">Клиент</entry>
+	<entry key="p.currentOrder.driverFirstNameTitle">Водитель</entry>
+	<entry key="p.currentOrder.autoTitle">Такси</entry>
+	<entry key="p.currentOrder.routeSrcAddressTitle">От</entry>
+	<entry key="p.currentOrder.routeDstAddressTitle">До</entry>
 </properties>

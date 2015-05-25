@@ -28,4 +28,6 @@ public interface UserRoleService {
 	List<UserRole> getAll();
 
 	List<UserRole> getAllByUserProfile(UserProfile userProfile);
+
+	UserRole getWithDetails(UserRole userRole);
 }

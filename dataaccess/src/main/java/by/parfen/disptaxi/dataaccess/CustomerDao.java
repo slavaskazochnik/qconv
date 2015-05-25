@@ -13,4 +13,6 @@ public interface CustomerDao extends AbstractDao<Long, Customer> {
 	List<Customer> getAllWithDetails();
 
 	List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize);
+
+	Customer getWithDetails(Customer customer);
 }

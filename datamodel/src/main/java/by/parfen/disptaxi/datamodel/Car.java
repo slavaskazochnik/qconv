@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 
 @Entity
-public class Car {
+public class Car extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -19,7 +19,12 @@
 					<td><wicket:container wicket:id="userProfile.firstName" /></td>
 					<td><wicket:container wicket:id="userProfile.lastName" /></td>
 					<td><wicket:container wicket:id="userProfile.telNum" /></td>
-					<td align="center"><wicket:container wicket:id="avgRating" /></td>
+					<td align="center">
+						<div class="rating_bar">
+							<div class="rating" wicket:id="avgRating" wicket:message="title:p.user.avgRatingTitle"></div>
+						</div>
+<!-- 						<wicket:container wicket:id="avgRating" /> -->
+					</td>
 					<td align="center">
 						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>
 					</td>

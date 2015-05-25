@@ -28,5 +28,8 @@ public interface UserAccountService {
 
 	UserAccount getAccountByEmail(String userName);
 
-	List<AppRole> getRoles(Long userAccountId);
+	AppRole getRole(Long userAccountId);
+
+	UserAccount getWithDetails(UserAccount userAccount);
+
 }

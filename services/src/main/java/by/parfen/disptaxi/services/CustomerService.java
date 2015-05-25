@@ -33,4 +33,5 @@ public interface CustomerService {
 
 	List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize);
 
+	Customer getWithDetails(Customer customer);
 }

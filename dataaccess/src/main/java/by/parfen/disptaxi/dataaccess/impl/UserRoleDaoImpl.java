@@ -77,4 +77,26 @@ public class UserRoleDaoImpl extends AbstractDaoImpl<Long, UserRole> implements 
 		return getAll(userProfile);
 	}
 
+	@Override
+	public UserRole getWithDetails(UserRole userRole) {
+		UserRole result = null;
+		if (userRole != null) {
+			CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+			CriteriaQuery<UserRole> criteria = cBuilder.createQuery(UserRole.class);
+			Root<UserRole> root = criteria.from(UserRole.class);
+			root.fetch(UserRole_.userProfile);
+
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			predicates.add(cBuilder.equal(root.get(UserRole_.id), userRole.getId()));
+			criteria.where(predicates.toArray(new Predicate[] {}));
+
+			criteria.select(root);
+
+			TypedQuery<UserRole> query = getEm().createQuery(criteria);
+			result = query.getSingleResult();
+		}
+		return result;
+	}
+
 }

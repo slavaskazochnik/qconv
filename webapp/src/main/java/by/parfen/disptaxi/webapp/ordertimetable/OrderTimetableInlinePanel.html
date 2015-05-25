@@ -1,0 +1,19 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div wicket:id="listItem" class="inline-list-item">
+	 <form wicket:id="orderTimtableForm">
+		<div class="table-row">
+			<div class="table-cell">
+				<span wicket:id="itemDate" />
+			</div>
+			<div class="table-cell">
+				<span wicket:id="itemInfo" />
+			</div>
+			<div class="table-cell">
+				<button type="submit" wicket:id="removeLink" class="button red small">
+					<wicket:message key="p.inputForm.removeButton" />
+				</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</wicket:panel>

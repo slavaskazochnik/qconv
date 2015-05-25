@@ -14,12 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Range;
+
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +44,10 @@ public class Order {
 	@Column
 	private Long orderPrice;
 	@Column
+	@Range(min = 1L, max = 5L)
 	private Long customerRating;
 	@Column
+	@Range(min = 1L, max = 5L)
 	private Long driverRating;
 	@Column
 	private Date creationDate;

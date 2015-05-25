@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -7,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Fetch;
 import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
@@ -19,7 +21,11 @@ import by.parfen.disptaxi.datamodel.Auto_;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Driver;
 import by.parfen.disptaxi.datamodel.Order;
+import by.parfen.disptaxi.datamodel.OrderTimetable;
+import by.parfen.disptaxi.datamodel.OrderTimetable_;
 import by.parfen.disptaxi.datamodel.Order_;
+import by.parfen.disptaxi.datamodel.enums.OrderStatus;
+import by.parfen.disptaxi.datamodel.filter.FilterOrder;
 
 @Repository
 public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderDao {
@@ -42,11 +48,28 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 	}
 
 	@Override
-	public List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize) {
+	public List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize,
+			FilterOrder filterOrder) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Order> criteria = cBuilder.createQuery(Order.class);
 		Root<Order> root = criteria.from(Order.class);
+
+		// use Filter
+		if (filterOrder != null) {
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			if (filterOrder.getCustomer() != null) {
+				predicates.add(cBuilder.equal(root.get(Order_.customer), filterOrder.getCustomer()));
+			}
+			// add detail table Auto for Driver
+			if (filterOrder.getDriver() != null) {
+				Join<Order, Auto> details = root.join(Order_.auto);
+				predicates.add(cBuilder.equal(details.get(Auto_.driver), filterOrder.getDriver()));
+			}
+			if (predicates.size() > 0) {
+				criteria.where(predicates.toArray(new Predicate[] {}));
+			}
+		}
 
 		criteria.select(root);
 		if (attr != null) {
@@ -59,6 +82,27 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 
 		List<Order> results = query.getResultList();
 		return results;
+	}
+
+	@Override
+	public List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize) {
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<Order> criteria = cBuilder.createQuery(Order.class);
+		// Root<Order> root = criteria.from(Order.class);
+		//
+		// criteria.select(root);
+		// if (attr != null) {
+		// criteria.orderBy(new OrderImpl(root.get(attr), ascending));
+		// }
+		//
+		// TypedQuery<Order> query = getEm().createQuery(criteria);
+		// query.setFirstResult(startRecord);
+		// query.setMaxResults(pageSize);
+		//
+		// List<Order> results = query.getResultList();
+		// return results;
+		return getAll(attr, ascending, startRecord, pageSize, null);
 	}
 
 	@Override
@@ -121,4 +165,20 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		return results;
 	}
 
+	@Override
+	public OrderStatus getLastOrderStatusInTimetable(Order order) {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<OrderStatus> criteria = cBuilder.createQuery(OrderStatus.class);
+		Root<OrderTimetable> root = criteria.from(OrderTimetable.class);
+
+		criteria.where(cBuilder.equal(root.get(OrderTimetable_.order), order));
+
+		criteria.multiselect(cBuilder.greatest(root.get(OrderTimetable_.orderStatus)));
+
+		TypedQuery<OrderStatus> query = getEm().createQuery(criteria);
+		OrderStatus result = query.getSingleResult();
+
+		return result == null ? OrderStatus.NEW : result;
+	}
 }

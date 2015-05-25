@@ -14,8 +14,10 @@ import org.apache.wicket.util.lang.Bytes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.webapp.home.HomePage;
 import by.parfen.disptaxi.webapp.login.LoginPage;
+import by.parfen.disptaxi.webapp.orders.OrdersPage;
 
 @Component("wicketWebApplicationBean")
 public class WicketWebApplication extends AuthenticatedWebApplication {
@@ -72,6 +74,19 @@ public class WicketWebApplication extends AuthenticatedWebApplication {
 
 	@Override
 	public final Class<? extends WebPage> getHomePage() {
+		final AppRole userRole = BasicAuthenticationSession.get().getUserAppRole();
+		if (userRole == AppRole.ADMIN_ROLE || userRole == AppRole.OPERATOR_ROLE) {
+			return OrdersPage.class;
+		} else if (userRole == AppRole.CUSTOMER_ROLE || userRole == AppRole.DRIVER_ROLE) {
+			// TODO
+			// go to currentOrder if extsts
+			// else go to neworder.Step1Route
+			if (BasicAuthenticationSession.get().getUser() != null) {
+				return OrdersPage.class;
+			} else {
+				return LoginPage.class;
+			}
+		}
 		return HomePage.class;
 	}
 

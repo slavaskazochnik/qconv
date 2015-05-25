@@ -78,7 +78,7 @@ public class DriverInlinePanel extends Panel {
 		itemDetails.add(new Label("driverTelNum", driverTelNum));
 
 		String driverAvgRating = getString("p.user.avgRatingTitle") + ": " + driver.getAvgRating();
-		itemDetails.add(new Label("driverAvgRating", driverAvgRating));
+		itemDetails.add(new Label("driverAvgRating", driverAvgRating).setVisible(driver.getAvgRating() != null));
 
 		listItem.add(itemDetails);
 		Link<Void> linkToEdit = new Link<Void>("linkToEdit") {

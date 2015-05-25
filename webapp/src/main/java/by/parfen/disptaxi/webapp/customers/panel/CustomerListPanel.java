@@ -5,6 +5,7 @@ import java.util.Iterator;
 import javax.inject.Inject;
 import javax.persistence.metamodel.SingularAttribute;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -20,8 +21,10 @@ import org.apache.wicket.model.Model;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Customer_;
+import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.webapp.customers.CustomersPage;
+import by.parfen.disptaxi.webapp.etc.RatingClass;
 import by.parfen.disptaxi.webapp.users.UserProfileEditPage;
 
 public class CustomerListPanel extends Panel {
@@ -47,13 +50,18 @@ public class CustomerListPanel extends Panel {
 				item.add(new Label("userProfile.firstName"));
 				item.add(new Label("userProfile.lastName"));
 				item.add(new Label("userProfile.telNum"));
-				item.add(new Label("avgRating"));
+				// item.add(new Label("avgRating"));
+				final WebMarkupContainer avgRatingContainter = new WebMarkupContainer("avgRating");
+				final int avgRatingPerc = RatingClass.getRatingPercent(customer.getAvgRating());
+				avgRatingContainter.add(AttributeModifier.append("style", Model.of("width:" + avgRatingPerc + "%")));
+				avgRatingContainter.add(AttributeModifier.append("title", Model.of(customer.getAvgRating())));
+				item.add(avgRatingContainter);
 
 				item.add(new Link<Void>("linkToEdit") {
 					@Override
 					public void onClick() {
 						// setResponsePage(new CustomerEditPage(customer));
-						setResponsePage(new UserProfileEditPage(new Model(customer.getUserProfile())) {
+						setResponsePage(new UserProfileEditPage(new Model<UserProfile>(customer.getUserProfile())) {
 							@Override
 							protected void onSetResponsePage() {
 								// where go to back
