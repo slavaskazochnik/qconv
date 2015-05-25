@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
@@ -16,6 +17,9 @@ import org.springframework.stereotype.Repository;
 import by.parfen.disptaxi.dataaccess.CustomerDao;
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Customer_;
+import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.UserProfile_;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 
 @Repository
 public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements CustomerDao {
@@ -71,16 +75,29 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 	}
 
 	public List<Customer> getAll(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize,
-			Boolean withDetails) {
+			Boolean withDetails, FilterUserProfile filterUserProfile) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Customer> criteria = cBuilder.createQuery(Customer.class);
 		Root<Customer> root = criteria.from(Customer.class);
 
-		criteria.select(root);
+		// use Filter
 		if (withDetails) {
 			root.fetch(Customer_.userProfile);
 		}
+		if (filterUserProfile != null) {
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			// add detail table
+			if (filterUserProfile.getTelNum() != null) {
+				Join<Customer, UserProfile> details = (Join<Customer, UserProfile>) root.fetch(Customer_.userProfile);
+				root.fetch(Customer_.userProfile);
+				predicates.add(cBuilder.like(details.get(UserProfile_.telNum), "%" + filterUserProfile.getTelNum() + "%"));
+			}
+			if (predicates.size() > 0) {
+				criteria.where(predicates.toArray(new Predicate[] {}));
+			}
+		}
+		criteria.select(root);
 		if (attr != null) {
 			criteria.orderBy(new OrderImpl(root.get(attr), ascending));
 		}
@@ -96,8 +113,14 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 
 	@Override
 	public List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord,
+			int pageSize, FilterUserProfile filterUserProfile) {
+		return getAll(attr, ascending, startRecord, pageSize, true, filterUserProfile);
+	}
+
+	@Override
+	public List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord,
 			int pageSize) {
-		return getAll(attr, ascending, startRecord, pageSize, true);
+		return getAll(attr, ascending, startRecord, pageSize, true, null);
 	}
 
 	@Override
@@ -109,4 +132,5 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 		}
 		return result;
 	}
+
 }

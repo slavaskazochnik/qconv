@@ -1,3 +1,10 @@
+table.filterview {
+	margin-bottom: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	width: 90%;
+}
+
 table.dataview {
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ff7f00;

@@ -17,7 +17,7 @@ import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.autos.panel.AutoInlinePanel;
 
-@AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE" })
+@AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE", "DRIVER_ROLE" })
 public class AutosPage extends BaseLayout {
 
 	@Inject

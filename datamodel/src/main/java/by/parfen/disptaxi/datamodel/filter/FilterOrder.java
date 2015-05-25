@@ -9,6 +9,8 @@ import by.parfen.disptaxi.datamodel.enums.OrderStatus;
 
 public class FilterOrder implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Customer customer;
 	private Driver driver;
 	private OrderStatus orderStatus;

@@ -4,14 +4,32 @@
 
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
 	<div>
+		<form wicket:id="filterForm">
+			<table class="filterview">
+				<tr>
+					<td width="20%">
+						<!-- <wicket:container wicket:id="firstName" /> -->
+					</td>
+					<td width="20%">
+						<!-- <wicket:container wicket:id="lastName" /> -->
+					</td>
+					<td width="20%"><input type="text" wicket:id="telNum" class="inputForm-text"/></td>
+					<td width="20%" align="center"></td>
+					<td width="20%" align="center"><input type="submit" wicket:id="linkToFilter" class="button medium green"
+						wicket:message="value:p.inlineMenu.filterButton" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div>
 		<table class="dataview">
 			<thead>
 				<tr>
-					<th><wicket:message key="p.user.firstNameTitle" /></th>
-					<th><wicket:message key="p.user.lastNameTitle" /></th>
-					<th><wicket:message key="p.user.telNumTitle" /></th>
-					<th><wicket:message key="p.user.avgRatingTitle" /></th>
-					<th></th>
+					<th width="20%"><wicket:message key="p.user.firstNameTitle" /></th>
+					<th width="20%"><wicket:message key="p.user.lastNameTitle" /></th>
+					<th width="20%"><wicket:message key="p.user.telNumTitle" /></th>
+					<th width="20%"><wicket:message key="p.user.avgRatingTitle" /></th>
+					<th width="20%"></th>
 				</tr>
 			</thead>
 			<tbody wicket:id="tableBody">
@@ -22,12 +40,10 @@
 					<td align="center">
 						<div class="rating_bar">
 							<div class="rating" wicket:id="avgRating" wicket:message="title:p.user.avgRatingTitle"></div>
-						</div>
-<!-- 						<wicket:container wicket:id="avgRating" /> -->
+						</div> <!-- 						<wicket:container wicket:id="avgRating" /> -->
 					</td>
-					<td align="center">
-						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>
-					</td>
+					<td align="center"><a wicket:id="linkToEdit" class="button medium orange"><wicket:message
+								key="p.inlineMenu.editButton" /></a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -162,6 +162,7 @@
 
 	<entry key="p.inlineMenu.editButton">Edit</entry>
 	<entry key="p.inlineMenu.selectButton">Select</entry>
+	<entry key="p.inlineMenu.filterButton">Search</entry>
 	
 	<entry key="p.aboutus.pageTitle">About us</entry>
 

@@ -9,6 +9,7 @@ import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.customers.panel.CustomerListPanel;
 import by.parfen.disptaxi.webapp.users.UserProfileEditPage;
@@ -16,12 +17,24 @@ import by.parfen.disptaxi.webapp.users.UserProfileEditPage;
 @AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE" })
 public class CustomersPage extends BaseLayout {
 
+	private static final long serialVersionUID = 1L;
+
+	private IModel<FilterUserProfile> filterUserProfileModel;
+	
+	public CustomersPage() {
+		this(null);
+	}
+
+	public CustomersPage(Model<FilterUserProfile> filterUserProfileModel) {
+		this.filterUserProfileModel = filterUserProfileModel;
+	}
+
 	@Override
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.customers");
 		super.onInitialize();
 
-		add(new CustomerListPanel("itemsList"));
+		add(new CustomerListPanel("itemsList", filterUserProfileModel));
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
 

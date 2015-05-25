@@ -66,6 +66,10 @@ public abstract class BaseLayout extends WebPage {
 				|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE;
 	}
 
+	private boolean isVisibleDriverMenuItems() {
+		return BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE;
+	}
+
 	private void applyMenuAttrib(final WebMarkupContainer menuItem, String menuTitle) {
 		if (currentMenuTitle == menuTitle) {
 			menuItem.add(new AttributeModifier("class", new Model<String>("current")));
@@ -177,7 +181,7 @@ public abstract class BaseLayout extends WebPage {
 
 			@Override
 			protected void onConfigure() {
-				setVisible(isVisibleAdminMenuItems());
+				setVisible(isVisibleAdminMenuItems()||isVisibleDriverMenuItems());
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_AUTOS)));

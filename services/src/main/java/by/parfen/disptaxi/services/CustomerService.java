@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 
 public interface CustomerService {
 
@@ -32,6 +33,8 @@ public interface CustomerService {
 	List<Customer> getAllWithDetails();
 
 	List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize);
+	
+	List<Customer> getAllWithDetails(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize, FilterUserProfile filterUserProfile);
 
 	Customer getWithDetails(Customer customer);
 }
