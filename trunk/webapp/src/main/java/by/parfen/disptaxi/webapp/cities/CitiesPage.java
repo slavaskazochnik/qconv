@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -16,6 +17,7 @@ import by.parfen.disptaxi.services.CityService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.cities.panel.CityInlinePanel;
 
+@AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE" })
 public class CitiesPage extends BaseLayout {
 
 	@Inject

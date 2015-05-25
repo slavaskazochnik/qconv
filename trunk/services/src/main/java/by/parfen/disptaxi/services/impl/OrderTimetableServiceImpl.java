@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import by.parfen.disptaxi.dataaccess.OrderDao;
 import by.parfen.disptaxi.dataaccess.OrderTimetableDao;
 import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.OrderTimetable;
@@ -21,6 +22,8 @@ public class OrderTimetableServiceImpl implements OrderTimetableService {
 
 	@Inject
 	private OrderTimetableDao dao;
+	@Inject
+	private OrderDao orderDao;
 
 	@PostConstruct
 	private void init() {

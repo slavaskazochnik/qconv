@@ -1,7 +1,5 @@
 package by.parfen.disptaxi.webapp.app;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.wicket.Session;
@@ -14,8 +12,12 @@ import org.slf4j.LoggerFactory;
 
 import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.datamodel.UserAccount;
+import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.UserRole;
 import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.services.UserAccountService;
+import by.parfen.disptaxi.services.UserProfileService;
+import by.parfen.disptaxi.services.UserRoleService;
 
 public class BasicAuthenticationSession extends AuthenticatedWebSession {
 
@@ -25,12 +27,20 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 
 	private UserAccount user;
 
+	private UserProfile userProfile;
+
+	private AppRole userAppRole;
+
 	private Roles resultRoles;
 
 	private City city;
 
 	@Inject
-	private UserAccountService userService;
+	private UserAccountService userAccountService;
+	@Inject
+	private UserProfileService userProfileService;
+	@Inject
+	private UserRoleService userRoleService;
 
 	public BasicAuthenticationSession(final Request request) {
 		super(request);
@@ -44,20 +54,31 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 	@Override
 	public boolean authenticate(final String userName, final String password) {
 		boolean authenticationResult = false;
-		final UserAccount account = userService.getAccountByEmail(userName);
+		final UserAccount account = userAccountService.getAccountByEmail(userName);
 		if (account != null && account.getPassw().equals(password)) {
-			this.user = account;
+			initFieldsByAccount(account);
 			authenticationResult = true;
 		}
 		return authenticationResult;
+	}
+
+	private void initFieldsByAccount(UserAccount account) {
+		user = account;
+		userAppRole = userAccountService.getRole(account.getId());
+		userProfile = null;
+		final UserAccount userAccount = userAccountService.getWithDetails(user);
+		if (userAccount != null) {
+			final UserRole userRole = userRoleService.getWithDetails(userAccount.getUserRole());
+			userProfile = userRole.getUserProfile();
+		}
 	}
 
 	@Override
 	public Roles getRoles() {
 		if (isSignedIn() && (resultRoles == null)) {
 			resultRoles = new Roles();
-			List<AppRole> roles = userService.getRoles(user.getId());
-			for (AppRole role : roles) {
+			AppRole role = userAccountService.getRole(user.getId());
+			if (role != null) {
 				resultRoles.add(role.name());
 			}
 		}
@@ -82,4 +103,16 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 		this.city = city;
 	}
 
+	public AppRole getUserAppRole() {
+		if (userAppRole == null) {
+			return AppRole.CUSTOMER_ROLE;
+			// return AppRole.ADMIN_ROLE;
+		} else {
+			return userAppRole;
+		}
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
 }

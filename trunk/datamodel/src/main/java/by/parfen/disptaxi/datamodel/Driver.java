@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.datamodel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ import org.hibernate.validator.constraints.Range;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
 
 @Entity
-public class Driver {
+public class Driver extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,7 @@ public class Driver {
 
 	@Column
 	@Range(min = 0, max = 5)
-	private Long avgRating;
+	private BigDecimal avgRating;
 	@Column
 	@Enumerated(EnumType.ORDINAL)
 	private SignActive signActive;
@@ -56,11 +57,11 @@ public class Driver {
 		this.userProfile = userProfile;
 	}
 
-	public Long getAvgRating() {
+	public BigDecimal getAvgRating() {
 		return avgRating;
 	}
 
-	public void setAvgRating(Long avgRating) {
+	public void setAvgRating(BigDecimal avgRating) {
 		this.avgRating = avgRating;
 	}
 

@@ -1,10 +1,12 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
 
@@ -35,11 +37,19 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 		return query.getSingleResult();
 	}
 
-	private List<Customer> getAll(Boolean withDetails) {
+	private List<Customer> getAll(Boolean withDetails, Customer customer) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Customer> criteria = cBuilder.createQuery(Customer.class);
 		Root<Customer> root = criteria.from(Customer.class);
+
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		if (customer != null) {
+			predicates.add(cBuilder.equal(root.get(Customer_.id), customer.getId()));
+		}
+		if (predicates.size() > 0) {
+			criteria.where(predicates.toArray(new Predicate[] {}));
+		}
 
 		criteria.select(root);
 		if (withDetails) {
@@ -52,12 +62,12 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 
 	@Override
 	public List<Customer> getAll() {
-		return getAll(false);
+		return getAll(false, null);
 	}
 
 	@Override
 	public List<Customer> getAllWithDetails() {
-		return getAll(true);
+		return getAll(true, null);
 	}
 
 	public List<Customer> getAll(SingularAttribute<Customer, ?> attr, boolean ascending, int startRecord, int pageSize,
@@ -90,4 +100,13 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 		return getAll(attr, ascending, startRecord, pageSize, true);
 	}
 
+	@Override
+	public Customer getWithDetails(Customer customer) {
+		Customer result = null;
+		List<Customer> customers = getAll(true, customer);
+		if (customers.size() == 1) {
+			result = customers.get(0);
+		}
+		return result;
+	}
 }

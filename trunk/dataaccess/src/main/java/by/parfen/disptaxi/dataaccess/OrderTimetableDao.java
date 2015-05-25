@@ -11,4 +11,5 @@ public interface OrderTimetableDao extends AbstractDao<Long, OrderTimetable> {
 
 	List<OrderTimetable> getAllByOrder(Order order);
 
+	void deleteByOrderId(Long orderId);
 }

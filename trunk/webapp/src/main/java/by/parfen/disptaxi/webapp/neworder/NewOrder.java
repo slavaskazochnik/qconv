@@ -102,6 +102,7 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 		if (order.getId() == null) {
 			order.setCreationDate(new Date());
 			orderService.create(order);
+			orderService.changeOrderStatus(order, OrderStatus.NEW);
 		} else {
 			orderService.update(order);
 		}

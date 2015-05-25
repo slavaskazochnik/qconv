@@ -33,4 +33,6 @@ public interface RouteService {
 
 	List<Route> getAllByOrder(Order order);
 
+	Route getRouteByIndex(Order order, int pointIndex);
+
 }

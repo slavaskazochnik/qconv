@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -19,7 +20,6 @@ import by.parfen.disptaxi.datamodel.City;
 import by.parfen.disptaxi.services.CityService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
-import by.parfen.disptaxi.webapp.home.HomePage;
 
 public class CurrentCityPage extends BaseLayout {
 
@@ -51,15 +51,14 @@ public class CurrentCityPage extends BaseLayout {
 			public void onSubmit() {
 				super.onSubmit();
 				BasicAuthenticationSession.get().setCity(selectedCity);
-				HomePage page = new HomePage();
-				setResponsePage(page);
+				setResponsePage(Application.get().getHomePage());
 			}
 		});
 
 		form.add(new SubmitLink("cancelLink") {
 			@Override
 			public void onSubmit() {
-				setResponsePage(new HomePage());
+				setResponsePage(Application.get().getHomePage());
 			}
 		}.setDefaultFormProcessing(false));
 

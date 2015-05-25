@@ -12,6 +12,9 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.City;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
+import by.parfen.disptaxi.webapp.aboutus.AboutusPage;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 import by.parfen.disptaxi.webapp.autos.AutosPage;
 import by.parfen.disptaxi.webapp.cars.CarsPage;
 import by.parfen.disptaxi.webapp.cities.CitiesPage;
@@ -22,6 +25,7 @@ import by.parfen.disptaxi.webapp.lang.LanguageSelectionPanel;
 import by.parfen.disptaxi.webapp.login.component.LoginPanel;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
 import by.parfen.disptaxi.webapp.setup.panel.CurrentCityPanel;
+import by.parfen.disptaxi.webapp.users.UserProfilesPage;
 
 public abstract class BaseLayout extends WebPage {
 
@@ -30,7 +34,9 @@ public abstract class BaseLayout extends WebPage {
 	private static final String P_MENU_CARS = "p.menu.cars";
 	private static final String P_MENU_DRIVERS = "p.menu.drivers";
 	private static final String P_MENU_CUSTOMERS = "p.menu.customers";
+	private static final String P_MENU_USERS = "p.menu.users";
 	private static final String P_MENU_CITIES = "p.menu.cities";
+	private static final String P_MENU_ABOUTUS = "p.menu.aboutus";
 	private static final String MENU_TEXT = "menuText";
 	private static final String MENU_LINK = "menuLink";
 
@@ -55,6 +61,11 @@ public abstract class BaseLayout extends WebPage {
 		add(new FeedbackPanel("feedbackpanel"));
 	}
 
+	private boolean isVisibleAdminMenuItems() {
+		return BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+				|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE;
+	}
+
 	private void applyMenuAttrib(final WebMarkupContainer menuItem, String menuTitle) {
 		if (currentMenuTitle == menuTitle) {
 			menuItem.add(new AttributeModifier("class", new Model<String>("current")));
@@ -70,6 +81,8 @@ public abstract class BaseLayout extends WebPage {
 		add(menuLinkList);
 
 		// #1 Menu element
+		// @AuthorizeAction(action = Action.RENDER, roles =
+		// {"ADMIN_ROLE","OPERATOR_ROLE"})
 		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
 		link = new Link<Void>(MENU_LINK) {
 			@Override
@@ -89,6 +102,11 @@ public abstract class BaseLayout extends WebPage {
 			public void onClick() {
 				setResponsePage(CustomersPage.class);
 			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
+			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CUSTOMERS)));
 		applyMenuAttrib(menuItem, P_MENU_CUSTOMERS);
@@ -102,9 +120,32 @@ public abstract class BaseLayout extends WebPage {
 			public void onClick() {
 				setResponsePage(DriversPage.class);
 			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
+			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_DRIVERS)));
 		applyMenuAttrib(menuItem, P_MENU_DRIVERS);
+		menuItem.add(link);
+		menuLinkList.add(menuItem);
+
+		// #3.1 Menu element
+		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
+		link = new Link<Void>(MENU_LINK) {
+			@Override
+			public void onClick() {
+				setResponsePage(UserProfilesPage.class);
+			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
+			}
+		};
+		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_USERS)));
+		applyMenuAttrib(menuItem, P_MENU_USERS);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
@@ -114,6 +155,11 @@ public abstract class BaseLayout extends WebPage {
 			@Override
 			public void onClick() {
 				setResponsePage(CarsPage.class);
+			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CARS)));
@@ -128,6 +174,11 @@ public abstract class BaseLayout extends WebPage {
 			public void onClick() {
 				setResponsePage(AutosPage.class);
 			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
+			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_AUTOS)));
 		applyMenuAttrib(menuItem, P_MENU_AUTOS);
@@ -141,6 +192,11 @@ public abstract class BaseLayout extends WebPage {
 			public void onClick() {
 				setResponsePage(CitiesPage.class);
 			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(isVisibleAdminMenuItems());
+			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CITIES)));
 		applyMenuAttrib(menuItem, P_MENU_CITIES);
@@ -152,6 +208,19 @@ public abstract class BaseLayout extends WebPage {
 		link = new Link<Void>(MENU_LINK) {
 			@Override
 			public void onClick() {
+				setResponsePage(AboutusPage.class);
+			}
+		};
+		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_ABOUTUS)));
+		applyMenuAttrib(menuItem, P_MENU_ABOUTUS);
+		menuItem.add(link);
+		menuLinkList.add(menuItem);
+
+		// #8 Menu element
+		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
+		link = new Link<Void>(MENU_LINK) {
+			@Override
+			public void onClick() {
 				// setResponsePage(ChoicePage.class);
 				setResponsePage(AutoComplitePage.class);
 			}
@@ -159,8 +228,6 @@ public abstract class BaseLayout extends WebPage {
 		link.add(new Label(MENU_TEXT, new Model<String>("***")));
 		applyMenuAttrib(menuItem, "***");
 		menuItem.add(link);
-		menuLinkList.add(menuItem);
-		menuItem.setVisible(false);
 
 		add(new CurrentCityPanel("currentCityPanel"));
 

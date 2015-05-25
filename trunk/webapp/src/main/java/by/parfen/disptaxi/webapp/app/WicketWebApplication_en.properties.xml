@@ -9,9 +9,11 @@
 	<entry key="p.menu.vieworders">Orders</entry>
 	<entry key="p.menu.customers">Customers</entry>
 	<entry key="p.menu.drivers">Drivers</entry>
+	<entry key="p.menu.users">Users</entry>
 	<entry key="p.menu.cars">Cars</entry>
 	<entry key="p.menu.autos">Taxi</entry>
 	<entry key="p.menu.cities">Cities</entry>
+	<entry key="p.menu.aboutus">About us</entry>
 	
 	<entry key="p.country.name">Беларусь</entry>
 	<entry key="p.route.length.measure">m</entry>
@@ -25,6 +27,7 @@
 	<entry key="p.login.logoutButtonTitle">Sign out</entry>
 	<entry key="p.login.username">Login</entry>
 	<entry key="p.login.password">Password</entry>
+	<entry key="p.login.addButtonTitle">Create</entry>
 
 	<entry key="p.setup.selectCityPageTitle">Celect the city</entry>
 	<entry key="p.setup.selectCityButtonTitle">Choose city</entry>
@@ -73,8 +76,10 @@
 	<entry key="p.user.telNumTitle">Tel.</entry>
 	<entry key="p.user.emailTitle">email</entry>
 	<entry key="p.user.avgRatingTitle">Rating</entry>
+
+	<entry key="p.userProfiles.listTitle">List of user profiles</entry>
 	<entry key="p.userProfile.edit.pageTitle">User profile</entry>
-	<entry key="p.userProfile.appRoleTitle">Application role</entry>
+	<entry key="p.userProfile.appRoleTitle">Role</entry>
 	<entry key="p.userAccount.nameTitle">Login</entry>
 	<entry key="p.userAccount.emailTitle">email</entry>
 	<entry key="p.userAccount.passwordTitle">Password</entry>
@@ -146,6 +151,7 @@
 	<entry key="p.inputForm.addButton">Add</entry>
 	<entry key="p.inputForm.newOrderButton">New order</entry>
 	<entry key="p.inputForm.selectButton">Choose</entry>
+	<entry key="p.inputForm.backButton">Back</entry>
 
 	<entry key="p.neworder.page1.nextButton">Choose taxi</entry>
 	<entry key="p.neworder.page1.backButton">Back to customer list</entry>
@@ -157,6 +163,8 @@
 	<entry key="p.inlineMenu.editButton">Edit</entry>
 	<entry key="p.inlineMenu.selectButton">Select</entry>
 	
+	<entry key="p.aboutus.pageTitle">About us</entry>
+
 	<entry key="SignActive.NO">No</entry>
 	<entry key="SignActive.YES">Yes</entry>
 	
@@ -182,5 +190,12 @@
 	<entry key="AppRole.OPERATOR_ROLE">Dispatcher</entry>
 	<entry key="AppRole.DRIVER_ROLE">Driver</entry>
 	<entry key="AppRole.CUSTOMER_ROLE">Customer</entry>
+
+	<entry key="p.currentOrder.pageTitle">Current order</entry>
+	<entry key="p.currentOrder.customerFirstNameTitle">Customer</entry>
+	<entry key="p.currentOrder.driverFirstNameTitle">Driver</entry>
+	<entry key="p.currentOrder.autoTitle">Taxi</entry>
+	<entry key="p.currentOrder.routeSrcAddressTitle">From</entry>
+	<entry key="p.currentOrder.routeDstAddressTitle">To</entry>
 
 </properties>

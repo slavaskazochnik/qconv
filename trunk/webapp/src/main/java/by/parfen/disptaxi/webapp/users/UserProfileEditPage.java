@@ -18,6 +18,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
+import org.apache.wicket.validation.validator.RangeValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import by.parfen.disptaxi.datamodel.Customer;
@@ -32,9 +33,12 @@ import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.services.UserProfileService;
 import by.parfen.disptaxi.services.UserRoleService;
 import by.parfen.disptaxi.webapp.BaseLayout;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 
 public class UserProfileEditPage extends BaseLayout {
 
+	private static final String TEL_MAX_VALUE = "375999999999";
+	private static final String TEL_MIN_VALUE = "375000000000";
 	@Inject
 	private UserProfileService userProfileService;
 	@Inject
@@ -49,6 +53,9 @@ public class UserProfileEditPage extends BaseLayout {
 	final UserProfile userProfile;
 	UserRole userRole;
 	UserAccount userAccount;
+
+	boolean canRemoveProfile;
+	boolean canChangeRole;
 
 	public UserProfileEditPage(IModel<UserProfile> userProfileModel) {
 		super();
@@ -73,6 +80,11 @@ public class UserProfileEditPage extends BaseLayout {
 		} else {
 			userAccount = userAccountService.get(userRole.getId());
 		}
+
+		canRemoveProfile = userProfile.getId() != null
+				&& BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE;
+		canChangeRole = BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+				|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE;
 	}
 
 	@Override
@@ -97,6 +109,7 @@ public class UserProfileEditPage extends BaseLayout {
 		final TextField<String> tfTelNum = new TextField<String>("telNum");
 		tfTelNum.setLabel(new ResourceModel("p.user.telNumTitle"));
 		tfTelNum.add(new PropertyValidator<String>());
+		tfTelNum.add(RangeValidator.<String> range(TEL_MIN_VALUE, TEL_MAX_VALUE));
 		form.add(tfTelNum);
 
 		Form<UserRole> userRoleForm = new Form<UserRole>("userRoleForm", new CompoundPropertyModel<UserRole>(userRole));
@@ -106,6 +119,7 @@ public class UserProfileEditPage extends BaseLayout {
 		ddcAppRole.setLabel(new ResourceModel("p.userProfile.appRoleTitle"));
 		ddcAppRole.add(new PropertyValidator<AppRole>());
 		ddcAppRole.isRequired();
+		ddcAppRole.setEnabled(canChangeRole);
 		userRoleForm.add(ddcAppRole);
 
 		form.add(userRoleForm);
@@ -209,7 +223,7 @@ public class UserProfileEditPage extends BaseLayout {
 		};
 		form.add(removeLink);
 		// removeLink.setDefaultFormProcessing(false);
-		removeLink.setVisible(userProfile.getId() != null);
+		removeLink.setVisible(canRemoveProfile);
 
 		form.add(new SubmitLink("cancelLink") {
 			@Override

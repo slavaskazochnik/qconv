@@ -24,10 +24,17 @@ import org.apache.wicket.model.ResourceModel;
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Order_;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
+import by.parfen.disptaxi.datamodel.filter.FilterOrder;
 import by.parfen.disptaxi.services.AutoService;
+import by.parfen.disptaxi.services.CustomerService;
+import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.services.OrderService;
-import by.parfen.disptaxi.webapp.orders.OrderEditPage;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
+import by.parfen.disptaxi.webapp.currentorder.CurrentOrderPage;
+import by.parfen.disptaxi.webapp.etc.RatingClass;
+import by.parfen.disptaxi.webapp.orders.OrdersPage;
 
 public class OrderListPanel extends Panel {
 
@@ -40,6 +47,10 @@ public class OrderListPanel extends Panel {
 	OrderService orderService;
 	@Inject
 	AutoService autoService;
+	@Inject
+	DriverService driverService;
+	@Inject
+	CustomerService customerService;
 
 	public OrderListPanel(String id) {
 		super(id);
@@ -73,14 +84,34 @@ public class OrderListPanel extends Panel {
 				itemOrderResult.add(new AttributeModifier("title", new ResourceModel("OrderResult." + order.getOrderResult())));
 
 				item.add(new Label("auto.car.regNum", new PropertyModel<String>(auto, "car.regNum")));
-				item.add(new Label("driverRating"));
-				item.add(new Label("customerRating"));
+
+				// item.add(new Label("driverRating"));
+				final WebMarkupContainer driverRatingContainter = new WebMarkupContainer("driverRating");
+				final int driverRatingPerc = RatingClass.getRatingPercent(order.getDriverRating());
+				driverRatingContainter.add(AttributeModifier.append("style", Model.of("width:" + driverRatingPerc + "%")));
+				driverRatingContainter.add(AttributeModifier.append("title", Model.of(order.getDriverRating())));
+				item.add(driverRatingContainter);
+
+				// item.add(new Label("customerRating"));
+				final WebMarkupContainer customerRatingContainter = new WebMarkupContainer("customerRating");
+				final int customerRatingPerc = RatingClass.getRatingPercent(order.getCustomerRating());
+				customerRatingContainter.add(AttributeModifier.append("style", Model.of("width:" + customerRatingPerc + "%")));
+				customerRatingContainter.add(AttributeModifier.append("title", Model.of(order.getCustomerRating())));
+				item.add(customerRatingContainter);
+
 				item.add(new Label("orderPrice"));
 
 				item.add(new Link<Void>("linkToEdit") {
 					@Override
 					public void onClick() {
-						setResponsePage(new OrderEditPage(order));
+						// setResponsePage(new OrderEditPage(order));
+						setResponsePage(new CurrentOrderPage(new Model<Order>(order)) {
+							@Override
+							protected void onSetResponsePage() {
+								// where go to back
+								setResponsePage(new OrdersPage());
+							}
+						});
 					}
 				});
 
@@ -105,7 +136,15 @@ public class OrderListPanel extends Panel {
 			SingularAttribute<Order, ?> sortParam = getSort().getProperty();
 			SortOrder propertySortOrder = getSortState().getPropertySortOrder(sortParam);
 			boolean ascending = SortOrder.ASCENDING.equals(propertySortOrder);
-			return orderService.getAll(sortParam, ascending, (int) first, (int) count).iterator();
+			final FilterOrder filterOrder = new FilterOrder();
+			if (BasicAuthenticationSession.get().getUserProfile() != null) {
+				if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE) {
+					filterOrder.setDriver(driverService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
+				} else if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.CUSTOMER_ROLE) {
+					filterOrder.setCustomer(customerService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
+				}
+			}
+			return orderService.getAll(sortParam, ascending, (int) first, (int) count, filterOrder).iterator();
 		}
 
 		@Override

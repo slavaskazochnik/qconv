@@ -59,6 +59,18 @@
 <colAssociation fkAssociation="F9D9AC31-1EE2-D970-EF94-DF4E0A89036F" referredColumn="E33B53B9-4397-B367-2B81-86B9F40F9DBF"/>
 </associations>
 </Column>
+<Column name="SRC_POINT_ADDRESS" id="52E17B56-61F8-93EB-C516-A23B3044EA48">
+<createdBy>Slava</createdBy>
+<createdTime>2015-05-24 19:29:18 UTC</createdTime>
+<commentInRDBMS>Начальный пункт (адрес)</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="SRC_DESCR" id="FB53FEED-3BF4-643C-94FA-3BEC3C210DDA">
 <createdBy>Slava</createdBy>
 <createdTime>2015-04-09 18:25:15 UTC</createdTime>
@@ -85,6 +97,18 @@
 <associations>
 <colAssociation fkAssociation="DA6BACDC-434B-AE4E-F6F9-9E027CFAD67F" referredColumn="E33B53B9-4397-B367-2B81-86B9F40F9DBF"/>
 </associations>
+</Column>
+<Column name="DST_POINT_ADDRESS" id="1B7689D3-E1C6-BA13-4E6D-E13266D1E283">
+<createdBy>Slava</createdBy>
+<createdTime>2015-05-24 19:29:18 UTC</createdTime>
+<commentInRDBMS>Конечный пункт (адрес)</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="EST_LENGTH" id="DEA57460-96E1-29D4-E94C-DE33C0B75587">
 <createdBy>Slava</createdBy>

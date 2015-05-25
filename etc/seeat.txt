@@ -9,3 +9,7 @@ http://www.devproof.org/post/apache_wicket_best_practices/
 APACHE WICKET: DISPLAYING DATA USING DATATABLE
 FILTER!!!!!!!
 https://www.packtpub.com/books/content/apache-wicket-displaying-data-using-datatable
+
+<a href="callto://+***********">Link will initiate Skype to call my number!</a>
+
+<a href="skype:********?call">Link will initiate Skype to call my Skype username!</a>

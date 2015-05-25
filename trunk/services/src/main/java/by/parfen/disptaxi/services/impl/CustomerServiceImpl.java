@@ -85,4 +85,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return dao.getAllWithDetails(attr, ascending, startRecord, pageSize);
 	}
 
+	@Override
+	public Customer getWithDetails(Customer customer) {
+		return dao.getWithDetails(customer);
+	}
+
 }

@@ -1,5 +1,10 @@
-<wicket:panel>
-<button wicket:id="loginButton" class="button orange medium"><wicket:message key="p.login.loginButtonTitle" /></button>
-<span wicket:id="userName" class="login-username"></span>
-<button wicket:id="logoutButton" class="button orange medium"><wicket:message key="p.login.logoutButtonTitle" /></button>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<button wicket:id="loginButton" class="button orange medium">
+		<wicket:message key="p.login.loginButtonTitle" />
+	</button>
+	<span wicket:id="userName" class="login-username"></span>
+	<a wicket:id="userProfileLink" class="login-username"><span wicket:id="userProfileName" class="login-username"></span></a>
+	<button wicket:id="logoutButton" class="button orange medium">
+		<wicket:message key="p.login.logoutButtonTitle" />
+	</button>
 </wicket:panel>

@@ -1,6 +1,5 @@
 package by.parfen.disptaxi.services.impl;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -83,13 +82,18 @@ public class UserAccountServiceImpl implements UserAccountService {
 	}
 
 	@Override
-	public List<AppRole> getRoles(Long userAccountId) {
+	public AppRole getRole(Long userAccountId) {
 		// FIXME replace with call to DB
 		AppRole result = AppRole.CUSTOMER_ROLE;
 		if (userAccountId != null) {
 			result = daoRoles.getById(userAccountId).getAppRole();
 		}
-		return Arrays.asList(result);
+		return result;
+	}
+
+	@Override
+	public UserAccount getWithDetails(UserAccount userAccount) {
+		return dao.getWithDetails(userAccount);
 	}
 
 }

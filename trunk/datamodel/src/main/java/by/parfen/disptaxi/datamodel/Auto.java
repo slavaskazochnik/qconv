@@ -17,7 +17,7 @@ import by.parfen.disptaxi.datamodel.enums.SignActive;
 
 @Entity
 @Table(name = "autos")
-public class Auto {
+public class Auto extends AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

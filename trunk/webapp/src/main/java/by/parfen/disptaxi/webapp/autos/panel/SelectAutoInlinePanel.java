@@ -13,6 +13,7 @@ import org.apache.wicket.model.PropertyModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
+import by.parfen.disptaxi.webapp.etc.RatingClass;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
 import by.parfen.disptaxi.webapp.neworder.steps.Step3Confirm;
 
@@ -59,6 +60,11 @@ public class SelectAutoInlinePanel extends Panel {
 		}
 
 		listItem.add(new Label("driverInfo", new PropertyModel<String>(auto, "driver.userProfile.firstName")));
+
+		final WebMarkupContainer avgRatingContainter = new WebMarkupContainer("avgRating");
+		final int avgRatingPerc = RatingClass.getRatingPercent(auto.getDriver().getAvgRating());
+		avgRatingContainter.add(AttributeModifier.append("style", Model.of("width:" + avgRatingPerc + "%")));
+		listItem.add(avgRatingContainter);
 
 		form.add(listItem);
 

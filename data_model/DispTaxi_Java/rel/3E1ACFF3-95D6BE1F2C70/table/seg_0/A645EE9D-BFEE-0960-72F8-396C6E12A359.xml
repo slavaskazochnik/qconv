@@ -98,6 +98,18 @@
 <dataTypeSize>15</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="POSITION_ADDRESS" id="D6D03341-D398-4B72-7DC5-49875DC5F87E">
+<createdBy>Slava</createdBy>
+<createdTime>2015-05-24 19:30:41 UTC</createdTime>
+<commentInRDBMS>Текущее положение авто (адрес)</commentInRDBMS>
+<ownerDesignName>DispTaxi_Java</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="SIGN_ACTIVE" id="5B3FDE85-4FC4-4766-5FF6-B1A075850904">
 <createdBy>Slava</createdBy>
 <createdTime>2015-02-28 13:12:30 UTC</createdTime>

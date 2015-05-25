@@ -82,4 +82,14 @@ public class RouteServiceImpl implements RouteService {
 		dao.deleteByOrderId(orderId);
 	}
 
+	@Override
+	public Route getRouteByIndex(Order order, int pointIndex) {
+		Route result = null;
+		List<Route> routes = dao.getAllByOrder(order);
+		if (routes.size() > 0 && pointIndex < routes.size()) {
+			result = routes.get(pointIndex);
+		}
+		return result;
+	}
+
 }
