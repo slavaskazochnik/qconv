@@ -29,6 +29,7 @@ import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.services.OrderService;
+import by.parfen.disptaxi.services.PriceService;
 import by.parfen.disptaxi.services.RouteService;
 import by.parfen.disptaxi.services.UserProfileService;
 import by.parfen.disptaxi.webapp.BaseLayout;
@@ -51,6 +52,8 @@ public class CurrentOrderPage extends BaseLayout {
 	private CustomerService customerService;
 	@Inject
 	private DriverService driverService;
+	@Inject
+	private PriceService priceService;
 
 	final Order order;
 	Auto auto;
@@ -75,7 +78,7 @@ public class CurrentOrderPage extends BaseLayout {
 
 	public CurrentOrderPage(IModel<Order> orderModel) {
 		super();
-		order = orderModel.getObject();
+		order = orderService.getWithDetails(orderModel.getObject());
 		customerProfile = userProfileService.get(order.getCustomer().getId());
 		auto = autoService.getWithDetails(order.getAuto());
 		driverProfile = userProfileService.get(auto.getDriver().getId());
@@ -117,10 +120,18 @@ public class CurrentOrderPage extends BaseLayout {
 		final TextField<String> tfOrderPrice = new TextField<String>("orderPrice") {
 			@Override
 			protected void onConfigure() {
-				setEnabled(canConfirm);
+				setEnabled(false);
 			}
 		};
 		form.add(tfOrderPrice);
+
+		final TextField<String> tfRouteLength = new TextField<String>("routeLength") {
+			@Override
+			protected void onConfigure() {
+				setEnabled(canConfirm);
+			}
+		};
+		form.add(tfRouteLength);
 
 		// Customer info
 		final TextField<String> customerName = new TextField<String>("customerFirstName", Model.of(customerProfile
@@ -223,6 +234,8 @@ public class CurrentOrderPage extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				order.setOrderPrice(orderService.calcOrderPrice(order));
+				orderService.update(order);
 				orderService.changeOrderResult(order, OrderResult.OK);
 				onChangeOrderStatus();
 			}
@@ -265,6 +278,7 @@ public class CurrentOrderPage extends BaseLayout {
 
 			@Override
 			public void onSubmit() {
+				order.setOrderPrice(orderService.calcOrderPrice(order));
 				orderService.update(order);
 				RecalculateRatings();
 				onSetResponsePage();

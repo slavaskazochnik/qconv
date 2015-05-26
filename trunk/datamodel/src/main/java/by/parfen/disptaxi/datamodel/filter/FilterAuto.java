@@ -17,6 +17,8 @@ public class FilterAuto implements Serializable {
 	private CarType carType;
 	private String positionLat;
 	private String positionLng;
+	private Long seatsQuan;
+	private Long childSeatsQuan;
 
 	public Driver getDriver() {
 		return driver;
@@ -64,6 +66,22 @@ public class FilterAuto implements Serializable {
 
 	public void setPositionLng(String positionLng) {
 		this.positionLng = positionLng;
+	}
+
+	public Long getSeatsQuan() {
+		return seatsQuan;
+	}
+
+	public void setSeatsQuan(Long seatsQuan) {
+		this.seatsQuan = seatsQuan;
+	}
+
+	public Long getChildSeatsQuan() {
+		return childSeatsQuan;
+	}
+
+	public void setChildSeatsQuan(Long childSeatsQuan) {
+		this.childSeatsQuan = childSeatsQuan;
 	}
 
 }

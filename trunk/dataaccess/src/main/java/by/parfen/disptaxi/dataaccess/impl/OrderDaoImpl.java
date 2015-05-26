@@ -1,6 +1,8 @@
 package by.parfen.disptaxi.dataaccess.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -36,15 +38,6 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 
 	@Override
 	public Long getCount() {
-		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-		//
-		// CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
-		// Root<Order> root = criteria.from(Order.class);
-		//
-		// criteria.select(cBuilder.count(root));
-		//
-		// TypedQuery<Long> query = getEm().createQuery(criteria);
-		// return query.getSingleResult();
 		return getCount(null);
 	}
 
@@ -65,6 +58,18 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 			if (filterOrder.getDriver() != null) {
 				Join<Order, Auto> details = root.join(Order_.auto);
 				predicates.add(cBuilder.equal(details.get(Auto_.driver), filterOrder.getDriver()));
+			}
+			if (filterOrder.getFromDate() != null) {
+				predicates.add(cBuilder.greaterThanOrEqualTo(root.get(Order_.creationDate), filterOrder.getFromDate()));
+			}
+			if (filterOrder.getToDate() != null) {
+				Date toDate = filterOrder.getToDate();
+				Calendar c = Calendar.getInstance();
+				c.setTime(toDate);
+				c.add(Calendar.DATE, 1);
+				predicates.add(cBuilder.lessThan(root.get(Order_.creationDate), c.getTime()));
+				// predicates.add(cBuilder.lessThanOrEqualTo(root.get(Order_.creationDate),
+				// filterOrder.getToDate()));
 			}
 			if (predicates.size() > 0) {
 				criteria.where(predicates.toArray(new Predicate[] {}));
@@ -96,6 +101,18 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 				Join<Order, Auto> details = root.join(Order_.auto);
 				predicates.add(cBuilder.equal(details.get(Auto_.driver), filterOrder.getDriver()));
 			}
+			if (filterOrder.getFromDate() != null) {
+				predicates.add(cBuilder.greaterThanOrEqualTo(root.get(Order_.creationDate), filterOrder.getFromDate()));
+			}
+			if (filterOrder.getToDate() != null) {
+				Date toDate = filterOrder.getToDate();
+				Calendar c = Calendar.getInstance();
+				c.setTime(toDate);
+				c.add(Calendar.DATE, 1);
+				predicates.add(cBuilder.lessThan(root.get(Order_.creationDate), c.getTime()));
+				// predicates.add(cBuilder.lessThanOrEqualTo(root.get(Order_.creationDate),
+				// filterOrder.getToDate()));
+			}
 			if (predicates.size() > 0) {
 				criteria.where(predicates.toArray(new Predicate[] {}));
 			}
@@ -116,22 +133,6 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 
 	@Override
 	public List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize) {
-		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
-		//
-		// CriteriaQuery<Order> criteria = cBuilder.createQuery(Order.class);
-		// Root<Order> root = criteria.from(Order.class);
-		//
-		// criteria.select(root);
-		// if (attr != null) {
-		// criteria.orderBy(new OrderImpl(root.get(attr), ascending));
-		// }
-		//
-		// TypedQuery<Order> query = getEm().createQuery(criteria);
-		// query.setFirstResult(startRecord);
-		// query.setMaxResults(pageSize);
-		//
-		// List<Order> results = query.getResultList();
-		// return results;
 		return getAll(attr, ascending, startRecord, pageSize, null);
 	}
 
@@ -185,6 +186,7 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 		Fetch customer = root.fetch(Order_.customer);
 		Fetch auto = root.fetch(Order_.auto);
 		Fetch driver = auto.fetch(Auto_.driver);
+		Fetch price = root.fetch(Order_.price);
 		criteria.where(cBuilder.equal(root, order));
 
 		criteria.select(root);

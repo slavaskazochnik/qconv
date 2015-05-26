@@ -1,11 +1,15 @@
 package by.parfen.disptaxi.webapp.neworder.steps;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -16,6 +20,7 @@ import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.util.string.Strings;
 
 import by.parfen.disptaxi.datamodel.Street;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.address.Address;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
@@ -124,6 +129,17 @@ public class Step1Route extends BaseLayout {
 		final TextField<String> tfRouteDuration = new TextField<String>("routeDuration");
 		tfRouteDuration.setMarkupId("routeDuration");
 		addressForm.add(tfRouteDuration);
+
+		DropDownChoice<CarType> ddcCarType = new DropDownChoice<CarType>("filterAuto.carType", Arrays.asList(CarType
+				.values()), new EnumChoiceRenderer<CarType>(this));
+		ddcCarType.add(new PropertyValidator<CarType>());
+		addressForm.add(ddcCarType);
+
+		final TextField<String> seatsQuan = new TextField<String>("filterAuto.seatsQuan");
+		addressForm.add(seatsQuan);
+
+		final TextField<String> childSeatsQuan = new TextField<String>("filterAuto.childSeatsQuan");
+		addressForm.add(childSeatsQuan);
 
 		addressForm.add(new SubmitLink("backLink") {
 			@Override

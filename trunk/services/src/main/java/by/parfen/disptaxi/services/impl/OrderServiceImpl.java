@@ -130,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
 		// simple calc by km
 		// TODO
 		// must add OrderTimetable info
-		result = order.getRouteLength() * order.getPrice().getCostKm();
+		result = order.getPrice().getCostBefore() + order.getRouteLength() * order.getPrice().getCostKm();
 		return result;
 	}
 

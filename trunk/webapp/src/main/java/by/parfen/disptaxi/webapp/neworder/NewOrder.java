@@ -73,8 +73,8 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 
 	@Override
 	public List<Auto> getAllAuto(CarType carType) {
-		FilterAuto filterAuto = new FilterAuto();
-		filterAuto.setCarType(carType);
+		// FilterAuto filterAuto = new FilterAuto();
+		// filterAuto.setCarType(carType);
 		filterAuto.setSignActive(SignActive.YES);
 		return getAllAuto(filterAuto);
 		// return autoService.getAllActiveByCarType(carType);
@@ -119,7 +119,7 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 		order.setAuto(auto);
 		order.setPrice(price);
 		order.setCreationDate(new Date());
-		order.setRouteLength(routeDistance);
+		order.setRouteLength(routeDistance / 1000);
 		order.setOrderPrice(getCost());
 		order.setOrderStatus(OrderStatus.NEW);
 		order.setOrderResult(OrderResult.NONE);

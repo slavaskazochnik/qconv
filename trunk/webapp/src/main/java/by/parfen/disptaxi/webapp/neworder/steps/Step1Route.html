@@ -13,8 +13,11 @@
 			<tr>
 				<td valign="top">
 					<div id="pointSrc">
-						<input wicket:id="countryName" style="visibility: hidden;" class="inputForm-text" type="text" size="20" /> <label
-							class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label> <input wicket:id="cityName"
+						<div style="visibility: hidden;">
+							<input wicket:id="countryName" class="inputForm-text" type="text" size="20" />
+						</div>
+						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
+						<input wicket:id="cityName"
 							class="inputForm-text" type="text" size="20" /> <label class="inputForm-label"><wicket:message
 								key="p.neworder.srcPointTitle" /></label> <input type="text" wicket:id="srcAddress" size="20" class="inputForm-text" />
 
@@ -26,12 +29,20 @@
 									key="p.neworder.calculateRoute" /></a>
 						</div>
 
-						<br />
 						<div id="info"></div>
 						<input wicket:id="routeDistance" class="inputForm-text numbers" type="text" size="4" />
 						<wicket:message key="p.route.length.measure" />
 						<input wicket:id="routeDuration" class="inputForm-text numbers" type="text" size="2" />
 						<wicket:message key="p.route.time.measure" />
+
+						<label class="inputForm-label"><wicket:message key="p.car.edit.carTypeTitle" /></label>
+						<select wicket:id="filterAuto.carType" class="inputForm-text"/>
+
+						<label class="inputForm-label"><wicket:message key="p.car.seatsQuanTitle" /></label>
+						<input type="text" wicket:id="filterAuto.seatsQuan" size="2" class="inputForm-text"/>
+
+						<label class="inputForm-label"><wicket:message key="p.car.childSeatsQuanTitle" /></label>
+						<input type="text" wicket:id="filterAuto.childSeatsQuan" size="2" class="inputForm-text"/>
 					</div>
 				</td>
 

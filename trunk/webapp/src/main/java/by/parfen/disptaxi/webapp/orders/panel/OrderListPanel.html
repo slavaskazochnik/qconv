@@ -5,6 +5,22 @@
 
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
 	<div>
+		<form wicket:id="filterForm">
+			<table class="filterview">
+				<tr>
+					<td width="20%"><wicket:message key="p.filterForm.label" />:</td>
+					<td><wicket:message key="p.filterOrder.fromDateTitle" /> <input type="text" wicket:id="fromDate"
+						class="inputForm-text" size="10" /></td>
+					<td><wicket:message key="p.filterOrder.toDateTitle" /> <input type="text" wicket:id="toDate"
+						class="inputForm-text" size="10" /></td>
+					<td width="20%" align="center"><input type="submit" wicket:id="linkToFilter" class="button medium green"
+						wicket:message="value:p.inlineMenu.filterButton" /></td>
+					<td></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div>
 		<table class="dataview">
 			<thead>
 				<tr>
@@ -27,19 +43,16 @@
 					<td width="5%" align="center">
 						<div class="rating_bar">
 							<div class="rating" wicket:id="driverRating" wicket:message="title:p.order.edit.driverRatingTitle"></div>
-						</div>
-<!-- 					<wicket:container wicket:id="driverRating" /> -->
+						</div> <!-- 					<wicket:container wicket:id="driverRating" /> -->
 					</td>
 					<td width="5%" align="center">
 						<div class="rating_bar">
 							<div class="rating" wicket:id="customerRating" wicket:message="title:p.order.edit.customerRatingTitle"></div>
-						</div>
-<!-- 					<wicket:container wicket:id="customerRating" /> -->
+						</div> <!-- 					<wicket:container wicket:id="customerRating" /> -->
 					</td>
 					<td width="5%" align="right"><wicket:container wicket:id="orderPrice" /></td>
-					<td align="center">
-						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>
-					</td>
+					<td align="center"><a wicket:id="linkToEdit" class="button medium orange"><wicket:message
+								key="p.inlineMenu.editButton" /></a></td>
 				</tr>
 			</tbody>
 		</table>

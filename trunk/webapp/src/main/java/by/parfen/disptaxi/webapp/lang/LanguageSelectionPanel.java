@@ -29,10 +29,12 @@ public class LanguageSelectionPanel extends Panel {
 		Session session = getSession();
 		add(new DropDownChoice<Locale>("lang", new Model<Locale>(session.getLocale()), LOCALES, new ChoiceRenderer<>(
 				"displayLanguage", "displayLanguage")) {
+			@Override
 			protected boolean wantOnSelectionChangedNotifications() {
 				return true;
 			};
 
+			@Override
 			protected void onSelectionChanged(Locale newSelection) {
 				getSession().setLocale(newSelection);
 

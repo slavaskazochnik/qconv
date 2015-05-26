@@ -144,6 +144,9 @@
 	<entry key="p.order.edit.customerRatingTitle">Рейтинг клиента</entry>
 	<entry key="p.order.edit.driverRatingTitle">Рейтинг водителя</entry>
 	
+	<entry key="p.filterOrder.fromDateTitle">С</entry>
+	<entry key="p.filterOrder.toDateTitle">по</entry>
+	
 	<entry key="p.neworder.createRouteTitle">Построение маршрута</entry>
 	<entry key="p.neworder.chooseAutoTitle">Выбор такси</entry>
 	<entry key="p.neworder.chooseCustomerTitle">Выбор клиента</entry>
@@ -161,6 +164,8 @@
 	<entry key="p.neworder.showRoutePrice">Стоимость проезда</entry>
 	<entry key="p.neworder.fromTitle">От</entry>
 	<entry key="p.neworder.toTitle">до</entry>
+	
+	<entry key="p.cantFindAnyAuto">Не найдено ни одного автомобиля такси по укзазанным критериям!</entry>
 
 	<entry key="p.inputForm.saveButton">Сохранить</entry>
 	<entry key="p.inputForm.cancelButton">Отказаться</entry>
@@ -178,10 +183,13 @@
 	<entry key="p.neworder.page3.backButton">Вернуться к выбору такси</entry>
 
 	<entry key="p.prices.listTitle">Тарифы</entry>
+	<entry key="p.price.edit.pageTitle">Редактирование тарифа</entry>
 	<entry key="p.price.beginDateTitle">С</entry>
 	<entry key="p.price.endDateTitle">По</entry>
 	<entry key="p.price.costBeforeTitle">Подача</entry>
+	<entry key="p.price.edit.costBeforeTitle">Стоимость подачи, руб</entry>
 	<entry key="p.price.costKmTitle">За км</entry>
+	<entry key="p.price.edit.costKmTitle">Стоимость за км, руб</entry>
 
 	<entry key="p.inlineMenu.editButton">Изменить</entry>
 	<entry key="p.inlineMenu.selectButton">Выбрать</entry>
@@ -222,4 +230,11 @@
 	<entry key="p.currentOrder.autoTitle">Такси</entry>
 	<entry key="p.currentOrder.routeSrcAddressTitle">От</entry>
 	<entry key="p.currentOrder.routeDstAddressTitle">До</entry>
+	
+	<entry key="p.aboutus.shortContent">Вспомогательная система для диспетчера такси.
+Позволяет вести учет машин, задействованных в обслуживании клиентов, а также учет заказов. 
+Машины могут быть активны и неактивны. У каждой машины есть набор аттрибутов(класс удобств, кол-во мест и т.д.)
+Система позволяет подобрать машину (из числа свободных) в зависимости от запросов клиента. Каждый заказ фиксируется в системе (время заказа, время приезда такси, время доставки в конечный пункт, сумма, расстояние)
+	</entry>
+	
 </properties>

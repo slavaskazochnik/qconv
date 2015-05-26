@@ -1,11 +1,15 @@
 package by.parfen.disptaxi.webapp.prices;
 
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 import by.parfen.disptaxi.webapp.BaseLayout;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 import by.parfen.disptaxi.webapp.prices.panel.PriceListPanel;
 
 public class PricesPage extends BaseLayout {
@@ -27,24 +31,23 @@ public class PricesPage extends BaseLayout {
 
 		add(new PriceListPanel("itemsList"));
 
-		// final WebMarkupContainer listButtons = new
-		// WebMarkupContainer("listButtons");
-		//
-		// Link<Void> linkToAdd = new Link<Void>("linkToAdd") {
-		// @Override
-		// public void onClick() {
-		// setResponsePage(new PriceEditPage(new Model<Price>(new Price())) {
-		// @Override
-		// protected void onSetResponsePage() {
-		// // where go to back
-		// setResponsePage(new PricesPage());
-		// }
-		// });
-		// }
-		// };
-		// listButtons.add(linkToAdd);
-		//
-		// add(listButtons);
+		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
+
+		Link<Void> linkToAdd = new Link<Void>("linkToAdd") {
+			@Override
+			public void onClick() {
+				setResponsePage(new PriceEditPage(null));
+			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+						|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE);
+			}
+		};
+		listButtons.add(linkToAdd);
+
+		add(listButtons);
 	}
 
 	@Override
