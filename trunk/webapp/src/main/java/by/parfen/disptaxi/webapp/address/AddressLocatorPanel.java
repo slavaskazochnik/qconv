@@ -16,6 +16,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.util.string.Strings;
 
 import by.parfen.disptaxi.datamodel.Point;
@@ -50,6 +51,11 @@ public class AddressLocatorPanel extends Panel {
 
 		final Form<Address> addressForm = new Form<Address>("addressForm", new CompoundPropertyModel<Address>(address));
 		add(addressForm);
+
+		final TextField<String> tfCoutryName = new TextField<String>("countryName", new ResourceModel("p.country.name"));
+		tfCoutryName.setMarkupId("countryName");
+		tfCoutryName.setEnabled(false);
+		addressForm.add(tfCoutryName);
 
 		final TextField<String> tfCityName = new TextField<String>("cityName");
 		tfCityName.setMarkupId("cityName");
@@ -113,15 +119,19 @@ public class AddressLocatorPanel extends Panel {
 		addressForm.add(streetName);
 		addressForm.add(pointName);
 
-		this.tfPointLat = new TextField<String>("pointLat", new Model<String>(address.getPointLat()));
+		// this.tfPointLat = new TextField<String>("pointLat", new
+		// Model<String>(address.getPointLat()));
+		this.tfPointLat = new TextField<String>("pointLat");
 		tfPointLat.setMarkupId("pointLat");
 		addressForm.add(tfPointLat);
-		tfPointLat.setEnabled(false);
+		// tfPointLat.setEnabled(false);
 
-		this.tfPointLng = new TextField<String>("pointLng", new Model<String>(address.getPointLng()));
+		// this.tfPointLng = new TextField<String>("pointLng", new
+		// Model<String>(address.getPointLng()));
+		this.tfPointLng = new TextField<String>("pointLng");
 		tfPointLng.setMarkupId("pointLng");
 		addressForm.add(tfPointLng);
-		tfPointLng.setEnabled(false);
+		// tfPointLng.setEnabled(false);
 
 		// final Label label = new Label("label", addressForm.getDefaultModel()) {
 		final Label label = new Label("label", Model.of("")) {

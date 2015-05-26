@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 
 public interface AutoService {
 
@@ -37,6 +38,8 @@ public interface AutoService {
 	List<Auto> getAllActiveByCarTypeAndGeo(CarType carType, String lat, String lng);
 
 	List<Auto> getAllWithDetails();
+
+	List<Auto> getAllWithDetails(FilterAuto filterAuto);
 
 	Auto getWithDetails(Auto auto);
 }

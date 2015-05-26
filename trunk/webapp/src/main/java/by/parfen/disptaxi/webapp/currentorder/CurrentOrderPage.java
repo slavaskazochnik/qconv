@@ -114,6 +114,14 @@ public class CurrentOrderPage extends BaseLayout {
 		tfUserId.setEnabled(false);
 		form.add(tfUserId);
 
+		final TextField<String> tfOrderPrice = new TextField<String>("orderPrice") {
+			@Override
+			protected void onConfigure() {
+				setEnabled(canConfirm);
+			}
+		};
+		form.add(tfOrderPrice);
+
 		// Customer info
 		final TextField<String> customerName = new TextField<String>("customerFirstName", Model.of(customerProfile
 				.getFirstName())) {

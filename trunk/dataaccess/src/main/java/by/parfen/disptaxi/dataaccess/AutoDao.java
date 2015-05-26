@@ -6,6 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 
 public interface AutoDao extends AbstractDao<Long, Auto> {
 
@@ -20,6 +21,8 @@ public interface AutoDao extends AbstractDao<Long, Auto> {
 	List<Auto> getAllActiveByCarType(CarType carType);
 
 	List<Auto> getAllWithDetails();
+
+	List<Auto> getAllWithDetails(FilterAuto filterAuto);
 
 	Auto getWithDetails(Auto auto);
 }

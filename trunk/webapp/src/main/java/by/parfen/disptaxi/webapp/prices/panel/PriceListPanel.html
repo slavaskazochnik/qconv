@@ -1,0 +1,31 @@
+<wicket:head>
+	<link rel="stylesheet" type="text/css" href="css/qconv_tables.css" />
+</wicket:head>
+
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<div>
+		<table class="dataview">
+			<thead>
+				<tr>
+					<th width="20%"><wicket:message key="p.price.beginDateTitle" /></th>
+					<th width="20%"><wicket:message key="p.price.endDateTitle" /></th>
+					<th width="20%"><wicket:message key="p.price.costBeforeTitle" /></th>
+					<th width="20%"><wicket:message key="p.price.costKmTitle" /></th>
+					<th width="20%"></th>
+				</tr>
+			</thead>
+			<tbody wicket:id="tableBody">
+				<tr wicket:id="tableRows">
+					<td><wicket:container wicket:id="beginDate" /></td>
+					<td><wicket:container wicket:id="endDate" /></td>
+					<td><wicket:container wicket:id="costBefore" /></td>
+					<td><wicket:container wicket:id="costKm" /></td>
+					<td align="center">
+<!-- 						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div wicket:id="paging" class="inputForm-buttons"></div>
+	</div>
+</wicket:panel>

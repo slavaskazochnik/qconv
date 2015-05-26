@@ -8,18 +8,29 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.users.panel.UserProfileListPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE" })
 public class UserProfilesPage extends BaseLayout {
 
+	private IModel<FilterUserProfile> filterUserProfileModel;
+
+	public UserProfilesPage() {
+		this(null);
+	}
+
+	public UserProfilesPage(Model<FilterUserProfile> filterUserProfileModel) {
+		this.filterUserProfileModel = filterUserProfileModel;
+	}
+
 	@Override
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.users");
 		super.onInitialize();
 
-		add(new UserProfileListPanel("itemsList"));
+		add(new UserProfileListPanel("itemsList", filterUserProfileModel));
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
 

@@ -44,16 +44,32 @@ public class OrderListPanel extends Panel {
 	private static final String CSS_CANCELLED = "order-result-cancelled";
 
 	@Inject
-	OrderService orderService;
+	private OrderService orderService;
 	@Inject
-	AutoService autoService;
+	private AutoService autoService;
 	@Inject
-	DriverService driverService;
+	private DriverService driverService;
 	@Inject
-	CustomerService customerService;
+	private CustomerService customerService;
+
+	private FilterOrder filterOrder;
 
 	public OrderListPanel(String id) {
 		super(id);
+		filterOrder = new FilterOrder();
+		if (BasicAuthenticationSession.get().getUserProfile() != null) {
+			if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE) {
+				filterOrder.setDriver(driverService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
+			} else if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.CUSTOMER_ROLE) {
+				filterOrder.setCustomer(customerService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
+			}
+		}
+	}
+
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+
 		OrderDataProvider orderDataProvider = new OrderDataProvider();
 
 		final WebMarkupContainer tableBody = new WebMarkupContainer("tableBody");
@@ -136,20 +152,12 @@ public class OrderListPanel extends Panel {
 			SingularAttribute<Order, ?> sortParam = getSort().getProperty();
 			SortOrder propertySortOrder = getSortState().getPropertySortOrder(sortParam);
 			boolean ascending = SortOrder.ASCENDING.equals(propertySortOrder);
-			final FilterOrder filterOrder = new FilterOrder();
-			if (BasicAuthenticationSession.get().getUserProfile() != null) {
-				if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE) {
-					filterOrder.setDriver(driverService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
-				} else if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.CUSTOMER_ROLE) {
-					filterOrder.setCustomer(customerService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
-				}
-			}
 			return orderService.getAll(sortParam, ascending, (int) first, (int) count, filterOrder).iterator();
 		}
 
 		@Override
 		public long size() {
-			return orderService.getCount();
+			return orderService.getCount(filterOrder);
 		}
 
 		@Override

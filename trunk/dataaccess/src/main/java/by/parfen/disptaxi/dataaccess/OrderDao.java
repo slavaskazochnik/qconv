@@ -14,6 +14,8 @@ public interface OrderDao extends AbstractDao<Long, Order> {
 
 	Long getCount();
 
+	Long getCount(FilterOrder filterOrder);
+
 	List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize);
 
 	List<Order> getAll(SingularAttribute<Order, ?> attr, boolean ascending, int startRecord, int pageSize,

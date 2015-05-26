@@ -13,8 +13,12 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Auto;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 import by.parfen.disptaxi.services.AutoService;
+import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.webapp.BaseLayout;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 import by.parfen.disptaxi.webapp.autos.panel.AutoInlinePanel;
 
 @AuthorizeInstantiation(value = { "ADMIN_ROLE", "OPERATOR_ROLE", "DRIVER_ROLE" })
@@ -22,6 +26,8 @@ public class AutosPage extends BaseLayout {
 
 	@Inject
 	private AutoService autoService;
+	@Inject
+	private DriverService driverService;
 
 	private int chooseMode;
 
@@ -40,7 +46,15 @@ public class AutosPage extends BaseLayout {
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.autos");
 		super.onInitialize();
-		final List<Auto> allAutos = autoService.getAllWithDetails();
+
+		final FilterAuto filterAuto = new FilterAuto();
+		if (BasicAuthenticationSession.get().getUserProfile() != null) {
+			if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE) {
+				filterAuto.setDriver(driverService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
+			}
+		}
+		final List<Auto> allAutos = autoService.getAllWithDetails(filterAuto);
+
 		add(new ListView<Auto>("detailsPanel", allAutos) {
 			@Override
 			protected void populateItem(ListItem<Auto> item) {
@@ -56,6 +70,13 @@ public class AutosPage extends BaseLayout {
 				final Auto auto = new Auto();
 				setResponsePage(new AutoEditPage(auto));
 			}
+
+			@Override
+			protected void onConfigure() {
+				setVisible(BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+						|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE);
+			}
+
 		};
 		listButtons.add(linkToEdit);
 		add(listButtons);

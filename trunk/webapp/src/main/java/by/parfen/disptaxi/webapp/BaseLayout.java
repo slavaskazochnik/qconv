@@ -24,6 +24,7 @@ import by.parfen.disptaxi.webapp.etc.AutoComplitePage;
 import by.parfen.disptaxi.webapp.lang.LanguageSelectionPanel;
 import by.parfen.disptaxi.webapp.login.component.LoginPanel;
 import by.parfen.disptaxi.webapp.orders.OrdersPage;
+import by.parfen.disptaxi.webapp.prices.PricesPage;
 import by.parfen.disptaxi.webapp.setup.panel.CurrentCityPanel;
 import by.parfen.disptaxi.webapp.users.UserProfilesPage;
 
@@ -37,6 +38,7 @@ public abstract class BaseLayout extends WebPage {
 	private static final String P_MENU_USERS = "p.menu.users";
 	private static final String P_MENU_CITIES = "p.menu.cities";
 	private static final String P_MENU_ABOUTUS = "p.menu.aboutus";
+	private static final String P_MENU_PRICES = "p.menu.prices";
 	private static final String MENU_TEXT = "menuText";
 	private static final String MENU_LINK = "menuLink";
 
@@ -70,6 +72,10 @@ public abstract class BaseLayout extends WebPage {
 		return BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE;
 	}
 
+	private boolean isLoggedUser() {
+		return BasicAuthenticationSession.get().getUser() != null;
+	}
+
 	private void applyMenuAttrib(final WebMarkupContainer menuItem, String menuTitle) {
 		if (currentMenuTitle == menuTitle) {
 			menuItem.add(new AttributeModifier("class", new Model<String>("current")));
@@ -97,6 +103,9 @@ public abstract class BaseLayout extends WebPage {
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_VIEWORDERS)));
 		applyMenuAttrib(menuItem, P_MENU_VIEWORDERS);
 		menuItem.add(link);
+		// if we can register after last step of creation order
+		// then we must remove setEnabled
+		menuItem.setVisible(isLoggedUser());
 		menuLinkList.add(menuItem);
 
 		// #2 Menu element
@@ -181,7 +190,7 @@ public abstract class BaseLayout extends WebPage {
 
 			@Override
 			protected void onConfigure() {
-				setVisible(isVisibleAdminMenuItems()||isVisibleDriverMenuItems());
+				setVisible(isVisibleAdminMenuItems() || isVisibleDriverMenuItems());
 			}
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_AUTOS)));
@@ -190,20 +199,33 @@ public abstract class BaseLayout extends WebPage {
 		menuLinkList.add(menuItem);
 
 		// #6 Menu element
-		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
-		link = new Link<Void>(MENU_LINK) {
-			@Override
-			public void onClick() {
-				setResponsePage(CitiesPage.class);
-			}
-
+		menuItem = new WebMarkupContainer(menuLinkList.newChildId()) {
 			@Override
 			protected void onConfigure() {
 				setVisible(isVisibleAdminMenuItems());
 			}
 		};
+		link = new Link<Void>(MENU_LINK) {
+			@Override
+			public void onClick() {
+				setResponsePage(CitiesPage.class);
+			}
+		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_CITIES)));
 		applyMenuAttrib(menuItem, P_MENU_CITIES);
+		menuItem.add(link);
+		menuLinkList.add(menuItem);
+
+		// #6.1 Menu element
+		menuItem = new WebMarkupContainer(menuLinkList.newChildId());
+		link = new Link<Void>(MENU_LINK) {
+			@Override
+			public void onClick() {
+				setResponsePage(PricesPage.class);
+			}
+		};
+		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_PRICES)));
+		applyMenuAttrib(menuItem, P_MENU_PRICES);
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 
@@ -217,6 +239,7 @@ public abstract class BaseLayout extends WebPage {
 		};
 		link.add(new Label(MENU_TEXT, new ResourceModel(P_MENU_ABOUTUS)));
 		applyMenuAttrib(menuItem, P_MENU_ABOUTUS);
+		menuItem.setVisible(!isVisibleAdminMenuItems());
 		menuItem.add(link);
 		menuLinkList.add(menuItem);
 

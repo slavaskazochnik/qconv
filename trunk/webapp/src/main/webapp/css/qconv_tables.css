@@ -37,7 +37,7 @@ table.dataview tr td {
 	padding: 0.3em;
 }
 
-table.dataview tr th {
+table.dataview tr th, table.dataview tr th a {
 	background: -o-linear-gradient(bottom, #ff7f00 5%, #db6e00 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff7f00
 		), color-stop(1, #db6e00));
@@ -48,7 +48,7 @@ table.dataview tr th {
 	background-color: #ff7f00;
 }
 
-table.dataview tr th {
+table.dataview tr th, table.dataview tr th a {
 	background-position: right;
 	background-repeat: no-repeat;
 	padding: 0.5em;
@@ -56,12 +56,10 @@ table.dataview tr th {
 }
 
 table.dataview tr th.wicket_orderDown {
-	background-color: #87cbff;
 	background-image: url(../images/arrow_down.png);
 }
 
 table.dataview tr th.wicket_orderUp {
-	background-color: #87cbff;
 	background-image: url(../images/arrow_up.png);
 }
 
@@ -70,7 +68,7 @@ table.dataview tr th.wicket_orderNone {
 }
 
 table.dataview tr th a {
-	font-weight: normal;
+	font-weight: bold;
 }
 
 table.dataview #message {

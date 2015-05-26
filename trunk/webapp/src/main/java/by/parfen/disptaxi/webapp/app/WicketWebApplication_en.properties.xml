@@ -14,6 +14,7 @@
 	<entry key="p.menu.autos">Taxi</entry>
 	<entry key="p.menu.cities">Cities</entry>
 	<entry key="p.menu.aboutus">About us</entry>
+	<entry key="p.menu.prices">Prices</entry>
 	
 	<entry key="p.country.name">Беларусь</entry>
 	<entry key="p.route.length.measure">m</entry>
@@ -160,9 +161,16 @@
 	<entry key="p.neworder.page3.nextButton">Check out</entry>
 	<entry key="p.neworder.page3.backButton">Back to taxi list</entry>
 
+	<entry key="p.prices.listTitle">Prices</entry>
+	<entry key="p.price.beginDateTitle">From</entry>
+	<entry key="p.price.endDateTitle">To</entry>
+	<entry key="p.price.costBeforeTitle">Base</entry>
+	<entry key="p.price.costKmTitle">Per km</entry>
+
 	<entry key="p.inlineMenu.editButton">Edit</entry>
 	<entry key="p.inlineMenu.selectButton">Select</entry>
 	<entry key="p.inlineMenu.filterButton">Search</entry>
+	<entry key="p.filterForm.label">Criteria</entry>
 	
 	<entry key="p.aboutus.pageTitle">About us</entry>
 

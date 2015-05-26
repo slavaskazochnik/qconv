@@ -55,7 +55,7 @@ ol, ul {
 }
 #main-menu ul {
   float: left;
-  margin-left: 100px;
+  margin-left: 0.5em;
 }
 #main-menu ul li {
   display: inline-block;

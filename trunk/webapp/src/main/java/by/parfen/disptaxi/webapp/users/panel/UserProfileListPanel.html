@@ -4,14 +4,30 @@
 
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
 	<div>
+		<form wicket:id="filterForm">
+			<table class="filterview">
+				<tr>
+					<td width="20%">
+						<wicket:message key="p.filterForm.label" />:
+					</td>
+					<td width="20%"><input type="text" wicket:id="lastName" class="inputForm-text" size="14" /></td>
+					<td width="20%"><input type="text" wicket:id="telNum" class="inputForm-text" size="14" /></td>
+					<td width="20%" align="center"><input type="submit" wicket:id="linkToFilter" class="button medium green"
+						wicket:message="value:p.inlineMenu.filterButton" /></td>
+					<td width="20%" align="center"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div>
 		<table class="dataview">
 			<thead>
 				<tr>
-					<th><wicket:message key="p.user.firstNameTitle" /></th>
-					<th><wicket:message key="p.user.lastNameTitle" /></th>
-					<th><wicket:message key="p.user.telNumTitle" /></th>
-					<th><wicket:message key="p.userProfile.appRoleTitle" /></th>
-					<th></th>
+					<th width="20%"><wicket:message key="p.user.firstNameTitle" /></th>
+					<th width="20%"><wicket:message key="p.user.lastNameTitle" /></th>
+					<th width="20%"><wicket:message key="p.user.telNumTitle" /></th>
+					<th width="20%"><wicket:message key="p.userProfile.appRoleTitle" /></th>
+					<th width="20%"></th>
 				</tr>
 			</thead>
 			<tbody wicket:id="tableBody">

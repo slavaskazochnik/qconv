@@ -36,10 +36,40 @@ public class OrderDaoImpl extends AbstractDaoImpl<Long, Order> implements OrderD
 
 	@Override
 	public Long getCount() {
+		// CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+		//
+		// CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
+		// Root<Order> root = criteria.from(Order.class);
+		//
+		// criteria.select(cBuilder.count(root));
+		//
+		// TypedQuery<Long> query = getEm().createQuery(criteria);
+		// return query.getSingleResult();
+		return getCount(null);
+	}
+
+	@Override
+	public Long getCount(FilterOrder filterOrder) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Long> criteria = cBuilder.createQuery(Long.class);
 		Root<Order> root = criteria.from(Order.class);
+
+		// use Filter
+		if (filterOrder != null) {
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			if (filterOrder.getCustomer() != null) {
+				predicates.add(cBuilder.equal(root.get(Order_.customer), filterOrder.getCustomer()));
+			}
+			// add detail table Auto for Driver
+			if (filterOrder.getDriver() != null) {
+				Join<Order, Auto> details = root.join(Order_.auto);
+				predicates.add(cBuilder.equal(details.get(Auto_.driver), filterOrder.getDriver()));
+			}
+			if (predicates.size() > 0) {
+				criteria.where(predicates.toArray(new Predicate[] {}));
+			}
+		}
 
 		criteria.select(cBuilder.count(root));
 

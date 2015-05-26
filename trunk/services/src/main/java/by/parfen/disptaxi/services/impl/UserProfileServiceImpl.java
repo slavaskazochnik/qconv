@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import by.parfen.disptaxi.dataaccess.UserProfileDao;
 import by.parfen.disptaxi.datamodel.UserProfile;
+import by.parfen.disptaxi.datamodel.filter.FilterUserProfile;
 import by.parfen.disptaxi.services.UserProfileService;
 
 @Service
@@ -77,6 +78,17 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public List<UserProfile> getAll(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord,
 			int pageSize) {
 		return dao.getAll(attr, ascending, startRecord, pageSize);
+	}
+
+	@Override
+	public List<UserProfile> getAll(SingularAttribute<UserProfile, ?> attr, boolean ascending, int startRecord,
+			int pageSize, FilterUserProfile filterUserProfile) {
+		return dao.getAll(attr, ascending, startRecord, pageSize, filterUserProfile);
+	}
+
+	@Override
+	public Long getCount(FilterUserProfile filterUserProfile) {
+		return dao.getCount(filterUserProfile);
 	}
 
 }

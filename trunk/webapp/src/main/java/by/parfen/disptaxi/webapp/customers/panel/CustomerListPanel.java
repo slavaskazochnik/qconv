@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -21,6 +22,7 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.Customer_;
@@ -72,20 +74,8 @@ public class CustomerListPanel extends Panel {
 
 		CustomerDataProvider customerDataProvider = new CustomerDataProvider();
 
-		Form<FilterUserProfile> filterForm = new Form<FilterUserProfile>("filterForm",
-				new CompoundPropertyModel<FilterUserProfile>(filterUserProfile));
-
-		final TextField<String> filterTelNum = new TextField<String>("telNum");
-		filterForm.add(filterTelNum);
+		Form<FilterUserProfile> filterForm = getFilterUserProfileForm();
 		add(filterForm);
-
-		SubmitLink submitLink = new SubmitLink("linkToFilter") {
-			@Override
-			public void onSubmit() {
-				setResponsePage(new CustomersPage(new Model<FilterUserProfile>(filterUserProfile)));
-			}
-		};
-		filterForm.add(submitLink);
 
 		final WebMarkupContainer tableBody = new WebMarkupContainer("tableBody");
 
@@ -129,6 +119,30 @@ public class CustomerListPanel extends Panel {
 
 		add(new PagingNavigator("paging", dataView));
 
+		add(new OrderByBorder<SingularAttribute<Customer, ?>>("sortAvgRating", Customer_.avgRating, customerDataProvider));
+
+	}
+
+	private Form<FilterUserProfile> getFilterUserProfileForm() {
+		Form<FilterUserProfile> filterForm = new Form<FilterUserProfile>("filterForm",
+				new CompoundPropertyModel<FilterUserProfile>(filterUserProfile));
+
+		final TextField<String> filterLastName = new TextField<String>("lastName");
+		filterLastName.add(AttributeModifier.append("title", new ResourceModel("p.user.lastNameTitle")));
+		filterForm.add(filterLastName);
+
+		final TextField<String> filterTelNum = new TextField<String>("telNum");
+		filterTelNum.add(AttributeModifier.append("title", new ResourceModel("p.user.telNumTitle")));
+		filterForm.add(filterTelNum);
+
+		SubmitLink submitLink = new SubmitLink("linkToFilter") {
+			@Override
+			public void onSubmit() {
+				setResponsePage(new CustomersPage(new Model<FilterUserProfile>(filterUserProfile)));
+			}
+		};
+		filterForm.add(submitLink);
+		return filterForm;
 	}
 
 	private class CustomerDataProvider extends SortableDataProvider<Customer, SingularAttribute<Customer, ?>> {

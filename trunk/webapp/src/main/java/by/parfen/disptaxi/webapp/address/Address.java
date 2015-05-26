@@ -1,5 +1,6 @@
 package by.parfen.disptaxi.webapp.address;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import by.parfen.disptaxi.services.PointService;
 import by.parfen.disptaxi.services.StreetService;
 import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 
-public final class Address {
+public final class Address implements Serializable {
 
 	private AjaxRequestTarget target;
 
