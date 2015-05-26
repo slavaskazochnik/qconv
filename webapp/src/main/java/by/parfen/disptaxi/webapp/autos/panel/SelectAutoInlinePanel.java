@@ -64,6 +64,7 @@ public class SelectAutoInlinePanel extends Panel {
 		final WebMarkupContainer avgRatingContainter = new WebMarkupContainer("avgRating");
 		final int avgRatingPerc = RatingClass.getRatingPercent(auto.getDriver().getAvgRating());
 		avgRatingContainter.add(AttributeModifier.append("style", Model.of("width:" + avgRatingPerc + "%")));
+		avgRatingContainter.add(AttributeModifier.append("title", Model.of(auto.getDriver().getAvgRating())));
 		listItem.add(avgRatingContainter);
 
 		form.add(listItem);

@@ -21,8 +21,10 @@ import by.parfen.disptaxi.datamodel.Auto_;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.Car_;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.Driver_;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 
 @Repository
 public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao {
@@ -118,7 +120,7 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 		return getAll(null, SignActive.YES);
 	}
 
-	public List<Auto> getAllWithDetails(Auto auto) {
+	public List<Auto> getAllWithDetailsOld(Auto auto) {
 		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
 
 		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
@@ -132,28 +134,72 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 			criteria.where(predicates.toArray(new Predicate[] {}));
 		}
 
-		final int detailsMethod = 1;
-		if (detailsMethod == 0) {
-			// Ok
-			criteria.select(root);
-			root.fetch(Auto_.car);
-			root.fetch(Auto_.driver);
-			criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
-		} else if (detailsMethod == 1) {
-			// Ok
-			Fetch<Auto, Car> cars = root.fetch(Auto_.car);
-			Fetch<Auto, Driver> drivers = root.fetch(Auto_.driver);
+		// final int detailsMethod = 1;
+		// if (detailsMethod == 0) {
+		// // Ok
+		// criteria.select(root);
+		// root.fetch(Auto_.car);
+		// root.fetch(Auto_.driver);
+		// criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
+		// } else if (detailsMethod == 1) {
+		// Ok
+		@SuppressWarnings("unused")
+		Fetch<Auto, Car> cars = root.fetch(Auto_.car);
+		@SuppressWarnings("unused")
+		Fetch<Auto, Driver> drivers = root.fetch(Auto_.driver);
 
-			criteria.select(root);
-			criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
-		} else if (detailsMethod == 2) {
-			// details are empty
-			Join<Auto, Car> cars = root.join(Auto_.car);
-			Join<Auto, Driver> drivers = root.join(Auto_.driver);
+		criteria.select(root);
+		criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
+		// } else if (detailsMethod == 2) {
+		// // details are empty
+		// Join<Auto, Car> cars = root.join(Auto_.car);
+		// Join<Auto, Driver> drivers = root.join(Auto_.driver);
+		//
+		// criteria.select(root);
+		// criteria.orderBy(cBuilder.asc(cars.get(Car_.id)));
+		// }
 
-			criteria.select(root);
-			criteria.orderBy(cBuilder.asc(cars.get(Car_.id)));
+		TypedQuery<Auto> query = getEm().createQuery(criteria);
+
+		List<Auto> results = query.getResultList();
+		return results;
+	}
+
+	@Override
+	public List<Auto> getAllWithDetails(FilterAuto filterAuto) {
+		CriteriaBuilder cBuilder = getEm().getCriteriaBuilder();
+
+		CriteriaQuery<Auto> criteria = cBuilder.createQuery(Auto.class);
+		Root<Auto> root = criteria.from(Auto.class);
+
+		@SuppressWarnings("unchecked")
+		Join<Auto, Car> cars = (Join<Auto, Car>) root.fetch(Auto_.car);
+		@SuppressWarnings("unchecked")
+		Join<Auto, Driver> drivers = (Join<Auto, Driver>) root.fetch(Auto_.driver);
+
+		if (filterAuto != null) {
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			if (filterAuto.getAuto() != null) {
+				predicates.add(cBuilder.equal(root.get(Auto_.id), filterAuto.getAuto().getId()));
+			}
+			if (filterAuto.getDriver() != null) {
+				// predicates.add(cBuilder.equal(root.get(Auto_.driver),
+				// filterAuto.getDriver()));
+				predicates.add(cBuilder.equal(drivers.get(Driver_.id), filterAuto.getDriver().getId()));
+			}
+			if (filterAuto.getCarType() != null) {
+				predicates.add(cBuilder.equal(cars.get(Car_.carType), filterAuto.getCarType()));
+			}
+			if (filterAuto.getSignActive() != null) {
+				predicates.add(cBuilder.equal(root.get(Auto_.signActive), filterAuto.getSignActive().ordinal()));
+			}
+			if (predicates.size() > 0) {
+				criteria.where(predicates.toArray(new Predicate[] {}));
+			}
 		}
+
+		criteria.select(root);
+		criteria.orderBy(cBuilder.asc(root.get(Auto_.id)));
 
 		TypedQuery<Auto> query = getEm().createQuery(criteria);
 
@@ -168,7 +214,10 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 
 	@Override
 	public Auto getWithDetails(Auto auto) {
-		List<Auto> autosList = getAllWithDetails(auto);
+		// List<Auto> autosList = getAllWithDetails(auto);
+		final FilterAuto filterAuto = new FilterAuto();
+		filterAuto.setAuto(auto);
+		List<Auto> autosList = getAllWithDetails(filterAuto);
 		Auto result = null;
 		if (autosList.size() > 0) {
 			result = autosList.get(0);

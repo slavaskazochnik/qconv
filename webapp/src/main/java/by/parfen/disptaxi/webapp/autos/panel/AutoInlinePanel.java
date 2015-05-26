@@ -58,7 +58,12 @@ public class AutoInlinePanel extends Panel {
 		final WebMarkupContainer itemHeader = new WebMarkupContainer("itemHeader");
 		listItem.add(itemHeader);
 
-		final String autoName = getString("p.auto.idTitle") + ": " + auto.getId().toString();
+		// final String autoName = getString("p.auto.idTitle") + ": " +
+		// auto.getId().toString();
+		String autoName = "";
+		if (auto.getPositionAddress() != null) {
+			autoName = new ResourceModel("p.auto.positionAddressTitle").getObject() + ": " + auto.getPositionAddress();
+		}
 		itemHeader.add(new Label("itemName", new Model<String>(autoName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");

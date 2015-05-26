@@ -21,6 +21,7 @@ import org.apache.wicket.model.ResourceModel;
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.Driver;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
 import by.parfen.disptaxi.datamodel.enums.SignActive;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CarService;
@@ -28,6 +29,7 @@ import by.parfen.disptaxi.services.DriverService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.address.Address;
 import by.parfen.disptaxi.webapp.address.AddressLocatorPanel;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 
 public class AutoEditPage extends BaseLayout {
 
@@ -78,18 +80,33 @@ public class AutoEditPage extends BaseLayout {
 
 		List<Car> carsList = new ArrayList<Car>();
 		carsList.addAll(carService.getAll());
-		// final DropDownChoice<Car> ddcCar = new DropDownChoice<Car>("car",
-		// carsList);
 		selectedCar = auto.getCar();
 		final DropDownChoice<Car> ddcCar = new DropDownChoice<Car>("car", new PropertyModel<Car>(this, "selectedCar"),
-				carsList, new ChoiceRenderer<Car>("regNum", "id"));
+				carsList, new ChoiceRenderer<Car>("regNum", "id")) {
+
+			@Override
+			protected void onConfigure() {
+				setEnabled(BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+						|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE);
+			}
+
+		};
 		form.add(ddcCar);
 
 		List<Driver> driversList = new ArrayList<Driver>();
 		driversList.addAll(driverService.getAllWithDetails());
 		selectedDriver = auto.getDriver();
 		final DropDownChoice<Driver> ddcDriver = new DropDownChoice<Driver>("driver", new PropertyModel<Driver>(this,
-				"selectedDriver"), driversList, new ChoiceRenderer<Driver>("userProfile.getUserInfo", "id"));
+				"selectedDriver"), driversList, new ChoiceRenderer<Driver>("userProfile.getUserInfo", "id")) {
+
+			@Override
+			protected void onConfigure() {
+				setEnabled(BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+						|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE);
+			}
+
+		};
+		;
 		form.add(ddcDriver);
 
 		final TextField<String> tfPositionAddress = new TextField<String>("positionAddress");
@@ -115,9 +132,11 @@ public class AutoEditPage extends BaseLayout {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				auto.setPositionAddress(address.getAddress());
-				auto.setPositionLat(address.getPointLat());
-				auto.setPositionLng(address.getPointLng());
+				if (address.getAddress() != null) {
+					auto.setPositionAddress(address.getAddress());
+					auto.setPositionLat(address.getPointLat());
+					auto.setPositionLng(address.getPointLng());
+				}
 				// final String lat =
 				// addressLocatorPanel.getTfPointLat().getDefaultModelObjectAsString();
 				// final String lng =

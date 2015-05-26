@@ -11,6 +11,8 @@
       <td valign="top">
 				<form wicket:id="addressForm">
 					<div id="point">
+						<input wicket:id="countryName" style="visibility: hidden;" class="inputForm-text" type="text" size="20" />
+						
 						<label class="inputForm-label"><wicket:message key="p.point.cityTitle" /></label>
 						<input wicket:id="cityName" class="inputForm-text" type="text" size="20"/>
 						
@@ -40,12 +42,14 @@
 	<script>
 		function SearchLocation(signElement,signSet) {
 			var address;
-			var cityId, pointId, streetId, latId, lngId;
+			var countryId, cityId, pointId, streetId, latId, lngId;
+			countryId = "countryName";
 			cityId = "cityName";
 			streetId = "streetName";
 			pointId = "pointName";
 			latId = "pointLat";
 			lngId = "pointLng";
+			var countryName = document.getElementById(countryId).value;
 			var cityName = document.getElementById(cityId).value;
 			var streetName = document.getElementById(streetId).value;
 			var pointName = document.getElementById(pointId).value;
@@ -88,7 +92,7 @@
 			});
 		}
 
-	    window.onload = function() {
+	  window.onload = function() {
 			SearchLocation()
 		}
 	</script>

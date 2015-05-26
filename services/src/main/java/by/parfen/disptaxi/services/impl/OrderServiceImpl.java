@@ -64,6 +64,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public Long getCount(FilterOrder filterOrder) {
+		return dao.getCount(filterOrder);
+	}
+
+	@Override
 	public void create(Order order) {
 		Validate.isTrue(order.getId() == null,
 				"This method should be called for 'not saved yet' record only. Use UPDATE instead");

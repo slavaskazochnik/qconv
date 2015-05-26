@@ -20,6 +20,8 @@ public interface OrderService {
 
 	Long getCount();
 
+	Long getCount(FilterOrder filterOrder);
+
 	@Transactional
 	void create(Order order);
 

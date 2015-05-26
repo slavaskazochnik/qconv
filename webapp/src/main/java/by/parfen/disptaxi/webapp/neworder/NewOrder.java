@@ -17,6 +17,8 @@ import by.parfen.disptaxi.datamodel.UserProfile;
 import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.datamodel.enums.OrderResult;
 import by.parfen.disptaxi.datamodel.enums.OrderStatus;
+import by.parfen.disptaxi.datamodel.enums.SignActive;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.CustomerService;
 import by.parfen.disptaxi.services.OrderService;
@@ -41,6 +43,7 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 
 	public NewOrder() {
 		super();
+		setCarType(CarType.SEDAN);
 		Injector.get().inject(this);
 	}
 
@@ -57,22 +60,43 @@ public class NewOrder extends NewOrderClass implements NewOrderService, Serializ
 
 	@Override
 	public Price getPrice(Auto auto) {
-		return getPrice(auto.getCar().getCarType());
+		if (auto != null && auto.getCar() != null) {
+			return getPrice(auto.getCar().getCarType());
+		} else {
+			return null;
+		}
+	}
+
+	private List<Auto> getAllAuto(FilterAuto filterAuto) {
+		return autoService.getAllWithDetails(filterAuto);
 	}
 
 	@Override
 	public List<Auto> getAllAuto(CarType carType) {
-		return autoService.getAllActiveByCarType(carType);
+		FilterAuto filterAuto = new FilterAuto();
+		filterAuto.setCarType(carType);
+		filterAuto.setSignActive(SignActive.YES);
+		return getAllAuto(filterAuto);
+		// return autoService.getAllActiveByCarType(carType);
 	}
 
 	@Override
 	public List<Auto> getAllAuto(Route route, CarType carType) {
+		FilterAuto filterAuto = new FilterAuto();
+		filterAuto.setCarType(carType);
+		filterAuto.setSignActive(SignActive.YES);
 		if (route != null && route.getSrcPoint() != null) {
-			return autoService.getAllActiveByCarTypeAndGeo(carType, route.getSrcPoint().getPositionLat(), route.getSrcPoint()
-					.getPositionLng());
-		} else {
-			return autoService.getAllActiveByCarType(carType);
+			filterAuto.setPositionLat(route.getSrcPoint().getPositionLat());
+			filterAuto.setPositionLng(route.getSrcPoint().getPositionLng());
 		}
+		return getAllAuto(filterAuto);
+		// if (route != null && route.getSrcPoint() != null) {
+		// return autoService.getAllActiveByCarTypeAndGeo(carType,
+		// route.getSrcPoint().getPositionLat(), route.getSrcPoint()
+		// .getPositionLng());
+		// } else {
+		// return autoService.getAllActiveByCarType(carType);
+		// }
 	}
 
 	@Override

@@ -145,7 +145,6 @@ public class UserProfileEditPage extends BaseLayout {
 		form.add(new SubmitLink("sumbitLink") {
 			@Override
 			public void onSubmit() {
-				super.onSubmit();
 				// create user profile
 				if (userProfile.getId() == null) {
 					userProfileService.saveOrUpdate(userProfile);

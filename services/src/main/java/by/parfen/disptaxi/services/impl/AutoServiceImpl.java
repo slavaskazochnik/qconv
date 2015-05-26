@@ -15,6 +15,7 @@ import by.parfen.disptaxi.dataaccess.AutoDao;
 import by.parfen.disptaxi.datamodel.Auto;
 import by.parfen.disptaxi.datamodel.Car;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 import by.parfen.disptaxi.services.AutoService;
 import by.parfen.disptaxi.services.utils.GeoService;
 
@@ -118,6 +119,11 @@ public class AutoServiceImpl implements AutoService {
 	@Override
 	public Auto getWithDetails(Auto auto) {
 		return dao.getWithDetails(auto);
+	}
+
+	@Override
+	public List<Auto> getAllWithDetails(FilterAuto filterAuto) {
+		return dao.getAllWithDetails(filterAuto);
 	}
 
 }

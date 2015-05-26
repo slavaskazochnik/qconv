@@ -83,15 +83,26 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Long, Customer> implements 
 
 		// use Filter
 		if (withDetails) {
+			// SELECT customer.*, user_profile.* FROM customer JOIN user_profile
 			root.fetch(Customer_.userProfile);
 		}
 		if (filterUserProfile != null) {
 			List<Predicate> predicates = new ArrayList<Predicate>();
 			// add detail table
-			if (filterUserProfile.getTelNum() != null) {
+			if (filterUserProfile.getTelNum() != null || filterUserProfile.getLastName() != null) {
+				// simple Join give:
+				// SELECT customer.* FROM customer JOIN user_profile
+				// using fetch with Join type
+				// SELECT customer.*, user_profile.* FROM customer JOIN user_profile
 				Join<Customer, UserProfile> details = (Join<Customer, UserProfile>) root.fetch(Customer_.userProfile);
 				root.fetch(Customer_.userProfile);
-				predicates.add(cBuilder.like(details.get(UserProfile_.telNum), "%" + filterUserProfile.getTelNum() + "%"));
+				if (filterUserProfile.getTelNum() != null) {
+					predicates.add(cBuilder.like(details.get(UserProfile_.telNum), "%" + filterUserProfile.getTelNum() + "%"));
+				}
+				if (filterUserProfile.getLastName() != null) {
+					predicates
+							.add(cBuilder.like(details.get(UserProfile_.lastName), "%" + filterUserProfile.getLastName() + "%"));
+				}
 			}
 			if (predicates.size() > 0) {
 				criteria.where(predicates.toArray(new Predicate[] {}));

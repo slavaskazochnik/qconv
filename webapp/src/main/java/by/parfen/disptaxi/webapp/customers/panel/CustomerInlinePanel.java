@@ -45,7 +45,10 @@ public class CustomerInlinePanel extends Panel {
 		final WebMarkupContainer itemHeader = new WebMarkupContainer("itemHeader");
 		listItem.add(itemHeader);
 
-		final String userDisplayName = userProfile.getFirstName() + " " + userProfile.getLastName();
+		String userDisplayName = userProfile.getFirstName();
+		if (userProfile.getLastName() != null) {
+			userDisplayName += " " + userProfile.getLastName();
+		}
 		itemHeader.add(new Label("itemName", new Model<String>(userDisplayName)));
 
 		final WebMarkupContainer itemDetails = new WebMarkupContainer("itemDetails");
