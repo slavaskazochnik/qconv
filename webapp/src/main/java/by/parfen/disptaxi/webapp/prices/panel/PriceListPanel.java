@@ -8,7 +8,9 @@ import javax.persistence.metamodel.SingularAttribute;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
@@ -18,7 +20,11 @@ import org.apache.wicket.model.IModel;
 
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Price_;
+import by.parfen.disptaxi.datamodel.enums.AppRole;
+import by.parfen.disptaxi.datamodel.enums.CarType;
 import by.parfen.disptaxi.services.PriceService;
+import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
+import by.parfen.disptaxi.webapp.prices.PriceEditPage;
 
 public class PriceListPanel extends Panel {
 
@@ -45,24 +51,26 @@ public class PriceListPanel extends Panel {
 		DataView<Price> dataView = new DataView<Price>("tableRows", priceDataProvider, ITEMS_PER_PAGE) {
 			@Override
 			protected void populateItem(Item<Price> item) {
-				// final Price price = item.getModelObject();
+				final IModel<Price> priceModel = item.getModel();
 				item.add(new Label("beginDate"));
 				item.add(new Label("endDate"));
+				item.add(new EnumLabel<CarType>("carType"));
 				item.add(new Label("costBefore"));
 				item.add(new Label("costKm"));
 
-				// item.add(new Link<Void>("linkToEdit") {
-				// @Override
-				// public void onClick() {
-				// setResponsePage(new PriceEditPage(new Model<Price>(price)) {
-				// @Override
-				// protected void onSetResponsePage() {
-				// // where go to back
-				// setResponsePage(new PricesPage());
-				// }
-				// });
-				// }
-				// });
+				item.add(new Link<Void>("linkToEdit") {
+					@Override
+					public void onClick() {
+						setResponsePage(new PriceEditPage(priceModel));
+					}
+
+					@Override
+					protected void onConfigure() {
+						setVisible(BasicAuthenticationSession.get().getUserAppRole() == AppRole.ADMIN_ROLE
+								|| BasicAuthenticationSession.get().getUserAppRole() == AppRole.OPERATOR_ROLE);
+					}
+
+				});
 
 			}
 		};

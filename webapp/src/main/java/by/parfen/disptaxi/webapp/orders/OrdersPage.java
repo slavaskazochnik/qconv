@@ -10,8 +10,8 @@ import org.apache.wicket.model.ResourceModel;
 
 import by.parfen.disptaxi.datamodel.Customer;
 import by.parfen.disptaxi.datamodel.enums.AppRole;
+import by.parfen.disptaxi.datamodel.filter.FilterOrder;
 import by.parfen.disptaxi.services.CustomerService;
-import by.parfen.disptaxi.services.UserAccountService;
 import by.parfen.disptaxi.webapp.BaseLayout;
 import by.parfen.disptaxi.webapp.app.BasicAuthenticationSession;
 import by.parfen.disptaxi.webapp.neworder.NewOrder;
@@ -22,16 +22,25 @@ import by.parfen.disptaxi.webapp.orders.panel.OrderListPanel;
 public class OrdersPage extends BaseLayout {
 
 	@Inject
-	private UserAccountService userAccountService;
-	@Inject
 	private CustomerService customerService;
+
+	IModel<FilterOrder> filterOrderModel;
+
+	public OrdersPage() {
+		this(new Model<FilterOrder>(new FilterOrder()));
+	}
+
+	public OrdersPage(IModel<FilterOrder> filterOrderModel) {
+		super();
+		this.filterOrderModel = filterOrderModel;
+	}
 
 	@Override
 	protected void onInitialize() {
 		super.setCurrentMenuTitle("p.menu.vieworders");
 		super.onInitialize();
 
-		add(new OrderListPanel("itemsList"));
+		add(new OrderListPanel("itemsList", filterOrderModel));
 
 		final WebMarkupContainer listButtons = new WebMarkupContainer("listButtons");
 

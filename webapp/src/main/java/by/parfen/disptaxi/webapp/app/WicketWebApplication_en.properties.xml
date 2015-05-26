@@ -128,6 +128,9 @@
 	<entry key="p.order.edit.customerRatingTitle">Customer rating</entry>
 	<entry key="p.order.edit.driverRatingTitle">Driver rating</entry>
 	
+	<entry key="p.filterOrder.fromDateTitle">From</entry>
+	<entry key="p.filterOrder.toDateTitle">to</entry>
+	
 	<entry key="p.neworder.createRouteTitle">Build route</entry>
 	<entry key="p.neworder.chooseAutoTitle">Choose taxi</entry>
 	<entry key="p.neworder.chooseCustomerTitle">Choose customer</entry>
@@ -146,6 +149,8 @@
 	<entry key="p.neworder.fromTitle">From</entry>
 	<entry key="p.neworder.toTitle">to</entry>
 
+	<entry key="p.cantFindAnyAuto">Can't find any taxi by search criteria!</entry>
+
 	<entry key="p.inputForm.saveButton">Save</entry>
 	<entry key="p.inputForm.cancelButton">Cancel</entry>
 	<entry key="p.inputForm.removeButton">Remove</entry>
@@ -162,10 +167,13 @@
 	<entry key="p.neworder.page3.backButton">Back to taxi list</entry>
 
 	<entry key="p.prices.listTitle">Prices</entry>
+	<entry key="p.price.edit.pageTitle">Editing price</entry>
 	<entry key="p.price.beginDateTitle">From</entry>
 	<entry key="p.price.endDateTitle">To</entry>
 	<entry key="p.price.costBeforeTitle">Base</entry>
+	<entry key="p.price.edit.costBeforeTitle">Base fare, BYR</entry>
 	<entry key="p.price.costKmTitle">Per km</entry>
+	<entry key="p.price.edit.costKmTitle">Per km, BYR</entry>
 
 	<entry key="p.inlineMenu.editButton">Edit</entry>
 	<entry key="p.inlineMenu.selectButton">Select</entry>
@@ -206,5 +214,11 @@
 	<entry key="p.currentOrder.autoTitle">Taxi</entry>
 	<entry key="p.currentOrder.routeSrcAddressTitle">From</entry>
 	<entry key="p.currentOrder.routeDstAddressTitle">To</entry>
+	
+	<entry key="p.aboutus.shortContent">Taxi service.
+It allows you to keep a record of vehicles involved in customer service, as well as keeping order.
+The machines can be active or inactive. Each machine has a set of attributes.
+Each order is recorded in the system (the time of booking, arrival time taxi time of delivery to the final destination, the amount of distance)
+</entry>
 
 </properties>

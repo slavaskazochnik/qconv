@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import by.parfen.disptaxi.datamodel.enums.CarType;
 
@@ -22,12 +23,15 @@ public class Price extends AbstractEntity {
 	@Enumerated(EnumType.ORDINAL)
 	private CarType carType;
 	@Column
+	@NotNull
 	private Long costBefore;
 	@Column
+	@NotNull
 	private Long costKm;
 	@Column
 	private Long costForWaiting;
 	@Column
+	@NotNull
 	private Date beginDate;
 	@Column
 	private Date endDate;

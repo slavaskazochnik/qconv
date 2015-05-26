@@ -9,8 +9,9 @@
 				<tr>
 					<th width="20%"><wicket:message key="p.price.beginDateTitle" /></th>
 					<th width="20%"><wicket:message key="p.price.endDateTitle" /></th>
-					<th width="20%"><wicket:message key="p.price.costBeforeTitle" /></th>
-					<th width="20%"><wicket:message key="p.price.costKmTitle" /></th>
+					<th width="20%"><wicket:message key="p.car.carTypeTitle" /></th>
+					<th width="10%"><wicket:message key="p.price.costBeforeTitle" /></th>
+					<th width="10%"><wicket:message key="p.price.costKmTitle" /></th>
 					<th width="20%"></th>
 				</tr>
 			</thead>
@@ -18,10 +19,11 @@
 				<tr wicket:id="tableRows">
 					<td><wicket:container wicket:id="beginDate" /></td>
 					<td><wicket:container wicket:id="endDate" /></td>
+					<td><wicket:container wicket:id="carType" /></td>
 					<td><wicket:container wicket:id="costBefore" /></td>
 					<td><wicket:container wicket:id="costKm" /></td>
 					<td align="center">
-<!-- 						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a> -->
+						<a wicket:id="linkToEdit" class="button medium orange"><wicket:message key="p.inlineMenu.editButton" /></a>
 					</td>
 				</tr>
 			</tbody>

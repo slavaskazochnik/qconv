@@ -190,6 +190,12 @@ public class AutoDaoImpl extends AbstractDaoImpl<Long, Auto> implements AutoDao 
 			if (filterAuto.getCarType() != null) {
 				predicates.add(cBuilder.equal(cars.get(Car_.carType), filterAuto.getCarType()));
 			}
+			if (filterAuto.getSeatsQuan() != null) {
+				predicates.add(cBuilder.greaterThanOrEqualTo(cars.get(Car_.seatsQuan), filterAuto.getSeatsQuan()));
+			}
+			if (filterAuto.getChildSeatsQuan() != null) {
+				predicates.add(cBuilder.greaterThanOrEqualTo(cars.get(Car_.childSeatsQuan), filterAuto.getChildSeatsQuan()));
+			}
 			if (filterAuto.getSignActive() != null) {
 				predicates.add(cBuilder.equal(root.get(Auto_.signActive), filterAuto.getSignActive().ordinal()));
 			}

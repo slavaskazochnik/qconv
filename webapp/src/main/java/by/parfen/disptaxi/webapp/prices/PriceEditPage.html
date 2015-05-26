@@ -1,0 +1,32 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1><wicket:message key="p.price.edit.pageTitle" /></h1>
+	<form wicket:id="inputForm">
+		<fieldset>
+			<div>
+				<label wicket:for="id" class="inputForm-label"><wicket:message key="p.car.edit.idTitle" /></label>
+				<input wicket:id="id" class="inputForm-text" type="text" />
+
+				<label wicket:for="beginDate" class="inputForm-label"><wicket:message key="p.price.beginDateTitle" /></label>
+				<input wicket:id="beginDate" class="inputForm-text" type="text" size="10" />
+				
+				<label wicket:for="endDate" class="inputForm-label"><wicket:message key="p.price.endDateTitle" /></label>
+				<input wicket:id="endDate" class="inputForm-text" type="text" size="10" />
+				
+				<label wicket:for="costBefore" class="inputForm-label"><wicket:message key="p.price.edit.costBeforeTitle" /></label>
+				<input wicket:id="costBefore" class="inputForm-text" type="text" size="8"/>
+
+				<label wicket:for="costKm" class="inputForm-label"><wicket:message key="p.price.edit.costKmTitle" /></label>
+				<input wicket:id="costKm" class="inputForm-text" type="text" size="8"/>
+
+				<label wicket:for="carType" class="inputForm-label"><wicket:message key="p.car.edit.carTypeTitle" /></label>
+				<select wicket:id="carType" class="inputForm-text"></select>
+
+				<div class="inputForm-buttons">
+				<button type="submit" wicket:id="sumbitLink" class="button green medium"><wicket:message key="p.inputForm.saveButton" /></button>
+				<button type="submit" wicket:id="cancelLink" class="button gray medium"><wicket:message key="p.inputForm.cancelButton" /></button>
+				<button type="submit" wicket:id="removeLink" class="button red medium"><wicket:message key="p.inputForm.removeButton" /></button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</wicket:extend>

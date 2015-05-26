@@ -1,15 +1,22 @@
 package by.parfen.disptaxi.webapp.orders.panel;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.inject.Inject;
 import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.datetime.StyleDateConverter;
+import org.apache.wicket.datetime.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
+import org.apache.wicket.extensions.yui.calendar.DatePicker;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -55,8 +62,13 @@ public class OrderListPanel extends Panel {
 	private FilterOrder filterOrder;
 
 	public OrderListPanel(String id) {
+		this(id, new Model<FilterOrder>(new FilterOrder()));
+	}
+
+	public OrderListPanel(String id, IModel<FilterOrder> filterOrderModel) {
 		super(id);
-		filterOrder = new FilterOrder();
+		filterOrder = filterOrderModel.getObject();
+		// filterOrder = new FilterOrder();
 		if (BasicAuthenticationSession.get().getUserProfile() != null) {
 			if (BasicAuthenticationSession.get().getUserAppRole() == AppRole.DRIVER_ROLE) {
 				filterOrder.setDriver(driverService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
@@ -64,6 +76,15 @@ public class OrderListPanel extends Panel {
 				filterOrder.setCustomer(customerService.get(BasicAuthenticationSession.get().getUserProfile().getId()));
 			}
 		}
+		if (filterOrder.getFromDate() == null) {
+			filterOrder.setFromDate(getFirstDateOfCurrentMonth());
+		}
+	}
+
+	private Date getFirstDateOfCurrentMonth() {
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().getActualMinimum(Calendar.DAY_OF_MONTH));
+		return cal.getTime();
 	}
 
 	@Override
@@ -71,6 +92,9 @@ public class OrderListPanel extends Panel {
 		super.onInitialize();
 
 		OrderDataProvider orderDataProvider = new OrderDataProvider();
+
+		Form<FilterOrder> filterForm = getFilterOrderForm();
+		add(filterForm);
 
 		final WebMarkupContainer tableBody = new WebMarkupContainer("tableBody");
 
@@ -140,6 +164,47 @@ public class OrderListPanel extends Panel {
 
 	}
 
+	private Form<FilterOrder> getFilterOrderForm() {
+		Form<FilterOrder> filterForm = new Form<FilterOrder>("filterForm", new CompoundPropertyModel<FilterOrder>(
+				filterOrder));
+
+		final DateTextField filterFromDate = new DateTextField("fromDate",
+				new PropertyModel<Date>(filterOrder, "fromDate"), new StyleDateConverter("M-", true));
+		filterFromDate.add(AttributeModifier.append("title", new ResourceModel("p.filterOrder.fromDateTitle")));
+		filterForm.add(filterFromDate);
+
+		final DateTextField filterToDate = new DateTextField("toDate", new PropertyModel<Date>(filterOrder, "toDate"),
+				new StyleDateConverter("M-", true));
+		filterToDate.add(AttributeModifier.append("title", new ResourceModel("p.filterOrder.toDateTitle")));
+		filterForm.add(filterToDate);
+
+		DatePicker fromDatePicker = getDatePicker();
+		DatePicker toDatePicker = getDatePicker();
+		filterFromDate.add(fromDatePicker);
+		filterToDate.add(toDatePicker);
+
+		SubmitLink submitLink = new SubmitLink("linkToFilter") {
+			@Override
+			public void onSubmit() {
+				setResponsePage(new OrdersPage(new Model<FilterOrder>(filterOrder)));
+			}
+		};
+		filterForm.add(submitLink);
+		return filterForm;
+	}
+
+	private DatePicker getDatePicker() {
+		DatePicker datePicker = new DatePicker() {
+			@Override
+			protected String getAdditionalJavaScript() {
+				return "${calendar}.cfg.setProperty(\"navigator\",true,false); ${calendar}.render();";
+			}
+		};
+		datePicker.setShowOnFieldClick(true);
+		datePicker.setAutoHide(true);
+		return datePicker;
+	}
+
 	private class OrderDataProvider extends SortableDataProvider<Order, SingularAttribute<Order, ?>> {
 
 		public OrderDataProvider() {
@@ -164,6 +229,20 @@ public class OrderListPanel extends Panel {
 		public IModel<Order> model(Order order) {
 			return new CompoundPropertyModel<Order>(order);
 		}
+	}
+
+	public FilterOrder getFilterOrder() {
+		if (filterOrder == null) {
+			filterOrder = new FilterOrder();
+		}
+		if (filterOrder.getFromDate() == null) {
+			filterOrder.setFromDate(getFirstDateOfCurrentMonth());
+		}
+		return filterOrder;
+	}
+
+	public void setFilterOrder(FilterOrder filterOrder) {
+		this.filterOrder = filterOrder;
 	}
 
 }

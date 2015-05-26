@@ -14,6 +14,7 @@ import by.parfen.disptaxi.datamodel.Order;
 import by.parfen.disptaxi.datamodel.Price;
 import by.parfen.disptaxi.datamodel.Route;
 import by.parfen.disptaxi.datamodel.enums.CarType;
+import by.parfen.disptaxi.datamodel.filter.FilterAuto;
 
 public class NewOrderClass {
 	//
@@ -30,17 +31,23 @@ public class NewOrderClass {
 	List<String> routePoints;
 	// selected CarType
 	CarType carType;
+
+	FilterAuto filterAuto;
+
 	// selected Auto, Price, Driver, Customer
 	Auto auto;
 	Price price;
 	Driver driver;
 	Customer customer;
 
+	// meters!!!
 	Long routeDistance;
 	Long routeDuration;
 
 	public NewOrderClass() {
 		route = new Route();
+		filterAuto = new FilterAuto();
+		filterAuto.setCarType(CarType.SEDAN);
 		routeList = new ArrayList<Route>();
 		routePoints = new ArrayList<String>();
 	}
@@ -109,7 +116,8 @@ public class NewOrderClass {
 
 	public void setRouteDistance(Long routeDistance) {
 		this.routeDistance = routeDistance;
-		route.setEstLength(routeDistance / 1000);
+		long estLength = routeDistance / 1000;
+		route.setEstLength(estLength);
 	}
 
 	public Long getRouteDuration() {
